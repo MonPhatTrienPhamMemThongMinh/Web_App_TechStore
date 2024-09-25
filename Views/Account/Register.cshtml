@@ -1,0 +1,59 @@
+﻿@model DoAnWebGamingGear.ViewModel.RegisterVM
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container">
+    <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        <div class="form-group row">
+            <div>
+                @Html.LabelFor(temp => temp.Username, new { @class = "col-sm-2 col-form-label" })
+                @Html.TextBoxFor(temp => temp.Username, new { placeholder = "Username", @class = "form-control col-sm-10" })
+                @Html.ValidationMessageFor(temp => temp.Username, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-12">
+                @Html.LabelFor(temp => temp.Email, new { @class = "col-sm-2 col-form-label" })
+                @Html.TextBoxFor(temp => temp.Email, new { placeholder = "Email", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-12">
+                @Html.LabelFor(temp => temp.Password, new { @class = "col-sm-2 col-form-label" })
+                @Html.PasswordFor(temp => temp.Password, new { placeholder = "Password", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-12">
+                @Html.LabelFor(temp => temp.ConfirmPassword, new { @class = "col-sm-2 col-form-label" })
+                @Html.PasswordFor(temp => temp.ConfirmPassword, new { placeholder = "Confirm Password", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-12">
+                @Html.LabelFor(temp => temp.Phone, new { @class = "col-sm-2 col-form-label" })
+                @Html.TextBoxFor(temp => temp.Phone, new { placeholder = "Phone", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.Phone, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-12">
+                @Html.LabelFor(temp => temp.DateOfBirth, new { @class = "col-sm-2 col-form-label" })
+                @Html.TextBoxFor(temp => temp.DateOfBirth, new { placeholder = "Date Of Birth", @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(temp => temp.DateOfBirth)
+            </div>
+            <div class="col-md-12">
+                @Html.LabelFor(temp => temp.Address, new { @class = "col-sm-2 col-form-label" })
+                @Html.TextBoxFor(temp => temp.Address, new { placeholder = "Address", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.Address)
+            </div>
+            <div class="col-md-12">
+                @Html.LabelFor(temp => temp.City, new { @class = "col-sm-2 col-form-label" })
+                @Html.TextBoxFor(temp => temp.City, new { placeholder = "City", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.City)
+            </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-success">Register</button>
+    }
+</div>
+<br />
+

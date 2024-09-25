@@ -1,0 +1,30 @@
+﻿@model DoAnWebGamingGear.Models.Products
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+}
+
+<main>
+    <section>
+        <div class="container-fluid">
+            <div class="product">
+                <div class="collection-list" style="margin-left: 130px;">
+                    <img src="@Model.ProductPic" alt="@Model.ProductName" style="width: 500px; float: left;" />
+                    <div style="float: right; width: 700px;">
+                        <p><strong>Product ID: </strong>@Model.ProductID</p>
+                        <p><strong>Product Name: </strong>@Model.ProductName</p>
+                        <p><strong>Brand:</strong> @Model.Brands.BrandName</p>
+                        <p><strong>Category:</strong> @Model.Categories.CategoryName</p>
+                        <p><strong>Description:</strong> @Model.ProductDescription</p>
+                        <p><strong>Price:</strong> @Model.Price.ToString("C").Split(',')[0]<span>đ</span></p>
+                        <p><strong>Availability Status:</strong> @Model.AvailabilityStatus</p>
+                        <p><strong>Quantity:</strong> @Model.Quantity</p>
+                        <p><strong>BaoHanh:</strong> @Model.BaoHanh</p>
+                    </div>
+
+                </div>
+                <div class="product-effect"></div>
+            </div>
+        </div>
+    </section>
+</main>

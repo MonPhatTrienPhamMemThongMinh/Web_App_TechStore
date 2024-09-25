@@ -1,0 +1,74 @@
+﻿@model DoAnWebGamingGear.Models.Order
+
+@{
+    ViewBag.Title = "Thanh Toán";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Thông Tin Thanh Toán</h2>
+
+@using (Html.BeginForm("Checkout", "Payment", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="CustomerName">Tên khách hàng:</label>
+        @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control", placeholder = "Nhập tên của bạn", required = "required" })
+        @Html.ValidationMessageFor(m => m.CustomerName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="CustomerPhone">Số điện thoại:</label>
+        @Html.TextBoxFor(m => m.CustomerPhone, new { @class = "form-control", placeholder = "Nhập số điện thoại", required = "required", type = "tel" })
+        @Html.ValidationMessageFor(m => m.CustomerPhone, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="CustomerAddress">Địa chỉ nhà:</label>
+        @Html.TextBoxFor(m => m.CustomerAddress, new { @class = "form-control", placeholder = "Nhập địa chỉ của bạn", required = "required" })
+        @Html.ValidationMessageFor(m => m.CustomerAddress, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="CustomerEmail">Email:</label>
+        @Html.TextBoxFor(m => m.CustomerEmail, new { @class = "form-control", placeholder = "Nhập email của bạn", required = "required", type = "email" })
+        @Html.ValidationMessageFor(m => m.CustomerEmail, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="PaymentMethod">Hình thức thanh toán:</label>
+        @Html.DropDownListFor(m => m.PaymentMethod, new SelectList(new List<string> { "Chuyển khoản ngân hàng", "Thanh toán khi nhận hàng" }), "Chọn phương thức thanh toán", new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(m => m.PaymentMethod, "", new { @class = "text-danger" })
+    </div>
+
+    <h3>Chi Tiết Giỏ Hàng</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.CartItems)
+            {
+                <tr>
+                    <td>@item.Products.ProductName</td>
+                    <td>@item.shopping_quantity</td>
+                    <td>@item.Products.Price.ToString("N0") ₫</td>
+                    <td>@(item.Products.Price * item.shopping_quantity) ₫</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Tổng cộng:</td>
+                <td>@ViewBag.TotalAmount.ToString("N0") ₫</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button type="submit" class="btn btn-success">Đặt Hàng</button>
+}

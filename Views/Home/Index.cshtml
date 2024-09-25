@@ -1,0 +1,82 @@
+﻿@model List<DoAnWebGamingGear.Models.Products>
+
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var brands = ViewBag.Brands as List<DoAnWebGamingGear.Models.Brands>;
+    var categories = ViewBag.Categories as List<DoAnWebGamingGear.Models.Categories>;
+}
+
+<main style="overflow-x: hidden;">
+    <div class="container-home">
+        <div class="">
+            <div class="w3-content w3-section" id="welcome">
+                <img class="mySlides" src="~/Pic/gg1.jpg" style="width:100%;">
+                <img class="mySlides" src="~/Pic/gg4.jpg" style="width: 100%; ">
+                <img class="mySlides" src="~/Pic/gg5.jpg" style="width: 100%;">
+            </div>
+            <div class="container-fluid p-4 shopify-section">
+                <div class="contentwelcome shopify-section" style="margin-bottom: 30px;">
+                    <h2 class="m-4">Chào mừng đến với GamingGearShop</h2>
+                </div>
+            </div>
+
+            <section class="shopify-section" id="main-thietbi">
+                <div class="section">
+                    <div class="section-stack">
+                        <div class="collection-list">
+                            @foreach (var category in categories)
+                            {
+                                <a href="@Url.Action("Detail", "Categories", new { id = category.CategoryID })" class="collection-card shadow collection-card--reverse-transition" style="opacity: 1">
+                                    <div class="thietbi rounded-sm" style="padding: 0 55px; place-items: end;">
+                                        <img class="zoom-image" style="width:250px;" loading="eager" src="@category.CategoryAvatar" />
+                                        <div class="collection-card_content">
+                                            <p class="h6">@category.CategoryName</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="shopify-section">
+                <div class="section">
+                    <div class="section-stack">
+                        <div>
+                            <h2 style="font-style: normal; font-weight: 400; letter-spacing: -0.01em; margin-left: 50px;">
+                                Các thương hiệu phân phối
+                            </h2>
+                        </div>
+                        <div class="logo-list" style="opacity: 1;">
+                            @foreach (var brand in brands)
+                            {
+                                <a href="@Url.Action("BrandDetail", "Home", new { id = brand.BrandID })" class="logo-list-item" style="opacity: 1; transform: translateZ(0px); background-color:gainsboro; width: 269px;">
+                                    <img src="@brand.BrandBackground" class="logo-list-image" loading="lazy" style="width: 200px;" />
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script>
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > x.length) { slideIndex = 1 }
+        x[slideIndex - 1].style.display = "block";
+        setTimeout(carousel, 2000);
+    }
+</script>

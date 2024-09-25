@@ -1,0 +1,55 @@
+﻿@model DoAnWebGamingGear.Models.Products
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
+}
+
+<main>
+    @using (Html.BeginForm("AddToCart", "ShoppingCartt", FormMethod.Post))
+    {
+        <div class="container-fluid">
+            <div class="product">
+                <div class="collection-list" style="margin-left: 50px;">
+                    @Html.TextBoxFor(row => row.ProductID, new { @class = "form-control", value = Model.ProductID, type = "hidden" })
+                    <img src="@Url.Content("~/" + @Model.ProductPic)" alt="@Model.ProductName" style="width: 500px; float: left;" />
+                    <div style="float: right; width: 800px;">
+                        <h1>@Model.ProductName</h1>
+                        <h4 class="text-danger"> @Model.Price.ToString("C").Split(',')[0]<span>đ</span></h4>
+                        <hr />
+                        <p>@Model.ProductDescription</p>
+
+                        <p><strong>Availability Status:</strong> @Model.AvailabilityStatus</p>
+                        <p><strong>Bảo hành:</strong> @Model.BaoHanh</p>
+                        <div class="vstack gap-4">
+
+                            @if (@Model.Quantity > 0)
+                            {
+                                @*@Html.ActionLink("Chọn mua", "AddToCart", new { id = Model.ProductID, controller = "ShoppingCartt", FormMethod.Post })*@
+                                @*<a href="/ShoppingCartt/AddtoCart/@Model.ProductID" class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;">
+
+                                        Chọn mua
+                                    </a>*@
+                                @**@
+                                <button type="submit" class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;">
+                                    Chọn mua
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn-outofstock" disabled>
+                                    <h5><strong>Hết hàng</strong></h5>
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</main>

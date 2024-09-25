@@ -1,0 +1,56 @@
+﻿@model DoAnWebGamingGear.ViewModel.RegisterVM
+
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container" >
+    <h4 style="text-align: center;">Thông tin người dùng</h4>
+    <hr />
+    <dl class="dl-horizontal" style="border-radius: 10px;">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
+</div>
+<div style="text-align: center; display: flex; justify-content: center; align-items: center;">
+    <ul class="navbar-nav justify-content-center flex-wrap">
+        <li class="nav-item" style="margin: 40px 20px 40px 20px;">
+            <a class="logout btn-logout" style="width: 160px; " href="/account/logout">Logout</a>
+        </li>
+    </ul>
+</div>

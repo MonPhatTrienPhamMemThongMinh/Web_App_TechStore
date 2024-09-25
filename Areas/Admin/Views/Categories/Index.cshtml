@@ -1,0 +1,88 @@
+﻿@model List<DoAnWebGamingGear.Models.Categories>
+
+@{
+    ViewBag.Title = "Bộ sưu tập";
+}
+
+<main style="display: block;">
+    <section class="shopify-section">
+        <div class="container-fluid">
+            <div class="page-item">
+                <div class="vstack" style="gap: 3rem;">
+                    <h1 class="h1 text-center" style="margin: 40px 40px 40px 00px;">Tất cả danh mục</h1>
+                    <div class="collection-list" style="margin-left: 160px;">
+                        @foreach (var item in Model)
+                        {
+                            if (item.CategoryID == "MH001")
+                            {
+                                <a href="/categories/DetailKeyBoardCategory" class="collection-card" style="opacity: 1; background-color: gray; border-radius: 1rem; width: 550px;">
+                                    <div class="thietbi rounded-sm">
+                                        <img src="@item.CategoryPic" style="width: 650px;" loading="lazy" class="zoom-image figure" />
+                                        <div class="collection-card_content-wrapper text-custom place-center">
+                                            <div class="collection-card_content category-card">
+                                                <p class="h2">@item.CategoryName</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            else if (item.CategoryID == "MH002")
+                            {
+                                <a href="/categories/DetailMouseCategory" class="collection-card" style="opacity: 1; background-color: gray; border-radius: 1rem; width: 550px;">
+                                    <div class="thietbi rounded-sm">
+                                        <img src="@item.CategoryPic" style="width: 650px;" loading="lazy" class="zoom-image figure" />
+                                        <div class="collection-card_content-wrapper text-custom place-center">
+                                            <div class="collection-card_content category-card">
+                                                <p class="h2">@item.CategoryName</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            else if (item.CategoryID == "MH003")
+                            {
+                                <a href="/categories/DetailMousePadCategory" class="collection-card" style="opacity: 1; background-color: gray; border-radius: 1rem; width: 550px;">
+                                    <div class="thietbi rounded-sm">
+                                        <img src="@item.CategoryPic" style="width: 650px;" loading="lazy" class="zoom-image figure" />
+                                        <div class="collection-card_content-wrapper text-custom place-center">
+                                            <div class="collection-card_content category-card">
+                                                <p class="h2">@item.CategoryName</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            else if (item.CategoryID == "MH004")
+                            {
+                                <a href="/categories/DetailHeadPhoneCategory" class="collection-card" style="opacity: 1; background-color: gray; border-radius: 1rem; width: 550px;">
+                                    <div class="thietbi rounded-sm">
+                                        <img src="@item.CategoryPic" style="width: 650px;" loading="lazy" class="zoom-image figure" />
+                                        <div class="collection-card_content-wrapper text-custom place-center">
+                                            <div class="collection-card_content category-card">
+                                                <p class="h2">@item.CategoryName</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/categories/DetailSwitchLubeCategory" class="collection-card" style="opacity: 1; background-color: gray; border-radius: 1rem; width: 550px;">
+                                    <div class="thietbi rounded-sm">
+                                        <img src="@item.CategoryPic" style="width: 650px;" loading="lazy" class="zoom-image figure" />
+                                        <div class="collection-card_content-wrapper text-custom place-center">
+                                            <div class="collection-card_content category-card">
+                                                <p class="h2">@item.CategoryName</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

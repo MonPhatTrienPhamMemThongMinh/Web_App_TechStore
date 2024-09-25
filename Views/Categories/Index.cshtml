@@ -1,0 +1,31 @@
+﻿@model List<DoAnWebGamingGear.Models.Categories>
+
+@{
+    ViewBag.Title = "Bộ sưu tập";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<main style="display: block;">
+    <section class="shopify-section">
+        <div class="container-fluid">
+            <div class="page-item">
+                <h1 class="h1 text-center" style="margin: 150px auto 40px auto;">Tất cả danh mục</h1>
+                <div class="collection-list">
+                    @foreach (var item in Model)
+                    {
+                        <a href="@Url.Action("Detail", "Categories", new { id = item.CategoryID })" class="collection-card" style="opacity: 1; background-color: gray; border-radius: 1rem; width: 550px;">
+                            <div class="thietbi rounded-sm">
+                                <img src="@item.CategoryPic" style="width: 650px;" loading="lazy" class="zoom-image figure" />
+                                <div class="collection-card_content-wrapper text-custom place-center">
+                                    <div class="collection-card_content category-card">
+                                        <p class="h2">@item.CategoryName</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

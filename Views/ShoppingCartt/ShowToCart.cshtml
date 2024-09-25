@@ -1,0 +1,92 @@
+﻿@model List<DoAnWebGamingGear.Models.CartItem>
+
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<section class="h-100 h-custom" style="background-color: #d2c9ff;">
+    <div class="container-fluid py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100" style="overflow-x: hidden; overflow-y: scroll;">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-8">
+                                <div class="p-5">
+
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <h1 class="fw-bold mb-0 text-black">GIỎ HÀNG</h1>
+                                    </div>
+
+                                    @if (TempData["CartEmptyMessage"] != null)
+                                    {
+                                        <div class="alert alert-warning">
+                                            @TempData["CartEmptyMessage"]
+                                        </div>
+                                    }
+                                    <hr class="my-4">
+
+                                    @{ int total_bill = 0; }
+                                    @foreach (var item in Model)
+                                    {
+                                        int total = item.Products.Price * item.shopping_quantity;
+                                        total_bill += total;
+                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img src="@Url.Content(item.Products.ProductPic)" style="width: 100px;" />
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <h6 class="text-muted">@Html.DisplayFor(model => item.Products.ProductName)</h6>
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCartt", FormMethod.Post))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" value="@item.ProductID" name="productid" />
+                                                    <input class="form-control form-control-sm" type="number" value="@item.shopping_quantity" name="quantity" min="0" style="margin: 0.4rem 0" />
+                                                    <button type="submit" class="btn btn-outline-primary btn-lg btn-block" style="width: 190px;">Update Quantity</button>
+                                                }
+                                            </div>
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <p>@total.ToString("c").Split(',')[0]<span>đ</span></p>
+                                            </div>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="@Url.Action("RemoveCart", "ShoppingCartt", new { productid = item.ProductID })" class="text-muted">
+                                                    <i class="fas fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                    }
+                                    <div class="pt-5">
+                                        <h6 class="mb-0">
+                                            <a href="@Url.Action("Index", "Products")"><i class="fas fa-long-arrow-alt-left me-2"></i>Tiếp tục mua hàng</a>
+                                        </h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4 bg-grey">
+                                <div class="p-5">
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">THÀNH TIỀN</h3>
+                                    <hr class="my-4">
+
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <h4 class="text-uppercase">Tổng tiền</h4>
+                                        <p class="fw-bold mb-0 text-black" style="font-size: 20px;"> @total_bill.ToString("N0")<span>đ</span></p>
+                                    </div>
+
+                                    <a href="@Url.Action("ProceedToPayment", "ShoppingCartt")" class="btn btn-dark btn-block btn-lg"
+                                       data-mdb-ripple-color="dark">
+                                        Thanh toán
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

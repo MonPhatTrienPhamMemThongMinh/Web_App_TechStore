@@ -1,0 +1,65 @@
+﻿@model DoAnWebGamingGear.Models.Products
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Product Create</h2>
+
+@using (Html.BeginForm("Create", "Products", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductID, "Product ID", new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.ProductID, new { @class = "form-control", placeholder = "Product ID" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductName, "Product Name", new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.ProductName, new { @class = "form-control", placeholder = "Product Name" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductPic, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.ProductPic, new { @class = "form-control", type="file" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductDescription, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.ProductDescription, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="BrandID">Brand</label>
+                @Html.DropDownListFor(row => row.BrandID, new SelectList(ViewBag.Brands, "BrandID", "BrandName"), "Please select ...", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="CategoryID">Category</label>
+                @Html.DropDownListFor(row => row.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"), "Please select ...", new { @class = "form-control" })
+                @*@Html.TextBoxFor(model => model.CategoryID, new { @class = "form-control" })*@
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantity, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.AvailabilityStatus, new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.AvailabilityStatus, new List<SelectListItem>()
+           {
+               new SelectListItem() {Text="InStock", Value="InStock"},
+               new SelectListItem() {Text="OutOfStock", Value="OutOfStock"}
+           }, "Please select ...", new {@class = "form-control"}
+               )
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.BaoHanh, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.BaoHanh, new { @class = "form-control" })
+            </div>
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="/admin/products" class="btn btn-danger">Cancel</a>
+}

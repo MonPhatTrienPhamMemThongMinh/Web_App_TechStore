@@ -1,0 +1,123 @@
+﻿@model List<DoAnWebGamingGear.Models.Products>
+
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
+    var selectedCategories = string.Join(",", ViewBag.SelectedCategories);
+    var selectedBrands = string.Join(",", ViewBag.SelectedBrands);
+}
+
+<div class="container-fluid" style="margin-top: 130px;">
+    <div class="product-div">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Danh mục sản phẩm</h5>
+                <form method="get" action="@Url.Action("Index", "Products")">
+                    <input type="hidden" name="page" value="@ViewBag.Page" />
+                    <ul class="list-group" style="font-size: 16px;">
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <li class="list-group-item category-link">
+                                <label>
+                                    <input type="checkbox" name="selectedCategories" value="@category.CategoryID" @(ViewBag.SelectedCategories.Contains(category.CategoryID.ToString()) ? "checked" : "") />
+                                    @category.CategoryName
+                                </label>
+                            </li>
+                        }
+                    </ul>
+
+                    <h5>Thương hiệu</h5>
+                    <ul class="list-group" style="font-size: 16px;">
+                        @foreach (var brand in ViewBag.Brands)
+                        {
+                            <li class="list-group-item brand-link">
+                                <label>
+                                    <input type="checkbox" name="selectedBrands" value="@brand.BrandID" @(ViewBag.SelectedBrands.Contains(brand.BrandID.ToString()) ? "checked" : "") />
+                                    @brand.BrandName
+                                </label>
+                            </li>
+                        }
+                    </ul>
+
+                    <button type="submit" class="btn btn-primary">Lọc sản phẩm</button>
+                </form>
+            </div>
+            <div class="col-md-9">
+                <h1 class="h1 text-center" style="margin: 20px 40px 50px 0;">Tất cả sản phẩm</h1>
+                <div class="sort-options">
+                    <a href="@Url.Action("Index", new { Sort = "ProductID", Icon = ViewBag.SortC == "ProductID" && ViewBag.IconC == "fa-sort-asc" ? "fa-sort-desc" : "fa-sort-asc", selectedCategories = selectedCategories, selectedBrands = selectedBrands, search = Request.QueryString["search"], page = ViewBag.Page })" class="btn @(ViewBag.SortC == "ProductID" ? "active" : "")">
+                        Mã sản phẩm
+                        <i class="fa @(ViewBag.SortC == "ProductID" ? ViewBag.IconC : "fa-sort")"></i>
+                    </a>
+                    <a href="@Url.Action("Index", new { Sort = "ProductName", Icon = ViewBag.SortC == "ProductName" && ViewBag.IconC == "fa-sort-asc" ? "fa-sort-desc" : "fa-sort-asc", selectedCategories = selectedCategories, selectedBrands = selectedBrands, search = Request.QueryString["search"], page = ViewBag.Page })" class="btn @(ViewBag.SortC == "ProductName" ? "active" : "")">
+                        Tên sản phẩm
+                        <i class="fa @(ViewBag.SortC == "ProductName" ? ViewBag.IconC : "fa-sort")"></i>
+                    </a>
+                    <a href="@Url.Action("Index", new { Sort = "Price", Icon = ViewBag.SortC == "Price" && ViewBag.IconC == "fa-sort-asc" ? "fa-sort-desc" : "fa-sort-asc", selectedCategories = selectedCategories, selectedBrands = selectedBrands, search = Request.QueryString["search"], page = ViewBag.Page })" class="btn @(ViewBag.SortC == "Price" ? "active" : "")">
+                        Giá
+                        <i class="fa @(ViewBag.SortC == "Price" ? ViewBag.IconC : "fa-sort")"></i>
+                    </a>
+                </div>
+
+                <div class="collection-list">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3" style="margin-left: 50px;">
+                            <a href="/products/detail/@item.ProductID" class="product-card" style="width: 320px; height: 480px;">
+                                <div class="product-card-content">
+                                    <img src="@Url.Content("~/" + @item.ProductPic)" class="product-image" alt="@item.ProductName" />
+                                    <h4 style="color: black; font-size: 20px;">@item.ProductName</h4>
+                                    <p style="color: red; font-size: 20px;">@item.Price.ToString("c").Split(',')[0]<span>đ</span></p>
+                                    <button type="submit" class="logout btn-logout" style="width: 200px; text-align: center; display: flex; justify-content: center; align-items: center;">
+                                        chọn mua
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+
+                <div class="pagination-wrapper">
+                    <ul class="pagination justify-content-center">
+                        @for (int i = 1; i <= ViewBag.NoOfPages; i++)
+                        {
+                            <li class="page-item @(ViewBag.Page == i ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new {
+                    page = i,
+                    Sort = ViewBag.SortC,
+                    Icon = ViewBag.IconC,
+                    selectedCategories = selectedCategories,
+                    selectedBrands = selectedBrands,
+                    search = Request.QueryString["search"]
+                })">@i</a>
+            </li>
+        }
+                        <li class="page-item @(ViewBag.Page == ViewBag.NoOfPages ? "disabled" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new {
+                page = ViewBag.Page + 1,
+                Sort = ViewBag.SortC,
+                Icon = ViewBag.IconC,
+                selectedCategories = selectedCategories,
+                selectedBrands = selectedBrands,
+                search = Request.QueryString["search"]
+            })">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Adjust navbar positioning
+    window.onscroll = function () {
+        const navbar = document.querySelector('.navbar');
+        if (window.pageYOffset > navbar.offsetTop) {
+            navbar.classList.add("sticky");
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    };
+</script>

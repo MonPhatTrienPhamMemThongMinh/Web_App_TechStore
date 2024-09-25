@@ -1,0 +1,10 @@
+﻿@model DoAnWebGamingGear.Models.Order
+
+@{
+    ViewBag.Title = "OrderSuccess";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Cảm ơn bạn đã đặt hàng!</h2>
+<p>Mã đơn hàng của bạn là: @Model.OrderId</p>
+<p>Chúng tôi đã nhận được đơn hàng của bạn. Một email xác nhận đã được gửi tới địa chỉ @Model.CustomerEmail.</p>

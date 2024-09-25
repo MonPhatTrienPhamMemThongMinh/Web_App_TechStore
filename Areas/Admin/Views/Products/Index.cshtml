@@ -1,0 +1,48 @@
+﻿@model List<DoAnWebGamingGear.Models.Products>
+
+@{
+    ViewBag.Title = "Sản phẩm";
+}
+<style>
+    body {
+        
+        
+        font-size: 15px;
+    }
+
+</style>
+
+<a href="/admin/products/create" class="button-79">Create new product</a>
+<table class="table table-hover table-bordered ">
+    <tr>
+        <th>ProductID</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>AvailabilityStatus</th>
+        <th>BrandID</th>
+        <th>CategoryID</th>
+        <th>Bảo hành</th>
+        <th>Chỉnh sửa</th>
+        <th>Xóa</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(row => item.ProductID) </td>
+            <td><a href="/admin/products/detail/@item.ProductID">@item.ProductName</a></td>
+            <td>@item.Price.ToString("C").Split(',')[0]<span>đ</span></td>
+            <td>@item.Quantity</td>
+            <td>@item.AvailabilityStatus</td>
+            <td>@item.Brands.BrandName</td>
+            <td>@item.Categories.CategoryName</td>
+            <td>@item.BaoHanh</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID, controller = "Products", area = "Admin" })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID, controller = "Products", area = "Admin" })
+            </td>
+        </tr>
+    }
+</table>

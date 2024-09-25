@@ -1,0 +1,30 @@
+﻿@model List<DoAnWebGamingGear.Identity.AppUser>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Date Of Birth</th>
+        <th>Address</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.City</td>
+            <td>@item.Birthday</td>
+            <td>@item.Address</td>
+        </tr>
+    }
+</table>
+

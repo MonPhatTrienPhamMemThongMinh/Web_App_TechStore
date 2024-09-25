@@ -1,0 +1,54 @@
+﻿@model DoAnWebGamingGear.Models.Products
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Products", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="hidden" name="ProductID" value="@Model.ProductID" />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductName, new { @class = "control-label" })
+                <input type="text" class="form-control" id="ProductName" name="ProductName" placeholder="ProductName" value="@Model.ProductName" />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductPic, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.ProductPic, new { @class = "form-control", type = "file" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, new { @class = "control-label" })
+                <input type="number" class="form-control" id="Price" name="Price" placeholder="Price" value="@Model.Price" />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductDescription, new { @class = "control-label" })
+                <input type="text" class="form-control" id="ProductDescription" name="ProductDescription" placeholder="Description" value="@Model.ProductDescription" />
+            </div>
+            <div class="form-group">
+                <label for="BrandID">Brand</label>
+                @Html.DropDownListFor(row => row.BrandID, new SelectList(ViewBag.Brands, "BrandID", "BrandName"), "Please select ...", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="CategoryID">Category</label>
+                @Html.DropDownListFor(row => row.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"), "Please select ...", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantity, new { @class = "control-label" })
+                <input type="number" class="form-control" id="Quantity" name="Quantity" placeholder="Quantity" value="@Model.Quantity" />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.BaoHanh, new { @class = "control-label" })
+                <input type="text" class="form-control" id="BaoHanh" name="BaoHanh" placeholder="Bảo hành" value="@Model.BaoHanh" />
+            </div>
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/admin/products" class="btn btn-danger">Cancel</a>
+    <div>
+        <a href="@Url.Action("Index", "Products")">Back to List</a>
+    </div>
+}

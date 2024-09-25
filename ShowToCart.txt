@@ -1,0 +1,46 @@
+@model DoAnWebGamingGear.Models.ShoppingCart
+
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>ShowToCart</h2>
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sum</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in )
+            {
+                double total = Convert.ToDouble(item.Products.Price * item.shopping_quantity);
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Products.ProductName)
+
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Products.ProductPic)" style="width: 100px;"/>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Products.Price)
+                    </td>
+                    <td>
+                        <input type="number" value="@item.shopping_quantity"/>
+                    </td>
+                    <td>
+                        Total: @total
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
