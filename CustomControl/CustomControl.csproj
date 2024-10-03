@@ -43,6 +43,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ThuVien, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThuVien\bin\Debug\ThuVien.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomButtonDN.cs">
@@ -55,21 +59,24 @@
     <Compile Include="ucBottomLineTextBox.designer.cs">
       <DependentUpon>ucBottomLineTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucFormProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFormProduct.Designer.cs">
+      <DependentUpon>ucFormProduct.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ucBottomLineTextBox.resx">
       <DependentUpon>ucBottomLineTextBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucFormProduct.resx">
+      <DependentUpon>ucFormProduct.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ThuVien\ThuVien.csproj">
-      <Project>{b490e8b4-9565-4363-9e9d-f17953815419}</Project>
-      <Name>ThuVien</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
