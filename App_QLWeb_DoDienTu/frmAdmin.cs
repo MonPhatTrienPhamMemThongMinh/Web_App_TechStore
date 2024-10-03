@@ -27,5 +27,12 @@ namespace App_QLWeb_DoDienTu
                 this.Hide();
             }
         }
+
+        private void btnQLProducts_Click(object sender, EventArgs e)
+        {
+            frmProduct frmProduct = new frmProduct();
+            frmProduct.Show();
+            this.Hide();
+        }
     }
 }

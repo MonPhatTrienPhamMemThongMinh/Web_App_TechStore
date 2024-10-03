@@ -45,8 +45,9 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1500, 25);
+            this.panel2.Size = new System.Drawing.Size(1040, 20);
             this.panel2.TabIndex = 1;
             // 
             // panel1
@@ -58,9 +59,10 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Location = new System.Drawing.Point(0, 20);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(340, 775);
+            this.panel1.Size = new System.Drawing.Size(255, 620);
             this.panel1.TabIndex = 2;
             // 
             // btnLogout
@@ -70,9 +72,10 @@
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(35, 700);
+            this.btnLogout.Location = new System.Drawing.Point(26, 569);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(158, 48);
+            this.btnLogout.Size = new System.Drawing.Size(118, 39);
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -82,20 +85,23 @@
             // 
             this.btnQLProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLProducts.ForeColor = System.Drawing.Color.White;
-            this.btnQLProducts.Location = new System.Drawing.Point(35, 312);
+            this.btnQLProducts.Location = new System.Drawing.Point(26, 254);
+            this.btnQLProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnQLProducts.Name = "btnQLProducts";
-            this.btnQLProducts.Size = new System.Drawing.Size(263, 48);
+            this.btnQLProducts.Size = new System.Drawing.Size(197, 39);
             this.btnQLProducts.TabIndex = 4;
             this.btnQLProducts.Text = "Products";
             this.btnQLProducts.UseVisualStyleBackColor = true;
+            this.btnQLProducts.Click += new System.EventHandler(this.btnQLProducts_Click);
             // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(35, 247);
+            this.button1.Location = new System.Drawing.Point(26, 201);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(263, 48);
+            this.button1.Size = new System.Drawing.Size(197, 39);
             this.button1.TabIndex = 4;
             this.button1.Text = "Dashboard";
             this.button1.UseVisualStyleBackColor = true;
@@ -105,9 +111,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(67, 200);
+            this.label1.Location = new System.Drawing.Point(50, 162);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 28);
+            this.label1.Size = new System.Drawing.Size(151, 23);
             this.label1.TabIndex = 3;
             this.label1.Text = "Welcome, Admin";
             // 
@@ -115,21 +122,23 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(33)))), ((int)(((byte)(78)))));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(74, 34);
+            this.pictureBox1.Location = new System.Drawing.Point(56, 28);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(175, 163);
+            this.pictureBox1.Size = new System.Drawing.Size(131, 132);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // frmAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1500, 800);
+            this.ClientSize = new System.Drawing.Size(1040, 640);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmAdmin";
             this.Text = "Management System";
             this.panel1.ResumeLayout(false);
