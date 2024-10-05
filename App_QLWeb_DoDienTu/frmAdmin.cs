@@ -16,16 +16,10 @@ namespace App_QLWeb_DoDienTu
         {
             InitializeComponent();
             this.lblX.Click += LblX_Click;
+            this.btnLogout.Click += BtnLogout_Click; ;
         }
 
-        private void LblX_Click(object sender, EventArgs e)
-        {
-            frmLogin frm = new frmLogin();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void BtnLogout_Click(object sender, EventArgs e)
         {
             DialogResult check = MessageBox.Show("Bạn có chắc là muốn thoát không?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (check == DialogResult.Yes)
@@ -34,6 +28,13 @@ namespace App_QLWeb_DoDienTu
                 frmLogin.Show();
                 this.Hide();
             }
+        }
+
+        private void LblX_Click(object sender, EventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.Show();
+            this.Hide();
         }
 
         private void btnQLProducts_Click(object sender, EventArgs e)
