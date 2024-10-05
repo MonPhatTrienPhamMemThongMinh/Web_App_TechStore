@@ -1,6 +1,6 @@
 ﻿namespace App_QLWeb_DoDienTu
 {
-    partial class frmProduct
+    partial class frmBrand
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucFormProduct1 = new CustomControl.ucFormProduct();
+            this.ucFormBrand1 = new CustomControl.ucFormBrand();
             this.SuspendLayout();
             // 
-            // ucFormProduct1
+            // ucFormBrand1
             // 
-            this.ucFormProduct1.CNN = null;
-            this.ucFormProduct1.Location = new System.Drawing.Point(-5, -4);
-            this.ucFormProduct1.Name = "ucFormProduct1";
-            this.ucFormProduct1.Size = new System.Drawing.Size(1662, 913);
-            this.ucFormProduct1.TabIndex = 0;
+            this.ucFormBrand1.Cnn = null;
+            this.ucFormBrand1.Location = new System.Drawing.Point(-1, 0);
+            this.ucFormBrand1.Name = "ucFormBrand1";
+            this.ucFormBrand1.Size = new System.Drawing.Size(1656, 912);
+            this.ucFormBrand1.TabIndex = 0;
             // 
-            // frmProduct
+            // frmBrand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1679, 931);
-            this.Controls.Add(this.ucFormProduct1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmProduct";
-            this.Text = "frmProduct";
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1667, 924);
+            this.Controls.Add(this.ucFormBrand1);
+            this.Name = "frmBrand";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "frmBrand";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private CustomControl.ucFormProduct ucFormProduct1;
+        private CustomControl.ucFormBrand ucFormBrand1;
     }
 }

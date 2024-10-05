@@ -30,12 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucFormProduct));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSearch = new CustomControl.CustomButtonDN();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSuppliers = new CustomControl.CustomButtonDN();
+            this.btnCategories = new CustomControl.CustomButtonDN();
+            this.btnBrands = new CustomControl.CustomButtonDN();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbProductImage = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.lblWarranty = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblCategoryName = new System.Windows.Forms.Label();
@@ -46,6 +54,7 @@
             this.lblProductName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblProductId = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEditProduct = new CustomControl.CustomButtonDN();
             this.btnRemoveProduct = new CustomControl.CustomButtonDN();
@@ -53,45 +62,143 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductImage)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.dgvProducts);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnSuppliers);
+            this.panel1.Controls.Add(this.btnCategories);
+            this.panel1.Controls.Add(this.btnBrands);
             this.panel1.Location = new System.Drawing.Point(12, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1234, 427);
+            this.panel1.Size = new System.Drawing.Size(1611, 469);
             this.panel1.TabIndex = 0;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnSearch.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSearch.BorderRadius = 10;
+            this.btnSearch.BorderSize = 0;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(1361, 14);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(113, 35);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.TextColor = System.Drawing.Color.White;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtSearch.Location = new System.Drawing.Point(1027, 16);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(328, 32);
+            this.txtSearch.TabIndex = 2;
             // 
             // dgvProducts
             // 
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(27, 41);
+            this.dgvProducts.Location = new System.Drawing.Point(13, 61);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 24;
-            this.dgvProducts.Size = new System.Drawing.Size(1193, 379);
+            this.dgvProducts.Size = new System.Drawing.Size(1532, 405);
             this.dgvProducts.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(23, 14);
+            this.label1.Location = new System.Drawing.Point(26, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(135, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Products Data";
             // 
+            // btnSuppliers
+            // 
+            this.btnSuppliers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnSuppliers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnSuppliers.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
+            this.btnSuppliers.BorderRadius = 10;
+            this.btnSuppliers.BorderSize = 0;
+            this.btnSuppliers.FlatAppearance.BorderSize = 0;
+            this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuppliers.ForeColor = System.Drawing.Color.White;
+            this.btnSuppliers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSuppliers.Location = new System.Drawing.Point(541, 11);
+            this.btnSuppliers.Name = "btnSuppliers";
+            this.btnSuppliers.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnSuppliers.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnSuppliers.Size = new System.Drawing.Size(124, 35);
+            this.btnSuppliers.TabIndex = 3;
+            this.btnSuppliers.Text = "Suppliers";
+            this.btnSuppliers.TextColor = System.Drawing.Color.White;
+            this.btnSuppliers.UseVisualStyleBackColor = false;
+            // 
+            // btnCategories
+            // 
+            this.btnCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnCategories.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnCategories.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
+            this.btnCategories.BorderRadius = 10;
+            this.btnCategories.BorderSize = 0;
+            this.btnCategories.FlatAppearance.BorderSize = 0;
+            this.btnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategories.ForeColor = System.Drawing.Color.White;
+            this.btnCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategories.Location = new System.Drawing.Point(380, 12);
+            this.btnCategories.Name = "btnCategories";
+            this.btnCategories.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnCategories.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCategories.Size = new System.Drawing.Size(124, 35);
+            this.btnCategories.TabIndex = 3;
+            this.btnCategories.Text = "Categories";
+            this.btnCategories.TextColor = System.Drawing.Color.White;
+            this.btnCategories.UseVisualStyleBackColor = false;
+            // 
+            // btnBrands
+            // 
+            this.btnBrands.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnBrands.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnBrands.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
+            this.btnBrands.BorderRadius = 10;
+            this.btnBrands.BorderSize = 0;
+            this.btnBrands.FlatAppearance.BorderSize = 0;
+            this.btnBrands.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrands.ForeColor = System.Drawing.Color.White;
+            this.btnBrands.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBrands.Location = new System.Drawing.Point(219, 12);
+            this.btnBrands.Name = "btnBrands";
+            this.btnBrands.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnBrands.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnBrands.Size = new System.Drawing.Size(124, 35);
+            this.btnBrands.TabIndex = 3;
+            this.btnBrands.Text = "Brands";
+            this.btnBrands.TextColor = System.Drawing.Color.White;
+            this.btnBrands.UseVisualStyleBackColor = false;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.pbProductImage);
+            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.lblWarranty);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.lblCategoryName);
@@ -102,11 +209,32 @@
             this.panel2.Controls.Add(this.lblProductName);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.lblProductId);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(12, 463);
+            this.panel2.Location = new System.Drawing.Point(12, 492);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1234, 305);
+            this.panel2.Size = new System.Drawing.Size(1611, 332);
             this.panel2.TabIndex = 1;
+            // 
+            // pbProductImage
+            // 
+            this.pbProductImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbProductImage.Location = new System.Drawing.Point(650, 17);
+            this.pbProductImage.Name = "pbProductImage";
+            this.pbProductImage.Size = new System.Drawing.Size(300, 300);
+            this.pbProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbProductImage.TabIndex = 28;
+            this.pbProductImage.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label11.Location = new System.Drawing.Point(27, 301);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 16);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Supplier:";
             // 
             // label7
             // 
@@ -137,6 +265,16 @@
             this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 0;
             this.label4.Text = "Price:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label8.Location = new System.Drawing.Point(152, 301);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(54, 16);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Supplier";
             // 
             // lblWarranty
             // 
@@ -238,6 +376,16 @@
             this.lblProductId.TabIndex = 0;
             this.lblProductId.Text = "Product ID";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label6.Location = new System.Drawing.Point(538, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 16);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Product Image:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -260,7 +408,7 @@
             this.btnEditProduct.ForeColor = System.Drawing.Color.White;
             this.btnEditProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnEditProduct.Image")));
             this.btnEditProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditProduct.Location = new System.Drawing.Point(834, 789);
+            this.btnEditProduct.Location = new System.Drawing.Point(1109, 830);
             this.btnEditProduct.Name = "btnEditProduct";
             this.btnEditProduct.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnEditProduct.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -283,7 +431,7 @@
             this.btnRemoveProduct.ForeColor = System.Drawing.Color.White;
             this.btnRemoveProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveProduct.Image")));
             this.btnRemoveProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoveProduct.Location = new System.Drawing.Point(553, 789);
+            this.btnRemoveProduct.Location = new System.Drawing.Point(689, 830);
             this.btnRemoveProduct.Name = "btnRemoveProduct";
             this.btnRemoveProduct.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnRemoveProduct.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -306,7 +454,7 @@
             this.btnAddProduct.ForeColor = System.Drawing.Color.White;
             this.btnAddProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnAddProduct.Image")));
             this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddProduct.Location = new System.Drawing.Point(321, 789);
+            this.btnAddProduct.Location = new System.Drawing.Point(321, 830);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnAddProduct.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -327,12 +475,13 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "ucFormProduct";
-            this.Size = new System.Drawing.Size(1264, 858);
+            this.Size = new System.Drawing.Size(1645, 918);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -360,5 +509,14 @@
         private CustomButtonDN btnAddProduct;
         private CustomButtonDN btnRemoveProduct;
         private CustomButtonDN btnEditProduct;
+        private CustomButtonDN btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.PictureBox pbProductImage;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label8;
+        private CustomButtonDN btnBrands;
+        private CustomButtonDN btnSuppliers;
+        private CustomButtonDN btnCategories;
     }
 }

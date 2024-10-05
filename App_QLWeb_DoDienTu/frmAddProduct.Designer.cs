@@ -1,6 +1,6 @@
 ﻿namespace App_QLWeb_DoDienTu
 {
-    partial class frmProduct
+    partial class frmAddProduct
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucFormProduct1 = new CustomControl.ucFormProduct();
+            this.ucAddProduct1 = new CustomControl.ucAddProduct();
             this.SuspendLayout();
             // 
-            // ucFormProduct1
+            // ucAddProduct1
             // 
-            this.ucFormProduct1.CNN = null;
-            this.ucFormProduct1.Location = new System.Drawing.Point(-5, -4);
-            this.ucFormProduct1.Name = "ucFormProduct1";
-            this.ucFormProduct1.Size = new System.Drawing.Size(1662, 913);
-            this.ucFormProduct1.TabIndex = 0;
+            this.ucAddProduct1.CNN = null;
+            this.ucAddProduct1.Location = new System.Drawing.Point(13, 13);
+            this.ucAddProduct1.Name = "ucAddProduct1";
+            this.ucAddProduct1.Size = new System.Drawing.Size(1000, 777);
+            this.ucAddProduct1.TabIndex = 0;
             // 
-            // frmProduct
+            // frmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1679, 931);
-            this.Controls.Add(this.ucFormProduct1);
+            this.ClientSize = new System.Drawing.Size(1050, 800);
+            this.Controls.Add(this.ucAddProduct1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmProduct";
-            this.Text = "frmProduct";
+            this.Name = "frmAddProduct";
+            this.Text = "frmAddProduct";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private CustomControl.ucFormProduct ucFormProduct1;
+        private CustomControl.ucAddProduct ucAddProduct1;
     }
 }

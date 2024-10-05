@@ -21,11 +21,21 @@ namespace App_QLWeb_DoDienTu
             ucFormProduct1.CNN = _cnn;
             ucFormProduct1.AddProductClicked += UcFormProduct1_AddProductClicked;
             ucFormProduct1.EditProductClicked += UcFormProduct1_EditProductClicked;
+            ucFormProduct1.BrandFormClicked += UcFormProduct1_BrandFormClicked;
+        }
+
+        private void UcFormProduct1_BrandFormClicked(object sender, EventArgs e)
+        {
+            frmBrand frm = new frmBrand(_cnn);
+            frm.Show();
         }
 
         private void UcFormProduct1_EditProductClicked(object sender, EventArgs e)
         {
-
+            Product selectedProduct = ucFormProduct1.SelectedProduct;
+            frmEditProduct frmEditProduct = new frmEditProduct(selectedProduct, _cnn);
+            frmEditProduct.ProductUpdated += FrmEditProduct_ProductUpdated;
+            frmEditProduct.Show();
         }
 
         private void FrmEditProduct_ProductUpdated(object sender, EventArgs e)
@@ -35,7 +45,9 @@ namespace App_QLWeb_DoDienTu
 
         private void UcFormProduct1_AddProductClicked(object sender, EventArgs e)
         {
-
+            frmAddProduct frmAddProduct = new frmAddProduct();
+            frmAddProduct.ProductAdded += FrmAddProduct_ProductAdded;
+            frmAddProduct.Show();
         }
 
         private void FrmAddProduct_ProductAdded(object sender, EventArgs e)
