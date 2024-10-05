@@ -1,6 +1,6 @@
 ﻿namespace App_QLWeb_DoDienTu
 {
-    partial class frmProduct
+    partial class frmEditProduct
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucFormProduct1 = new CustomControl.ucFormProduct();
+            this.ucEditProduct1 = new CustomControl.ucEditProduct();
             this.SuspendLayout();
             // 
-            // ucFormProduct1
+            // ucEditProduct1
             // 
-            this.ucFormProduct1.CNN = null;
-            this.ucFormProduct1.Location = new System.Drawing.Point(-5, -4);
-            this.ucFormProduct1.Name = "ucFormProduct1";
-            this.ucFormProduct1.Size = new System.Drawing.Size(1662, 913);
-            this.ucFormProduct1.TabIndex = 0;
+            this.ucEditProduct1.Cnn = null;
+            this.ucEditProduct1.Location = new System.Drawing.Point(-2, -3);
+            this.ucEditProduct1.Name = "ucEditProduct1";
+            this.ucEditProduct1.Size = new System.Drawing.Size(1390, 838);
+            this.ucEditProduct1.TabIndex = 0;
             // 
-            // frmProduct
+            // frmEditProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1679, 931);
-            this.Controls.Add(this.ucFormProduct1);
+            this.ClientSize = new System.Drawing.Size(1400, 863);
+            this.Controls.Add(this.ucEditProduct1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmProduct";
-            this.Text = "frmProduct";
+            this.Name = "frmEditProduct";
+            this.Text = "frmEditProduct";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private CustomControl.ucFormProduct ucFormProduct1;
+        private CustomControl.ucEditProduct ucEditProduct1;
     }
 }

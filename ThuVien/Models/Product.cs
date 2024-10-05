@@ -23,5 +23,7 @@ namespace ThuVien.Models
         {
             get; set;
         }
+        public string SupplierID { get; set; }
+        public string SupplierName { get; set; }
     }
 }

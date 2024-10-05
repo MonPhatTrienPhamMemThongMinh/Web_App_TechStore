@@ -53,11 +53,29 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucAddProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucAddProduct.designer.cs">
+      <DependentUpon>ucAddProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucBottomLineTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucBottomLineTextBox.designer.cs">
       <DependentUpon>ucBottomLineTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucEditProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucEditProduct.designer.cs">
+      <DependentUpon>ucEditProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucFormBrand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFormBrand.designer.cs">
+      <DependentUpon>ucFormBrand.cs</DependentUpon>
     </Compile>
     <Compile Include="ucFormProduct.cs">
       <SubType>UserControl</SubType>
@@ -68,8 +86,17 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ucAddProduct.resx">
+      <DependentUpon>ucAddProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucBottomLineTextBox.resx">
       <DependentUpon>ucBottomLineTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucEditProduct.resx">
+      <DependentUpon>ucEditProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucFormBrand.resx">
+      <DependentUpon>ucFormBrand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucFormProduct.resx">
       <DependentUpon>ucFormProduct.cs</DependentUpon>

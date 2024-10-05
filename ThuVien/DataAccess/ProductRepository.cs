@@ -20,16 +20,17 @@ namespace ThuVien.DataAccess
         public List<Product> GetAllProducts()
         {
             List<Product> products = new List<Product>();
-            string query = "SELECT p.ProductID, p.ProductDescription, p.BrandID, p.CategoryID, " +
-                            "p.AvailabilityStatus, p.Quantity, p.BaoHanh, p.ProductName, " + 
+            string query = "SELECT p.ProductID, p.ProductName, p.maNhaCungCap, ncc.tenNhaCungCap, p.ProductDescription, p.BrandID, p.CategoryID, " +
+                            "p.AvailabilityStatus, p.Quantity, p.BaoHanh, " +
                             "p.ProductPic, p.Price, b.BrandName, c.CategoryName FROM PRODUCTS p " +
                             "INNER JOIN BRANDS b ON p.BRANDID = b.BRANDID " +
-                            "INNER JOIN CATEGORIES c ON p.CATEGORYID = c.CATEGORYID";
+                            "INNER JOIN CATEGORIES c ON p.CATEGORYID = c.CATEGORYID " +
+                            "INNER JOIN NhaCungCap ncc ON p.maNhaCungCap = ncc.maNhaCungCap";
             DataTable dt = sql.ExecuteQuery(query);
-            
-            if(dt != null && dt.Rows.Count > 0)
+
+            if (dt != null && dt.Rows.Count > 0)
             {
-                foreach (DataRow row in dt.Rows )
+                foreach (DataRow row in dt.Rows)
                 {
                     products.Add(new Product()
                     {
@@ -44,31 +45,34 @@ namespace ThuVien.DataAccess
                         ProductPic = row["ProductPic"].ToString(),
                         Price = Convert.ToInt32(row["Price"]),
                         BrandName = row["BrandName"].ToString(),
-                        CategoryName = row["CategoryName"].ToString()
+                        CategoryName = row["CategoryName"].ToString(),
+                        SupplierID = row["maNhaCungCap"].ToString(),
+                        SupplierName = row["tenNhaCungCap"].ToString()
                     });
                 }
             }
             return products;
         }
 
-        public Product GetProductById (string productID)
+        public Product GetProductById(string productID)
         {
-            string query = "SELECT p.ProductID, p.ProductDescription, p.BrandID, p.CategoryID, " +
+            string query = "SELECT p.ProductID, p.maNhaCungCap, ncc.tenNhaCungCap, p.ProductDescription, p.BrandID, p.CategoryID, " +
                             "p.AvailabilityStatus, p.Quantity, p.BaoHanh, p.ProductName, " +
                             "p.ProductPic, p.Price, b.BrandName, c.CategoryName FROM PRODUCTS p " +
-                "INNER JOIN BRANDS b ON p.BRANDID = b.BRANDID " + 
+                "INNER JOIN BRANDS b ON p.BRANDID = b.BRANDID " +
                 "INNER JOIN CATEGORIES c ON p.CATEGORYID = c.CATEGORYID " +
+                "INNER JOIN NhaCungCap ncc ON p.maNhaCungCap = ncc.maNhaCungCap " +
                 "WHERE p.PRODUCTID = @PRODUCTID";
 
             var parameters = new Dictionary<string, object>
             {
                 {
                     "@PRODUCTID", productID
-                } 
+                }
             };
 
             DataTable dt = sql.ExecuteQuery(query, parameters);
-            if(dt != null && dt.Rows.Count > 0)
+            if (dt != null && dt.Rows.Count > 0)
             {
                 DataRow row = dt.Rows[0];
                 return new Product
@@ -84,7 +88,9 @@ namespace ThuVien.DataAccess
                     ProductDescription = row["ProductDescription"].ToString(),
                     AvailabilityStatus = row["AvailabilityStatus"].ToString(),
                     BrandID = row["BrandID"].ToString(),
-                    CategoryID = row["CategoryID"].ToString()
+                    CategoryID = row["CategoryID"].ToString(),
+                    SupplierID = row["maNhaCungCap"].ToString(),
+                    SupplierName = row["tenNhaCungCap"].ToString()
                 };
             }
             return null;
@@ -92,8 +98,8 @@ namespace ThuVien.DataAccess
 
         public bool AddProduct(Product product)
         {
-            string query = "INSERT INTO Products (PRODUCTID, PRODUCTNAME, PRICE, QUANTITY, BRANDID, CATEGORYID, BaoHanh, ProductDescription, AvailabilityStatus, ProductPic) " +
-                "VALUES (@ProductID, @ProductName, @Price, @Quantity, @BrandID, @CategoryID, @BaoHanh, @ProductDescription, @AvailabilityStatus, @ProductPic)";
+            string query = "INSERT INTO Products (PRODUCTID, PRODUCTNAME, PRICE, QUANTITY, BRANDID, CATEGORYID, BaoHanh, ProductDescription, AvailabilityStatus, ProductPic, maNhaCungCap) " +
+                "VALUES (@ProductID, @ProductName, @Price, @Quantity, @BrandID, @CategoryID, @BaoHanh, @ProductDescription, @AvailabilityStatus, @ProductPic, @maNhaCungCap)";
 
             var parameters = new Dictionary<string, object>
             {
@@ -106,7 +112,8 @@ namespace ThuVien.DataAccess
                 { "@BaoHanh", product.BaoHanh },
                 { "@ProductName", product.ProductName },
                 { "@Price", product.Price },
-                { "@ProductPic", product.ProductPic }
+                { "@ProductPic", product.ProductPic },
+                { "@maNhaCungCap", product.SupplierID }
             };
 
             try
@@ -114,7 +121,8 @@ namespace ThuVien.DataAccess
                 int rowsAffected = sql.ExecuteNonQuery(query, parameters);
                 return rowsAffected > 0; // Trả về true nếu thêm thành công
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 throw new ApplicationException("Lỗi thêm sản phẩm: " + ex.Message, ex);
             }
         }
@@ -149,7 +157,8 @@ namespace ThuVien.DataAccess
                                     CategoryID = @CategoryID,
                                     AvailabilityStatus = @AvailabilityStatus,
                                     BaoHanh = @BaoHanh,
-                                    ProductPic = @ProductPic
+                                    ProductPic = @ProductPic,
+                                    maNhaCungCap = @maNhaCungCap
                                  WHERE ProductID = @ProductID";
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
@@ -162,7 +171,8 @@ namespace ThuVien.DataAccess
                 { "@AvailabilityStatus", product.AvailabilityStatus },
                 { "@BaoHanh", product.BaoHanh },
                 { "@ProductPic", product.ProductPic },
-                { "@ProductID", product.ProductID }
+                { "@ProductID", product.ProductID },
+                { "@maNhaCungCap", product.SupplierID }
             };
 
             try
@@ -177,6 +187,18 @@ namespace ThuVien.DataAccess
             {
                 throw new ApplicationException("Lỗi sửa sản phẩm: " + ex.Message, ex);
             }
+        }
+
+        public List<Product> SearchProducts(string searchItem)
+        {
+            List<Product> allProducts = GetAllProducts();
+            var filteredProduct = from p in allProducts
+                                  where p.ProductName.ToLower().Contains(searchItem.ToLower()) ||
+                                        p.SupplierName.ToLower().Contains(searchItem.ToLower()) ||
+                                        p.BrandName.ToLower().Contains(searchItem.ToLower()) ||
+                                        p.CategoryName.ToLower().Contains(searchItem.ToLower())
+                                  select p;
+            return filteredProduct.ToList();
         }
     }
 }

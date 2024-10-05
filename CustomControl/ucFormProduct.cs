@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace CustomControl
 
         public event EventHandler AddProductClicked;
         public event EventHandler EditProductClicked;
+        public event EventHandler BrandFormClicked;
 
         [Category("CustomControl")]
         public string CNN
@@ -34,10 +36,58 @@ namespace CustomControl
         {
             InitializeComponent();
             this.Load += UcFormProduct_Load;
-            this.dgvProducts.SelectionChanged += DgvProducts_SelectionChanged;
+            this.dgvProducts.CellClick += DgvProducts_CellClick; ;
             this.btnAddProduct.Click += BtnAddProduct_Click;
             this.btnRemoveProduct.Click += BtnRemoveProduct_Click;
             this.btnEditProduct.Click += BtnEditProduct_Click;
+            this.btnSearch.Click += BtnSearch_Click;
+            this.btnBrands.Click += BtnBrands_Click;
+        }
+
+        private void BtnBrands_Click(object sender, EventArgs e)
+        {
+            BrandFormClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void DgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string selectedProductId = dgvProducts.Rows[e.RowIndex].Cells["ProductID"].Value.ToString();
+                LoadProductDetail(selectedProductId);
+            }
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            string searchItem = txtSearch.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchItem))
+            {
+                productRepository = new ProductRepository(cnn);
+                List<Product> searchResults = productRepository.SearchProducts(searchItem);
+
+                dgvProducts.DataSource = searchResults.Select(p => new
+                {
+                    p.ProductID,
+                    p.ProductName,
+                    p.AvailabilityStatus,
+                    p.Quantity,
+                    p.BaoHanh,
+                    p.ProductPic,
+                    p.Price,
+                    p.BrandName,
+                    p.CategoryName,
+                    p.ProductDescription,
+                    p.SupplierName
+                }).ToList();
+
+                dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void BtnEditProduct_Click(object sender, EventArgs e)
@@ -47,8 +97,6 @@ namespace CustomControl
 
         private void BtnRemoveProduct_Click(object sender, EventArgs e)
         {
-            productRepository = new ProductRepository(cnn);
-
             // Ktra xem có ít nhất 1 sản phẩm dudoc chọn ko
             if (dgvProducts.SelectedRows.Count > 0)
             {
@@ -101,15 +149,6 @@ namespace CustomControl
             AddProductClicked?.Invoke(this, EventArgs.Empty);
         }
 
-        private void DgvProducts_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvProducts.SelectedRows.Count > 0)
-            {
-                string selectedProductId = dgvProducts.SelectedRows[0].Cells["ProductID"].Value.ToString();
-                LoadProductDetail(selectedProductId);
-            }
-        }
-
         private void UcFormProduct_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(cnn))
@@ -135,7 +174,8 @@ namespace CustomControl
                     p.Price,
                     p.BrandName,
                     p.CategoryName,
-                    p.ProductDescription
+                    p.ProductDescription,
+                    p.SupplierName
                 }).ToList();
 
                 dgvProducts.Columns["ProductID"].HeaderText = "Product ID";
@@ -148,6 +188,7 @@ namespace CustomControl
                 dgvProducts.Columns["BrandName"].HeaderText = "Brand Name";
                 dgvProducts.Columns["CategoryName"].HeaderText = "Category Name";
                 dgvProducts.Columns["ProductDescription"].HeaderText = "Description";
+                dgvProducts.Columns["SupplierName"].HeaderText = "Supplier Name";
 
                 dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
@@ -171,12 +212,56 @@ namespace CustomControl
                     lblBrandName.Text = product.BrandName;
                     lblCategoryName.Text = product.CategoryName;
                     lblWarranty.Text = product.BaoHanh;
+
+                    string picFolder = GetWebProjectPicFolderPath();
+
+                    if (!string.IsNullOrEmpty(product.ProductPic))
+                    {
+                        string imagePath = Path.Combine(picFolder, Path.GetFileName(product.ProductPic)).Replace("/", "\\");
+
+                        if (File.Exists(imagePath))
+                        {
+                            try
+                            {
+                                if (pbProductImage.Image != null)
+                                {
+                                    pbProductImage.Image.Dispose();
+                                    pbProductImage.Image = null;
+                                }
+
+                                using (FileStream fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                                {
+                                    Image img = Image.FromStream(fs);
+                                    pbProductImage.Image = new Bitmap(img);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Lỗi tải hình ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Hình ảnh không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi tải chi tiết sản phẩm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private string GetWebProjectPicFolderPath()
+        {
+            // Đường dẫn tương đối từ thư mục gốc của dự án Windows Forms tới thư mục Pic của dự án web
+            string relativePath = @"..\..\..\Pic";
+
+            // Kết hợp với đường dẫn gốc của ứng dụng để tạo đường dẫn tuyệt đối
+            string absolutePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
+
+            return absolutePath;
         }
 
         public Product SelectedProduct

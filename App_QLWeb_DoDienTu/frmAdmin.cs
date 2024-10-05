@@ -15,6 +15,14 @@ namespace App_QLWeb_DoDienTu
         public frmAdmin()
         {
             InitializeComponent();
+            this.lblX.Click += LblX_Click;
+        }
+
+        private void LblX_Click(object sender, EventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.Show();
+            this.Hide();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -31,8 +39,8 @@ namespace App_QLWeb_DoDienTu
         private void btnQLProducts_Click(object sender, EventArgs e)
         {
             frmProduct frmProduct = new frmProduct();
+            frmProduct.MdiParent = this;
             frmProduct.Show();
-            this.Hide();
         }
     }
 }
