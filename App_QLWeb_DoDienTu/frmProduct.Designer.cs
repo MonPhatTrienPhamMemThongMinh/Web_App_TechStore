@@ -33,19 +33,20 @@
             // 
             // ucFormProduct1
             // 
-            this.ucFormProduct1.CNN = null;
-            this.ucFormProduct1.Location = new System.Drawing.Point(-5, -4);
+            this.ucFormProduct1.Location = new System.Drawing.Point(-4, -3);
+            this.ucFormProduct1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ucFormProduct1.Name = "ucFormProduct1";
             this.ucFormProduct1.Size = new System.Drawing.Size(1662, 913);
             this.ucFormProduct1.TabIndex = 0;
             // 
             // frmProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1679, 931);
+            this.ClientSize = new System.Drawing.Size(1040, 640);
             this.Controls.Add(this.ucFormProduct1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmProduct";
             this.Text = "frmProduct";
             this.ResumeLayout(false);

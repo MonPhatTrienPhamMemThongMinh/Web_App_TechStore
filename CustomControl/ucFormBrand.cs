@@ -8,15 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThuVien.DataAccess;
-using ThuVien.Models;
 
 namespace CustomControl
 {
     public partial class ucFormBrand : UserControl
     {
         string cnn;
-        private BrandRepository brandRepository;
 
         public string Cnn { get => cnn; set => cnn = value; }
         public ucFormBrand()
@@ -35,50 +32,12 @@ namespace CustomControl
 
         private void Load_BrandData()
         {
-            brandRepository = new BrandRepository(cnn);
-            try
-            {
-                List<Brand> brands = brandRepository.GetAllBrands();
-                dgvBrand.DataSource = brands.Select(br => new
-                {
-                    br.BrandID,
-                    br.BrandName,
-                    br.BrandDescription,
-                    br.BrandPic,
-                    br.BrandBackground
-                }).ToList();
-
-                dgvBrand.Columns["BrandID"].HeaderText = "Brand ID";
-                dgvBrand.Columns["BrandName"].HeaderText = "Brand Name";
-                dgvBrand.Columns["BrandDescription"].HeaderText = "Brand Description";
-                dgvBrand.Columns["BrandPic"].HeaderText = "Brand Pic";
-                dgvBrand.Columns["BrandBackground"].HeaderText = "Brand Background";
-
-                dgvBrand.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải hãng sản phẩm: { ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void LoadBrandDetail(string brandId)
         {
-            try
-            {
-                Brand brand = brandRepository.GetBrandById(brandId);
-                if(brand != null)
-                {
-                    txtBrandID.Text = brand.BrandID;
-                    txtBrandName.Text = brand.BrandName;
-                    txtBrandDescription.Text = brand.BrandDescription;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải chi tiết hãng sản phẩm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private string GetWebProjectPicFolderPath()

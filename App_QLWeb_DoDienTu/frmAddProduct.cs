@@ -12,13 +12,11 @@ namespace App_QLWeb_DoDienTu
 {
     public partial class frmAddProduct : Form
     {
-        string cnn = Properties.Settings.Default.CNN;
         public event EventHandler ProductAdded;
         
         public frmAddProduct()
         {
             InitializeComponent();
-            ucAddProduct1.CNN = cnn;
             ucAddProduct1.ProductAdded += UcAddProduct1_ProductAdded;
         }
 

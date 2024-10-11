@@ -8,17 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThuVien.Models;
+using DTO;
 
 namespace App_QLWeb_DoDienTu
 {
     public partial class frmProduct : Form
     {
-        string _cnn = Properties.Settings.Default.CNN;
         public frmProduct()
         {
             InitializeComponent();
-            ucFormProduct1.CNN = _cnn;
             ucFormProduct1.AddProductClicked += UcFormProduct1_AddProductClicked;
             ucFormProduct1.EditProductClicked += UcFormProduct1_EditProductClicked;
             ucFormProduct1.BrandFormClicked += UcFormProduct1_BrandFormClicked;
@@ -26,14 +24,14 @@ namespace App_QLWeb_DoDienTu
 
         private void UcFormProduct1_BrandFormClicked(object sender, EventArgs e)
         {
-            frmBrand frm = new frmBrand(_cnn);
+            frmBrand frm = new frmBrand();
             frm.Show();
         }
 
         private void UcFormProduct1_EditProductClicked(object sender, EventArgs e)
         {
             Product selectedProduct = ucFormProduct1.SelectedProduct;
-            frmEditProduct frmEditProduct = new frmEditProduct(selectedProduct, _cnn);
+            frmEditProduct frmEditProduct = new frmEditProduct(selectedProduct);
             frmEditProduct.ProductUpdated += FrmEditProduct_ProductUpdated;
             frmEditProduct.Show();
         }

@@ -205,6 +205,7 @@
             // 
             // txtProductId
             // 
+            this.txtProductId.Enabled = false;
             this.txtProductId.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtProductId.Location = new System.Drawing.Point(201, 29);
             this.txtProductId.Name = "txtProductId";
@@ -289,7 +290,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.Location = new System.Drawing.Point(578, 176);
+            this.label5.Location = new System.Drawing.Point(578, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 24);
             this.label5.TabIndex = 9;
@@ -299,7 +300,7 @@
             // 
             this.cboSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cboSupplier.FormattingEnabled = true;
-            this.cboSupplier.Location = new System.Drawing.Point(673, 173);
+            this.cboSupplier.Location = new System.Drawing.Point(676, 174);
             this.cboSupplier.Name = "cboSupplier";
             this.cboSupplier.Size = new System.Drawing.Size(327, 33);
             this.cboSupplier.TabIndex = 26;
@@ -310,8 +311,8 @@
             this.Controls.Add(this.pbProductImage);
             this.Controls.Add(this.cboSupplier);
             this.Controls.Add(this.cboCategory);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.cboBrand);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtWarranty);
             this.Controls.Add(this.label7);

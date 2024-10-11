@@ -7,17 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThuVien.Models;
+using DTO;
+using BLL;
 
 namespace App_QLWeb_DoDienTu
 {
     public partial class frmEditProduct : Form
     {
         public event EventHandler ProductUpdated;
-        public frmEditProduct(Product selectedProduct, string cnn)
+        public frmEditProduct(Product selectedProduct)
         {
             InitializeComponent();
-            ucEditProduct1.Cnn = cnn;
             ucEditProduct1.LoadProductData(selectedProduct);
             ucEditProduct1.ProductUpdated += UcEditProduct1_ProductUpdated;
         }
