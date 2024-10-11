@@ -7,14 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThuVien.Models;
 using ModuleDN;
-
+using DTO;
 namespace App_QLWeb_DoDienTu
 {
     public partial class frmLogin : Form
     {
-        string _cnn = Properties.Settings.Default.CNN;
         public frmLogin()
         {
             InitializeComponent();
@@ -23,8 +21,6 @@ namespace App_QLWeb_DoDienTu
 
         private void InitializeLoginControl()
         {
-            ucDangNhap1.Cnn = _cnn;
-
             ucDangNhap1.LoginSuccess += LoginControl_LoginSuccess;
             ucDangNhap1.LoginFailed += LoginControl_LoginFailed;
         }
@@ -36,8 +32,8 @@ namespace App_QLWeb_DoDienTu
 
         private void LoginControl_LoginSuccess(object sender, LoginEventArgs e)
         {
-            List<Role> roles = e.UserRoles;
-            if(roles.Exists(role => role.RoleName.Equals("Admin", StringComparison.OrdinalIgnoreCase)))
+            List<AspNetRole> roles = e.UserRoles;
+            if(roles.Exists(role => role.Name.Equals("Admin", StringComparison.OrdinalIgnoreCase)))
             {
                 MessageBox.Show("Login successfully");
                 frmAdmin frmTrangChu = new frmAdmin();

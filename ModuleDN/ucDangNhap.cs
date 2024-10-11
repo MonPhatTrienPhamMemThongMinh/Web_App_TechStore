@@ -8,25 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThuVien;
-using ThuVien.DataAccess;
-using ThuVien.Models;
+using BLL;
+using DTO;
 
 namespace ModuleDN
 {
     public partial class ucDangNhap : UserControl
     {
-        SQLClass sql = new SQLClass();
-        string _cnn;
-
-        public string Cnn
-        {
-            get => _cnn;
-            set
-            {
-                _cnn = value;
-            }
-        }
+        private UserBLL ubll;
+        private RoleBLL rbll;
+        private UserRoleBLL urbll;
 
         public event EventHandler<LoginEventArgs> LoginSuccess;
         public event EventHandler<LoginFailedEventArgs> LoginFailed;
@@ -34,12 +25,16 @@ namespace ModuleDN
         public ucDangNhap()
         {
             InitializeComponent();
+
+            ubll = new UserBLL();
+            rbll = new RoleBLL();
+            urbll = new UserRoleBLL();
+
             this.btnLogin.Click += BtnLogin_Click;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            sql.createConnection(_cnn);
             if (string.IsNullOrEmpty(txtUsername.Texts.Trim()))
             {
                 MessageBox.Show("Không được bỏ trống Username");
@@ -55,10 +50,7 @@ namespace ModuleDN
 
             try
             {
-                UserRepository userRepository = new UserRepository(_cnn);
-                RoleRepository roleRepository = new RoleRepository(_cnn);
-
-                Users user = userRepository.GetUserByUsername(txtUsername.Texts.Trim());
+                AspNetUser user = ubll.GetUserByUsername(txtUsername.Texts.Trim());
                 if(user == null)
                 {
                     LoginFailed?.Invoke(this, new LoginFailedEventArgs("Tên đăng nhập không tồn tại."));
@@ -73,8 +65,7 @@ namespace ModuleDN
                     return;
                 }
 
-                List<Role> roles = new List<Role>();
-                roles = roleRepository.GetRoleByUserId(user.UserId);
+                List<AspNetRole> roles = rbll.GetRolesByUserId(user.Id);
                 if (roles == null || roles.Count == 0)
                 {
                     LoginFailed?.Invoke(this, new LoginFailedEventArgs("Người dùng không có vai trò nào."));
@@ -93,10 +84,10 @@ namespace ModuleDN
     // Lớp chứa thông tin kết quả đăng nhập
     public class LoginEventArgs : EventArgs
     {
-        public Users LoggedInUser { get; private set; }
-        public List<Role> UserRoles { get; private set; }
+        public AspNetUser LoggedInUser { get; private set; }
+        public List<AspNetRole> UserRoles { get; private set; }
     
-        public LoginEventArgs(Users loggedInUser, List<Role> userRoles)
+        public LoginEventArgs(AspNetUser loggedInUser, List<AspNetRole> userRoles)
         {
             LoggedInUser = loggedInUser;
             UserRoles = userRoles;

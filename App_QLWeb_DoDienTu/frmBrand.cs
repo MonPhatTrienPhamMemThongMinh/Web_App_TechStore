@@ -12,10 +12,9 @@ namespace App_QLWeb_DoDienTu
 {
     public partial class frmBrand : Form
     {
-        public frmBrand(string cnn)
+        public frmBrand()
         {
             InitializeComponent();
-            ucFormBrand1.Cnn = cnn;
         }
     }
 }

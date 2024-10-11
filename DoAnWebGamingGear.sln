@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33530.505
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35229.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoAnWebGamingGear", "DoAnWebGamingGear.csproj", "{57719D82-72E5-4B57-A6CF-CC88130A1369}"
 EndProject
@@ -10,19 +10,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icon", "Icon", "{EE8B04FD-5
 		App_QLWeb_DoDienTu\Icon\account.png = App_QLWeb_DoDienTu\Icon\account.png
 		App_QLWeb_DoDienTu\Icon\checked.png = App_QLWeb_DoDienTu\Icon\checked.png
 		App_QLWeb_DoDienTu\Icon\close.png = App_QLWeb_DoDienTu\Icon\close.png
+		C:\Users\DELL\Documents\Zalo Received Files\Icon\editing.png = C:\Users\DELL\Documents\Zalo Received Files\Icon\editing.png
 		App_QLWeb_DoDienTu\Icon\keyboardfrmlogin.png = App_QLWeb_DoDienTu\Icon\keyboardfrmlogin.png
 		App_QLWeb_DoDienTu\Icon\lock.png = App_QLWeb_DoDienTu\Icon\lock.png
 		App_QLWeb_DoDienTu\Icon\logout.png = App_QLWeb_DoDienTu\Icon\logout.png
 		App_QLWeb_DoDienTu\Icon\plus.png = App_QLWeb_DoDienTu\Icon\plus.png
+		C:\Users\DELL\Documents\Zalo Received Files\Icon\refresh.png = C:\Users\DELL\Documents\Zalo Received Files\Icon\refresh.png
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App_QLWeb_DoDienTu", "App_QLWeb_DoDienTu\App_QLWeb_DoDienTu.csproj", "{42C9E3DE-961F-47C9-95A5-F220EF429707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThuVien", "ThuVien\ThuVien.csproj", "{B490E8B4-9565-4363-9E9D-F17953815419}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleDN", "ModuleDN\ModuleDN.csproj", "{85074340-60D6-445D-A3FC-63D4FF4E4099}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControl", "CustomControl\CustomControl.csproj", "{3D0D18E9-E258-4796-A3B4-78B8FEA6A49A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{CB6D166A-A424-41CB-85C3-6EECD811D65B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{04792700-5429-481E-8AA4-1643AF96F01B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{B32CCE1A-8D6C-4845-8EE3-FAE0551DD5D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +44,6 @@ Global
 		{42C9E3DE-961F-47C9-95A5-F220EF429707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42C9E3DE-961F-47C9-95A5-F220EF429707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42C9E3DE-961F-47C9-95A5-F220EF429707}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B490E8B4-9565-4363-9E9D-F17953815419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B490E8B4-9565-4363-9E9D-F17953815419}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B490E8B4-9565-4363-9E9D-F17953815419}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B490E8B4-9565-4363-9E9D-F17953815419}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85074340-60D6-445D-A3FC-63D4FF4E4099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85074340-60D6-445D-A3FC-63D4FF4E4099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85074340-60D6-445D-A3FC-63D4FF4E4099}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,6 +52,18 @@ Global
 		{3D0D18E9-E258-4796-A3B4-78B8FEA6A49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D0D18E9-E258-4796-A3B4-78B8FEA6A49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D0D18E9-E258-4796-A3B4-78B8FEA6A49A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB6D166A-A424-41CB-85C3-6EECD811D65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB6D166A-A424-41CB-85C3-6EECD811D65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB6D166A-A424-41CB-85C3-6EECD811D65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB6D166A-A424-41CB-85C3-6EECD811D65B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04792700-5429-481E-8AA4-1643AF96F01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04792700-5429-481E-8AA4-1643AF96F01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04792700-5429-481E-8AA4-1643AF96F01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04792700-5429-481E-8AA4-1643AF96F01B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B32CCE1A-8D6C-4845-8EE3-FAE0551DD5D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B32CCE1A-8D6C-4845-8EE3-FAE0551DD5D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B32CCE1A-8D6C-4845-8EE3-FAE0551DD5D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B32CCE1A-8D6C-4845-8EE3-FAE0551DD5D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

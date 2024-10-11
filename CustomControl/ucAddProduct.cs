@@ -8,28 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using ThuVien;
-using ThuVien.DataAccess;
-using ThuVien.Models;
+using DTO;
+using BLL;
 
 namespace CustomControl
 {
     public partial class ucAddProduct : UserControl
     {
-        string cnn;
-        private BrandRepository brandRepository;
-        private CategoryRepository categoryRepository;
-        private ProductRepository productRepository;
-        private SupplierRepository supplierRepository;
+        private ProductBLL pbll = new ProductBLL();
+
         public event EventHandler ProductAdded;
 
-        private string productImagePath; // biến lưu đường dẫn
-
-        public string CNN
-        {
-            get { return cnn; }
-            set { cnn = value; }
-        }
+        private string productImagePath;
 
         public ucAddProduct()
         {
@@ -41,18 +31,13 @@ namespace CustomControl
         }
         private void UcAddProduct_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cnn))
-            {
-                LoadBrands();
-                LoadCategories();
-                LoadSuppliers();
-                /*LoadAvailabilityStatus();*/
-            }
+            LoadBrands();
+            LoadCategories();
+            LoadSuppliers();
         }
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-            productRepository = new ProductRepository(cnn);
             if (ValidateInput())
             {
                 string productId = txtProductId.Text.Trim();
@@ -88,12 +73,12 @@ namespace CustomControl
                     AvailabilityStatus = availabilityStatus,
                     BaoHanh = warranty,
                     ProductPic = productImagePath,
-                    SupplierID = supplierId
+                    maNhaCungCap = supplierId
                 };
 
                 try
                 {
-                    bool isSuccess = productRepository.AddProduct(newProduct);
+                    bool isSuccess = pbll.AddProduct(newProduct);
                     if (isSuccess)
                     {
                         MessageBox.Show("Thêm sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -233,14 +218,10 @@ namespace CustomControl
                     {
                         try
                         {
-                            if (File.Exists(destinationPath))
+                            if (!File.Exists(destinationPath))
                             {
-                                // Tạo tên file duy nhất nếu file đã tồn tại
-                                string uniqueFileName = $"{Path.GetFileNameWithoutExtension(fileName)}_{Guid.NewGuid()}{Path.GetExtension(fileName)}";
-                                destinationPath = Path.Combine(picFolder, uniqueFileName);
+                                File.Copy(selectedFilePath, destinationPath);
                             }
-
-                            File.Copy(selectedFilePath, destinationPath);
                         }
                         catch (Exception ex)
                         {
@@ -299,52 +280,16 @@ namespace CustomControl
 
         private void LoadBrands()
         {
-            try
-            {
-                brandRepository = new BrandRepository(cnn);
-                List<Brand> brands = brandRepository.GetAllBrands();
-                cboBrand.DataSource = brands;
-                cboBrand.DisplayMember = "BrandName";
-                cboBrand.ValueMember = "BrandID";
-                cboBrand.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải thương hiệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void LoadCategories()
         {
-            try
-            {
-                categoryRepository = new CategoryRepository(cnn);
-                List<Category> categories = categoryRepository.GetAllCategories();
-                cboCategory.DataSource = categories;
-                cboCategory.DisplayMember = "CategoryName";
-                cboCategory.ValueMember = "CategoryID";
-                cboCategory.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải danh mục: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
         private void LoadSuppliers()
         {
-            try
-            {
-                supplierRepository = new SupplierRepository(cnn);
-                List<Supplier> suppliers = supplierRepository.getAllSuppliers();
-                cboSupplier.DataSource = suppliers;
-                cboSupplier.DisplayMember = "SupplierName";
-                cboSupplier.ValueMember = "SupplierID";
-                cboSupplier.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải nhà cung cấp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
     }
 }

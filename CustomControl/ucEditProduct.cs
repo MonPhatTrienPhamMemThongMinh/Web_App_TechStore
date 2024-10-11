@@ -8,24 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThuVien.DataAccess;
-using ThuVien.Models;
+using BLL;
+using DTO;
 
 namespace CustomControl
 {
     public partial class ucEditProduct : UserControl
     {
-        string cnn;
-        private BrandRepository brandRepository;
-        private CategoryRepository categoryRepository;
-        private ProductRepository productRepository;
-        private SupplierRepository supplierRepository;
+        private ProductBLL pbll = new ProductBLL();
+
         public event EventHandler ProductUpdated;
         private Product currentProduct;
 
         private string productImagePath;
 
-        public string Cnn { get => cnn; set => cnn = value; }
 
         [Category("CustomControl")]
         public ucEditProduct()
@@ -158,12 +154,14 @@ namespace CustomControl
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-            productRepository = new ProductRepository(cnn);
-            if (ValidateInput())
+            if(ValidateInput())
             {
                 currentProduct.ProductName = txtProductName.Text.Trim();
                 currentProduct.ProductDescription = txtProductDescription.Text.Trim();
                 currentProduct.BaoHanh = txtWarranty.Text.Trim();
+                currentProduct.maNhaCungCap = cboSupplier.SelectedValue.ToString();
+                currentProduct.BrandID = cboBrand.SelectedValue.ToString();
+                currentProduct.CategoryID = cboCategory.SelectedValue.ToString();
 
                 if (!int.TryParse(txtPrice.Text.Trim(), out int price))
                 {
@@ -178,43 +176,13 @@ namespace CustomControl
                 }
                 currentProduct.Quantity = quantity;
 
-                if (cboBrand.SelectedIndex >= 0)
-                {
-                    currentProduct.BrandID = cboBrand.SelectedValue.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn thương hiệu.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (cboCategory.SelectedIndex >= 0)
-                {
-                    currentProduct.CategoryID = cboCategory.SelectedValue.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn danh mục.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (cboSupplier.SelectedIndex >= 0)
-                {
-                    currentProduct.SupplierID = cboSupplier.SelectedValue.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn nhà cung cấp.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                currentProduct.ProductPic = productImagePath;
+                currentProduct.ProductPic = string.IsNullOrEmpty(productImagePath) ? pbProductImage.Tag?.ToString() : productImagePath;
 
                 currentProduct.AvailabilityStatus = quantity > 0 ? "InStock" : "OutOfStock";
 
                 try
                 {
-                    bool isSuccess = productRepository.UpdateProduct(currentProduct);
+                    bool isSuccess = pbll.UpdateProduct(currentProduct);
                     if (isSuccess)
                     {
                         MessageBox.Show("Cập nhật sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -303,7 +271,7 @@ namespace CustomControl
 
         public void LoadProductData(Product product)
         {
-            if (product == null)
+            if(product == null)
             {
                 throw new ArgumentNullException(nameof(product));
             }
@@ -324,7 +292,7 @@ namespace CustomControl
             // Set giá trị cho ComboBox thương hiệu và danh mục
             cboBrand.SelectedValue = product.BrandID;
             cboCategory.SelectedValue = product.CategoryID;
-            cboSupplier.SelectedValue = product.SupplierID;
+            cboSupplier.SelectedValue = product.maNhaCungCap;
 
             // Load hình ảnh
             string picFolder = GetWebProjectPicFolderPath();
@@ -347,6 +315,9 @@ namespace CustomControl
                         {
                             Image img = Image.FromStream(fs);
                             pbProductImage.Image = new Bitmap(img);
+                            pbProductImage.Tag = product.ProductPic;
+
+                            productImagePath = product.ProductPic;
                         }
                     }
                     catch (Exception ex)
@@ -365,53 +336,17 @@ namespace CustomControl
 
         private void LoadBrands()
         {
-            brandRepository = new BrandRepository(cnn);
-            try
-            {
-                List<Brand> brands = brandRepository.GetAllBrands();
-                cboBrand.DataSource = brands;
-                cboBrand.DisplayMember = "BrandName";
-                cboBrand.ValueMember = "BrandID";
-                cboBrand.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải thương hiệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void LoadCategories()
         {
-            categoryRepository = new CategoryRepository(cnn);
-            try
-            {
-                List<Category> categories = categoryRepository.GetAllCategories();
-                cboCategory.DataSource = categories;
-                cboCategory.DisplayMember = "CategoryName";
-                cboCategory.ValueMember = "CategoryID";
-                cboCategory.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải danh mục: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void LoadSuppliers()
         {
-            try
-            {
-                supplierRepository = new SupplierRepository(cnn);
-                List<Supplier> suppliers = supplierRepository.getAllSuppliers();
-                cboSupplier.DataSource = suppliers;
-                cboSupplier.DisplayMember = "SupplierName";
-                cboSupplier.ValueMember = "SupplierID";
-                cboSupplier.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi tải nhà cung cấp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
     }
 }

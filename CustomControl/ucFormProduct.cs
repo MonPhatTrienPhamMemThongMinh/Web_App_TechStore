@@ -8,40 +8,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThuVien;
-using ThuVien.DataAccess;
-using ThuVien.Models;
+using DTO;
+using BLL;
 
 namespace CustomControl
 {
     public partial class ucFormProduct : UserControl
     {
-        string cnn;
-        private ProductRepository productRepository;
+        private ProductBLL pbll = new ProductBLL();
 
         public event EventHandler AddProductClicked;
         public event EventHandler EditProductClicked;
         public event EventHandler BrandFormClicked;
-
-        [Category("CustomControl")]
-        public string CNN
-        {
-            get { return cnn; }
-            set
-            {
-                cnn = value;
-            }
-        }
         public ucFormProduct()
         {
             InitializeComponent();
             this.Load += UcFormProduct_Load;
-            this.dgvProducts.CellClick += DgvProducts_CellClick; ;
+            this.dgvProducts.SelectionChanged += DgvProducts_SelectionChanged;
             this.btnAddProduct.Click += BtnAddProduct_Click;
             this.btnRemoveProduct.Click += BtnRemoveProduct_Click;
             this.btnEditProduct.Click += BtnEditProduct_Click;
             this.btnSearch.Click += BtnSearch_Click;
             this.btnBrands.Click += BtnBrands_Click;
+            this.btnRefresh.Click += BtnRefresh_Click;
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadProducts();
+        }
+
+        private void DgvProducts_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvProducts.SelectedRows[0];
+                if (selectedRow.Cells["ProductID"].Value != null)
+                {
+                    string productId = selectedRow.Cells["ProductID"].Value.ToString();
+                    LoadProductDetail(productId); 
+                }
+            }
         }
 
         private void BtnBrands_Click(object sender, EventArgs e)
@@ -49,40 +56,23 @@ namespace CustomControl
             BrandFormClicked?.Invoke(this, EventArgs.Empty);
         }
 
-        private void DgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                string selectedProductId = dgvProducts.Rows[e.RowIndex].Cells["ProductID"].Value.ToString();
-                LoadProductDetail(selectedProductId);
-            }
-        }
-
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             string searchItem = txtSearch.Text.Trim();
 
-            if (!string.IsNullOrEmpty(searchItem))
+            if(!string.IsNullOrEmpty(searchItem))
             {
-                productRepository = new ProductRepository(cnn);
-                List<Product> searchResults = productRepository.SearchProducts(searchItem);
+                List<Product> searchResults = pbll.SearchProducts(searchItem);
 
-                dgvProducts.DataSource = searchResults.Select(p => new
+                if(searchResults != null)
                 {
-                    p.ProductID,
-                    p.ProductName,
-                    p.AvailabilityStatus,
-                    p.Quantity,
-                    p.BaoHanh,
-                    p.ProductPic,
-                    p.Price,
-                    p.BrandName,
-                    p.CategoryName,
-                    p.ProductDescription,
-                    p.SupplierName
-                }).ToList();
-
-                dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvProducts.DataSource = searchResults;
+                    dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy sản phẩm nào.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);   
+                }
             }
             else
             {
@@ -97,12 +87,9 @@ namespace CustomControl
 
         private void BtnRemoveProduct_Click(object sender, EventArgs e)
         {
-            // Ktra xem có ít nhất 1 sản phẩm dudoc chọn ko
             if (dgvProducts.SelectedRows.Count > 0)
             {
                 List<string> selectedProductIds = new List<string>();
-
-                // Lấy danh sách các ProductID của những sản phẩm được chọn]
                 foreach (DataGridViewRow row in dgvProducts.SelectedRows)
                 {
                     selectedProductIds.Add(row.Cells["ProductID"].Value.ToString());
@@ -116,10 +103,10 @@ namespace CustomControl
                     bool allDeleted = true;
                     foreach (string productId in selectedProductIds)
                     {
-                        Product product1 = productRepository.GetProductById(productId);
+                        Product product1 = pbll.GetProductById(productId);
                         if (product1 != null)
                         {
-                            bool isDeleted = productRepository.DeleteProduct(product1);
+                            bool isDeleted = pbll.DeleteProduct(product1);
                             if (!isDeleted)
                             {
                                 allDeleted = false;
@@ -151,45 +138,39 @@ namespace CustomControl
 
         private void UcFormProduct_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cnn))
-            {
-                LoadProducts();
-            }
+            LoadProducts();
         }
 
         public void LoadProducts()
         {
-            productRepository = new ProductRepository(cnn);
             try
             {
-                List<Product> products = productRepository.GetAllProducts();
-                dgvProducts.DataSource = products.Select(p => new
+                List<Product> products = pbll.GetAllProducts();
+                dgvProducts.DataSource = products;
+                if (dgvProducts.Columns["Brand"] != null)
                 {
-                    p.ProductID,
-                    p.ProductName,
-                    p.AvailabilityStatus,
-                    p.Quantity,
-                    p.BaoHanh,
-                    p.ProductPic,
-                    p.Price,
-                    p.BrandName,
-                    p.CategoryName,
-                    p.ProductDescription,
-                    p.SupplierName
-                }).ToList();
-
-                dgvProducts.Columns["ProductID"].HeaderText = "Product ID";
-                dgvProducts.Columns["ProductName"].HeaderText = "Product Name";
-                dgvProducts.Columns["AvailabilityStatus"].HeaderText = "Availability Status";
-                dgvProducts.Columns["Quantity"].HeaderText = "Quantity";
-                dgvProducts.Columns["BaoHanh"].HeaderText = "Warranty";
-                dgvProducts.Columns["ProductPic"].HeaderText = "Product Pic";
-                dgvProducts.Columns["Price"].HeaderText = "Price";
-                dgvProducts.Columns["BrandName"].HeaderText = "Brand Name";
-                dgvProducts.Columns["CategoryName"].HeaderText = "Category Name";
-                dgvProducts.Columns["ProductDescription"].HeaderText = "Description";
-                dgvProducts.Columns["SupplierName"].HeaderText = "Supplier Name";
-
+                    dgvProducts.Columns["Brand"].Visible = false;
+                }
+                if (dgvProducts.Columns["Category"] != null)
+                {
+                    dgvProducts.Columns["Category"].Visible = false;
+                }
+                if (dgvProducts.Columns["NhaCungCap"] != null)
+                {
+                    dgvProducts.Columns["NhaCungCap"].Visible = false;
+                }
+                if (dgvProducts.Columns["BrandID"] != null)
+                {
+                    dgvProducts.Columns["BrandID"].Visible = false;
+                }
+                if (dgvProducts.Columns["CategoryID"] != null)
+                {
+                    dgvProducts.Columns["CategoryID"].Visible = false;
+                }
+                if (dgvProducts.Columns["maNhaCungCap"] != null)
+                {
+                    dgvProducts.Columns["maNhaCungCap"].Visible = false;
+                }
                 dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
@@ -202,8 +183,8 @@ namespace CustomControl
         {
             try
             {
-                Product product = productRepository.GetProductById(productId);
-                if (product != null)
+                Product product = pbll.GetProductById(productId);
+                if(product != null)
                 {
                     lblProductId.Text = product.ProductID;
                     lblProductName.Text = product.ProductName;
@@ -218,12 +199,12 @@ namespace CustomControl
                     if (!string.IsNullOrEmpty(product.ProductPic))
                     {
                         string imagePath = Path.Combine(picFolder, Path.GetFileName(product.ProductPic)).Replace("/", "\\");
-
+                        
                         if (File.Exists(imagePath))
                         {
                             try
                             {
-                                if (pbProductImage.Image != null)
+                                if(pbProductImage.Image != null)
                                 {
                                     pbProductImage.Image.Dispose();
                                     pbProductImage.Image = null;
@@ -235,8 +216,7 @@ namespace CustomControl
                                     pbProductImage.Image = new Bitmap(img);
                                 }
                             }
-                            catch (Exception ex)
-                            {
+                            catch (Exception ex) {
                                 MessageBox.Show($"Lỗi tải hình ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
@@ -271,7 +251,7 @@ namespace CustomControl
                 if (dgvProducts.SelectedRows.Count > 0)
                 {
                     string selectedProductId = dgvProducts.SelectedRows[0].Cells["ProductID"].Value.ToString();
-                    return productRepository.GetProductById(selectedProductId);
+                    return pbll.GetProductById(selectedProductId);
                 }
                 return null;
             }

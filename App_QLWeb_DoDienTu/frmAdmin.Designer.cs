@@ -49,7 +49,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1515, 40);
+            this.panel2.Size = new System.Drawing.Size(1386, 40);
             this.panel2.TabIndex = 1;
             // 
             // lblX
@@ -58,7 +58,7 @@
             this.lblX.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblX.Location = new System.Drawing.Point(1487, 9);
             this.lblX.Name = "lblX";
-            this.lblX.Size = new System.Drawing.Size(28, 28);
+            this.lblX.Size = new System.Drawing.Size(23, 23);
             this.lblX.TabIndex = 0;
             this.lblX.Text = "X";
             // 
@@ -120,7 +120,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
             this.label1.Location = new System.Drawing.Point(67, 200);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 28);
+            this.label1.Size = new System.Drawing.Size(151, 23);
             this.label1.TabIndex = 3;
             this.label1.Text = "Welcome, Admin";
             // 
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1515, 763);
+            this.ClientSize = new System.Drawing.Size(1386, 763);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
