@@ -12,11 +12,25 @@ namespace App_QLWeb_DoDienTu
 {
     public partial class frmAdmin : Form
     {
+        private Button currentButton = null;
+        private Form currentChildForm = null;
         public frmAdmin()
         {
             InitializeComponent();
             this.lblX.Click += LblX_Click;
-            this.btnLogout.Click += BtnLogout_Click; ;
+            this.btnLogout.Click += BtnLogout_Click;
+            this.btnQLProducts.Click += BtnQLProducts_Click;
+            this.btnQLOrders.Click += BtnQLOrders_Click;
+        }
+
+        private void BtnQLOrders_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmOrder(), (Button)sender);
+        }
+
+        private void BtnQLProducts_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmProduct(), (Button)sender);
         }
 
         private void BtnLogout_Click(object sender, EventArgs e)
@@ -37,11 +51,30 @@ namespace App_QLWeb_DoDienTu
             this.Hide();
         }
 
-        private void btnQLProducts_Click(object sender, EventArgs e)
+        private void SetButtonSelected(Button button)
         {
-            frmProduct frmProduct = new frmProduct();
-            frmProduct.MdiParent = this;
-            frmProduct.Show();
+            if(currentButton != null)
+            {
+                currentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(33)))), ((int)(((byte)(78)))));
+            }
+
+            currentButton = button;
+            currentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(43)))), ((int)(((byte)(88))))); // Màu khi được chọn
+        }
+
+        // hàm đóng form hiện tại để hiện form mới mình bấm
+        private void OpenChildForm(Form form, Button senderButton)
+        {
+            if(currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
+
+            currentChildForm = form;
+            currentChildForm.MdiParent = this;
+            currentChildForm.Dock = DockStyle.Fill;
+            currentChildForm.Show();
+            SetButtonSelected(senderButton);
         }
     }
 }

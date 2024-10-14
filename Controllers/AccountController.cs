@@ -28,6 +28,14 @@ namespace DoAnWebGamingGear.Controllers
                 var appDbContext = new AppDbContext();
                 var userStore = new AppUserStore(appDbContext);
                 var userManager = new AppUserManager(userStore);
+
+                var existingUser = userManager.FindByName(rmv.Username);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("UsernameExists", "Tên tài khoản đã tồn tại");
+                    return View(rmv);
+                }
+
                 var passwdHash = Crypto.HashPassword(rmv.Password);
                 var user = new AppUser() // Biến chứa thông tin user
                 {
@@ -47,14 +55,18 @@ namespace DoAnWebGamingGear.Controllers
                     var authenManager = HttpContext.GetOwinContext().Authentication; // cho user login
                     var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     authenManager.SignIn(new AuthenticationProperties(), userIdentity);
+                    return RedirectToAction("Index", "Home");
                 }
-                return RedirectToAction("Index", "Home");
+                else
+                {
+                    ModelState.AddModelError("Error", "Đã xảy ra lỗi trong quá trình đăng ký");
+                }
             }
             else
             {
                 ModelState.AddModelError("Lỗi", "Dữ liêu không hợp lệ");
-                return View();
             }
+            return View();
         }
         public ActionResult Login()
         {
@@ -79,14 +91,14 @@ namespace DoAnWebGamingGear.Controllers
                     var authenManager = HttpContext.GetOwinContext().Authentication;
                     var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     authenManager.SignIn(new AuthenticationProperties(), userIdentity);
-                    if(userManager.IsInRole(user.Id, "Admin"))
+                    if (userManager.IsInRole(user.Id, "Admin"))
                     {
-                        return RedirectToAction("Index", "Home", new {area = "Admin"});
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
                     }
                     else
                     {
                         return RedirectToAction("Index", "Home");
-                    } 
+                    }
                 }
                 else
                 {

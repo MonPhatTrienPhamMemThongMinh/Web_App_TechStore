@@ -32,9 +32,19 @@
                                         Chọn mua
                                     </a>*@
                                 @**@
-                                <button type="submit" class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;">
-                                    Chọn mua
-                                </button>
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    <button type="submit" class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;">
+                                        Chọn mua
+                                    </button>
+                                }
+                                else
+                                {
+                                    <a class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;" href="/account/login">
+                                        Chọn mua
+                                    </a>
+                                }
+
                             }
                             else
                             {

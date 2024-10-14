@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DoAnWebGamingGear.Models
 {
@@ -29,7 +30,9 @@ namespace DoAnWebGamingGear.Models
 
         [Required]
         public int Price { get; set; }
-
+        [ForeignKey("NhaCungCap")]
+        public string maNhaCungCap { get; set; }
+        public virtual NhaCungCap NhaCungCap { get; set; }
         public virtual Brands Brands { get; set; }
         public virtual Categories Categories { get; set; }
         public virtual ICollection<CartItem> CartItems { get; set; }

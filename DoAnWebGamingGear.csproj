@@ -260,64 +260,31 @@
     <Compile Include="Identity\AppUser.cs" />
     <Compile Include="Identity\AppUserManager.cs" />
     <Compile Include="Identity\AppUserStore.cs" />
-    <Compile Include="Migrations\202311060514399_InitialCreate.cs" />
-    <Compile Include="Migrations\202311060514399_InitialCreate.designer.cs">
-      <DependentUpon>202311060514399_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202410141551532_InitialMigration.cs" />
+    <Compile Include="Migrations\202410141551532_InitialMigration.Designer.cs">
+      <DependentUpon>202410141551532_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311081718375_AddRequired.cs" />
-    <Compile Include="Migrations\202311081718375_AddRequired.designer.cs">
-      <DependentUpon>202311081718375_AddRequired.cs</DependentUpon>
+    <Compile Include="Migrations\202410141554117_Test.cs" />
+    <Compile Include="Migrations\202410141554117_Test.Designer.cs">
+      <DependentUpon>202410141554117_Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311170601363_RemoveCartItem.cs" />
-    <Compile Include="Migrations\202311170601363_RemoveCartItem.designer.cs">
-      <DependentUpon>202311170601363_RemoveCartItem.cs</DependentUpon>
+    <Compile Include="Migrations\202410141601505_SyncWithDatabase.cs" />
+    <Compile Include="Migrations\202410141601505_SyncWithDatabase.Designer.cs">
+      <DependentUpon>202410141601505_SyncWithDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311170903265_AddCartItem.cs" />
-    <Compile Include="Migrations\202311170903265_AddCartItem.designer.cs">
-      <DependentUpon>202311170903265_AddCartItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311201130403_AddOrder.cs" />
-    <Compile Include="Migrations\202311201130403_AddOrder.designer.cs">
-      <DependentUpon>202311201130403_AddOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311201149141_AddStatusRow.cs" />
-    <Compile Include="Migrations\202311201149141_AddStatusRow.designer.cs">
-      <DependentUpon>202311201149141_AddStatusRow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311201232208_AddOrderDetail.cs" />
-    <Compile Include="Migrations\202311201232208_AddOrderDetail.designer.cs">
-      <DependentUpon>202311201232208_AddOrderDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311201237349_RemoveProductNameRow.cs" />
-    <Compile Include="Migrations\202311201237349_RemoveProductNameRow.designer.cs">
-      <DependentUpon>202311201237349_RemoveProductNameRow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312030738271_AddCartItemIDRow.cs" />
-    <Compile Include="Migrations\202312030738271_AddCartItemIDRow.designer.cs">
-      <DependentUpon>202312030738271_AddCartItemIDRow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312030908497_Removeshopping_quantityRow.cs" />
-    <Compile Include="Migrations\202312030908497_Removeshopping_quantityRow.designer.cs">
-      <DependentUpon>202312030908497_Removeshopping_quantityRow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312030909570_Addshopping_quantityRow.cs" />
-    <Compile Include="Migrations\202312030909570_Addshopping_quantityRow.designer.cs">
-      <DependentUpon>202312030909570_Addshopping_quantityRow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409101650004_UpdateModel.cs" />
-    <Compile Include="Migrations\202409101650004_UpdateModel.designer.cs">
-      <DependentUpon>202409101650004_UpdateModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409230046448_updateModelProduct.cs" />
-    <Compile Include="Migrations\202409230046448_updateModelProduct.designer.cs">
-      <DependentUpon>202409230046448_updateModelProduct.cs</DependentUpon>
+    <Compile Include="Migrations\202410141645228_Check.cs" />
+    <Compile Include="Migrations\202410141645228_Check.designer.cs">
+      <DependentUpon>202410141645228_Check.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brands.cs" />
     <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\ChiTietPhieuNhap.cs" />
     <Compile Include="Models\GamingGearDBContext.cs" />
+    <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\PhieuNhap.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -379,44 +346,17 @@
     <EmbeddedResource Include="IdentityMigration\202409101650526_UpdateModel.resx">
       <DependentUpon>202409101650526_UpdateModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311060514399_InitialCreate.resx">
-      <DependentUpon>202311060514399_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202410141551532_InitialMigration.resx">
+      <DependentUpon>202410141551532_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311081718375_AddRequired.resx">
-      <DependentUpon>202311081718375_AddRequired.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202410141554117_Test.resx">
+      <DependentUpon>202410141554117_Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311170601363_RemoveCartItem.resx">
-      <DependentUpon>202311170601363_RemoveCartItem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202410141601505_SyncWithDatabase.resx">
+      <DependentUpon>202410141601505_SyncWithDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311170903265_AddCartItem.resx">
-      <DependentUpon>202311170903265_AddCartItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311201130403_AddOrder.resx">
-      <DependentUpon>202311201130403_AddOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311201149141_AddStatusRow.resx">
-      <DependentUpon>202311201149141_AddStatusRow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311201232208_AddOrderDetail.resx">
-      <DependentUpon>202311201232208_AddOrderDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311201237349_RemoveProductNameRow.resx">
-      <DependentUpon>202311201237349_RemoveProductNameRow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312030738271_AddCartItemIDRow.resx">
-      <DependentUpon>202312030738271_AddCartItemIDRow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312030908497_Removeshopping_quantityRow.resx">
-      <DependentUpon>202312030908497_Removeshopping_quantityRow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312030909570_Addshopping_quantityRow.resx">
-      <DependentUpon>202312030909570_Addshopping_quantityRow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409101650004_UpdateModel.resx">
-      <DependentUpon>202409101650004_UpdateModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409230046448_updateModelProduct.resx">
-      <DependentUpon>202409230046448_updateModelProduct.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202410141645228_Check.resx">
+      <DependentUpon>202410141645228_Check.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

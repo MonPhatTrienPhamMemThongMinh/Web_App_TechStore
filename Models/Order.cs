@@ -8,7 +8,6 @@ namespace DoAnWebGamingGear.Models
     {
         [Key]
         public string OrderId { get; set; }
-        public string OrderName { get; set; }
 
         [Required]
         public string UserId { get; set; }

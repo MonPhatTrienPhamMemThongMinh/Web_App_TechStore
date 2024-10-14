@@ -20,6 +20,8 @@ namespace CustomControl
         public event EventHandler AddProductClicked;
         public event EventHandler EditProductClicked;
         public event EventHandler BrandFormClicked;
+        public event EventHandler CategoryFormClicked;
+        public event EventHandler SupplierFormClicked;
         public ucFormProduct()
         {
             InitializeComponent();
@@ -31,6 +33,18 @@ namespace CustomControl
             this.btnSearch.Click += BtnSearch_Click;
             this.btnBrands.Click += BtnBrands_Click;
             this.btnRefresh.Click += BtnRefresh_Click;
+            this.btnCategories.Click += BtnCategories_Click;
+            this.btnSuppliers.Click += BtnSuppliers_Click;
+        }
+
+        private void BtnSuppliers_Click(object sender, EventArgs e)
+        {
+            SupplierFormClicked?.Invoke(this, new EventArgs());
+        }
+
+        private void BtnCategories_Click(object sender, EventArgs e)
+        {
+            CategoryFormClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
@@ -59,24 +73,16 @@ namespace CustomControl
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             string searchItem = txtSearch.Text.Trim();
+            List<Product> searchResults = pbll.SearchProducts(searchItem);
 
-            if(!string.IsNullOrEmpty(searchItem))
+            if (searchResults != null)
             {
-                List<Product> searchResults = pbll.SearchProducts(searchItem);
-
-                if(searchResults != null)
-                {
-                    dgvProducts.DataSource = searchResults;
-                    dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy sản phẩm nào.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);   
-                }
+                dgvProducts.DataSource = searchResults;
+                dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             else
             {
-                MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Không tìm thấy sản phẩm nào.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
