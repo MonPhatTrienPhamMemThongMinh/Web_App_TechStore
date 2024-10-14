@@ -12,7 +12,7 @@
     <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
     <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
     <link rel="stylesheet" href="~/NivoSlider/nivo-slider.css" />
-    <link rel="stylesheet" href="~/Style/ggez.css" />
+    <link rel="stylesheet" href="~/Style/gg.css" />
     <link href="~/Style/font-awesome.css" rel="stylesheet" />
 </head>
 <body>
@@ -71,7 +71,7 @@
                             {
                                 <div class="form-group">
                                     <input type="search" class="form-control w-auto input-search"
-                                           id="search" name="search" value="@ViewBag.Search" placeholder="Bạn cầm tìm gì?" />
+                                           id="search" name="search" value="@ViewBag.Search" placeholder="Bạn cần tìm gì?" />
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary mx-2"> <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ffffff;"></i></button>
@@ -85,12 +85,6 @@
 
     </header>
     <div>
-        @if (User.Identity.IsAuthenticated)
-        {
-            <div style="color: red; font-weight: bold; ">
-                Hello @User.Identity.Name
-            </div>
-        }
         @RenderBody()
     </div>
     <div class="khoangtrang"></div>

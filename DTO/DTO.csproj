@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBGAMINGGEAR.cs">
+      <DependentUpon>DBGAMINGGEAR.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DBGAMINGGEAR.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

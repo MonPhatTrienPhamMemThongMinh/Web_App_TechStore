@@ -29,7 +29,7 @@
                             {
                                 <a href="@Url.Action("Detail", "Categories", new { id = category.CategoryID })" class="collection-card shadow collection-card--reverse-transition" style="opacity: 1">
                                     <div class="thietbi rounded-sm" style="padding: 0 55px; place-items: end;">
-                                        <img class="zoom-image" style="width:250px;" loading="eager" src="@category.CategoryAvatar" />
+                                        <img class="zoom-image" style="width:250px;" loading="eager" src="@Url.Content("~/" + @category.CategoryAvatar)" />
                                         <div class="collection-card_content">
                                             <p class="h6">@category.CategoryName</p>
                                         </div>
@@ -53,7 +53,7 @@
                             @foreach (var brand in brands)
                             {
                                 <a href="@Url.Action("BrandDetail", "Home", new { id = brand.BrandID })" class="logo-list-item" style="opacity: 1; transform: translateZ(0px); background-color:gainsboro; width: 269px;">
-                                    <img src="@brand.BrandBackground" class="logo-list-image" loading="lazy" style="width: 200px;" />
+                                    <img src="@Url.Content("~/" + @brand.BrandBackground)" class="logo-list-image" loading="lazy" style="width: 200px;" />
                                 </a>
                             }
                         </div>

@@ -81,11 +81,29 @@
     <Compile Include="ucFormBrand.designer.cs">
       <DependentUpon>ucFormBrand.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucFormCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFormCategory.designer.cs">
+      <DependentUpon>ucFormCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucFormOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFormOrder.designer.cs">
+      <DependentUpon>ucFormOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucFormProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucFormProduct.designer.cs">
       <DependentUpon>ucFormProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucFormSupplier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFormSupplier.designer.cs">
+      <DependentUpon>ucFormSupplier.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -102,8 +120,17 @@
     <EmbeddedResource Include="ucFormBrand.resx">
       <DependentUpon>ucFormBrand.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucFormCategory.resx">
+      <DependentUpon>ucFormCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucFormOrder.resx">
+      <DependentUpon>ucFormOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucFormProduct.resx">
       <DependentUpon>ucFormProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucFormSupplier.resx">
+      <DependentUpon>ucFormSupplier.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

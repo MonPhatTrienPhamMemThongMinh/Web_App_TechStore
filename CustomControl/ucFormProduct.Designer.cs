@@ -30,9 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucFormProduct));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new CustomControl.CustomButtonDN();
+            this.btnSearch = new CustomControl.CustomButtonDN();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSuppliers = new CustomControl.CustomButtonDN();
+            this.btnCategories = new CustomControl.CustomButtonDN();
+            this.btnBrands = new CustomControl.CustomButtonDN();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbProductImage = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,11 +60,6 @@
             this.btnEditProduct = new CustomControl.CustomButtonDN();
             this.btnRemoveProduct = new CustomControl.CustomButtonDN();
             this.btnAddProduct = new CustomControl.CustomButtonDN();
-            this.btnRefresh = new CustomControl.CustomButtonDN();
-            this.btnSearch = new CustomControl.CustomButtonDN();
-            this.btnSuppliers = new CustomControl.CustomButtonDN();
-            this.btnCategories = new CustomControl.CustomButtonDN();
-            this.btnBrands = new CustomControl.CustomButtonDN();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.panel2.SuspendLayout();
@@ -79,8 +79,45 @@
             this.panel1.Controls.Add(this.btnBrands);
             this.panel1.Location = new System.Drawing.Point(12, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1611, 469);
+            this.panel1.Size = new System.Drawing.Size(1539, 469);
             this.panel1.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.Blue;
+            this.btnRefresh.BackgroundColor = System.Drawing.Color.Blue;
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRefresh.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnRefresh.BorderRadius = 10;
+            this.btnRefresh.BorderSize = 0;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(1452, 8);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(57, 41);
+            this.btnRefresh.TabIndex = 5;
+            this.btnRefresh.TextColor = System.Drawing.Color.White;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnSearch.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSearch.BorderRadius = 10;
+            this.btnSearch.BorderSize = 0;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(1295, 14);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(113, 35);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.TextColor = System.Drawing.Color.White;
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // txtSearch
             // 
@@ -93,12 +130,13 @@
             // dgvProducts
             // 
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(13, 61);
+            this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvProducts.Location = new System.Drawing.Point(0, 64);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 24;
-            this.dgvProducts.Size = new System.Drawing.Size(1532, 405);
+            this.dgvProducts.Size = new System.Drawing.Size(1539, 405);
             this.dgvProducts.TabIndex = 1;
             // 
             // label1
@@ -110,6 +148,69 @@
             this.label1.Size = new System.Drawing.Size(135, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Products Data";
+            // 
+            // btnSuppliers
+            // 
+            this.btnSuppliers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnSuppliers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnSuppliers.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
+            this.btnSuppliers.BorderRadius = 10;
+            this.btnSuppliers.BorderSize = 0;
+            this.btnSuppliers.FlatAppearance.BorderSize = 0;
+            this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuppliers.ForeColor = System.Drawing.Color.White;
+            this.btnSuppliers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSuppliers.Location = new System.Drawing.Point(541, 11);
+            this.btnSuppliers.Name = "btnSuppliers";
+            this.btnSuppliers.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnSuppliers.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnSuppliers.Size = new System.Drawing.Size(124, 35);
+            this.btnSuppliers.TabIndex = 3;
+            this.btnSuppliers.Text = "Suppliers";
+            this.btnSuppliers.TextColor = System.Drawing.Color.White;
+            this.btnSuppliers.UseVisualStyleBackColor = false;
+            // 
+            // btnCategories
+            // 
+            this.btnCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnCategories.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnCategories.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
+            this.btnCategories.BorderRadius = 10;
+            this.btnCategories.BorderSize = 0;
+            this.btnCategories.FlatAppearance.BorderSize = 0;
+            this.btnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategories.ForeColor = System.Drawing.Color.White;
+            this.btnCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategories.Location = new System.Drawing.Point(380, 12);
+            this.btnCategories.Name = "btnCategories";
+            this.btnCategories.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnCategories.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCategories.Size = new System.Drawing.Size(124, 35);
+            this.btnCategories.TabIndex = 3;
+            this.btnCategories.Text = "Categories";
+            this.btnCategories.TextColor = System.Drawing.Color.White;
+            this.btnCategories.UseVisualStyleBackColor = false;
+            // 
+            // btnBrands
+            // 
+            this.btnBrands.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnBrands.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
+            this.btnBrands.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
+            this.btnBrands.BorderRadius = 10;
+            this.btnBrands.BorderSize = 0;
+            this.btnBrands.FlatAppearance.BorderSize = 0;
+            this.btnBrands.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrands.ForeColor = System.Drawing.Color.White;
+            this.btnBrands.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBrands.Location = new System.Drawing.Point(219, 12);
+            this.btnBrands.Name = "btnBrands";
+            this.btnBrands.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnBrands.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnBrands.Size = new System.Drawing.Size(124, 35);
+            this.btnBrands.TabIndex = 3;
+            this.btnBrands.Text = "Brands";
+            this.btnBrands.TextColor = System.Drawing.Color.White;
+            this.btnBrands.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -134,7 +235,7 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(12, 492);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1611, 332);
+            this.panel2.Size = new System.Drawing.Size(1539, 332);
             this.panel2.TabIndex = 1;
             // 
             // pbProductImage
@@ -386,106 +487,6 @@
             this.btnAddProduct.TextColor = System.Drawing.Color.White;
             this.btnAddProduct.UseVisualStyleBackColor = false;
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.Blue;
-            this.btnRefresh.BackgroundColor = System.Drawing.Color.Blue;
-            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRefresh.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnRefresh.BorderRadius = 10;
-            this.btnRefresh.BorderSize = 0;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(1488, 7);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(57, 41);
-            this.btnRefresh.TabIndex = 5;
-            this.btnRefresh.TextColor = System.Drawing.Color.White;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
-            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
-            this.btnSearch.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnSearch.BorderRadius = 10;
-            this.btnSearch.BorderSize = 0;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(1295, 14);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(113, 35);
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.TextColor = System.Drawing.Color.White;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // btnSuppliers
-            // 
-            this.btnSuppliers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
-            this.btnSuppliers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
-            this.btnSuppliers.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
-            this.btnSuppliers.BorderRadius = 10;
-            this.btnSuppliers.BorderSize = 0;
-            this.btnSuppliers.FlatAppearance.BorderSize = 0;
-            this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuppliers.ForeColor = System.Drawing.Color.White;
-            this.btnSuppliers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSuppliers.Location = new System.Drawing.Point(541, 11);
-            this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnSuppliers.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnSuppliers.Size = new System.Drawing.Size(124, 35);
-            this.btnSuppliers.TabIndex = 3;
-            this.btnSuppliers.Text = "Suppliers";
-            this.btnSuppliers.TextColor = System.Drawing.Color.White;
-            this.btnSuppliers.UseVisualStyleBackColor = false;
-            // 
-            // btnCategories
-            // 
-            this.btnCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
-            this.btnCategories.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
-            this.btnCategories.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
-            this.btnCategories.BorderRadius = 10;
-            this.btnCategories.BorderSize = 0;
-            this.btnCategories.FlatAppearance.BorderSize = 0;
-            this.btnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategories.ForeColor = System.Drawing.Color.White;
-            this.btnCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategories.Location = new System.Drawing.Point(380, 12);
-            this.btnCategories.Name = "btnCategories";
-            this.btnCategories.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnCategories.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCategories.Size = new System.Drawing.Size(124, 35);
-            this.btnCategories.TabIndex = 3;
-            this.btnCategories.Text = "Categories";
-            this.btnCategories.TextColor = System.Drawing.Color.White;
-            this.btnCategories.UseVisualStyleBackColor = false;
-            // 
-            // btnBrands
-            // 
-            this.btnBrands.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
-            this.btnBrands.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(167)))));
-            this.btnBrands.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(80)))), ((int)(((byte)(189)))));
-            this.btnBrands.BorderRadius = 10;
-            this.btnBrands.BorderSize = 0;
-            this.btnBrands.FlatAppearance.BorderSize = 0;
-            this.btnBrands.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBrands.ForeColor = System.Drawing.Color.White;
-            this.btnBrands.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrands.Location = new System.Drawing.Point(219, 12);
-            this.btnBrands.Name = "btnBrands";
-            this.btnBrands.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnBrands.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnBrands.Size = new System.Drawing.Size(124, 35);
-            this.btnBrands.TabIndex = 3;
-            this.btnBrands.Text = "Brands";
-            this.btnBrands.TextColor = System.Drawing.Color.White;
-            this.btnBrands.UseVisualStyleBackColor = false;
-            // 
             // ucFormProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -496,7 +497,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "ucFormProduct";
-            this.Size = new System.Drawing.Size(1645, 918);
+            this.Size = new System.Drawing.Size(1556, 918);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();

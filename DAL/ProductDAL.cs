@@ -14,7 +14,7 @@ namespace DAL
         DBGAMINGGEARDataContext db = new DBGAMINGGEARDataContext();
         public ProductDAL()
         {
-            
+
         }
 
         public List<Product> GetAllProducts()
@@ -48,7 +48,7 @@ namespace DAL
         }
 
 
-        public Product GetProductById (string productID)
+        public Product GetProductById(string productID)
         {
             try
             {
@@ -127,35 +127,88 @@ namespace DAL
             }
         }
 
+        public static string RemoveVietnameseDaus(string input)
+        {
+            if (string.IsNullOrEmpty(input)) return input;
+
+            string[] daus = new string[]
+            {
+        "aáàảãạăắằẳẵặâấầẩẫậ", "AÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬ",
+        "dđ", "DĐ",
+        "eéèẻẽẹêếềểễệ", "EÉÈẺẼẸÊẾỀỂỄỆ",
+        "iíìỉĩị", "IÍÌỈĨỊ",
+        "oóòỏõọôốồổỗộơớờởỡợ", "OÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢ",
+        "uúùủũụưứừửữự", "UÚÙỦŨỤƯỨỪỬỮỰ",
+        "yýỳỷỹỵ", "YÝỲỶỸỴ"
+            };
+
+            foreach (var dau in daus)
+            {
+                foreach (var ch in dau.Skip(1))
+                {
+                    input = input.Replace(ch, dau[0]);
+                }
+            }
+
+            return input;
+        }
+
         public List<Product> SearchProducts(string searchItem)
         {
-            var filteredProduct = from p in db.Products
-                                  join b in db.Brands on p.BrandID equals b.BrandID
-                                  join c in db.Categories on p.CategoryID equals c.CategoryID
-                                  join ncc in db.NhaCungCaps on p.maNhaCungCap equals ncc.maNhaCungCap
-                                  where p.ProductName.ToLower().Contains(searchItem.ToLower()) ||
-                                        ncc.tenNhaCungCap.ToLower().Contains(searchItem.ToLower()) ||
-                                        b.BrandName.ToLower().Contains(searchItem.ToLower()) ||
-                                        c.CategoryName.ToLower().Contains(searchItem.ToLower())
-                                  select new Product
-                                  {
-                                      ProductID = p.ProductID,
-                                      ProductName = p.ProductName,
-                                      ProductDescription = p.ProductDescription,
-                                      BrandID = p.BrandID,
-                                      CategoryID = p.CategoryID,
-                                      AvailabilityStatus = p.AvailabilityStatus,
-                                      Quantity = p.Quantity,
-                                      BaoHanh = p.BaoHanh,
-                                      ProductPic = p.ProductPic,
-                                      Price = p.Price,
-                                      BrandName = b.BrandName,
-                                      CategoryName = c.CategoryName,
-                                      maNhaCungCap = ncc.maNhaCungCap,
-                                      SupplierName = ncc.tenNhaCungCap
-                                  };
+            // Nếu chuỗi tìm kiếm trống, trả về toàn bộ sản phẩm
+            if (string.IsNullOrWhiteSpace(searchItem))
+            {
+                return db.Products.ToList(); // Load toàn bộ sản phẩm
+            }
 
-            return filteredProduct.ToList();
+            // Chuẩn hóa chuỗi tìm kiếm
+            string normalizedSearchItem = RemoveVietnameseDaus(searchItem.ToLower());
+
+            // Lấy tất cả sản phẩm từ database
+            var filteredProduct = (from p in db.Products
+                                   join b in db.Brands on p.BrandID equals b.BrandID
+                                   join c in db.Categories on p.CategoryID equals c.CategoryID
+                                   join ncc in db.NhaCungCaps on p.maNhaCungCap equals ncc.maNhaCungCap
+                                   select new
+                                   {
+                                       Product = p,
+                                       BrandName = b.BrandName,
+                                       CategoryName = c.CategoryName,
+                                       SupplierName = ncc.tenNhaCungCap
+                                   }).ToList();
+
+            // Thực hiện lọc theo chuỗi không dấu
+            var result = filteredProduct.Where(item =>
+                RemoveVietnameseDaus(item.Product.ProductName.ToLower()).Contains(normalizedSearchItem) ||
+                RemoveVietnameseDaus(item.BrandName.ToLower()).Contains(normalizedSearchItem) ||
+                RemoveVietnameseDaus(item.CategoryName.ToLower()).Contains(normalizedSearchItem) ||
+                RemoveVietnameseDaus(item.SupplierName.ToLower()).Contains(normalizedSearchItem)
+            ).Select(item => item.Product).ToList();
+
+            // Bổ sung thông tin về brand, category, và nhà cung cấp
+            foreach (var product in result)
+            {
+                var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
+                if (brand != null)
+                {
+                    product.BrandName = brand.BrandName.ToLower();
+                }
+
+                var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
+                if (category != null)
+                {
+                    product.CategoryName = category.CategoryName.ToLower();
+                }
+
+                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
+                if (supplier != null)
+                {
+                    supplier.tenNhaCungCap = supplier.tenNhaCungCap.ToLower();
+                }
+            }
+
+            return result;
         }
+
     }
 }

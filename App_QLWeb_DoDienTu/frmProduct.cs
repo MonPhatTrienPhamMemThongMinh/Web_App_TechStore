@@ -20,6 +20,20 @@ namespace App_QLWeb_DoDienTu
             ucFormProduct1.AddProductClicked += UcFormProduct1_AddProductClicked;
             ucFormProduct1.EditProductClicked += UcFormProduct1_EditProductClicked;
             ucFormProduct1.BrandFormClicked += UcFormProduct1_BrandFormClicked;
+            ucFormProduct1.CategoryFormClicked += UcFormProduct1_CategoryFormClicked;
+            ucFormProduct1.SupplierFormClicked += UcFormProduct1_SupplierFormClicked;
+        }
+
+        private void UcFormProduct1_SupplierFormClicked(object sender, EventArgs e)
+        {
+            frmSupplier frm = new frmSupplier();
+            frm.Show();
+        }
+
+        private void UcFormProduct1_CategoryFormClicked(object sender, EventArgs e)
+        {
+            frmCategory frm = new frmCategory();
+            frm.Show();
         }
 
         private void UcFormProduct1_BrandFormClicked(object sender, EventArgs e)

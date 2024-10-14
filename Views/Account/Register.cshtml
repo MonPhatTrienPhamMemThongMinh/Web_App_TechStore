@@ -14,6 +14,13 @@
                 @Html.LabelFor(temp => temp.Username, new { @class = "col-sm-2 col-form-label" })
                 @Html.TextBoxFor(temp => temp.Username, new { placeholder = "Username", @class = "form-control col-sm-10" })
                 @Html.ValidationMessageFor(temp => temp.Username, "", new { @class = "text-danger" })
+                @if (ViewData.ModelState["UsernameExists"] != null && ViewData.ModelState["UsernameExists"].Errors.Count > 0)
+                {
+                    foreach (var error in ViewData.ModelState["UsernameExists"].Errors)
+                    {
+                        <span class="text-danger">@error.ErrorMessage</span><br />
+                    }
+                }
             </div>
             <div class="col-md-12">
                 @Html.LabelFor(temp => temp.Email, new { @class = "col-sm-2 col-form-label" })
