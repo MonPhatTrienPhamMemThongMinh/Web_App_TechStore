@@ -12,11 +12,12 @@ namespace DAL
     public class CategoryDAL
     {
         DBGAMINGGEARDataContext db = new DBGAMINGGEARDataContext();
-        public CategoryDAL() {
-            
+        public CategoryDAL()
+        {
+
         }
 
-        public List<Category> GetAllCategories() 
+        public List<Category> GetAllCategories()
         {
             return db.Categories.Select(c => c).ToList();
         }
@@ -74,16 +75,15 @@ namespace DAL
 
         public string GenerateCategoryID()
         {
-            // Lấy brand ID cuối cùng theo thứ tự giảm dần
-            var lastCategory = db.Categories
-                              .OrderByDescending(c => c.CategoryID)
-                              .FirstOrDefault();
-
-            if (lastCategory != null)
+            var categories = db.Categories.ToList();
+            if (categories.Any())
             {
+                var lastCategory = categories.OrderByDescending(ct => int.Parse(ct.CategoryID.Substring(2))).FirstOrDefault();
+
                 string lastCategoryID = lastCategory.CategoryID;
-                int number = int.Parse(lastCategoryID.Substring(2)) + 1;
-                return "MH" + number.ToString("D3");
+                int stt = int.Parse(lastCategoryID.Substring(2)) + 1;
+
+                return "MH" + stt.ToString("D3");
             }
             return "MH001";
         }

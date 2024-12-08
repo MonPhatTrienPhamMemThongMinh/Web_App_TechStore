@@ -17,5 +17,10 @@ namespace BLL
         {
             return udal.GetUserByUsername(username);
         }
+
+        public List<AspNetUser> LoadAllUsers()
+        {
+            return udal.LoadAllUsers();
+        }
     }
 }

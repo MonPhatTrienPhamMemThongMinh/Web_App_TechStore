@@ -8,20 +8,32 @@ namespace DoAnWebGamingGear.ViewModel
 {
     public class RegisterVM
     {
-        [Required(ErrorMessage = "Username cannot be blank.")]
+        [Required(ErrorMessage = "Username không được bỏ trống.")]
         public string Username { get; set; }
-        [Required(ErrorMessage = "Password cannot be blank.")]
+        [Required(ErrorMessage = "Password không được bỏ trống.")]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Confirm password cannot be blank.")]
-        [Compare("Password", ErrorMessage = "Password and Confirm Password do not match.")]
+        [Required(ErrorMessage = "Confirm password không được bỏ trống.")]
+        [Compare("Password", ErrorMessage = "Password và Confirm Password không giống nhau.")]
         public string ConfirmPassword { get; set; }
-        [Required(ErrorMessage = "Email cannot be blank.")]
-        [EmailAddress(ErrorMessage = "Invalid Email.")]
+        [Required(ErrorMessage = "Email không được bỏ trống.")]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
         public string Email { get; set; }
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Vui lòng chỉ điền số !!!")]
+        [StringLength(10, ErrorMessage = "Vui lòng nhập đùng định dạng số điện thoại.")]
         public string Phone { get; set; }
+        [DataType(DataType.Date)]
+        [CustomValidation(typeof(RegisterVM), "ValidateDateOfBirth")]
         public DateTime? DateOfBirth { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
+
+        public static ValidationResult ValidateDateOfBirth(DateTime? dateOfBirth, ValidationContext context)
+        {
+            if (dateOfBirth.HasValue && dateOfBirth.Value > DateTime.Now)
+            {
+                return new ValidationResult("Date of Birth cannot be in the future.");
+            }
+            return ValidationResult.Success;
+        }
     }
 }

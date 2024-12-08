@@ -10,6 +10,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using DoAnWebGamingGear.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DoAnWebGamingGear.Controllers
 {
@@ -25,7 +26,7 @@ namespace DoAnWebGamingGear.Controllers
         {
             if (ModelState.IsValid)
             {
-                var appDbContext = new AppDbContext();
+                var appDbContext = new GamingGearDBContext();
                 var userStore = new AppUserStore(appDbContext);
                 var userManager = new AppUserManager(userStore);
 
@@ -37,7 +38,7 @@ namespace DoAnWebGamingGear.Controllers
                 }
 
                 var passwdHash = Crypto.HashPassword(rmv.Password);
-                var user = new AppUser() // Biến chứa thông tin user
+                var user = new AppUser()
                 {
                     Email = rmv.Email,
                     UserName = rmv.Username,
@@ -50,7 +51,12 @@ namespace DoAnWebGamingGear.Controllers
                 IdentityResult identityResult = userManager.Create(user); // cho biết kết quả
                 if (identityResult.Succeeded)
                 {
-                    userManager.AddToRole(user.Id, "Customer"); //thiết lập role
+                    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(appDbContext));
+                    if (!roleManager.RoleExists("Customer"))
+                    {
+                        roleManager.Create(new IdentityRole("Customer"));
+                    }
+                    userManager.AddToRole(user.Id, "Customer");
 
                     var authenManager = HttpContext.GetOwinContext().Authentication; // cho user login
                     var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
@@ -59,14 +65,17 @@ namespace DoAnWebGamingGear.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("Error", "Đã xảy ra lỗi trong quá trình đăng ký");
+                    foreach (var error in identityResult.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    };
                 }
             }
             else
             {
                 ModelState.AddModelError("Lỗi", "Dữ liêu không hợp lệ");
             }
-            return View();
+            return View(rmv);
         }
         public ActionResult Login()
         {
@@ -82,7 +91,7 @@ namespace DoAnWebGamingGear.Controllers
             }
             else
             {
-                var appDbContext = new AppDbContext();
+                var appDbContext = new GamingGearDBContext();
                 var userStore = new AppUserStore(appDbContext);
                 var userManager = new AppUserManager(userStore);
                 var user = userManager.Find(lvm.Username, lvm.Password);
@@ -118,20 +127,20 @@ namespace DoAnWebGamingGear.Controllers
 
         public ActionResult MyProfile()
         {
-            var appDbContext = new AppDbContext();
+            var appDbContext = new GamingGearDBContext();
             var userStore = new AppUserStore(appDbContext);
             var userManager = new AppUserManager(userStore);
             var user = userManager.FindById(User.Identity.GetUserId());
-            var registerVM = new RegisterVM
+            var profileVM = new MyProfile
             {
+                Id = user.Id,
                 Username = user.UserName,
                 Email = user.Email,
                 Phone = user.PhoneNumber,
-                City = user.City,
                 DateOfBirth = user.Birthday,
-                Address = user.Address
+                City = user.City
             };
-            return View(registerVM);
+            return View(profileVM);
         }
     }
 }

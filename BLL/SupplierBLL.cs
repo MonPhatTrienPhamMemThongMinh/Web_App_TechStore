@@ -34,8 +34,13 @@ namespace BLL
         }
 
         public bool DeleteSupplier(NhaCungCap ncc)
-        { 
+        {
             return sdal.DeleteNCC(ncc);
+        }
+
+        public string TaoMaNhaCungCap()
+        {
+            return sdal.TaoMaNhaCungCap();
         }
     }
 }

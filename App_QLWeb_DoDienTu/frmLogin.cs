@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ModuleDN;
 using DTO;
+using ModuleDN;
+
 namespace App_QLWeb_DoDienTu
 {
     public partial class frmLogin : Form
@@ -17,6 +18,7 @@ namespace App_QLWeb_DoDienTu
         {
             InitializeComponent();
             InitializeLoginControl();
+
         }
 
         private void InitializeLoginControl()
@@ -33,7 +35,7 @@ namespace App_QLWeb_DoDienTu
         private void LoginControl_LoginSuccess(object sender, LoginEventArgs e)
         {
             List<AspNetRole> roles = e.UserRoles;
-            if(roles.Exists(role => role.Name.Equals("Admin", StringComparison.OrdinalIgnoreCase)))
+            if (roles.Exists(role => role.Name.Equals("Admin", StringComparison.OrdinalIgnoreCase)))
             {
                 MessageBox.Show("Login successfully");
                 frmAdmin frmTrangChu = new frmAdmin();

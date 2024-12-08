@@ -2,8 +2,9 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="App_QLWeb_DoDienTu.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="CNN" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=MSI;Initial Catalog=DBGAMINGGEAR;Integrated Security=True</Value>
+    <Setting Name="MyCS" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)" />
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

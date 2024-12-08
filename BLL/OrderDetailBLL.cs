@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DAL;
+using DTO;
+
+namespace BLL
+{
+    public class OrderDetailBLL
+    {
+        OrderDetailDAL cthđal = new OrderDetailDAL();
+        public OrderDetailBLL()
+        {
+
+        }
+
+        public List<OrderDetail> LoadOrderDetail(string mahd)
+        {
+            return cthđal.LoadOrderDetail(mahd);
+        }
+    }
+}

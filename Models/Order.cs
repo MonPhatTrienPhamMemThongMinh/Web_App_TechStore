@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DoAnWebGamingGear.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DoAnWebGamingGear.Models
 {
@@ -30,5 +32,7 @@ namespace DoAnWebGamingGear.Models
 
         public decimal TotalAmount { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        [ForeignKey("UserID")]
+        public virtual AppUser AppUser { get; set; }
     }
 }

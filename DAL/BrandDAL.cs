@@ -13,7 +13,8 @@ namespace DAL
     {
         DBGAMINGGEARDataContext db = new DBGAMINGGEARDataContext();
 
-        public BrandDAL() {
+        public BrandDAL()
+        {
         }
 
         public List<Brand> GetAllBrands()
@@ -53,8 +54,8 @@ namespace DAL
             try
             {
                 Brand newBrand = db.Brands.FirstOrDefault(b => b.BrandID == brand.BrandID);
-                
-                if(newBrand != null)
+
+                if (newBrand != null)
                 {
                     newBrand.BrandName = brand.BrandName;
                     newBrand.BrandPic = brand.BrandPic;
@@ -74,16 +75,15 @@ namespace DAL
 
         public string GenerateBrandID()
         {
-            // Lấy brand ID cuối cùng theo thứ tự giảm dần
-            var lastBrand = db.Brands
-                              .OrderByDescending(b => b.BrandID)
-                              .FirstOrDefault();
-
-            if (lastBrand != null)
+            var brands = db.Brands.ToList();
+            if (brands.Any())
             {
+                var lastBrand = brands.OrderByDescending(br => int.Parse(br.BrandID.Substring(2))).FirstOrDefault();
+
                 string lastBrandID = lastBrand.BrandID;
-                int number = int.Parse(lastBrandID.Substring(2)) + 1;
-                return "BR" + number.ToString("D3");
+                int stt = int.Parse(lastBrandID.Substring(2)) + 1;
+
+                return "BR" + stt.ToString("D3");
             }
             return "BR001";
         }

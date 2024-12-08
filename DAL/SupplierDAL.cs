@@ -15,7 +15,7 @@ namespace DAL
 
         public SupplierDAL()
         {
-            
+
         }
 
         public List<NhaCungCap> getAllSuppliers()
@@ -31,7 +31,7 @@ namespace DAL
                 db.SubmitChanges();
                 return true;
             }
-            catch 
+            catch
             {
                 return false;
             }
@@ -42,7 +42,7 @@ namespace DAL
             try
             {
                 NhaCungCap ncc = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == ma);
-                if(ncc != null)
+                if (ncc != null)
                 {
                     return ncc;
                 }
@@ -62,7 +62,7 @@ namespace DAL
             try
             {
                 NhaCungCap newNcc = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == ncc.maNhaCungCap);
-                if(newNcc != null)
+                if (newNcc != null)
                 {
                     newNcc.tenNhaCungCap = ncc.tenNhaCungCap;
                     newNcc.soDienThoai = ncc.soDienThoai;
@@ -86,21 +86,30 @@ namespace DAL
         {
             try
             {
-                var products = db.Products.Where(p => p.maNhaCungCap == ncc.maNhaCungCap).ToList();
-                db.Products.DeleteAllOnSubmit(products);
-
-                NhaCungCap nccToDelete = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == ncc.maNhaCungCap);
-                if(nccToDelete != null)
-                {
-                    db.NhaCungCaps.DeleteOnSubmit(nccToDelete);
-                }
+                NhaCungCap nccDeleted = db.NhaCungCaps.Where(nhaCC => nhaCC.maNhaCungCap == ncc.maNhaCungCap).Select(nhaCC => nhaCC).First();
+                db.NhaCungCaps.DeleteOnSubmit(nccDeleted);
                 db.SubmitChanges();
                 return true;
             }
-            catch (SqlException ex)
+            catch
             {
-                throw new ApplicationException("Lỗi xóa nhà cung cấp: " + ex.Message, ex);
+                return false;
             }
+        }
+
+        public string TaoMaNhaCungCap()
+        {
+            var nhaCungCaps = db.NhaCungCaps.ToList();
+            if (nhaCungCaps.Any())
+            {
+                var nhaCungCapCuoi = nhaCungCaps.OrderByDescending(ncc => int.Parse(ncc.maNhaCungCap.Substring(3))).FirstOrDefault();
+
+                string nhaCungCapCuoiID = nhaCungCapCuoi.maNhaCungCap;
+                int stt = int.Parse(nhaCungCapCuoiID.Substring(3)) + 1;
+
+                return "NCC" + stt.ToString("D3");
+            }
+            return "NCC001";
         }
     }
 }

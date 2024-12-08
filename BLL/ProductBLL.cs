@@ -48,5 +48,10 @@ namespace BLL
         {
             return pdal.DeleteProduct(product);
         }
+
+        public string TaoMaSanPham()
+        {
+            return pdal.TaoMaSanPham();
+        }
     }
 }

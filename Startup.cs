@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity.EntityFramework;
 using DoAnWebGamingGear.Identity;
+using DoAnWebGamingGear.Models;
 
 [assembly: OwinStartup(typeof(DoAnWebGamingGear.Startup))]
 
@@ -26,8 +27,8 @@ namespace DoAnWebGamingGear
 
         public void CreateRolesAndUsers()
         {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new AppDbContext()));
-            var appDbContext = new AppDbContext();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new GamingGearDBContext()));
+            var appDbContext = new GamingGearDBContext();
             var appUserStore = new AppUserStore(appDbContext);
             var userManager = new AppUserManager(appUserStore);
 
