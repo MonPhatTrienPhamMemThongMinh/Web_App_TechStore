@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThuVien
+namespace DAL
 {
     public class UserRoleDAL
     {

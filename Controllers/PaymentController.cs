@@ -12,7 +12,6 @@ namespace DoAnWebGamingGear.Controllers
     {
         private GamingGearDBContext db = new GamingGearDBContext();
 
-        // Trang thanh toán - Hiển thị giỏ hàng và nhập thông tin khách hàng
         [HttpGet]
         public ActionResult Index()
         {
@@ -23,7 +22,6 @@ namespace DoAnWebGamingGear.Controllers
             return View();
         }
 
-        // Xử lý thanh toán đơn hàng
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Checkout(string customerName, string customerPhone, string customerAddress, string customerEmail, string paymentMethod)
@@ -36,13 +34,12 @@ namespace DoAnWebGamingGear.Controllers
                 return RedirectToAction("Index", "ShoppingCart"); // Nếu giỏ hàng trống, quay lại trang giỏ hàng
             }
 
-            // Tạo đơn hàng mới
             Order order = new Order
             {
-                OrderId = Guid.NewGuid().ToString(),
+                OrderId = Guid.NewGuid().ToString("N").Substring(0, 8),
                 UserId = User.Identity.GetUserId(),
                 CreatedDate = DateTime.Now,
-                Status = false,  // Đơn hàng chưa được xử lý
+                Status = false,
                 CustomerName = customerName,
                 CustomerPhone = customerPhone,
                 CustomerAddress = customerAddress,
@@ -56,7 +53,6 @@ namespace DoAnWebGamingGear.Controllers
 
             decimal totalAmount = 0;
 
-            // Lưu chi tiết đơn hàng và tính tổng số tiền
             foreach (var item in cartItems)
             {
                 var product = db.Products.FirstOrDefault(p => p.ProductID == item.ProductID);
@@ -64,28 +60,25 @@ namespace DoAnWebGamingGear.Controllers
                 {
                     OrderDetail orderDetail = new OrderDetail
                     {
-                        OrderDetailID = Guid.NewGuid().ToString(),
                         OrderId = order.OrderId,
                         ProductID = item.ProductID,
                         Quantity = item.shopping_quantity,
-                        Price = product.Price
+                        Price = product.Price * item.shopping_quantity,
+                        UnitPrice = product.Price
                     };
 
                     db.OrderDetails.Add(orderDetail);
 
-                    // Tính tổng số tiền
                     totalAmount += item.shopping_quantity * product.Price;
                 }
             }
 
-            // Cập nhật tổng số tiền đơn hàng
             order.TotalAmount = totalAmount;
             db.SaveChanges();
 
             // Xóa giỏ hàng sau khi thanh toán
             Session[userId + "_Cart"] = null;
 
-            // Gửi email xác nhận đơn hàng (nếu cần)
             // SendOrderConfirmationEmail(order);
 
             return RedirectToAction("OrderSuccess", "Payment", new { orderId = order.OrderId });

@@ -48,6 +48,7 @@
     <Compile Include="BrandDAL.cs" />
     <Compile Include="CategoryDAL.cs" />
     <Compile Include="OrderDAL.cs" />
+    <Compile Include="OrderDetailDAL.cs" />
     <Compile Include="ProductDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleDAL.cs" />

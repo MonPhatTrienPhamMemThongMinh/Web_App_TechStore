@@ -12,5 +12,7 @@ namespace DoAnWebGamingGear.ViewModel
         public string Username { get; set; }
         [Required(ErrorMessage = "Password cannot be blank.")]
         public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
     }
 }

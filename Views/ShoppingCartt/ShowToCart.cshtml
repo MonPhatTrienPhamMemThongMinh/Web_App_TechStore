@@ -5,6 +5,44 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
+<style>
+    .product-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .product-image {
+        width: 100px;
+    }
+
+    .product-name {
+        flex: 2;
+        text-align: left;
+    }
+
+    .product-quantity {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+        .product-quantity input {
+            width: 60px;
+            margin-right: 10px;
+        }
+
+        .product-quantity button {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+    .product-price, .product-total {
+        flex: 1;
+        text-align: right;
+    }
+</style>
+
 <section class="h-100 h-custom" style="background-color: #d2c9ff;">
     <div class="container-fluid py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100" style="overflow-x: hidden; overflow-y: scroll;">
@@ -34,21 +72,24 @@
                                         total_bill += total;
                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                <img src="@Url.Content("~/" + item.Products.ProductPic)" style="width: 100px;" />
+                                                <img src="@Url.Content("~/" + item.Products.ProductPic)" class="product-image" />
                                             </div>
-                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                            <div class="col-md-3 col-lg-3 col-xl-3 product-name">
                                                 <h6 class="text-muted">@Html.DisplayFor(model => item.Products.ProductName)</h6>
                                             </div>
-                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                            <div class="col-md-2 col-lg-2 col-xl-2 product-quantity">
                                                 @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCartt", FormMethod.Post))
                                                 {
                                                     @Html.AntiForgeryToken()
                                                     <input type="hidden" value="@item.ProductID" name="productid" />
-                                                    <input class="form-control form-control-sm" type="number" value="@item.shopping_quantity" name="quantity" min="0" style="margin: 0.4rem 0" />
-                                                    <button type="submit" class="btn btn-outline-primary btn-lg btn-block" style="width: 190px;">Update Quantity</button>
+                                                    <input class="form-control form-control-sm" type="number" value="@item.shopping_quantity" name="quantity" min="1" />
+                                                    <button type="submit" class="btn btn-outline-primary btn-sm">Update</button>
                                                 }
                                             </div>
-                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                            <div class="col-md-2 col-lg-2 col-xl-2 product-price">
+                                                <h6 class="text-muted">@item.Products.Price.ToString("c").Split(',')[0]<span>đ</span></h6>
+                                            </div>
+                                            <div class="col-md-2 col-lg-2 col-xl-2 product-total">
                                                 <p>@total.ToString("c").Split(',')[0]<span>đ</span></p>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">

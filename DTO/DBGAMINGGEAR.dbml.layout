@@ -1,134 +1,208 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.5, 11.875" name="DBGAMINGGEAR">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 21.5" name="DBGAMINGGEAR">
   <DataContextMoniker Name="/DBGAMINGGEARDataContext" />
   <nestedChildShapes>
-    <classShape Id="5aeea717-607c-4b67-8e44-03640155cb28" absoluteBounds="0.75, 9, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/DBGAMINGGEARDataContext/AspNetRole" />
-      <nestedChildShapes>
-        <elementListCompartment Id="75e5a422-8186-4a43-96a1-be1f9be383ba" absoluteBounds="0.765, 9.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="f8a42ba3-f7be-44d1-a252-024ecb3cfd4f" absoluteBounds="0.75, 1.5, 2, 3.6939111328124996">
+    <classShape Id="9a9121cd-bad1-40e4-a210-d4d59bdfb0b2" absoluteBounds="3.75, 14.75, 2, 3.6939111328125005">
       <DataClassMoniker Name="/DBGAMINGGEARDataContext/AspNetUser" />
       <nestedChildShapes>
-        <elementListCompartment Id="a3f33235-de76-415d-adfc-b97b6c984774" absoluteBounds="0.765, 1.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="90a562fd-ee99-4e9b-8b63-40d9ee262723" absoluteBounds="3.765, 15.21, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2929fcd0-23b2-4f2b-ad1f-092f715b7486" absoluteBounds="3.5, 0.75, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/DBGAMINGGEARDataContext/AspNetUserRole" />
-      <nestedChildShapes>
-        <elementListCompartment Id="cdc53660-4d32-4ce0-a085-757c82d662ce" absoluteBounds="3.515, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0ea61d58-673a-4ac1-9c51-6ebf6f4a98bb" absoluteBounds="3.75, 3, 2, 1.7708968098958335">
-      <DataClassMoniker Name="/DBGAMINGGEARDataContext/Brand" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d12e9b2f-d8fb-467b-b184-e60fa849aa8c" absoluteBounds="3.765, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="aa01b22e-1c5c-431b-9c55-884d02d32fa1" absoluteBounds="9.25, 6.625, 2, 1.3862939453125005">
-      <DataClassMoniker Name="/DBGAMINGGEARDataContext/CartItem" />
-      <nestedChildShapes>
-        <elementListCompartment Id="493683a9-fbb3-4634-a454-e7d1b35e705b" absoluteBounds="9.265, 7.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="545e935c-db3e-4836-bafa-8db7aa476f30" absoluteBounds="3.75, 9.5, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/DBGAMINGGEARDataContext/Category" />
-      <nestedChildShapes>
-        <elementListCompartment Id="40056aa2-1c0f-4837-87d1-6abeedf248a1" absoluteBounds="3.765, 9.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="f2241b80-c5e8-4952-a953-522835591ded" absoluteBounds="9.25, 3.5, 2, 1.7708968098958326">
-      <DataClassMoniker Name="/DBGAMINGGEARDataContext/OrderDetail" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9f7c4221-a476-4428-8243-e273d43041d7" absoluteBounds="9.265, 3.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.75 : 9.21875); (3.59375 : 9.21875); (3.59375 : 1.94399251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetRole/AspNetRole_AspNetUserRole" />
-      <nodes>
-        <classShapeMoniker Id="5aeea717-607c-4b67-8e44-03640155cb28" />
-        <classShapeMoniker Id="2929fcd0-23b2-4f2b-ad1f-092f715b7486" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.72199625651042); (3.5 : 1.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetUser/AspNetUser_AspNetUserRole" />
-      <nodes>
-        <classShapeMoniker Id="f8a42ba3-f7be-44d1-a252-024ecb3cfd4f" />
-        <classShapeMoniker Id="2929fcd0-23b2-4f2b-ad1f-092f715b7486" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="75dcb790-9967-496b-88cf-049aae8da7a5" absoluteBounds="6.5, 0.75, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/DBGAMINGGEARDataContext/Order" />
-      <nestedChildShapes>
-        <elementListCompartment Id="64a668df-5124-402b-bfeb-63507db5eb1f" absoluteBounds="6.515, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="674b3679-6092-4464-82eb-58c32e0723f9" absoluteBounds="6.5, 5, 2, 2.9247054036458326">
-      <DataClassMoniker Name="/DBGAMINGGEARDataContext/Product" />
-      <nestedChildShapes>
-        <elementListCompartment Id="93410517-fd0a-482b-9f3c-880e704a1bb4" absoluteBounds="6.515, 5.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7a6c47c5-d192-4a1b-994d-72601156a8e0" absoluteBounds="6.5, 9.625, 2, 1.7708968098958344">
+    <classShape Id="13344fff-55c0-4e3f-b556-d95001340a94" absoluteBounds="6.25, 1.625, 2, 1.9631982421875003">
       <DataClassMoniker Name="/DBGAMINGGEARDataContext/PhieuNhap" />
       <nestedChildShapes>
-        <elementListCompartment Id="9b6c8152-531a-4f27-8f96-447c1e03c6bf" absoluteBounds="6.515, 10.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="18f57885-2022-4280-90e2-52d3d32cdd62" absoluteBounds="6.265, 2.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6eb52c68-1691-4b01-8882-2084f90c0ee3" absoluteBounds="3.75, 6.625, 2, 1.7708968098958335">
+    <classShape Id="c63320a8-e94d-4afa-9556-68275e567625" absoluteBounds="3.75, 9.25, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/Brand" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b30a203f-29d4-44ac-a205-25f8fc984190" absoluteBounds="3.765, 9.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2c222bc3-c958-48f8-8724-e474ec013d28" absoluteBounds="9.25, 5.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/CartItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="575112e1-1f2b-4c58-8d87-ab112695f7dc" absoluteBounds="9.265, 6.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="338e6299-0a45-4dbc-a2ba-326c5c7ae624" absoluteBounds="3.75, 11.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c46fc3fd-c9cc-4338-97b4-2aa2c55d1a67" absoluteBounds="3.765, 12.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1532cea0-a534-48a6-a68d-5d34b03d3190" absoluteBounds="9.25, 8.625, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/ChiTietPhieuDat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d71b2b00-477d-4b94-a511-2b4542f35f65" absoluteBounds="9.265, 9.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0638b95d-dd35-4bd1-acb4-0297260d0c76" absoluteBounds="12, 4.875, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/ChiTietPhieuNhap" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1fc670b3-490e-4e48-9b61-19fbe318bd70" absoluteBounds="12.015, 5.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a65a7864-832f-4a75-a0d3-aa19acb1ea93" absoluteBounds="0.75, 5.75, 2, 1.7708968098958326">
       <DataClassMoniker Name="/DBGAMINGGEARDataContext/NhaCungCap" />
       <nestedChildShapes>
-        <elementListCompartment Id="fa55012a-0356-4e4e-bc91-d55c3c779188" absoluteBounds="3.765, 7.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2b5ae37d-6c55-41d4-8817-2975957644a8" absoluteBounds="0.765, 6.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.5 : 2.11620198567708); (10.25 : 2.11620198567708); (10.25 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="0f1212da-1d05-492b-8f11-273a84137fcf" absoluteBounds="9.25, 2.75, 2, 1.7708968098958326">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/OrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="97a625c3-b300-49b1-8d5a-4b8ed7d214e7" absoluteBounds="9.265, 3.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="43ed42d8-86ac-4639-bde8-c2ec6147dd97" absoluteBounds="6.5, 15.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58944e21-1500-43f4-8760-7fff7d99e12e" absoluteBounds="6.515, 15.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="563e75f8-7837-4894-aa29-468947bb4adc" absoluteBounds="6.5, 5.125, 2, 2.9247054036458335">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="09b0d5f0-73d0-48b6-a9b1-66bd3377a94b" absoluteBounds="6.515, 5.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="28e8c5ee-5410-4264-83d7-9da97e1cdc7c" absoluteBounds="3.5, 5.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/PhieuDat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="16f21219-f92d-4712-9d23-4398944aab71" absoluteBounds="3.515, 5.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="22340e2b-ec39-4eea-a69c-3d2f5c9390fb" absoluteBounds="3.75, 20, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/AspNetRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8dfcba35-8b76-408e-91f1-72049ce4be48" absoluteBounds="3.765, 20.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="10e17006-fbd7-434e-afc3-ee7e73c62357" absoluteBounds="6.5, 13, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DBGAMINGGEARDataContext/AspNetUserRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="87242b65-98b3-4f43-ae4b-008f879a98cf" absoluteBounds="6.515, 13.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.75 : 14.96875); (6.04166666666667 : 14.96875 : JumpStart); (6.20833333333333 : 14.96875 : JumpEnd); (6.34375 : 14.96875); (6.34375 : 3.5881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetUser/AspNetUser_PhieuNhap" />
+      <nodes>
+        <classShapeMoniker Id="9a9121cd-bad1-40e4-a210-d4d59bdfb0b2" />
+        <classShapeMoniker Id="13344fff-55c0-4e3f-b556-d95001340a94" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 9.60659912109375); (13 : 9.60659912109375); (13 : 7.22280110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/ChiTietPhieuDat/ChiTietPhieuDat_ChiTietPhieuNhap" />
+      <nodes>
+        <classShapeMoniker Id="1532cea0-a534-48a6-a68d-5d34b03d3190" />
+        <classShapeMoniker Id="0638b95d-dd35-4bd1-acb4-0297260d0c76" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.3750025 : 3.5881982421875); (6.3750025 : 4.96875); (8.32291666666667 : 4.96875 : JumpStart); (8.48958333333333 : 4.96875 : JumpEnd); (8.79166666666667 : 4.96875 : JumpStart); (8.95833333333333 : 4.96875 : JumpEnd); (12 : 4.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/PhieuNhap/PhieuNhap_ChiTietPhieuNhap" />
+      <nodes>
+        <classShapeMoniker Id="13344fff-55c0-4e3f-b556-d95001340a94" />
+        <classShapeMoniker Id="0638b95d-dd35-4bd1-acb4-0297260d0c76" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 15.25); (8.875 : 14.875); (8.875 : 3.63544840494792); (9.25 : 3.63544840494792)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Order/Order_OrderDetail" />
       <nodes>
-        <classShapeMoniker Id="75dcb790-9967-496b-88cf-049aae8da7a5" />
-        <classShapeMoniker Id="f2241b80-c5e8-4952-a953-522835591ded" />
+        <classShapeMoniker Id="43ed42d8-86ac-4639-bde8-c2ec6147dd97" />
+        <classShapeMoniker Id="0f1212da-1d05-492b-8f11-273a84137fcf" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 7.27485270182292); (9.25 : 7.27485270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.75 : 16.6162019856771); (6.04166666666667 : 16.6162019856771 : JumpStart); (6.20833333333333 : 16.6162019856771 : JumpEnd); (6.5 : 16.6162019856771)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetUser/AspNetUser_Order" />
+      <nodes>
+        <classShapeMoniker Id="9a9121cd-bad1-40e4-a210-d4d59bdfb0b2" />
+        <classShapeMoniker Id="43ed42d8-86ac-4639-bde8-c2ec6147dd97" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 6.56814697265625); (8.79166666666667 : 6.56814697265625 : JumpStart); (8.95833333333333 : 6.56814697265625 : JumpEnd); (9.25 : 6.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Product/Product_CartItem" />
       <nodes>
-        <classShapeMoniker Id="674b3679-6092-4464-82eb-58c32e0723f9" />
-        <classShapeMoniker Id="aa01b22e-1c5c-431b-9c55-884d02d32fa1" />
+        <classShapeMoniker Id="563e75f8-7837-4894-aa29-468947bb4adc" />
+        <classShapeMoniker Id="2c222bc3-c958-48f8-8724-e474ec013d28" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.5 : 5); (7.5 : 4.2499995); (9.25 : 4.2499995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.5 : 8.04970540364583); (7.5 : 9.60659912109375); (8.79166666666667 : 9.60659912109375 : JumpStart); (8.95833333333333 : 9.60659912109375 : JumpEnd); (9.25 : 9.60659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/Product/Product_ChiTietPhieuDat" />
+      <nodes>
+        <classShapeMoniker Id="563e75f8-7837-4894-aa29-468947bb4adc" />
+        <classShapeMoniker Id="1532cea0-a534-48a6-a68d-5d34b03d3190" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.40625 : 5.125); (8.40625 : 4.08579752604167); (8.79166666666667 : 4.08579752604167 : JumpStart); (8.95833333333333 : 4.08579752604167 : JumpEnd); (9.25 : 4.08579752604167)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Product/Product_OrderDetail" />
       <nodes>
-        <classShapeMoniker Id="674b3679-6092-4464-82eb-58c32e0723f9" />
-        <classShapeMoniker Id="f2241b80-c5e8-4952-a953-522835591ded" />
+        <classShapeMoniker Id="563e75f8-7837-4894-aa29-468947bb4adc" />
+        <classShapeMoniker Id="0f1212da-1d05-492b-8f11-273a84137fcf" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.75 : 4.77089680989583); (6.125 : 5.14589680989583); (6.125 : 4.625); (6.5 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.65625 : 9.25); (5.65625 : 5.15625); (6.26041666666667 : 5.15625 : JumpStart); (6.42708333333333 : 5.15625 : JumpEnd); (6.5 : 5.15625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Brand/Brand_Product" />
       <nodes>
-        <classShapeMoniker Id="0ea61d58-673a-4ac1-9c51-6ebf6f4a98bb" />
-        <classShapeMoniker Id="674b3679-6092-4464-82eb-58c32e0723f9" />
+        <classShapeMoniker Id="c63320a8-e94d-4afa-9556-68275e567625" />
+        <classShapeMoniker Id="563e75f8-7837-4894-aa29-468947bb4adc" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.75 : 9.5); (6.125 : 9.125); (6.125 : 6.49360470182292); (6.5 : 6.49360470182292)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.75 : 11.75); (6.125 : 11.375); (6.125 : 6.63422970182292); (6.26041666666667 : 6.63422970182292 : JumpStart); (6.42708333333333 : 6.63422970182292 : JumpEnd); (6.5 : 6.63422970182292)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Category/Category_Product" />
       <nodes>
-        <classShapeMoniker Id="545e935c-db3e-4836-bafa-8db7aa476f30" />
-        <classShapeMoniker Id="674b3679-6092-4464-82eb-58c32e0723f9" />
+        <classShapeMoniker Id="338e6299-0a45-4dbc-a2ba-326c5c7ae624" />
+        <classShapeMoniker Id="563e75f8-7837-4894-aa29-468947bb4adc" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.75 : 7.27485270182292); (6.04166666666667 : 7.27485270182292 : JumpStart); (6.20833333333333 : 7.27485270182292 : JumpEnd); (6.5 : 7.27485270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 5.75); (1.75 : 5.171875); (6.26041666666667 : 5.171875 : JumpStart); (6.42708333333333 : 5.171875 : JumpEnd); (6.5 : 5.171875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/NhaCungCap/NhaCungCap_Product" />
       <nodes>
-        <classShapeMoniker Id="6eb52c68-1691-4b01-8882-2084f90c0ee3" />
-        <classShapeMoniker Id="674b3679-6092-4464-82eb-58c32e0723f9" />
+        <classShapeMoniker Id="a65a7864-832f-4a75-a0d3-aa19acb1ea93" />
+        <classShapeMoniker Id="563e75f8-7837-4894-aa29-468947bb4adc" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.75 : 8.33459553570713); (6.06607443490112 : 8.65066997060825 : JumpStart); (6.18392556509888 : 8.76852110080601 : JumpEnd); (6.3125 : 8.89709553570713); (6.3125 : 10.5104484049479); (6.5 : 10.5104484049479)]" fixedFrom="NotFixed" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DBGAMINGGEARDataContext/NhaCungCap/NhaCungCap_PhieuNhap" />
+    <associationConnector edgePoints="[(4.5 : 5.25); (4.5 : 2.60659912109375); (6.25 : 2.60659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/PhieuDat/PhieuDat_PhieuNhap" />
       <nodes>
-        <classShapeMoniker Id="6eb52c68-1691-4b01-8882-2084f90c0ee3" />
-        <classShapeMoniker Id="7a6c47c5-d192-4a1b-994d-72601156a8e0" />
+        <classShapeMoniker Id="28e8c5ee-5410-4264-83d7-9da97e1cdc7c" />
+        <classShapeMoniker Id="13344fff-55c0-4e3f-b556-d95001340a94" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.59375 : 7.98240397135417); (3.59375 : 8.90625); (5.57291666666667 : 8.90625 : JumpStart); (5.73958333333333 : 8.90625 : JumpEnd); (6.04166666666667 : 8.90625 : JumpStart); (6.20833333333333 : 8.90625 : JumpEnd); (6.26041666666667 : 8.90625 : JumpStart); (6.42708333333333 : 8.90625 : JumpEnd); (7.41666666666667 : 8.90625 : JumpStart); (7.58333333333333 : 8.90625 : JumpEnd); (8.79166666666667 : 8.90625 : JumpStart); (8.95833333333333 : 8.90625 : JumpEnd); (9.25 : 8.90625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/PhieuDat/PhieuDat_ChiTietPhieuDat" />
+      <nodes>
+        <classShapeMoniker Id="28e8c5ee-5410-4264-83d7-9da97e1cdc7c" />
+        <classShapeMoniker Id="1532cea0-a534-48a6-a68d-5d34b03d3190" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.75153746153846 : 14.75); (3.50153746153846 : 14.5); (3.50153746153846 : 7.98240397135417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetUser/AspNetUser_PhieuDat" />
+      <nodes>
+        <classShapeMoniker Id="9a9121cd-bad1-40e4-a210-d4d59bdfb0b2" />
+        <classShapeMoniker Id="28e8c5ee-5410-4264-83d7-9da97e1cdc7c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.63544840494792); (3.5 : 6.63544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/NhaCungCap/NhaCungCap_PhieuDat" />
+      <nodes>
+        <classShapeMoniker Id="a65a7864-832f-4a75-a0d3-aa19acb1ea93" />
+        <classShapeMoniker Id="28e8c5ee-5410-4264-83d7-9da97e1cdc7c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 20); (6.125 : 19.625); (6.125 : 14.5891975401643); (6.28482443490112 : 14.4293731052631 : JumpStart); (6.40267556509888 : 14.3115219750654 : JumpEnd); (6.52020502714343 : 14.1939925130208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetRole/AspNetRole_AspNetUserRole" />
+      <nodes>
+        <classShapeMoniker Id="22340e2b-ec39-4eea-a69c-3d2f5c9390fb" />
+        <classShapeMoniker Id="10e17006-fbd7-434e-afc3-ee7e73c62357" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 14.8115374615385); (6.1875 : 14.3740374615385); (6.1875 : 14.4872049416566); (6.28482443490112 : 14.3898805067555 : JumpStart); (6.40267556509888 : 14.2720293765578 : JumpEnd); (6.5 : 14.1747049416567)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetUser/AspNetUser_AspNetUserRole" />
+      <nodes>
+        <classShapeMoniker Id="9a9121cd-bad1-40e4-a210-d4d59bdfb0b2" />
+        <classShapeMoniker Id="10e17006-fbd7-434e-afc3-ee7e73c62357" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

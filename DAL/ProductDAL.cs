@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -46,7 +47,6 @@ namespace DAL
             }
             return products;
         }
-
 
         public Product GetProductById(string productID)
         {
@@ -155,16 +155,14 @@ namespace DAL
 
         public List<Product> SearchProducts(string searchItem)
         {
-            // Nếu chuỗi tìm kiếm trống, trả về toàn bộ sản phẩm
             if (string.IsNullOrWhiteSpace(searchItem))
             {
-                return db.Products.ToList(); // Load toàn bộ sản phẩm
+                return db.Products.ToList();
             }
 
             // Chuẩn hóa chuỗi tìm kiếm
             string normalizedSearchItem = RemoveVietnameseDaus(searchItem.ToLower());
 
-            // Lấy tất cả sản phẩm từ database
             var filteredProduct = (from p in db.Products
                                    join b in db.Brands on p.BrandID equals b.BrandID
                                    join c in db.Categories on p.CategoryID equals c.CategoryID
@@ -185,7 +183,6 @@ namespace DAL
                 RemoveVietnameseDaus(item.SupplierName.ToLower()).Contains(normalizedSearchItem)
             ).Select(item => item.Product).ToList();
 
-            // Bổ sung thông tin về brand, category, và nhà cung cấp
             foreach (var product in result)
             {
                 var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
@@ -203,12 +200,26 @@ namespace DAL
                 var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
                 if (supplier != null)
                 {
-                    supplier.tenNhaCungCap = supplier.tenNhaCungCap.ToLower();
+                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
                 }
             }
 
             return result;
         }
 
+        public string TaoMaSanPham()
+        {
+            var products = db.Products.ToList();
+            if (products.Any())
+            {
+                var lastProduct = products.OrderByDescending(sp => int.Parse(sp.ProductID.Substring(2))).FirstOrDefault();
+
+                string lastProductID = lastProduct.ProductID;
+                int stt = int.Parse(lastProductID.Substring(2)) + 1;
+
+                return "SP" + stt.ToString("D3");
+            }
+            return "SP001";
+        }
     }
 }

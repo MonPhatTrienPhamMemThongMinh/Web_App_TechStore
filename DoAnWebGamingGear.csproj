@@ -87,6 +87,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -110,7 +111,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -247,43 +247,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IdentityMigration\202311090438090_init.cs" />
-    <Compile Include="IdentityMigration\202311090438090_init.designer.cs">
-      <DependentUpon>202311090438090_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IdentityMigration\202409101650526_UpdateModel.cs" />
-    <Compile Include="IdentityMigration\202409101650526_UpdateModel.designer.cs">
-      <DependentUpon>202409101650526_UpdateModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="IdentityMigration\Configuration.cs" />
-    <Compile Include="Identity\AppDbContext.cs" />
     <Compile Include="Identity\AppUser.cs" />
     <Compile Include="Identity\AppUserManager.cs" />
     <Compile Include="Identity\AppUserStore.cs" />
-    <Compile Include="Migrations\202410141551532_InitialMigration.cs" />
-    <Compile Include="Migrations\202410141551532_InitialMigration.Designer.cs">
-      <DependentUpon>202410141551532_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202410141554117_Test.cs" />
-    <Compile Include="Migrations\202410141554117_Test.Designer.cs">
-      <DependentUpon>202410141554117_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202410141601505_SyncWithDatabase.cs" />
-    <Compile Include="Migrations\202410141601505_SyncWithDatabase.Designer.cs">
-      <DependentUpon>202410141601505_SyncWithDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202410141645228_Check.cs" />
-    <Compile Include="Migrations\202410141645228_Check.designer.cs">
-      <DependentUpon>202410141645228_Check.cs</DependentUpon>
+    <Compile Include="Migrations\202412081013279_InitialCreate.cs" />
+    <Compile Include="Migrations\202412081013279_InitialCreate.designer.cs">
+      <DependentUpon>202412081013279_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brands.cs" />
     <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\ChiTietPhieuDat.cs" />
     <Compile Include="Models\ChiTietPhieuNhap.cs" />
     <Compile Include="Models\GamingGearDBContext.cs" />
     <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\PhieuDat.cs" />
     <Compile Include="Models\PhieuNhap.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
@@ -325,13 +306,13 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Products\Detail.cshtml" />
-    <Content Include="Views\ShoppingCartt\ShowToCart.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <None Include="Properties\PublishProfiles\nhat1911-001-site1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\nhat1911-001-site1 - Web Deploy.pubxml" />
     <Content Include="Views\Home\BrandDetail.cshtml" />
     <Content Include="Views\Categories\Detail.cshtml" />
     <Content Include="Views\Payment\OrderSuccess.cshtml" />
+    <Content Include="Views\ShoppingCartt\ShowToCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -340,29 +321,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="IdentityMigration\202311090438090_init.resx">
-      <DependentUpon>202311090438090_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IdentityMigration\202409101650526_UpdateModel.resx">
-      <DependentUpon>202409101650526_UpdateModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202410141551532_InitialMigration.resx">
-      <DependentUpon>202410141551532_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202410141554117_Test.resx">
-      <DependentUpon>202410141554117_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202410141601505_SyncWithDatabase.resx">
-      <DependentUpon>202410141601505_SyncWithDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202410141645228_Check.resx">
-      <DependentUpon>202410141645228_Check.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202412081013279_InitialCreate.resx">
+      <DependentUpon>202412081013279_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

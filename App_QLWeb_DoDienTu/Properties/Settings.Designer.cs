@@ -23,15 +23,12 @@ namespace App_QLWeb_DoDienTu.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI;Initial Catalog=DBGAMINGGEAR;Integrated Security=True")]
-        public string CNN {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        public string MyCS {
             get {
-                return ((string)(this["CNN"]));
-            }
-            set {
-                this["CNN"] = value;
+                return ((string)(this["MyCS"]));
             }
         }
     }

@@ -12,7 +12,8 @@ namespace DAL
     {
         DBGAMINGGEARDataContext db = new DBGAMINGGEARDataContext();
 
-        public UserDAL() {
+        public UserDAL()
+        {
         }
 
         public AspNetUser GetUserByUsername(string username)
@@ -24,6 +25,29 @@ namespace DAL
             catch
             {
                 return null;
+            }
+        }
+
+        public List<AspNetUser> LoadAllUsers()
+        {
+            try
+            {
+                var customerRoleId = db.AspNetRoles.Where(r => r.Name == "Customer").Select(r => r.Id).FirstOrDefault();
+                if (customerRoleId == null)
+                {
+                    return new List<AspNetUser>();
+                }
+
+                var users = (from user in db.AspNetUsers
+                             join userRole in db.AspNetUserRoles on user.Id equals userRole.UserId
+                             where userRole.RoleId == customerRoleId
+                             select user).ToList();
+
+                return users;
+            }
+            catch
+            {
+                return new List<AspNetUser>();
             }
         }
     }
