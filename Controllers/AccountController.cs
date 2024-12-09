@@ -43,6 +43,7 @@ namespace DoAnWebGamingGear.Controllers
                     Email = rmv.Email,
                     UserName = rmv.Username,
                     PasswordHash = passwdHash,
+                    FullName = rmv.FullName,
                     City = rmv.City,
                     Birthday = rmv.DateOfBirth,
                     Address = rmv.Address,
@@ -133,12 +134,14 @@ namespace DoAnWebGamingGear.Controllers
             var user = userManager.FindById(User.Identity.GetUserId());
             var profileVM = new MyProfile
             {
-                Id = user.Id,
                 Username = user.UserName,
                 Email = user.Email,
                 Phone = user.PhoneNumber,
                 DateOfBirth = user.Birthday,
-                City = user.City
+                City = user.City,
+                Address = user.Address,
+                FullName = user.FullName,
+                Orders = user.Orders
             };
             return View(profileVM);
         }

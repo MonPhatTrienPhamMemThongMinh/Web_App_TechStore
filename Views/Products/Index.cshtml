@@ -4,8 +4,8 @@
     ViewBag.Title = "Sản phẩm";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 
-    var selectedCategories = string.Join(",", ViewBag.SelectedCategories);
-    var selectedBrands = string.Join(",", ViewBag.SelectedBrands);
+    var selectedCategories = string.Join(",", ViewBag.SelectedCategories ?? new List<string>());
+    var selectedBrands = string.Join(",", ViewBag.SelectedBrands ?? new List<string>());
 }
 
 <div class="container-fluid" style="margin-top: 130px;">
@@ -83,25 +83,25 @@
                         @for (int i = 1; i <= ViewBag.NoOfPages; i++)
                         {
                             <li class="page-item @(ViewBag.Page == i ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new {
-                    page = i,
-                    Sort = ViewBag.SortC,
-                    Icon = ViewBag.IconC,
-                    selectedCategories = selectedCategories,
-                    selectedBrands = selectedBrands,
-                    search = Request.QueryString["search"]
-                })">@i</a>
-            </li>
-        }
+                                <a href="@Url.Action("Index", new {
+                                    search = ViewBag.Search,
+                                    Sort = ViewBag.Sort,
+                                    Icon = ViewBag.Icon,
+                                    page = i,
+                                    selectedCategories = string.Join(",", ViewBag.SelectedCategories ?? new string[0]),
+                                    selectedBrands = string.Join(",", ViewBag.SelectedBrands ?? new string[0])
+                                })" class="@(ViewBag.Page == i ? "active" : "") page-link">@i</a>
+                            </li>
+                        }
                         <li class="page-item @(ViewBag.Page == ViewBag.NoOfPages ? "disabled" : "")">
                             <a class="page-link" href="@Url.Action("Index", new {
-                page = ViewBag.Page + 1,
-                Sort = ViewBag.SortC,
-                Icon = ViewBag.IconC,
-                selectedCategories = selectedCategories,
-                selectedBrands = selectedBrands,
-                search = Request.QueryString["search"]
-            })">Next</a>
+                                search = ViewBag.Search,
+                                    Sort = ViewBag.Sort,
+                                    Icon = ViewBag.Icon,
+                                    page = ViewBag.Page + 1,
+                                    selectedCategories = string.Join(",", ViewBag.SelectedCategories ?? new string[0]),
+                                    selectedBrands = string.Join(",", ViewBag.SelectedBrands ?? new string[0])
+                            })">Next</a>
                         </li>
                     </ul>
                 </div>
@@ -109,15 +109,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Adjust navbar positioning
-    window.onscroll = function () {
-        const navbar = document.querySelector('.navbar');
-        if (window.pageYOffset > navbar.offsetTop) {
-            navbar.classList.add("sticky");
-        } else {
-            navbar.classList.remove("sticky");
-        }
-    };
-</script>
