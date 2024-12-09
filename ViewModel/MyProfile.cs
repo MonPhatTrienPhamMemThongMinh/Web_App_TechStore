@@ -23,7 +23,12 @@ namespace DoAnWebGamingGear.ViewModel
 
         [DataType(DataType.Date)]
         public DateTime? DateOfBirth { get; set; }
+
         public string City { get; set; }
+
+        public string FullName { get; set; }
+
+        public string Address { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

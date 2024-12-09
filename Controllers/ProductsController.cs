@@ -12,7 +12,6 @@ namespace DoAnWebGamingGear.Controllers
 
         public ActionResult Index(string search = "", string Sort = "ProductID", string[] selectedCategories = null, string Icon = "fa-sort-asc", int page = 1, string[] selectedBrands = null)
         {
-            // Load danh mục và thương hiệu từ cơ sở dữ liệu
             ViewBag.Categories = db.Categories.ToList();
             ViewBag.Brands = db.Brands.ToList();
 
@@ -22,9 +21,20 @@ namespace DoAnWebGamingGear.Controllers
 
             ViewBag.SelectedCategories = selectedCategories.ToList();
             ViewBag.SelectedBrands = selectedBrands.ToList();
+            ViewBag.Search = search;
+            ViewBag.Sort = Sort;
+            ViewBag.Icon = Icon;
 
             // Khởi tạo query sản phẩm
             var products = db.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                string searchKhongDau = StringHelper.RemoveVietnameseDaus(search.ToLower().Trim());
+                products = products.ToList().Where(p =>
+                    StringHelper.RemoveVietnameseDaus(p.ProductName.ToLower()).Contains(searchKhongDau)
+                ).AsQueryable();
+            }
 
             // Lọc sản phẩm theo danh mục và thương hiệu nếu có
             if (selectedCategories.Any())
@@ -37,7 +47,6 @@ namespace DoAnWebGamingGear.Controllers
                 products = products.Where(p => selectedBrands.Contains(p.BrandID.ToString()));
             }
 
-            // Sorting logic
             ViewBag.SortC = Sort;
             ViewBag.IconC = Icon;
             switch (Sort)
