@@ -15,15 +15,23 @@ namespace DoAnWebGamingGear.ViewModel
         [Required(ErrorMessage = "Confirm password không được bỏ trống.")]
         [Compare("Password", ErrorMessage = "Password và Confirm Password không giống nhau.")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Họ tên không được bỏ trống.")]
+        [StringLength(100, ErrorMessage = "Họ tên không được quá 100 ký tự.")]
+        public string FullName { get; set; }
+
         [Required(ErrorMessage = "Email không được bỏ trống.")]
         [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
         public string Email { get; set; }
+
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Vui lòng chỉ điền số !!!")]
         [StringLength(10, ErrorMessage = "Vui lòng nhập đùng định dạng số điện thoại.")]
         public string Phone { get; set; }
+
         [DataType(DataType.Date)]
         [CustomValidation(typeof(RegisterVM), "ValidateDateOfBirth")]
         public DateTime? DateOfBirth { get; set; }
+
         public string Address { get; set; }
         public string City { get; set; }
 
