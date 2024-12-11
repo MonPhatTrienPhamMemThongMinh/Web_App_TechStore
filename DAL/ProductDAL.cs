@@ -22,7 +22,6 @@ namespace DAL
             var products = (from p in db.Products
                             join b in db.Brands on p.BrandID equals b.BrandID
                             join c in db.Categories on p.CategoryID equals c.CategoryID
-                            join ncc in db.NhaCungCaps on p.maNhaCungCap equals ncc.maNhaCungCap
                             select p).ToList();
             foreach (var p in products)
             {
@@ -36,12 +35,6 @@ namespace DAL
                 if (category != null)
                 {
                     p.CategoryName = category.CategoryName;
-                }
-
-                var supplier = db.NhaCungCaps.FirstOrDefault(ncc => ncc.maNhaCungCap == p.maNhaCungCap);
-                if (supplier != null)
-                {
-                    p.SupplierName = supplier.tenNhaCungCap;
                 }
             }
             return products;
@@ -126,7 +119,6 @@ namespace DAL
                     productToUpdate.AvailabilityStatus = product.AvailabilityStatus;
                     productToUpdate.BaoHanh = product.BaoHanh;
                     productToUpdate.ProductPic = product.ProductPic;
-                    productToUpdate.maNhaCungCap = product.maNhaCungCap;
 
                     // Lưu thay đổi
                     db.SubmitChanges();
@@ -177,21 +169,18 @@ namespace DAL
             var filteredProduct = (from p in db.Products
                                    join b in db.Brands on p.BrandID equals b.BrandID
                                    join c in db.Categories on p.CategoryID equals c.CategoryID
-                                   join ncc in db.NhaCungCaps on p.maNhaCungCap equals ncc.maNhaCungCap
                                    select new
                                    {
                                        Product = p,
                                        BrandName = b.BrandName,
-                                       CategoryName = c.CategoryName,
-                                       SupplierName = ncc.tenNhaCungCap
+                                       CategoryName = c.CategoryName
                                    }).ToList();
 
             // Thực hiện lọc theo chuỗi không dấu
             var result = filteredProduct.Where(item =>
                 RemoveVietnameseDaus(item.Product.ProductName.ToLower()).Contains(normalizedSearchItem) ||
                 RemoveVietnameseDaus(item.BrandName.ToLower()).Contains(normalizedSearchItem) ||
-                RemoveVietnameseDaus(item.CategoryName.ToLower()).Contains(normalizedSearchItem) ||
-                RemoveVietnameseDaus(item.SupplierName.ToLower()).Contains(normalizedSearchItem)
+                RemoveVietnameseDaus(item.CategoryName.ToLower()).Contains(normalizedSearchItem)
             ).Select(item => item.Product).ToList();
 
             foreach (var product in result)
@@ -206,12 +195,6 @@ namespace DAL
                 if (category != null)
                 {
                     product.CategoryName = category.CategoryName.ToLower();
-                }
-
-                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
-                if (supplier != null)
-                {
-                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
                 }
             }
 
@@ -233,12 +216,6 @@ namespace DAL
                 {
                     product.CategoryName = category.CategoryName.ToLower();
                 }
-
-                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
-                if (supplier != null)
-                {
-                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
-                }
             }
             return danhSach;
         }
@@ -258,12 +235,6 @@ namespace DAL
                 {
                     product.CategoryName = category.CategoryName.ToLower();
                 }
-
-                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
-                if (supplier != null)
-                {
-                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
-                }
             }
             return danhSach;
         }
@@ -282,37 +253,6 @@ namespace DAL
                 if (category != null)
                 {
                     product.CategoryName = category.CategoryName.ToLower();
-                }
-
-                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
-                if (supplier != null)
-                {
-                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
-                }
-            }
-            return danhSach;
-        }
-        public List<Product> LocSanPhamTheoNhaCungCap(string maNhaCungCap)
-        {
-            List<Product> danhSach = db.Products.Where(p => p.maNhaCungCap == maNhaCungCap).ToList();
-            foreach (var product in danhSach)
-            {
-                var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
-                if (brand != null)
-                {
-                    product.BrandName = brand.BrandName.ToLower();
-                }
-
-                var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
-                if (category != null)
-                {
-                    product.CategoryName = category.CategoryName.ToLower();
-                }
-
-                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
-                if (supplier != null)
-                {
-                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
                 }
             }
             return danhSach;

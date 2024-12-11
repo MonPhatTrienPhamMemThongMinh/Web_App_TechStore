@@ -17,17 +17,17 @@ namespace DAL
             try
             {
                 var orders = db.Orders.Select(hd => hd).OrderByDescending(hd => hd.OrderId).ToList<Order>();
-                foreach (var order in orders)
-                {
-                    if (order.Status == true)
-                    {
-                        order.statusText = "Đã thanh toán";
-                    }
-                    else
-                    {
-                        order.statusText = "Chưa thanh toán";
-                    }
-                }
+                //foreach (var order in orders)
+                //{
+                //    if (order.Status == true)
+                //    {
+                //        order.statusText = "Đã thanh toán";
+                //    }
+                //    else
+                //    {
+                //        order.statusText = "Chưa thanh toán";
+                //    }
+                //}
                 return orders;
             }
             catch
@@ -69,10 +69,10 @@ namespace DAL
                 var orders = db.Orders.Where(hd => hd.CreatedDate.Date >= ngayBatDau.Date
                                             && hd.CreatedDate.Date <= ngayKetThuc.Date)
                                         .ToList();
-                foreach (var order in orders)
-                {
-                    order.statusText = order.Status == true ? "Đã thanh toán" : "Chưa thanh toán";
-                }
+                //foreach (var order in orders)
+                //{
+                //    order.statusText = order.Status == true ? "Đã thanh toán" : "Chưa thanh toán";
+                //}
 
                 if (!string.IsNullOrEmpty(giaTriTimKiem))
                 {
@@ -113,14 +113,14 @@ namespace DAL
         public Order LoadHoaDonTheoMa(string mahd)
         {
             Order order = db.Orders.FirstOrDefault(hd => hd.OrderId == mahd);
-            if (order.Status == true)
-            {
-                order.statusText = "Đã thanh toán";
-            }
-            else
-            {
-                order.statusText = "Chưa thanh toán";
-            }
+            //if (order.Status == true)
+            //{
+            //    order.statusText = "Đã thanh toán";
+            //}
+            //else
+            //{
+            //    order.statusText = "Chưa thanh toán";
+            //}
             return order;
         }
 

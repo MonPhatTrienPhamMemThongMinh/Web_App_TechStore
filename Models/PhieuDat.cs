@@ -15,18 +15,15 @@ namespace DoAnWebGamingGear.Models
 
         [Required]
         public string UserID { get; set; }
-
+        [Required]
         public string MaNhaCungCap { get; set; }
         public DateTime NgayLap { get; set; }
         public DateTime NgayCapNhat { get; set; }
         public int SoLuong { get; set; }
         public decimal TongTien { get; set; }
         public string TrangThai { get; set; }
-        public string TrangThaiXacNhan { get; set; }
-        public string GhiChu { get; set; }
 
-        [ForeignKey("MaNhaCungCap")]
-        public virtual NhaCungCap NhaCungCap { get; set; }
+        public virtual NhaCungCap NhaCungCap { get; set; }  
         public virtual AppUser AppUser { get; set; }
 
         public virtual ICollection<ChiTietPhieuDat> ChiTietPhieuDats { get; set; }

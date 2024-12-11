@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using DTO;
-using NPOI.SS.Formula.Functions;
 using Sunny.UI;
 using Sunny.UI.Win32;
 namespace App_QLWeb_DoDienTu
@@ -235,8 +234,6 @@ namespace App_QLWeb_DoDienTu
                                 ProductID = row.Cells["maSP"].Value.ToString(),
                                 SoLuong = soLuongNhan,
                                 DonGia = donGia,
-                                NgaySanXuat = DateTime.Parse(ngaySanXuat),
-                                HanSuDung = DateTime.Parse(hanSuDung),
                                 TongTien = thanhTien,
                             };
                             chiTietPhieuNhapBLL.TaoChiTietPhieuNhap(chiTietPhieuNhap);

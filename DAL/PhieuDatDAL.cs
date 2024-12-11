@@ -25,13 +25,14 @@ namespace DAL
         }
         public List<PhieuDat> LayDanhSachPhieuDatDuocDuyet()
         {
-            List<PhieuDat> phieuDats = db.PhieuDats.Where(pd=>pd.TrangThai == "Đã duyệt" && pd.TrangThaiXacNhan == "Đã chấp thuận").OrderByDescending(pd=>pd.MaPhieuDat).Select(pd => pd).ToList<PhieuDat>();
-            foreach (PhieuDat phieuDat in phieuDats)
-            {
-                phieuDat.tenNhanVien = db.AspNetUsers.Where(nv => nv.Id == phieuDat.UserID).Select(nv => nv.FullName).FirstOrDefault();
-                phieuDat.tenNhaCungCap = db.NhaCungCaps.Where(ncc => ncc.maNhaCungCap == phieuDat.MaNhaCungCap).Select(ncc => ncc.tenNhaCungCap).FirstOrDefault();
-            }
-            return phieuDats;
+            //List<PhieuDat> phieuDats = db.PhieuDats.Where(pd=>pd.TrangThai == "Đã duyệt" && pd.TrangThaiXacNhan == "Đã chấp thuận").OrderByDescending(pd=>pd.MaPhieuDat).Select(pd => pd).ToList<PhieuDat>();
+            //foreach (PhieuDat phieuDat in phieuDats)
+            //{
+            //    phieuDat.tenNhanVien = db.AspNetUsers.Where(nv => nv.Id == phieuDat.UserID).Select(nv => nv.FullName).FirstOrDefault();
+            //    phieuDat.tenNhaCungCap = db.NhaCungCaps.Where(ncc => ncc.maNhaCungCap == phieuDat.MaNhaCungCap).Select(ncc => ncc.tenNhaCungCap).FirstOrDefault();
+            //}
+            //return phieuDats;
+            return null;
         }
         public List<PhieuDat> LocDanhSachPhieuDatTheoNgayLap(DateTime ngayLap)
         {
@@ -106,8 +107,8 @@ namespace DAL
                 phieuDatEdited.NgayCapNhat = DateTime.Now;
                 if (trangThai == "Đã duyệt")
                 {
-                    phieuDatEdited.TrangThaiXacNhan = null;
-                    phieuDatEdited.GhiChu = null;
+                    //phieuDatEdited.TrangThaiXacNhan = null;
+                    //phieuDatEdited.GhiChu = null;
                 }
                 db.SubmitChanges();
                 return true;
@@ -122,7 +123,7 @@ namespace DAL
             try
             {
                 PhieuDat phieuDatEdited = db.PhieuDats.Where(pd => pd.MaPhieuDat == maPhieuDat).Select(pd => pd).FirstOrDefault();
-                phieuDatEdited.TrangThaiXacNhan = trangThai;
+                //phieuDatEdited.TrangThaiXacNhan = trangThai;
                 phieuDatEdited.NgayCapNhat = DateTime.Now;
                 db.SubmitChanges();
                 return true;

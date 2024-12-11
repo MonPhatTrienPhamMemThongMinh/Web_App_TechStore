@@ -10,6 +10,5 @@ namespace DTO
     {
         public string BrandName { get; set; }
         public string CategoryName { get; set; }
-        public string SupplierName { get; set; }
     }
 }
