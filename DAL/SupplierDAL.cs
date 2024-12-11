@@ -107,9 +107,9 @@ namespace DAL
                 string nhaCungCapCuoiID = nhaCungCapCuoi.maNhaCungCap;
                 int stt = int.Parse(nhaCungCapCuoiID.Substring(3)) + 1;
 
-                return "NCC" + stt.ToString("D3");
+                return "NCC" + stt.ToString("D2");
             }
-            return "NCC001";
+            return "NCC01";
         }
     }
 }

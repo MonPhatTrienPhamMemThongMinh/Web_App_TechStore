@@ -34,11 +34,11 @@ namespace App_QLWeb_DoDienTu
 
         private void LoginControl_LoginSuccess(object sender, LoginEventArgs e)
         {
-            List<AspNetRole> roles = e.UserRoles;
-            if (roles.Exists(role => role.Name.Equals("Admin", StringComparison.OrdinalIgnoreCase)))
+            AspNetRole roles = e.UserRoles;
+            if (roles.Name.Equals("Admin", StringComparison.OrdinalIgnoreCase))
             {
-                MessageBox.Show("Login successfully");
-                frmAdmin frmTrangChu = new frmAdmin();
+                MessageBox.Show("Login successfully");                
+                frmAdmin frmTrangChu = new frmAdmin(e.LoggedInUser);
                 frmTrangChu.Show();
                 this.Hide();
             }

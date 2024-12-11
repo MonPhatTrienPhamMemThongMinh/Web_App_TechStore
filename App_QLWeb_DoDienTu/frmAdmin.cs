@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using DTO;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,34 @@ namespace App_QLWeb_DoDienTu
 {
     public partial class frmAdmin : Form
     {
-        public frmAdmin()
+        private AspNetUser user;
+        public frmAdmin(AspNetUser user)
         {
             InitializeComponent();
+            this.user = user;
             this.btnClose.Click += LblX_Click;
             this.btnSanPham.Click += BtnQLProducts_Click;
             this.btnHoaDon.Click += BtnQLOrders_Click;
             this.btnQLNhaCungCap.Click += BtnQLNhaCungCap_Click;
             this.btnUser.Click += BtnUser_Click;
+            this.btnDatHang.Click += BtnDatHang_Click;
+            this.btnNhapHang.Click += BtnNhapHang_Click;
+            this.btnNhanVien.Click += BtnNhanVien_Click;
+        }
+
+        private void BtnNhanVien_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmNhanVien(user));
+        }
+
+        private void BtnNhapHang_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmQLNhapHang(user.Id));
+        }
+
+        private void BtnDatHang_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmQLDatHang(user));
         }
 
         private void BtnUser_Click(object sender, EventArgs e)
@@ -62,8 +83,6 @@ namespace App_QLWeb_DoDienTu
                 Application.Exit();
             }
         }
-
-
         public void OpenChildForm(Form childForm)
         {
             foreach (Form form in this.MdiChildren)
