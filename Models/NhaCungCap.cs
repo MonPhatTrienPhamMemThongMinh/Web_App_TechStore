@@ -24,7 +24,6 @@ namespace DoAnWebGamingGear.Models
 
         [StringLength(100)]
         public string email { get; set; }
-
-        public virtual ICollection<Products> Products { get; set; }
+        public virtual ICollection<PhieuDat> PhieuDats { get; set; }
     }
 }

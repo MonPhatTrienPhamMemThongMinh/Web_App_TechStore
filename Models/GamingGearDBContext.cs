@@ -34,6 +34,12 @@ namespace DoAnWebGamingGear.Models
                 .HasForeignKey(p => p.UserID)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<PhieuDat>()
+                .HasRequired(p => p.NhaCungCap)
+                .WithMany(ncc => ncc.PhieuDats)
+                .HasForeignKey(p => p.MaNhaCungCap)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<PhieuNhap>()
                 .HasRequired(p => p.AppUser)
                 .WithMany(u => u.PhieuNhaps)

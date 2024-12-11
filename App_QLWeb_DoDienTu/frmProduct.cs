@@ -212,7 +212,6 @@ namespace App_QLWeb_DoDienTu
                             ProductName = txtTenSanPham.Text.Trim(),
                             CategoryID = cbLoaiSP.SelectedValue.ToString(),
                             BrandID = cboTH.SelectedValue.ToString(),
-                            maNhaCungCap = cboNCC.SelectedValue.ToString(),
                             ProductPic = imagePath,
 
                             ProductDescription = txtMoTa.Text.Trim(),
@@ -307,7 +306,6 @@ namespace App_QLWeb_DoDienTu
                         ProductDescription = moTa,
                         CategoryID = cbLoaiSP.SelectedValue.ToString(),
                         BrandID = cboTH.SelectedValue.ToString(),
-                        maNhaCungCap = cboNCC.SelectedValue.ToString(),
                         Price = 0,
                         ProductPic = imagePath,
                         AvailabilityStatus = "OutOfStock",
@@ -449,7 +447,6 @@ namespace App_QLWeb_DoDienTu
                     txtBaoHanh.Text = product.BaoHanh;
                     cboTH.SelectedValue = product.BrandID;
                     cbLoaiSP.SelectedValue = product.CategoryID;
-                    cboNCC.SelectedValue = product.maNhaCungCap;
 
                     string absolutePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Pic"));
                     imagePath = Path.Combine(absolutePath, Path.GetFileName(product.ProductPic)).Replace("/", "\\");

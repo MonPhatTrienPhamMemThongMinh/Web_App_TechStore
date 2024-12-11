@@ -181,11 +181,6 @@ namespace App_QLWeb_DoDienTu
             if (e.RowIndex>=0)
             {
                 string maPhieuDat = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["maPhieuDat"].Value.ToString();
-                if (e.ColumnIndex == dtgvDanhSachPhieuDat.Columns["ghiChuKhongDuyet"].Index)
-                {
-                    frmGhiChu frmGhiChu = new frmGhiChu(maPhieuDat);
-                    frmGhiChu.ShowDialog();
-                }
                 string trangThai = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThai"].Value.ToString();
                 if (trangThai != "Đã duyệt")
                 {
@@ -293,8 +288,6 @@ namespace App_QLWeb_DoDienTu
                 if (result)
                 {
                     MessageBox.Show(this, "Không duyệt phiếu đặt thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    frmGhiChu frmGhiChu = new frmGhiChu(maPhieuDat);
-                    frmGhiChu.ShowDialog();
                     LoadData();
                 }
                 else

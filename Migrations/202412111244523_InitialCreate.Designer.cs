@@ -7,13 +7,13 @@ namespace DoAnWebGamingGear.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddFullNameToAppUser : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddFullNameToAppUser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202412090451597_AddFullNameToAppUser"; }
+            get { return "202412111244523_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

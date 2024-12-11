@@ -20,10 +20,6 @@ namespace BLL
         {
             return pdal.LocSanPhamTheoThuongHieu(maThuongHieu);
         }
-        public List<Product> LocSanPhamTheoNhaCungCap(string maNhaCungCap)
-        {
-            return pdal.LocSanPhamTheoNhaCungCap(maNhaCungCap);
-        }
         public List<Product> LocSanPhamTheoTrangThai(string trangThai)
         {
             return pdal.LocSanPhamTheoTrangThai(trangThai);
