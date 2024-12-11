@@ -40,14 +40,14 @@ namespace App_QLWeb_DoDienTu
         {
             if (isEnabled)
             {
-                button.RectColor = System.Drawing.Color.HotPink;
-                button.RectDisableColor = System.Drawing.Color.Fuchsia;
-                button.RectHoverColor = System.Drawing.Color.DeepPink;
-                button.RectPressColor = System.Drawing.Color.DeepPink;
+                button.RectColor = System.Drawing.Color.FromArgb(84, 160, 255);
+                button.RectDisableColor = System.Drawing.Color.FromArgb(84, 160, 255);
+                button.RectHoverColor = System.Drawing.Color.FromArgb(84, 160, 255);
+                button.RectPressColor = System.Drawing.Color.FromArgb(84, 160, 255);
                 button.RectSelectedColor = System.Drawing.Color.FromArgb(255, 128, 255);
-                button.FillColor = System.Drawing.Color.LightPink;
-                button.FillHoverColor = System.Drawing.Color.HotPink;
-                button.FillPressColor = System.Drawing.Color.DeepPink;
+                button.FillColor = System.Drawing.Color.FromArgb(84, 160, 255);
+                button.FillHoverColor = System.Drawing.Color.FromArgb(10, 189, 227);
+                button.FillPressColor = System.Drawing.Color.FromArgb(46, 134, 222);
                 button.ForeColor = System.Drawing.Color.White; // Màu chữ khi nút được kích hoạt
             }
             else

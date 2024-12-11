@@ -63,9 +63,9 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.lbTenNV);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(249, 0);
+            this.panel1.Location = new System.Drawing.Point(180, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(985, 40);
+            this.panel1.Size = new System.Drawing.Size(1054, 40);
             this.panel1.TabIndex = 3;
             // 
             // lbChucVu
@@ -85,7 +85,7 @@
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.btnClose.Location = new System.Drawing.Point(949, 0);
+            this.btnClose.Location = new System.Drawing.Point(1018, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(36, 40);
             this.btnClose.TabIndex = 7;
@@ -107,11 +107,12 @@
             // btnThongTinNhanVien
             // 
             this.btnThongTinNhanVien.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnThongTinNhanVien.FillColor = System.Drawing.Color.White;
             this.btnThongTinNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnThongTinNhanVien.Location = new System.Drawing.Point(0, 0);
             this.btnThongTinNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnThongTinNhanVien.Name = "btnThongTinNhanVien";
-            this.btnThongTinNhanVien.Size = new System.Drawing.Size(249, 82);
+            this.btnThongTinNhanVien.Size = new System.Drawing.Size(180, 82);
             this.btnThongTinNhanVien.TabIndex = 14;
             this.btnThongTinNhanVien.Text = "uiAvatar1";
             // 
@@ -131,7 +132,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(249, 788);
+            this.panel2.Size = new System.Drawing.Size(180, 788);
             this.panel2.TabIndex = 1;
             // 
             // btnNhanVien
@@ -144,7 +145,7 @@
             this.btnNhanVien.Location = new System.Drawing.Point(0, 658);
             this.btnNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(249, 64);
+            this.btnNhanVien.Size = new System.Drawing.Size(180, 64);
             this.btnNhanVien.TabIndex = 23;
             this.btnNhanVien.TabStop = false;
             this.btnNhanVien.Text = "Nhân viên";
@@ -159,7 +160,7 @@
             this.btnDatHang.Location = new System.Drawing.Point(0, 594);
             this.btnDatHang.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnDatHang.Name = "btnDatHang";
-            this.btnDatHang.Size = new System.Drawing.Size(249, 64);
+            this.btnDatHang.Size = new System.Drawing.Size(180, 64);
             this.btnDatHang.TabIndex = 22;
             this.btnDatHang.TabStop = false;
             this.btnDatHang.Text = "Đặt hàng";
@@ -174,7 +175,7 @@
             this.btnNhapHang.Location = new System.Drawing.Point(0, 530);
             this.btnNhapHang.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnNhapHang.Name = "btnNhapHang";
-            this.btnNhapHang.Size = new System.Drawing.Size(249, 64);
+            this.btnNhapHang.Size = new System.Drawing.Size(180, 64);
             this.btnNhapHang.TabIndex = 21;
             this.btnNhapHang.TabStop = false;
             this.btnNhapHang.Text = "Nhập hàng";
@@ -189,7 +190,7 @@
             this.btnUser.Location = new System.Drawing.Point(0, 466);
             this.btnUser.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(249, 64);
+            this.btnUser.Size = new System.Drawing.Size(180, 64);
             this.btnUser.TabIndex = 20;
             this.btnUser.TabStop = false;
             this.btnUser.Text = "Tài khoản";
@@ -204,7 +205,7 @@
             this.btnHoaDon.Location = new System.Drawing.Point(0, 402);
             this.btnHoaDon.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Size = new System.Drawing.Size(249, 64);
+            this.btnHoaDon.Size = new System.Drawing.Size(180, 64);
             this.btnHoaDon.TabIndex = 19;
             this.btnHoaDon.TabStop = false;
             this.btnHoaDon.Text = "Hóa đơn";
@@ -219,7 +220,7 @@
             this.btnSanPham.Location = new System.Drawing.Point(0, 338);
             this.btnSanPham.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSanPham.Name = "btnSanPham";
-            this.btnSanPham.Size = new System.Drawing.Size(249, 64);
+            this.btnSanPham.Size = new System.Drawing.Size(180, 64);
             this.btnSanPham.TabIndex = 18;
             this.btnSanPham.TabStop = false;
             this.btnSanPham.Text = "Sản phẩm";
@@ -234,7 +235,7 @@
             this.btnQLNhaCungCap.Location = new System.Drawing.Point(0, 274);
             this.btnQLNhaCungCap.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnQLNhaCungCap.Name = "btnQLNhaCungCap";
-            this.btnQLNhaCungCap.Size = new System.Drawing.Size(249, 64);
+            this.btnQLNhaCungCap.Size = new System.Drawing.Size(180, 64);
             this.btnQLNhaCungCap.TabIndex = 17;
             this.btnQLNhaCungCap.TabStop = false;
             this.btnQLNhaCungCap.Text = "Nhà cung cấp";
@@ -249,7 +250,7 @@
             this.btnDashboard.Location = new System.Drawing.Point(0, 210);
             this.btnDashboard.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(249, 64);
+            this.btnDashboard.Size = new System.Drawing.Size(180, 64);
             this.btnDashboard.TabIndex = 16;
             this.btnDashboard.TabStop = false;
             this.btnDashboard.Text = "Dashboard";
@@ -261,7 +262,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 82);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 128);
+            this.pictureBox1.Size = new System.Drawing.Size(180, 128);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
