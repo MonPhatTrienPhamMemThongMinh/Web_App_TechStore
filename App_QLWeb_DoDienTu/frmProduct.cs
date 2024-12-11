@@ -471,5 +471,53 @@ namespace App_QLWeb_DoDienTu
 
             return absolutePath;
         }
+
+        private void txtTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "")
+            {
+                txtTimKiem.Text = "Nhập mã hoặc tên sản phẩm để tìm kiếm";
+                txtTimKiem.ForeColor = Color.Silver;
+                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Italic);
+                LoadData();
+            }
+        }
+        private void txtTimKiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "Nhập mã hoặc tên sản phẩm để tìm kiếm")
+            {
+                txtTimKiem.Text = "";
+                txtTimKiem.ForeColor = Color.Black;
+                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Regular);
+            }
+        }
+        private void txtTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem phím nhấn có phải là Enter không
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Tự động click vào nút tìm kiếm
+                btnSearch.PerformClick();
+
+                // Ngăn chặn âm thanh bíp khi nhấn Enter
+                e.Handled = true;
+            }
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var results = pbll.SearchProducts(txtTimKiem.Text.Trim());
+
+            // Kiểm tra kết quả trả về có hợp lệ không
+            if (results != null && results.Count > 0)
+            {
+                // Cập nhật DataGridView với kết quả tìm kiếm
+                bindingSource.DataSource = results;
+            }
+            else
+            {
+                // Nếu không tìm thấy kết quả, thông báo cho người dùng
+                MessageBox.Show("Không tìm thấy sản phẩm nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
