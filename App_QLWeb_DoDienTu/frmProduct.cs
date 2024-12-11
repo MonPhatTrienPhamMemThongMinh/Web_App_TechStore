@@ -22,9 +22,8 @@ namespace App_QLWeb_DoDienTu
         BrandBLL bbll = new BrandBLL();
         SupplierBLL sbll = new SupplierBLL();
         private BindingSource bindingSource;
-        private string selectedFilePath;
-        private string saveFilePath;
         private string imagePath;
+
         private frmAdmin parentfrm;
         public frmProduct(frmAdmin parentfrm)
         {
@@ -36,85 +35,18 @@ namespace App_QLWeb_DoDienTu
             this.btnHuyBo.Click += BtnHuyBo_Click;
             this.btnThem.Click += BtnThem_Click;
             this.btnSua.Click += BtnSua_Click;
-            this.btnXoa.Click += BtnXoa_Click;
             this.dgvProducts.SelectionChanged += DgvProducts_SelectionChanged;
+
             this.btnBrand.Click += BtnBrand_Click;
             this.btnCategory.Click += BtnCategory_Click;
-            this.cbLocTheoLoai.SelectedIndexChanged += CbLocTheoLoaiSP_SelectedIndexChanged;
-            this.cbNhaCungCap.SelectedIndexChanged += CbNhaCungCap_SelectedIndexChanged;
-            this.cbThuongHieu.SelectedIndexChanged += CbThuongHieu_SelectedIndexChanged;
-            this.cbTrangThai.SelectedIndexChanged += CbTrangThai_SelectedIndexChanged;
         }
-        private void BtnXoa_Click(object sender, EventArgs e)
-        {
-            if (dgvProducts.SelectedRows.Count > 0)
-            {
-                DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa sản phẩm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (r == DialogResult.Yes)
-                {
-                    int soLuong = int.Parse(dgvProducts.SelectedRows[0].Cells["soLuong"].Value.ToString());
-                    if (soLuong > 0)
-                    {
-                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm còn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (pbll.KiemTraSanPhamCoThuocHoaDon(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString()))
-                    {
-                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm có trong hóa đơn bán hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (pbll.KiemTraSanPhamCoThuocPhieuDat(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString()))
-                    {
-                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm có trong phiếu đặt hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        bool isSuccess = pbll.DeleteProduct(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString());
-                        if (isSuccess)
-                        {
-                            MessageBox.Show(this, "Xóa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadData();
-                            ClearForm();
-                        }
-                        else
-                        {
-                            MessageBox.Show(this, "Xóa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                }
-            }
-        }
-        private void CbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbTrangThai.SelectedItem!=null)
-            {
-                bindingSource.DataSource = pbll.LocSanPhamTheoTrangThai(cbTrangThai.SelectedText);
-            }            
-        }
-        private void CbThuongHieu_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbThuongHieu.SelectedItem!=null)
-            {
-                bindingSource.DataSource = pbll.LocSanPhamTheoThuongHieu(cbThuongHieu.SelectedValue.ToString());
-            }            
-        }
-        private void CbNhaCungCap_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbNhaCungCap.SelectedItem!=null)
-            {
-                bindingSource.DataSource = pbll.LocSanPhamTheoNhaCungCap(cbNhaCungCap.SelectedValue.ToString());
-            }            
-        }
-        private void CbLocTheoLoaiSP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbLocTheoLoai.SelectedItem!=null)
-            {
-                bindingSource.DataSource = pbll.LocSanPhamTheoLoai(cbLocTheoLoai.SelectedValue.ToString());
-            }            
-        }
+
         private void BtnCategory_Click(object sender, EventArgs e)
         {
             frmCategory frm = new frmCategory(parentfrm);
             parentfrm.OpenChildForm(frm);
         }
+
         private void BtnBrand_Click(object sender, EventArgs e)
         {
             frmBrand frm = new frmBrand(parentfrm);
@@ -125,53 +57,110 @@ namespace App_QLWeb_DoDienTu
             if (dgvProducts.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvProducts.SelectedRows[0];
-                if (selectedRow.Cells["maSanPham"].Value != null)
+                if (selectedRow.Cells["ProductID"].Value != null)
                 {
-                    string productID = selectedRow.Cells["maSanPham"].Value.ToString();
+                    string productID = selectedRow.Cells["ProductID"].Value.ToString();
                     LoadProductDetail(productID);
                 }
             }
         }
-        private bool IsImageFile(string filePath)
-        {
-            string[] validExtensions = { ".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".webp" };
-            string fileExtension = Path.GetExtension(filePath)?.ToLower();
 
-            return Array.Exists(validExtensions, ext => ext == fileExtension);
-        }
         private void BtnChonAnh_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp|All Files|*.*";
-                openFileDialog.Title = "Chọn hình ảnh sản phẩm";
+                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                ofd.Title = "Chọn Hình Ảnh Logo";
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    // Đường dẫn file đã chọn
-                    selectedFilePath = openFileDialog.FileName;
+                    string selectedFilePath = ofd.FileName;
 
-                    // Đường dẫn thư mục lưu ảnh (thiết lập sẵn)
-                    string relativeFolder = @"..\..\..\Pic";
-                    string destinationFolder = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFolder));
-
-                    // Tạo thư mục nếu chưa tồn tại
-                    Directory.CreateDirectory(destinationFolder);
-                    // Đường dẫn file lưu
-                    string fileName = Path.GetFileName(selectedFilePath); // Lấy tên file gốc
-                    saveFilePath = Path.Combine(destinationFolder, fileName); // Tạo đường dẫn đầy đủ                    
-                    imagePath = Path.Combine("Pic", fileName);
-                    if (IsImageFile(selectedFilePath))
+                    // Kiểm tra kích thước ảnh (<=5MB)
+                    FileInfo fileInfo = new FileInfo(selectedFilePath);
+                    const long maxFileSize = 5 * 1024 * 1024; // 5MB
+                    if (fileInfo.Length > maxFileSize)
                     {
-                        hinhAnh.Image = Image.FromFile(selectedFilePath);
+                        MessageBox.Show("Kích thước hình ảnh không được vượt quá 5MB.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Đường dẫn thư mục Pic của dự án web
+                    string picFolder = GetWebProjectPicFolderPath();
+
+                    if (!Directory.Exists(picFolder)) // Kiểm tra và tạo thư mục PicBrand nếu chưa tồn tại
+                    {
+                        Directory.CreateDirectory(picFolder);
+                    }
+
+                    string fileName = Path.GetFileName(selectedFilePath); // Lấy tên file từ đường dẫn
+                    string destinationPath = Path.Combine(picFolder, fileName); // Đường dẫn đích tới thư mục PicBrand của web
+
+                    // Sao chép hình ảnh vào thư mục PicBrand nếu không nằm trong thư mục PicBrand
+                    if (!selectedFilePath.StartsWith(picFolder, StringComparison.OrdinalIgnoreCase))
+                    {
+                        try
+                        {
+                            if (!File.Exists(destinationPath))
+                            {
+                                File.Copy(selectedFilePath, destinationPath);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Lỗi sao chép hình ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(this, "Vui lòng chọn file ảnh hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Nếu hình ảnh đã nằm trong thư mục Pic, sử dụng đường dẫn hiện tại
+                        destinationPath = selectedFilePath;
+                    }
+
+                    string finalImagePath = destinationPath;
+
+                    // Dùng Image.FromStream để tránh khóa file
+                    try
+                    {
+                        if (hinhAnh.Image != null)
+                        {
+                            hinhAnh.Image.Dispose();
+                            hinhAnh.Image = null;
+                        }
+
+                        // Tải hình ảnh từ Pic folder
+                        using (FileStream fs = new FileStream(finalImagePath, FileMode.Open, FileAccess.Read))
+                        {
+                            Image img = Image.FromStream(fs);
+                            hinhAnh.Image = new Bitmap(img);
+                        }
+
+                        // Set productImagePath sau khi tải thành công
+                        imagePath = Path.Combine("Pic", Path.GetFileName(finalImagePath)).Replace("\\", "/");
+                    }
+                    catch (OutOfMemoryException)
+                    {
+                        MessageBox.Show("Định dạng hình ảnh không hợp lệ hoặc hình ảnh quá lớn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        imagePath = null;
+                        return;
+                    }
+                    catch (ArgumentException)
+                    {
+                        MessageBox.Show("Hình ảnh không hợp lệ hoặc bị hỏng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        imagePath = null;
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi tải hình ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        imagePath = null;
+                        return;
                     }
                 }
             }
         }
+
         private void BtnHuyBo_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -189,6 +178,12 @@ namespace App_QLWeb_DoDienTu
             btnHuyBo.Enabled = false;
             btnHuyBo.BackColor = Color.DarkGray;
         }
+
+        private void BtnRemoveBrand_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void BtnSua_Click(object sender, EventArgs e)
         {
             if (txtMaSanPham.Text != string.Empty)
@@ -209,20 +204,8 @@ namespace App_QLWeb_DoDienTu
                 {
                     if (ValidateInput())
                     {
-                        if (selectedFilePath != null && saveFilePath != null)
-                        {
-                            try
-                            {
-                                // Sao chép file đến nơi lưu
-                                File.Copy(selectedFilePath, saveFilePath, overwrite: true);
-                                hinhAnh.Image = Image.FromFile(saveFilePath);
-                                MessageBox.Show($"Đã lưu ảnh thành công tại {saveFilePath}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show($"Lỗi lưu ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
+                        string updatedProductPic = string.IsNullOrEmpty(imagePath) ? hinhAnh.Tag?.ToString() : imagePath;
+
                         Product newProduct = new Product()
                         {
                             ProductID = txtMaSanPham.Text.Trim(),
@@ -231,7 +214,8 @@ namespace App_QLWeb_DoDienTu
                             BrandID = cboTH.SelectedValue.ToString(),
                             maNhaCungCap = cboNCC.SelectedValue.ToString(),
                             ProductPic = imagePath,
-                            ProductDescription = txtMoTa.Texts.Trim(),
+
+                            ProductDescription = txtMoTa.Text.Trim(),
                             BaoHanh = txtBaoHanh.Text.Trim(),
                         };
                         try
@@ -313,19 +297,9 @@ namespace App_QLWeb_DoDienTu
             {
                 if (ValidateInput())
                 {
-                    try
-                    {
-                        // Sao chép file đến nơi lưu
-                        File.Copy(selectedFilePath, saveFilePath, overwrite: true);
-                        MessageBox.Show($"Đã lưu ảnh thành công tại {saveFilePath}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Lỗi lưu ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                     string maSanPham = txtMaSanPham.Text.Trim();
                     string tenSanPham = txtTenSanPham.Text.Trim();
-                    string moTa = txtMoTa.Texts.Trim();
+                    string moTa = txtMoTa.Text.Trim();
                     Product newProduct = new Product
                     {
                         ProductID = maSanPham,
@@ -371,11 +345,13 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
+
         private void LoadData()
         {
             List<Product> danhSachSanPham = pbll.GetAllProducts();
             bindingSource.DataSource = danhSachSanPham;
             dgvProducts.DataSource = bindingSource;
+            dgvProducts.Columns["ProductPic"].Visible = false;
             dgvProducts.Columns["Category"].Visible = false;
             dgvProducts.Columns["Brand"].Visible = false;
             dgvProducts.Columns["NhaCungCap"].Visible = false;
@@ -392,35 +368,28 @@ namespace App_QLWeb_DoDienTu
             cbLocTheoLoai.DataSource = ctbll.GetAllCategories();
             cbLocTheoLoai.ValueMember = "CategoryID";
             cbLocTheoLoai.DisplayMember = "CategoryName";
-            cbLocTheoLoai.SelectedIndex = 0;
+
+            cbTrangThai.SelectedIndex = 0;
         }
         private void LoadCBThuongHieu()
         {
             cboTH.DataSource = bbll.GetAllBrands();
             cboTH.ValueMember = "BrandID";
             cboTH.DisplayMember = "BrandName";
-
-            cbThuongHieu.DataSource = bbll.GetAllBrands();
-            cbThuongHieu.ValueMember = "BrandID";
-            cbThuongHieu.DisplayMember = "BrandName";
-            cbThuongHieu.SelectedIndex = 0;
         }
         private void LoadCBNhaCungCap()
         {
             cboNCC.DataSource = sbll.getAllSuppliers();
             cboNCC.ValueMember = "maNhaCungCap";
             cboNCC.DisplayMember = "tenNhaCungCap";
-
-            cbNhaCungCap.DataSource = sbll.getAllSuppliers();
-            cbNhaCungCap.ValueMember = "maNhaCungCap";
-            cbNhaCungCap.DisplayMember = "tenNhaCungCap";
-            cbNhaCungCap.SelectedIndex = 0;
         }
+
         private void EnableDataGridView(bool enable)
         {
             dgvProducts.Enabled = enable;
             dgvProducts.DefaultCellStyle.BackColor = enable ? Color.White : Color.LightGray;
         }
+
         private bool ValidateInput()
         {
             if (string.IsNullOrWhiteSpace(txtMaSanPham.Text))
@@ -444,13 +413,14 @@ namespace App_QLWeb_DoDienTu
         {
             txtMaSanPham.Text = "";
             txtTenSanPham.Text = "";
-            txtMoTa.Texts = "";
+            txtMoTa.Text = "";
             hinhAnh.Image = null;
             cboTH.SelectedIndex = 0;
             cbLoaiSP.SelectedIndex = 0;
             cboNCC.SelectedIndex = 0;
             txtBaoHanh.Text = "";
         }
+
         private void FrmProduct_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -475,7 +445,7 @@ namespace App_QLWeb_DoDienTu
                 {
                     txtMaSanPham.Text = product.ProductID;
                     txtTenSanPham.Text = product.ProductName;
-                    txtMoTa.Texts = product.ProductDescription;
+                    txtMoTa.Text = product.ProductDescription;
                     txtBaoHanh.Text = product.BaoHanh;
                     cboTH.SelectedValue = product.BrandID;
                     cbLoaiSP.SelectedValue = product.CategoryID;
@@ -488,55 +458,18 @@ namespace App_QLWeb_DoDienTu
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi tải chi tiết sản phẩm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi tải chi tiết hãng sản phẩm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void txtTimKiem_Leave(object sender, EventArgs e)
+        private string GetWebProjectPicFolderPath()
         {
-            if (txtTimKiem.Text == "")
-            {
-                txtTimKiem.Text = "Nhập mã hoặc tên sản phẩm để tìm kiếm";
-                txtTimKiem.ForeColor = Color.Silver;
-                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Italic);
-                LoadData();
-            }
-        }
-        private void txtTimKiem_Enter(object sender, EventArgs e)
-        {
-            if (txtTimKiem.Text == "Nhập mã hoặc tên sản phẩm để tìm kiếm")
-            {
-                txtTimKiem.Text = "";
-                txtTimKiem.ForeColor = Color.Black;
-                txtTimKiem.Font = new Font(txtTimKiem.Font, FontStyle.Regular);
-            }
-        }
-        private void txtTimKiem_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Kiểm tra xem phím nhấn có phải là Enter không
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                // Tự động click vào nút tìm kiếm
-                btnSearch.PerformClick();
+            // Đường dẫn tương đối từ thư mục gốc của dự án Windows Forms tới thư mục Pic của dự án web
+            string relativePath = @"..\..\..\Pic";
 
-                // Ngăn chặn âm thanh bíp khi nhấn Enter
-                e.Handled = true;
-            }
-        }
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            var results = pbll.SearchProducts(txtTimKiem.Text.Trim());
+            // Kết hợp với đường dẫn gốc của ứng dụng để tạo đường dẫn tuyệt đối
+            string absolutePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
 
-            // Kiểm tra kết quả trả về có hợp lệ không
-            if (results != null && results.Count > 0)
-            {
-                // Cập nhật DataGridView với kết quả tìm kiếm
-                bindingSource.DataSource = results;
-            }
-            else
-            {
-                // Nếu không tìm thấy kết quả, thông báo cho người dùng
-                MessageBox.Show("Không tìm thấy sản phẩm nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            return absolutePath;
         }
     }
 }
