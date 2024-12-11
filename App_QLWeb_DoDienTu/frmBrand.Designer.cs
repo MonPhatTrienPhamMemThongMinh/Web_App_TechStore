@@ -28,18 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiPanel2 = new Sunny.UI.UIPanel();
             this.btnBack = new Sunny.UI.UISymbolButton();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiPanel3 = new Sunny.UI.UIPanel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnChonAnhLogo = new Sunny.UI.UIButton();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.pbBrandLogo = new System.Windows.Forms.PictureBox();
+            this.uiLabel5 = new Sunny.UI.UILabel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.btnChonAnhBack = new Sunny.UI.UIButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pbBackgroundBrand = new System.Windows.Forms.PictureBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel30 = new System.Windows.Forms.Panel();
             this.panel35 = new System.Windows.Forms.Panel();
             this.txtBrandDescription = new Sunny.UI.UITextBox();
@@ -62,33 +77,18 @@
             this.btnSua = new Sunny.UI.UIButton();
             this.btnThem = new Sunny.UI.UIButton();
             this.dgvBrand = new Sunny.UI.UIDataGridView();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnChonAnhBack = new Sunny.UI.UIButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pbBackgroundBrand = new System.Windows.Forms.PictureBox();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.btnChonAnhLogo = new Sunny.UI.UIButton();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.pbBrandLogo = new System.Windows.Forms.PictureBox();
-            this.uiLabel5 = new Sunny.UI.UILabel();
             this.uiPanel2.SuspendLayout();
             this.uiPanel3.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBrandLogo)).BeginInit();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackgroundBrand)).BeginInit();
             this.panel30.SuspendLayout();
             this.panel35.SuspendLayout();
             this.panel32.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBrand)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBackgroundBrand)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBrandLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // uiPanel2
@@ -176,17 +176,94 @@
             this.panel6.Controls.Add(this.panel10);
             this.panel6.Controls.Add(this.panel9);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(430, 17);
+            this.panel6.Location = new System.Drawing.Point(365, 17);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(457, 293);
+            this.panel6.Size = new System.Drawing.Size(461, 293);
             this.panel6.TabIndex = 97;
+            // 
+            // btnChonAnhLogo
+            // 
+            this.btnChonAnhLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChonAnhLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChonAnhLogo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.btnChonAnhLogo.FillColor2 = System.Drawing.Color.HotPink;
+            this.btnChonAnhLogo.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhLogo.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnChonAnhLogo.Location = new System.Drawing.Point(269, 17);
+            this.btnChonAnhLogo.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnChonAnhLogo.Name = "btnChonAnhLogo";
+            this.btnChonAnhLogo.Radius = 1;
+            this.btnChonAnhLogo.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.btnChonAnhLogo.RectDisableColor = System.Drawing.Color.DarkGray;
+            this.btnChonAnhLogo.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhLogo.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhLogo.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhLogo.Size = new System.Drawing.Size(182, 41);
+            this.btnChonAnhLogo.TabIndex = 120;
+            this.btnChonAnhLogo.Text = "Chọn ảnh";
+            this.btnChonAnhLogo.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            // 
+            // panel13
+            // 
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel13.Location = new System.Drawing.Point(269, 0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(182, 17);
+            this.panel13.TabIndex = 119;
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel12.Location = new System.Drawing.Point(451, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(10, 145);
+            this.panel12.TabIndex = 118;
+            // 
+            // panel14
+            // 
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel14.Location = new System.Drawing.Point(259, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(10, 145);
+            this.panel14.TabIndex = 117;
+            // 
+            // pbBrandLogo
+            // 
+            this.pbBrandLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbBrandLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbBrandLogo.Location = new System.Drawing.Point(108, 0);
+            this.pbBrandLogo.Name = "pbBrandLogo";
+            this.pbBrandLogo.Size = new System.Drawing.Size(151, 145);
+            this.pbBrandLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbBrandLogo.TabIndex = 116;
+            this.pbBrandLogo.TabStop = false;
+            // 
+            // uiLabel5
+            // 
+            this.uiLabel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel5.Location = new System.Drawing.Point(10, 0);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(98, 145);
+            this.uiLabel5.TabIndex = 115;
+            this.uiLabel5.Text = "Background thương hiệu:";
+            // 
+            // panel10
+            // 
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel10.Location = new System.Drawing.Point(10, 145);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(451, 148);
+            this.panel10.TabIndex = 108;
             // 
             // panel9
             // 
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(24, 293);
+            this.panel9.Size = new System.Drawing.Size(10, 293);
             this.panel9.TabIndex = 107;
             // 
             // panel11
@@ -200,10 +277,95 @@
             this.panel11.Controls.Add(this.panel2);
             this.panel11.Controls.Add(this.panel8);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel11.Location = new System.Drawing.Point(887, 17);
+            this.panel11.Location = new System.Drawing.Point(826, 17);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(406, 293);
+            this.panel11.Size = new System.Drawing.Size(467, 293);
             this.panel11.TabIndex = 94;
+            // 
+            // btnChonAnhBack
+            // 
+            this.btnChonAnhBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChonAnhBack.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChonAnhBack.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.btnChonAnhBack.FillColor2 = System.Drawing.Color.HotPink;
+            this.btnChonAnhBack.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhBack.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnChonAnhBack.Location = new System.Drawing.Point(255, 17);
+            this.btnChonAnhBack.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnChonAnhBack.Name = "btnChonAnhBack";
+            this.btnChonAnhBack.Radius = 1;
+            this.btnChonAnhBack.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.btnChonAnhBack.RectDisableColor = System.Drawing.Color.DarkGray;
+            this.btnChonAnhBack.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhBack.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhBack.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnChonAnhBack.Size = new System.Drawing.Size(202, 41);
+            this.btnChonAnhBack.TabIndex = 127;
+            this.btnChonAnhBack.Text = "Chọn ảnh";
+            this.btnChonAnhBack.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(255, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(202, 17);
+            this.panel3.TabIndex = 126;
+            // 
+            // panel7
+            // 
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(457, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(10, 145);
+            this.panel7.TabIndex = 125;
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(245, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(10, 145);
+            this.panel4.TabIndex = 124;
+            // 
+            // pbBackgroundBrand
+            // 
+            this.pbBackgroundBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbBackgroundBrand.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbBackgroundBrand.Location = new System.Drawing.Point(106, 0);
+            this.pbBackgroundBrand.Name = "pbBackgroundBrand";
+            this.pbBackgroundBrand.Size = new System.Drawing.Size(139, 145);
+            this.pbBackgroundBrand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbBackgroundBrand.TabIndex = 123;
+            this.pbBackgroundBrand.TabStop = false;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.uiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel2.Location = new System.Drawing.Point(10, 0);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(96, 145);
+            this.uiLabel2.TabIndex = 122;
+            this.uiLabel2.Text = "Logo thương hiệu:";
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(10, 145);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(457, 148);
+            this.panel2.TabIndex = 116;
+            // 
+            // panel8
+            // 
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(10, 293);
+            this.panel8.TabIndex = 115;
             // 
             // panel30
             // 
@@ -215,7 +377,7 @@
             this.panel30.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel30.Location = new System.Drawing.Point(0, 17);
             this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(430, 293);
+            this.panel30.Size = new System.Drawing.Size(365, 293);
             this.panel30.TabIndex = 93;
             // 
             // panel35
@@ -226,7 +388,7 @@
             this.panel35.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel35.Location = new System.Drawing.Point(0, 102);
             this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(430, 191);
+            this.panel35.Size = new System.Drawing.Size(365, 191);
             this.panel35.TabIndex = 90;
             // 
             // txtBrandDescription
@@ -234,7 +396,7 @@
             this.txtBrandDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBrandDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBrandDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtBrandDescription.Location = new System.Drawing.Point(136, 0);
+            this.txtBrandDescription.Location = new System.Drawing.Point(95, 0);
             this.txtBrandDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBrandDescription.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtBrandDescription.Multiline = true;
@@ -243,7 +405,7 @@
             this.txtBrandDescription.Radius = 1;
             this.txtBrandDescription.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.txtBrandDescription.ShowText = false;
-            this.txtBrandDescription.Size = new System.Drawing.Size(294, 191);
+            this.txtBrandDescription.Size = new System.Drawing.Size(270, 191);
             this.txtBrandDescription.TabIndex = 109;
             this.txtBrandDescription.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.txtBrandDescription.Watermark = "";
@@ -253,9 +415,9 @@
             this.uiLabel15.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel15.Location = new System.Drawing.Point(24, 0);
+            this.uiLabel15.Location = new System.Drawing.Point(10, 0);
             this.uiLabel15.Name = "uiLabel15";
-            this.uiLabel15.Size = new System.Drawing.Size(112, 191);
+            this.uiLabel15.Size = new System.Drawing.Size(85, 191);
             this.uiLabel15.TabIndex = 107;
             this.uiLabel15.Text = "Mô tả:";
             // 
@@ -264,7 +426,7 @@
             this.panel36.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel36.Location = new System.Drawing.Point(0, 0);
             this.panel36.Name = "panel36";
-            this.panel36.Size = new System.Drawing.Size(24, 191);
+            this.panel36.Size = new System.Drawing.Size(10, 191);
             this.panel36.TabIndex = 106;
             // 
             // panel37
@@ -272,7 +434,7 @@
             this.panel37.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel37.Location = new System.Drawing.Point(0, 92);
             this.panel37.Name = "panel37";
-            this.panel37.Size = new System.Drawing.Size(430, 10);
+            this.panel37.Size = new System.Drawing.Size(365, 10);
             this.panel37.TabIndex = 88;
             // 
             // panel32
@@ -283,7 +445,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 51);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(430, 41);
+            this.panel32.Size = new System.Drawing.Size(365, 41);
             this.panel32.TabIndex = 87;
             // 
             // txtBrandName
@@ -291,7 +453,7 @@
             this.txtBrandName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBrandName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBrandName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtBrandName.Location = new System.Drawing.Point(136, 0);
+            this.txtBrandName.Location = new System.Drawing.Point(95, 0);
             this.txtBrandName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBrandName.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtBrandName.Name = "txtBrandName";
@@ -299,7 +461,7 @@
             this.txtBrandName.Radius = 1;
             this.txtBrandName.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.txtBrandName.ShowText = false;
-            this.txtBrandName.Size = new System.Drawing.Size(294, 41);
+            this.txtBrandName.Size = new System.Drawing.Size(270, 41);
             this.txtBrandName.TabIndex = 108;
             this.txtBrandName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtBrandName.Watermark = "";
@@ -309,9 +471,9 @@
             this.uiLabel16.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel16.Location = new System.Drawing.Point(24, 0);
+            this.uiLabel16.Location = new System.Drawing.Point(10, 0);
             this.uiLabel16.Name = "uiLabel16";
-            this.uiLabel16.Size = new System.Drawing.Size(112, 41);
+            this.uiLabel16.Size = new System.Drawing.Size(85, 41);
             this.uiLabel16.TabIndex = 107;
             this.uiLabel16.Text = "Tên thương hiệu:";
             this.uiLabel16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -321,7 +483,7 @@
             this.panel33.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel33.Location = new System.Drawing.Point(0, 0);
             this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(24, 41);
+            this.panel33.Size = new System.Drawing.Size(10, 41);
             this.panel33.TabIndex = 106;
             // 
             // panel34
@@ -329,7 +491,7 @@
             this.panel34.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel34.Location = new System.Drawing.Point(0, 41);
             this.panel34.Name = "panel34";
-            this.panel34.Size = new System.Drawing.Size(430, 10);
+            this.panel34.Size = new System.Drawing.Size(365, 10);
             this.panel34.TabIndex = 86;
             // 
             // panel31
@@ -340,7 +502,7 @@
             this.panel31.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel31.Location = new System.Drawing.Point(0, 0);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(430, 41);
+            this.panel31.Size = new System.Drawing.Size(365, 41);
             this.panel31.TabIndex = 84;
             // 
             // txtBrandID
@@ -349,7 +511,7 @@
             this.txtBrandID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBrandID.Enabled = false;
             this.txtBrandID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtBrandID.Location = new System.Drawing.Point(136, 0);
+            this.txtBrandID.Location = new System.Drawing.Point(95, 0);
             this.txtBrandID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBrandID.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtBrandID.Name = "txtBrandID";
@@ -357,7 +519,7 @@
             this.txtBrandID.Radius = 1;
             this.txtBrandID.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.txtBrandID.ShowText = false;
-            this.txtBrandID.Size = new System.Drawing.Size(294, 41);
+            this.txtBrandID.Size = new System.Drawing.Size(270, 41);
             this.txtBrandID.TabIndex = 108;
             this.txtBrandID.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtBrandID.Watermark = "";
@@ -367,9 +529,9 @@
             this.uiLabel17.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiLabel17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel17.Location = new System.Drawing.Point(24, 0);
+            this.uiLabel17.Location = new System.Drawing.Point(10, 0);
             this.uiLabel17.Name = "uiLabel17";
-            this.uiLabel17.Size = new System.Drawing.Size(112, 41);
+            this.uiLabel17.Size = new System.Drawing.Size(85, 41);
             this.uiLabel17.TabIndex = 107;
             this.uiLabel17.Text = "Mã thương hiệu:";
             this.uiLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -379,7 +541,7 @@
             this.panel47.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel47.Location = new System.Drawing.Point(0, 0);
             this.panel47.Name = "panel47";
-            this.panel47.Size = new System.Drawing.Size(24, 41);
+            this.panel47.Size = new System.Drawing.Size(10, 41);
             this.panel47.TabIndex = 106;
             // 
             // panel5
@@ -491,29 +653,29 @@
             // 
             this.dgvBrand.AllowUserToAddRows = false;
             this.dgvBrand.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.dgvBrand.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.dgvBrand.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvBrand.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvBrand.BackgroundColor = System.Drawing.Color.White;
             this.dgvBrand.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBrand.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBrand.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvBrand.ColumnHeadersHeight = 32;
             this.dgvBrand.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBrand.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBrand.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvBrand.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBrand.EnableHeadersVisualStyles = false;
             this.dgvBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -523,19 +685,19 @@
             this.dgvBrand.Name = "dgvBrand";
             this.dgvBrand.ReadOnly = true;
             this.dgvBrand.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBrand.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBrand.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvBrand.RowHeadersWidth = 51;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(189)))), ((int)(((byte)(227)))));
-            this.dgvBrand.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(189)))), ((int)(((byte)(227)))));
+            this.dgvBrand.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvBrand.RowTemplate.Height = 24;
             this.dgvBrand.ScrollBarBackColor = System.Drawing.SystemColors.Control;
             this.dgvBrand.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(219)))), ((int)(((byte)(251)))));
@@ -546,168 +708,6 @@
             this.dgvBrand.Size = new System.Drawing.Size(1293, 231);
             this.dgvBrand.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dgvBrand.TabIndex = 23;
-            // 
-            // panel8
-            // 
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(10, 293);
-            this.panel8.TabIndex = 115;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(10, 145);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(396, 148);
-            this.panel2.TabIndex = 116;
-            // 
-            // btnChonAnhBack
-            // 
-            this.btnChonAnhBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChonAnhBack.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChonAnhBack.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnChonAnhBack.FillColor2 = System.Drawing.Color.HotPink;
-            this.btnChonAnhBack.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhBack.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnChonAnhBack.Location = new System.Drawing.Point(255, 17);
-            this.btnChonAnhBack.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnChonAnhBack.Name = "btnChonAnhBack";
-            this.btnChonAnhBack.Radius = 1;
-            this.btnChonAnhBack.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnChonAnhBack.RectDisableColor = System.Drawing.Color.DarkGray;
-            this.btnChonAnhBack.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhBack.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhBack.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhBack.Size = new System.Drawing.Size(141, 41);
-            this.btnChonAnhBack.TabIndex = 127;
-            this.btnChonAnhBack.Text = "Chọn ảnh";
-            this.btnChonAnhBack.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(255, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(141, 17);
-            this.panel3.TabIndex = 126;
-            // 
-            // panel7
-            // 
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(396, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(10, 145);
-            this.panel7.TabIndex = 125;
-            // 
-            // panel4
-            // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(245, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 145);
-            this.panel4.TabIndex = 124;
-            // 
-            // pbBackgroundBrand
-            // 
-            this.pbBackgroundBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbBackgroundBrand.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbBackgroundBrand.Location = new System.Drawing.Point(106, 0);
-            this.pbBackgroundBrand.Name = "pbBackgroundBrand";
-            this.pbBackgroundBrand.Size = new System.Drawing.Size(139, 145);
-            this.pbBackgroundBrand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbBackgroundBrand.TabIndex = 123;
-            this.pbBackgroundBrand.TabStop = false;
-            // 
-            // uiLabel2
-            // 
-            this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(10, 0);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(96, 145);
-            this.uiLabel2.TabIndex = 122;
-            this.uiLabel2.Text = "Logo thương hiệu:";
-            // 
-            // panel10
-            // 
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(24, 145);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(433, 148);
-            this.panel10.TabIndex = 108;
-            // 
-            // btnChonAnhLogo
-            // 
-            this.btnChonAnhLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChonAnhLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChonAnhLogo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnChonAnhLogo.FillColor2 = System.Drawing.Color.HotPink;
-            this.btnChonAnhLogo.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhLogo.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnChonAnhLogo.Location = new System.Drawing.Point(304, 17);
-            this.btnChonAnhLogo.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnChonAnhLogo.Name = "btnChonAnhLogo";
-            this.btnChonAnhLogo.Radius = 1;
-            this.btnChonAnhLogo.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnChonAnhLogo.RectDisableColor = System.Drawing.Color.DarkGray;
-            this.btnChonAnhLogo.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhLogo.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhLogo.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
-            this.btnChonAnhLogo.Size = new System.Drawing.Size(143, 41);
-            this.btnChonAnhLogo.TabIndex = 120;
-            this.btnChonAnhLogo.Text = "Chọn ảnh";
-            this.btnChonAnhLogo.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            // 
-            // panel13
-            // 
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel13.Location = new System.Drawing.Point(304, 0);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(143, 17);
-            this.panel13.TabIndex = 119;
-            // 
-            // panel12
-            // 
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel12.Location = new System.Drawing.Point(447, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(10, 145);
-            this.panel12.TabIndex = 118;
-            // 
-            // panel14
-            // 
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel14.Location = new System.Drawing.Point(294, 0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(10, 145);
-            this.panel14.TabIndex = 117;
-            // 
-            // pbBrandLogo
-            // 
-            this.pbBrandLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbBrandLogo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbBrandLogo.Location = new System.Drawing.Point(143, 0);
-            this.pbBrandLogo.Name = "pbBrandLogo";
-            this.pbBrandLogo.Size = new System.Drawing.Size(151, 145);
-            this.pbBrandLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbBrandLogo.TabIndex = 116;
-            this.pbBrandLogo.TabStop = false;
-            // 
-            // uiLabel5
-            // 
-            this.uiLabel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel5.Location = new System.Drawing.Point(24, 0);
-            this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(119, 145);
-            this.uiLabel5.TabIndex = 115;
-            this.uiLabel5.Text = "Background thương hiệu:";
             // 
             // frmBrand
             // 
@@ -726,15 +726,15 @@
             this.uiPanel2.ResumeLayout(false);
             this.uiPanel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbBrandLogo)).EndInit();
             this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackgroundBrand)).EndInit();
             this.panel30.ResumeLayout(false);
             this.panel35.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBrand)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBackgroundBrand)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBrandLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -20,8 +20,7 @@ namespace ModuleDN
         private UserRoleBLL urbll;
 
         public event EventHandler<LoginEventArgs> LoginSuccess;
-        public event EventHandler<LoginFailedEventArgs> LoginFailed;
-
+        public event EventHandler<LoginFailedEventArgs> LoginFailed;       
         public ucDangNhap()
         {
             InitializeComponent();
@@ -65,8 +64,8 @@ namespace ModuleDN
                     return;
                 }
 
-                List<AspNetRole> roles = rbll.GetRolesByUserId(user.Id);
-                if (roles == null || roles.Count == 0)
+                AspNetRole roles = rbll.GetRolesByUserId(user.Id);
+                if (roles == null)
                 {
                     LoginFailed?.Invoke(this, new LoginFailedEventArgs("Người dùng không có vai trò nào."));
                     return; 
@@ -85,9 +84,9 @@ namespace ModuleDN
     public class LoginEventArgs : EventArgs
     {
         public AspNetUser LoggedInUser { get; private set; }
-        public List<AspNetRole> UserRoles { get; private set; }
+        public AspNetRole UserRoles { get; private set; }
     
-        public LoginEventArgs(AspNetUser loggedInUser, List<AspNetRole> userRoles)
+        public LoginEventArgs(AspNetUser loggedInUser, AspNetRole userRoles)
         {
             LoggedInUser = loggedInUser;
             UserRoles = userRoles;

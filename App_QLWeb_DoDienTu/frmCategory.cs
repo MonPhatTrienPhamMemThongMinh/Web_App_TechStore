@@ -37,13 +37,11 @@ namespace App_QLWeb_DoDienTu
             this.btnChonAnhLogo.Click += BtnCategoryLogo_Click;
             this.btnChonAnhTitle.Click += BtnCategoryPic_Click;
         }
-
         private void BtnBack_Click(object sender, EventArgs e)
         {
             frmProduct frm = new frmProduct(parentfrm);
             parentfrm.OpenChildForm(frm);
         }
-
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -61,25 +59,22 @@ namespace App_QLWeb_DoDienTu
             btnHuyBo.Enabled = false;
             btnHuyBo.BackColor = Color.DarkGray;
         }
-
         private void UcFormCategory_Load(object sender, EventArgs e)
         {
             Load_CategoryData();
         }
-
         private void DgvCategory_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvCategory.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvCategory.SelectedRows[0];
-                if (selectedRow.Cells["CategoryID"].Value != null)
+                if (selectedRow.Cells["maLoaiSanPham"].Value != null)
                 {
-                    string categoryId = selectedRow.Cells["CategoryID"].Value.ToString();
+                    string categoryId = selectedRow.Cells["maLoaiSanPham"].Value.ToString();
                     LoadCategoryDetail(categoryId);
                 }
             }
         }
-
         private void BtnAddCategory_Click(object sender, EventArgs e)
         {
             if (btnThem.Text == "Thêm")
@@ -144,7 +139,6 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void BtnEditCategory_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtCategoryID.Text))
@@ -181,7 +175,6 @@ namespace App_QLWeb_DoDienTu
                             CategoryAvatar = updatedCategoryLogo,
                             CategoryPic = updatedCategoryTitle
                         };
-
                         try
                         {
                             // Gọi repository để cập nhật thông tin
@@ -217,12 +210,10 @@ namespace App_QLWeb_DoDienTu
                 MessageBox.Show("Chọn loại sản phẩm bạn muốn sửa", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void BtnRemoveCategory_Click(object sender, EventArgs e)
         {
 
         }
-
         private void BtnCategoryBackground_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -312,7 +303,6 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void BtnCategoryLogo_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -402,7 +392,6 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void BtnCategoryPic_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -492,7 +481,6 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void EnableTextBox(bool enable)
         {
             txtCategoryDescription.Enabled = enable;
@@ -528,7 +516,6 @@ namespace App_QLWeb_DoDienTu
                 button.ForeColor = System.Drawing.Color.Gray;
             }
         }
-
         private void ClearForm()
         {
             txtCategoryID.Text = "";
@@ -538,7 +525,6 @@ namespace App_QLWeb_DoDienTu
             pbCategoryLogo.Image = null;
             pbCategoryTitle.Image = null;
         }
-
         private void Load_CategoryData()
         {
             try
@@ -552,13 +538,11 @@ namespace App_QLWeb_DoDienTu
                 MessageBox.Show($"Lỗi tải mặt hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void EnableDataGridView(bool enable)
         {
             dgvCategory.Enabled = enable;
             dgvCategory.DefaultCellStyle.BackColor = enable ? Color.White : Color.LightGray;  // Thay đổi màu nền khi vô hiệu hóa
         }
-
         private bool ValidateInput()
         {
             if (string.IsNullOrWhiteSpace(txtCategoryName.Text))
@@ -583,7 +567,6 @@ namespace App_QLWeb_DoDienTu
             }
             return true;
         }
-
         private void LoadCategoryDetail(string categoryId)
         {
             try
@@ -616,7 +599,6 @@ namespace App_QLWeb_DoDienTu
                                     Image img = Image.FromStream(fs);
                                     pbCategoryLogo.Image = new Bitmap(img);
                                     pbCategoryLogo.Tag = category.CategoryAvatar;
-
                                     categoryImageLogo = category.CategoryAvatar;
                                 }
                             }
@@ -705,7 +687,6 @@ namespace App_QLWeb_DoDienTu
                 MessageBox.Show($"Lỗi tải chi tiết hãng sản phẩm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private string GetWebProjectPicFolderPath()
         {
             // Đường dẫn tương đối từ thư mục gốc của dự án Windows Forms tới thư mục Pic của dự án web

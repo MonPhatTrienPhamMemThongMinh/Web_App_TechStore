@@ -17,7 +17,6 @@ namespace DAL
         {
 
         }
-
         public List<Product> GetAllProducts()
         {
             var products = (from p in db.Products
@@ -47,7 +46,6 @@ namespace DAL
             }
             return products;
         }
-
         public Product GetProductById(string productID)
         {
             try
@@ -60,7 +58,6 @@ namespace DAL
                 return null;
             }
         }
-
         public bool AddProduct(Product product)
         {
             try
@@ -74,7 +71,6 @@ namespace DAL
                 return false;
             }
         }
-
         public bool DeleteProduct(Product product)
         {
             try
@@ -95,7 +91,26 @@ namespace DAL
                 throw new ApplicationException("Lỗi xóa sản phẩm: " + ex.Message, ex);
             }
         }
+        public bool DeleteProduct(string maSanPham)
+        {
+            try
+            {
+                Product productToDelete = db.Products.FirstOrDefault(p => p.ProductID == maSanPham);
 
+                if (productToDelete != null)
+                {
+                    db.Products.DeleteOnSubmit(productToDelete);
+                    db.SubmitChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (SqlException ex)
+            {
+                throw new ApplicationException("Lỗi xóa sản phẩm: " + ex.Message, ex);
+            }
+        }
         public bool UpdateProduct(Product product)
         {
             try
@@ -124,7 +139,6 @@ namespace DAL
                 throw new ApplicationException("Lỗi sửa sản phẩm: " + ex.Message, ex);
             }
         }
-
         public static string RemoveVietnameseDaus(string input)
         {
             if (string.IsNullOrEmpty(input)) return input;
@@ -150,7 +164,6 @@ namespace DAL
 
             return input;
         }
-
         public List<Product> SearchProducts(string searchItem)
         {
             if (string.IsNullOrWhiteSpace(searchItem))
@@ -204,7 +217,106 @@ namespace DAL
 
             return result;
         }
+        public List<Product> LocSanPhamTheoLoai(string maLoaiSP)
+        {
+            List<Product> danhSach = db.Products.Where(p=>p.CategoryID == maLoaiSP).ToList();
+            foreach(var product in danhSach)
+            {
+                var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
+                if (brand != null)
+                {
+                    product.BrandName = brand.BrandName.ToLower();
+                }
 
+                var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
+                if (category != null)
+                {
+                    product.CategoryName = category.CategoryName.ToLower();
+                }
+
+                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
+                if (supplier != null)
+                {
+                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
+                }
+            }
+            return danhSach;
+        }
+        public List<Product> LocSanPhamTheoThuongHieu(string maThuongHieu)
+        {
+            List<Product> danhSach = db.Products.Where(p => p.BrandID == maThuongHieu).ToList();
+            foreach (var product in danhSach)
+            {
+                var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
+                if (brand != null)
+                {
+                    product.BrandName = brand.BrandName.ToLower();
+                }
+
+                var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
+                if (category != null)
+                {
+                    product.CategoryName = category.CategoryName.ToLower();
+                }
+
+                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
+                if (supplier != null)
+                {
+                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
+                }
+            }
+            return danhSach;
+        }
+        public List<Product> LocSanPhamTheoTrangThai(string maTrangThai)
+        {
+            List<Product> danhSach = db.Products.Where(p => p.AvailabilityStatus == maTrangThai).ToList();
+            foreach (var product in danhSach)
+            {
+                var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
+                if (brand != null)
+                {
+                    product.BrandName = brand.BrandName.ToLower();
+                }
+
+                var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
+                if (category != null)
+                {
+                    product.CategoryName = category.CategoryName.ToLower();
+                }
+
+                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
+                if (supplier != null)
+                {
+                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
+                }
+            }
+            return danhSach;
+        }
+        public List<Product> LocSanPhamTheoNhaCungCap(string maNhaCungCap)
+        {
+            List<Product> danhSach = db.Products.Where(p => p.maNhaCungCap == maNhaCungCap).ToList();
+            foreach (var product in danhSach)
+            {
+                var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
+                if (brand != null)
+                {
+                    product.BrandName = brand.BrandName.ToLower();
+                }
+
+                var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
+                if (category != null)
+                {
+                    product.CategoryName = category.CategoryName.ToLower();
+                }
+
+                var supplier = db.NhaCungCaps.FirstOrDefault(n => n.maNhaCungCap == product.maNhaCungCap);
+                if (supplier != null)
+                {
+                    product.SupplierName = supplier.tenNhaCungCap.ToLower();
+                }
+            }
+            return danhSach;
+        }
         public string TaoMaSanPham()
         {
             var products = db.Products.ToList();
@@ -218,6 +330,24 @@ namespace DAL
                 return "SP" + stt.ToString("D3");
             }
             return "SP001";
+        }
+        public bool KiemTraSanPhamCoThuocHoaDon(string maSanPham)
+        {
+            int dem = db.OrderDetails.Where(sp => sp.ProductID == maSanPham).Count();
+            if (dem > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool KiemTraSanPhamCoThuocPhieuDat(string maSanPham)
+        {
+            int dem = db.ChiTietPhieuDats.Where(sp => sp.ProductID == maSanPham).Count();
+            if (dem > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
