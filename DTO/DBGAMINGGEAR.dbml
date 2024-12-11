@@ -1,5 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBGAMINGGEAR" Class="DBGAMINGGEARDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=MSI;Initial Catalog=DBGAMINGGEAR;Integrated Security=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="DBGAMINGGEARConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
+    <Type Name="AspNetRole">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="AspNetRole_AspNetUserRole" Member="AspNetUserRoles" ThisKey="Id" OtherKey="RoleId" Type="AspNetUserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PhieuNhaps" Member="PhieuNhaps">
+    <Type Name="PhieuNhap">
+      <Column Name="MaPhieuNhap" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="NgayNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SoLan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="PhieuNhap_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaPhieuNhap" OtherKey="MaPhieuNhap" Type="ChiTietPhieuNhap" />
+      <Association Name="AspNetUser_PhieuNhap" Member="AspNetUser" ThisKey="UserID" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
+      <Association Name="PhieuDat_PhieuNhap" Member="PhieuDat" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuDat" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserClaims" Member="AspNetUserClaims">
+    <Type Name="AspNetUserClaim">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="ClaimType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ClaimValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="AspNetUser_AspNetUserClaim" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserLogins" Member="AspNetUserLogins">
+    <Type Name="AspNetUserLogin">
+      <Column Name="LoginProvider" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProviderKey" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="AspNetUser_AspNetUserLogin" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserRoles" Member="AspNetUserRoles">
+    <Type Name="AspNetUserRole">
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="AspNetRole_AspNetUserRole" Member="AspNetRole" ThisKey="RoleId" OtherKey="Id" Type="AspNetRole" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="AspNetUser_AspNetUserRole" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.AspNetUsers" Member="AspNetUsers">
     <Type Name="AspNetUser">
       <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -17,23 +62,13 @@
       <Column Name="LockoutEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="AccessFailedCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="AspNetUser_PhieuNhap" Member="PhieuNhaps" ThisKey="Id" OtherKey="UserID" Type="PhieuNhap" />
+      <Association Name="AspNetUser_AspNetUserClaim" Member="AspNetUserClaims" ThisKey="Id" OtherKey="UserId" Type="AspNetUserClaim" />
+      <Association Name="AspNetUser_AspNetUserLogin" Member="AspNetUserLogins" ThisKey="Id" OtherKey="UserId" Type="AspNetUserLogin" />
+      <Association Name="AspNetUser_AspNetUserRole" Member="AspNetUserRoles" ThisKey="Id" OtherKey="UserId" Type="AspNetUserRole" />
       <Association Name="AspNetUser_Order" Member="Orders" ThisKey="Id" OtherKey="UserId" Type="Order" />
       <Association Name="AspNetUser_PhieuDat" Member="PhieuDats" ThisKey="Id" OtherKey="UserID" Type="PhieuDat" />
-      <Association Name="AspNetUser_AspNetUserRole" Member="AspNetUserRoles" ThisKey="Id" OtherKey="UserId" Type="AspNetUserRole" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PhieuNhaps" Member="PhieuNhaps">
-    <Type Name="PhieuNhap">
-      <Column Name="MaPhieuNhap" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
-      <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Column Name="NgayNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="SoLan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Association Name="PhieuNhap_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaPhieuNhap" OtherKey="MaPhieuNhap" Type="ChiTietPhieuNhap" />
-      <Association Name="AspNetUser_PhieuNhap" Member="AspNetUser" ThisKey="UserID" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
-      <Association Name="PhieuDat_PhieuNhap" Member="PhieuDat" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuDat" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Brands" Member="Brands">
@@ -120,7 +155,7 @@
       <Column Name="OrderId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
       <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CustomerName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="CustomerPhone" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="CustomerAddress" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
@@ -168,21 +203,6 @@
       <Association Name="PhieuDat_ChiTietPhieuDat" Member="ChiTietPhieuDats" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="ChiTietPhieuDat" />
       <Association Name="AspNetUser_PhieuDat" Member="AspNetUser" ThisKey="UserID" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
       <Association Name="NhaCungCap_PhieuDat" Member="NhaCungCap" ThisKey="MaNhaCungCap" OtherKey="maNhaCungCap" Type="NhaCungCap" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
-    <Type Name="AspNetRole">
-      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Association Name="AspNetRole_AspNetUserRole" Member="AspNetUserRoles" ThisKey="Id" OtherKey="RoleId" Type="AspNetUserRole" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AspNetUserRoles" Member="AspNetUserRoles">
-    <Type Name="AspNetUserRole">
-      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="RoleId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="AspNetRole_AspNetUserRole" Member="AspNetRole" ThisKey="RoleId" OtherKey="Id" Type="AspNetRole" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="AspNetUser_AspNetUserRole" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

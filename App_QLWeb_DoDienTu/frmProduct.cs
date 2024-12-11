@@ -174,6 +174,7 @@ namespace App_QLWeb_DoDienTu
                             BrandID = cboTH.SelectedValue.ToString(),
                             maNhaCungCap = cboNCC.SelectedValue.ToString(),
                             ProductPic = imagePath,
+
                             ProductDescription = txtMoTa.Text.Trim(),
                             BaoHanh = txtBaoHanh.Text.Trim(),
                         };

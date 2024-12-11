@@ -105,8 +105,6 @@ namespace DAL
                 if (productToUpdate != null)
                 {
                     productToUpdate.ProductName = product.ProductName;
-                    productToUpdate.Price = product.Price;
-                    productToUpdate.Quantity = product.Quantity;
                     productToUpdate.ProductDescription = product.ProductDescription;
                     productToUpdate.BrandID = product.BrandID;
                     productToUpdate.CategoryID = product.CategoryID;
