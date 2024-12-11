@@ -140,8 +140,8 @@
         <classShapeMoniker Id="17dfdd54-e832-4a96-9f38-16baee5f2140" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.3750025 : 3.5881982421875); (6.3750025 : 4.96875); (8.32291666666667 : 4.96875 : JumpStart); (8.48958333333333 : 4.96875 : JumpEnd); (8.79166666666667 : 4.96875 : JumpStart); (8.95833333333333 : 4.96875 : JumpEnd); (12 : 4.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DBGAMINGGEARDataContext/PhieuNhap/PhieuNhap_ChiTietPhieuNhap" />
+    <associationConnector edgePoints="[(5.75 : 14.8115374615385); (6.1875 : 14.3740374615385); (6.1875 : 14.4872049416566); (6.25357193490112 : 14.4211330067555 : JumpStart); (6.37142306509888 : 14.3032818765578 : JumpEnd); (6.5 : 14.1747049416567)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetUser/AspNetUser_AspNetUserRole" />
       <nodes>
         <classShapeMoniker Id="7818ca93-15dc-41c6-b800-7f37718db17e" />
         <classShapeMoniker Id="17dfdd54-e832-4a96-9f38-16baee5f2140" />
@@ -182,7 +182,7 @@
         <classShapeMoniker Id="dda0dada-f685-43ab-ae1d-c4b0e555da46" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.65625 : 9.25); (5.65625 : 5.15625); (6.26041666666667 : 5.15625 : JumpStart); (6.42708333333333 : 5.15625 : JumpEnd); (6.5 : 5.15625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.65625 : 9.25); (5.65625 : 5.15625); (6.22916416666667 : 5.15625 : JumpStart); (6.39583083333333 : 5.15625 : JumpEnd); (6.5 : 5.15625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Brand/Brand_Product" />
       <nodes>
         <classShapeMoniker Id="6bf5cecb-42f8-4da4-9d06-06383191cb5e" />
@@ -196,15 +196,15 @@
         <classShapeMoniker Id="67a62465-8bc9-4aaf-961b-b54bcb855bb8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 5.75); (1.75 : 5.171875); (6.26041666666667 : 5.171875 : JumpStart); (6.42708333333333 : 5.171875 : JumpEnd); (6.5 : 5.171875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 5.75); (1.75 : 5.171875); (6.22916416666667 : 5.171875 : JumpStart); (6.39583083333333 : 5.171875 : JumpEnd); (6.5 : 5.171875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/NhaCungCap/NhaCungCap_Product" />
       <nodes>
         <classShapeMoniker Id="c2451bc6-e7ba-43aa-ab5a-4463e093883d" />
         <classShapeMoniker Id="67a62465-8bc9-4aaf-961b-b54bcb855bb8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 5.25); (4.5 : 2.60659912109375); (6.25 : 2.60659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DBGAMINGGEARDataContext/PhieuDat/PhieuDat_PhieuNhap" />
+    <associationConnector edgePoints="[(5.75 : 16.6162019856771); (6.04166666666667 : 16.6162019856771 : JumpStart); (6.20833333333333 : 16.6162019856771 : JumpEnd); (6.5 : 16.6162019856771)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetUser/AspNetUser_Order" />
       <nodes>
         <classShapeMoniker Id="c772ff37-512a-4795-80a4-5631928ba9ca" />
         <classShapeMoniker Id="7818ca93-15dc-41c6-b800-7f37718db17e" />
