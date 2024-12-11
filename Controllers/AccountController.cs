@@ -16,6 +16,7 @@ namespace DoAnWebGamingGear.Controllers
 {
     public class AccountController : Controller
     {
+        GamingGearDBContext db = new GamingGearDBContext();
         // GET: Account
         public ActionResult Register()
         {
@@ -144,6 +145,23 @@ namespace DoAnWebGamingGear.Controllers
                 Orders = user.Orders
             };
             return View(profileVM);
+        }
+
+        public ActionResult OrderHistory()
+        {
+            var userId = User.Identity.GetUserId();
+            var orders = db.Orders.Where(o => o.UserId == userId).OrderByDescending(o => o.CreatedDate).ToList();
+            return View(orders);
+        }
+
+        public ActionResult OrderDetails(string id)
+        {
+            var order = db.Orders.Include("OrderDetails").FirstOrDefault(o => o.OrderId == id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
         }
     }
 }
