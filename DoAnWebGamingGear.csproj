@@ -271,6 +271,10 @@
     <Compile Include="Migrations\202412111244523_InitialCreate.designer.cs">
       <DependentUpon>202412111244523_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.cs" />
+    <Compile Include="Migrations\202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.designer.cs">
+      <DependentUpon>202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brands.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -348,6 +352,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202412111244523_InitialCreate.resx">
       <DependentUpon>202412111244523_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.resx">
+      <DependentUpon>202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
