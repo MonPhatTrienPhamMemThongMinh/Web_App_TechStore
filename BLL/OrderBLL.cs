@@ -36,6 +36,31 @@ namespace BLL
         public int TongSoHoaDon()
         {
             return odal.TongSoHoaDon();
+        }        
+
+        public decimal TinhDoanhThuTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
+        {
+            return odal.TinhDoanhThuTheoKhoangThoiGian(batDau, ketThuc);
+        }
+
+        public int TongSoHoaDonTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
+        {
+            return odal.TongSoHoaDonTheoKhoangThoiGian(batDau, ketThuc);
+        }
+
+        public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuCuaTungNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            return odal.ThongKeTongDoanhThuCuaTungNgay(ngayBatDau, ngayKetThuc);
+        }
+
+        public Dictionary<int, decimal> ThongKeTongDoanhThuTheoGioTrongNgay(DateTime ngay)
+        {
+            return odal.ThongKeTongDoanhThuTheoGioTrongNgay(ngay);
+        }
+
+        public List<ThongKeDoanhThuTheoThang> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            return odal.ThongKeTongDoanhThuTheoThangTrongNam(ngayBatDau, ngayKetThuc);
         }
     }
 }

@@ -46,17 +46,8 @@ namespace App_QLWeb_DoDienTu
         {
             if (dtgvDanhSachPhieuDat.SelectedRows.Count>0)
             {
-                string trangThai = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThai"].Value.ToString();
-                string trangThaiXacNhan;
-                if (dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThaiXacNhan"].Value != null)
-                {
-                    trangThaiXacNhan = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThaiXacNhan"].Value.ToString();
-                }
-                else
-                {
-                    trangThaiXacNhan = null;
-                }
-                if (trangThai != "Đã duyệt" && trangThaiXacNhan !="Đã chấp thuận")
+                string trangThai = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThai"].Value.ToString();                
+                if (trangThai != "Đã duyệt")
                 {
                     string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
                     DialogResult r = MessageBox.Show(this, "Bạn có chắc chắn muốn xóa phiếu đặt này không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -84,17 +75,8 @@ namespace App_QLWeb_DoDienTu
         {
             if (dtgvDanhSachPhieuDat.SelectedRows.Count>0)
             {
-                string trangThai = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThai"].Value.ToString();
-                string trangThaiXacNhan;
-                if (dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThaiXacNhan"].Value != null)
-                {
-                    trangThaiXacNhan = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThaiXacNhan"].Value.ToString();
-                }
-                else
-                {
-                    trangThaiXacNhan = null;
-                }                 
-                if (trangThai!="Đã duyệt" && trangThaiXacNhan != "Đã chấp thuận")
+                string trangThai = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["trangThai"].Value.ToString();                        
+                if (trangThai!="Đã duyệt")
                 {
                     string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
                     string maNhaCungCap = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maNhaCungCap"].Value.ToString();
@@ -122,25 +104,6 @@ namespace App_QLWeb_DoDienTu
             dtgvDanhSachPhieuDat.Columns["NhaCungCap"].Visible = false;
             dtgvDanhSachPhieuDat.Columns["UserID"].Visible = false;
             dtgvDanhSachPhieuDat.Columns["AspNetUser"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["GhiChu"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["ghiChuKhongDuyet"].DisplayIndex = dtgvDanhSachPhieuDat.Columns.Count - 1;
-
-            //QuyenDuyetPhieu = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0012") != null) ? true : false;
-            //if (!QuyenDuyetPhieu)
-            //{
-            //    btnDuyetPhieuDat.Visible = false;
-            //    btnKoDuyet.Visible = false;
-            //    btnKhongXacNhan.Visible = false;
-            //    btnXacNhan.Visible = false;
-            //}
-            //QuyenTaoPhieu = (ctQuyen.TimQuyenCuaNhanVien(nhanVien.maLoaiNhanVien, "Q0011") != null) ? true : false;
-            //if (!QuyenTaoPhieu)
-            //{
-            //    btnTaoPhieuDat.Visible = false;
-            //    btnSuaPhieuDat.Visible = false;
-            //    btnXoaPhieuDat.Visible = false;
-            //    btnInPhieuDat.Visible = false;
-            //}
         }
         private void dtNgayTaoPhieuNhap_ValueChanged(object sender, EventArgs e)
         {
@@ -158,7 +121,7 @@ namespace App_QLWeb_DoDienTu
             bindingSourceCTPD.DataSource = chiTietPhieuDatBLL.LayChiTietPhieuDat(maPhieuDat);
             dtgvChiTietPhieuDat.DataSource = bindingSourceCTPD;
             dtgvChiTietPhieuDat.Columns["PhieuDat"].Visible = false;
-            dtgvChiTietPhieuDat.Columns["SanPham"].Visible = false;              
+            dtgvChiTietPhieuDat.Columns["Product"].Visible = false;              
         }
         private void tabControlPhieuDat_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -180,89 +143,18 @@ namespace App_QLWeb_DoDienTu
         {
             if (e.RowIndex>=0)
             {
-                string maPhieuDat = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["maPhieuDat"].Value.ToString();
                 string trangThai = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThai"].Value.ToString();
                 if (trangThai != "Đã duyệt")
-                {
-                    btnDuyetPhieuDat.Enabled = true;
-                    btnKoDuyet.Enabled = true;
-                    btnXacNhan.Enabled = false;
-                    btnKhongXacNhan.Enabled = false;
+                {                    
+                    btnXacNhan.Enabled = true;
                 }
                 else if (trangThai == "Đã duyệt")
                 {
-                    btnDuyetPhieuDat.Enabled = false;
-                    btnKoDuyet.Enabled = false;
-                }
-                string trangThaiXacNhan;
-                if (dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThaiXacNhan"].Value != null)
-                {
-                    trangThaiXacNhan = dtgvDanhSachPhieuDat.Rows[e.RowIndex].Cells["trangThaiXacNhan"].Value.ToString();
-                }
-                else
-                {
-                    trangThaiXacNhan = null;
-                }
-                if (trangThaiXacNhan == "Không chấp thuận")
-                {
                     btnXacNhan.Enabled = false;
-                    btnKhongXacNhan.Enabled = false;
-                }
-                else if (trangThaiXacNhan == null && trangThai == "Đã duyệt")
-                {
-                    btnXacNhan.Enabled = true;
-                    btnKhongXacNhan.Enabled = true;
-                }
-                else if (trangThaiXacNhan == null && trangThai != "Đã duyệt")
-                {
-                    btnXacNhan.Enabled = false;
-                    btnKhongXacNhan.Enabled = false;
-                }
-                else if (trangThaiXacNhan == "Đã chấp thuận")
-                {
-                    btnXacNhan.Enabled = false;
-                    btnKhongXacNhan.Enabled = false;
-                    btnKoDuyet.Enabled = false;
-                }
+                }                
             }
         }
         private void btnXacNhan_Click(object sender, EventArgs e)
-        {
-            if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
-            {
-                string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
-                bool result = phieuDatBLL.XacNhanPhieuDat(maPhieuDat,"Đã chấp thuận");
-                if (result)
-                {
-                    MessageBox.Show(this, "Xác nhận phiếu đặt thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show(this, "Xác nhận phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                }
-            }
-        }
-        private void btnKhongXacNhan_Click(object sender, EventArgs e)
-        {
-            if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
-            {
-                
-                string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
-                bool resultKoDuyet = phieuDatBLL.DuyetPhieuDat(maPhieuDat,"Chưa duyệt");
-                bool result = phieuDatBLL.XacNhanPhieuDat(maPhieuDat, "Không chấp thuận");                
-                if (result)
-                {
-                    MessageBox.Show(this, "Xác nhận phiếu đặt thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show(this, "Xác nhận phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                }
-            }
-        }
-        private void btnDuyetPhieuDat_Click(object sender, EventArgs e)
         {
             if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
             {
@@ -278,35 +170,7 @@ namespace App_QLWeb_DoDienTu
                     MessageBox.Show(this, "Duyệt phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
             }
-        }
-        private void btnKoDuyet_Click(object sender, EventArgs e)
-        {
-            if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
-            {
-                string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
-                bool result = phieuDatBLL.DuyetPhieuDat(maPhieuDat,"Không duyệt");
-                if (result)
-                {
-                    MessageBox.Show(this, "Không duyệt phiếu đặt thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show(this, "Không duyệt phiếu đặt thất bại", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                }
-            }
-        }
-        private void dtgvDanhSachPhieuDat_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dtgvDanhSachPhieuDat.Columns[e.ColumnIndex].Name == "ghiChuKhongDuyet" && e.Value != null)
-            {
-                e.CellStyle.BackColor = Color.Green;   // Màu nền nút
-                e.CellStyle.ForeColor = Color.White;  // Màu chữ nút
-
-                e.CellStyle.SelectionBackColor = Color.Green;
-                e.CellStyle.SelectionForeColor = Color.White;
-            }
-        }
+        }                
         private void txtTimKiem_Leave(object sender, EventArgs e)
         {
             if (txtTimKiem.Text == "")

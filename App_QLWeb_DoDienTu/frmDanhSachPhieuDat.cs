@@ -29,40 +29,41 @@ namespace App_QLWeb_DoDienTu
         private void FrmDanhSachPhieuDat_Load(object sender, EventArgs e)
         {
             List<PhieuDat> danhSachPhieuDat = phieuDatBLL.LayDanhSachPhieuDatDaDuyet();
-            for (int i = danhSachPhieuDat.Count-1; i >=0; i--)
+            if (danhSachPhieuDat!=null)
             {
-                PhieuDat phieuDat = danhSachPhieuDat[i];
-                List<PhieuNhap> danhSachPhieuNhap = phieuNhapBLL.TimKiemPhieuNhapTheoMaPhieuDat(phieuDat.MaPhieuDat);
-                if (danhSachPhieuNhap.Count==3 || (phieuDat.NgayLap.Hour+5 > DateTime.Now.Hour && phieuDat.NgayLap.Day == DateTime.Now.Day))
+                for (int i = danhSachPhieuDat.Count - 1; i >= 0; i--)
                 {
-                    danhSachPhieuDat.Remove(phieuDat);
-                }
-                else
-                {
-                    List<ChiTietPhieuDat> chiTietPhieuDats = chiTietPhieuDatBLL.LayChiTietPhieuDat(phieuDat.MaPhieuDat);
-                    int dem = 0;
-                    foreach (ChiTietPhieuDat chiTietPhieuDat in chiTietPhieuDats)
-                    {
-                        if (chiTietPhieuDat.SoLuongDat == chiTietPhieuDat.SoLuongNhan)
-                        {
-                            dem++;
-                        }
-                    }
-                    if (dem == phieuDat.SoLuong)
+                    PhieuDat phieuDat = danhSachPhieuDat[i];
+                    List<PhieuNhap> danhSachPhieuNhap = phieuNhapBLL.TimKiemPhieuNhapTheoMaPhieuDat(phieuDat.MaPhieuDat);
+                    if (danhSachPhieuNhap.Count == 3 || (phieuDat.NgayLap.Hour + 5 > DateTime.Now.Hour && phieuDat.NgayLap.Day == DateTime.Now.Day))
                     {
                         danhSachPhieuDat.Remove(phieuDat);
                     }
-                }                
-            }
-            dtgvDanhSachPhieuDat.DataSource = danhSachPhieuDat;
-            dtgvDanhSachPhieuDat.Columns["TrangThai"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["TrangThaiXacNhan"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["GhiChu"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["NgayCapNhat"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["UserID"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["AspNetUser"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["NhaCungCap"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["MaNhaCungCap"].Visible = false;
+                    else
+                    {
+                        List<ChiTietPhieuDat> chiTietPhieuDats = chiTietPhieuDatBLL.LayChiTietPhieuDat(phieuDat.MaPhieuDat);
+                        int dem = 0;
+                        foreach (ChiTietPhieuDat chiTietPhieuDat in chiTietPhieuDats)
+                        {
+                            if (chiTietPhieuDat.SoLuongDat == chiTietPhieuDat.SoLuongNhan)
+                            {
+                                dem++;
+                            }
+                        }
+                        if (dem == phieuDat.SoLuong)
+                        {
+                            danhSachPhieuDat.Remove(phieuDat);
+                        }
+                    }
+                }
+                dtgvDanhSachPhieuDat.DataSource = danhSachPhieuDat;
+                dtgvDanhSachPhieuDat.Columns["TrangThai"].Visible = false;
+                dtgvDanhSachPhieuDat.Columns["NgayCapNhat"].Visible = false;
+                dtgvDanhSachPhieuDat.Columns["UserID"].Visible = false;
+                dtgvDanhSachPhieuDat.Columns["AspNetUser"].Visible = false;
+                dtgvDanhSachPhieuDat.Columns["NhaCungCap"].Visible = false;
+                dtgvDanhSachPhieuDat.Columns["MaNhaCungCap"].Visible = false;
+            }            
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

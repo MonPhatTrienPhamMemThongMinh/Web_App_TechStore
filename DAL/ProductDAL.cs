@@ -17,6 +17,48 @@ namespace DAL
         {
 
         }
+        public int TongSoLuongSanPham()
+        {
+            return db.Products.Count();
+        }
+        public List<(string TenSanPham, int SoLuong)> ThongKeDanhSachSanPhamDuoiMucToiThieu()
+        {
+            var sanPhamDuoiMucToiThieu = db.Products
+                                .Where(sp => sp.Quantity < 40)
+                                .Select(sp => new
+                                {
+                                    TenSanPham = sp.ProductName,
+                                    SoLuong = sp.Quantity
+                                })
+                                .ToList();
+            return sanPhamDuoiMucToiThieu.Select(sp => (sp.TenSanPham, sp.SoLuong)).ToList();
+        }
+        public List<SanPhamBanChay> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            var topSanPham = db.OrderDetails
+                                .Where(ct => ct.Order.CreatedDate.Date >= ngayBatDau.Date && ct.Order.CreatedDate.Date <= ngayKetThuc.Date)
+                                .GroupBy(ct => ct.ProductID)
+                                .Select(tk => new
+                                {
+                                    MaSanPham = tk.Key,
+                                    TongSoLuong = tk.Sum(ct => ct.Quantity)
+                                })
+                                .OrderByDescending(tk => tk.TongSoLuong)
+                                .Take(5)
+                                .Join(db.Products, tk => tk.MaSanPham, sp => sp.ProductID, (tk, sp) => new SanPhamBanChay
+                                {
+                                    MaSanPham = sp.ProductID,
+                                    TenSanPham = sp.ProductName,
+                                    SoLuongBan = tk.TongSoLuong
+                                })
+                                .ToList();
+
+            if (!topSanPham.Any())
+            {
+                return new List<SanPhamBanChay>();
+            }
+            return topSanPham;
+        }
         public List<Product> GetAllProducts()
         {
             var products = (from p in db.Products

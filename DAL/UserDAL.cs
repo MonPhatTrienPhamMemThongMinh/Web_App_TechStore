@@ -16,6 +16,18 @@ namespace DAL
         public UserDAL()
         {
         }
+        public AspNetUser LayThongTinTheoMa(string ma)
+        {
+            try
+            {
+                AspNetUser khachHang = db.AspNetUsers.FirstOrDefault(kh => kh.Id == ma);                
+                return khachHang;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public AspNetUser GetUserByUsername(string username)
         {
             try

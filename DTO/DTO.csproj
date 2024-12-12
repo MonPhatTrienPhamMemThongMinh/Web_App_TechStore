@@ -60,6 +60,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SanPhamBanChay.cs" />
+    <Compile Include="ThongKeDoanhThuTheoThang.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

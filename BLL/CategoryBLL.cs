@@ -50,5 +50,9 @@ namespace BLL
         {
             return cdal.GenerateCategoryID();
         }
+        public int DemSoSanPhamThuocLoai(string maLoaiSanPham)
+        {
+            return cdal.DemSoSanPhamThuocLoai(maLoaiSanPham);
+        }
     }
 }

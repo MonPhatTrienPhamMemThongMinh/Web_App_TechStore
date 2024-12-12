@@ -16,7 +16,10 @@ namespace DAL
         public BrandDAL()
         {
         }
-
+        public int DemSoSanPhamThuocThuongHieu(string maThuongHieu)
+        {
+            return db.Brands.Where(sp => sp.BrandID == maThuongHieu).Count();
+        }
         public List<Brand> GetAllBrands()
         {
             return db.Brands.Select(b => b).ToList<Brand>();

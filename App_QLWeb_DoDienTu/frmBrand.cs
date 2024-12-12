@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Sunny.UI;
+using NPOI.SS.Formula.Functions;
 
 namespace App_QLWeb_DoDienTu
 {
@@ -301,7 +302,40 @@ namespace App_QLWeb_DoDienTu
 
         private void BtnRemoveBrand_Click(object sender, EventArgs e)
         {
+            if (txtBrandID.Text != string.Empty)
+            {
+                string maThuongHieu = txtBrandID.Text;
+                string tenThuongHieu = txtBrandName.Text;
+                DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa thương hiệu " + tenThuongHieu + " này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (r == DialogResult.Yes)
+                {
+                    Brand thuongHieu = new Brand
+                    {
+                        BrandID = maThuongHieu,
+                        BrandName = tenThuongHieu,
 
+                    };
+                    int dem = bbll.DemSoSanPhamThuocThuongHieu(thuongHieu.BrandID);
+                    if (dem > 0)
+                    {
+                        MessageBox.Show(this, $"Không thể xóa thương hiệu {thuongHieu.BrandName} do còn sản phẩm thuộc thương hiệu này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        bool isSuccess = bbll.DeleteBrand(thuongHieu);
+                        if (isSuccess)
+                        {
+                            MessageBox.Show(this, "Xóa thương hiệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_BrandData();
+                            ClearForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Xóa loại sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
         }
 
         private void BtnEditBrand_Click(object sender, EventArgs e)
@@ -346,7 +380,7 @@ namespace App_QLWeb_DoDienTu
 
                             if (isSuccess)
                             {
-                                MessageBox.Show("Cập nhật hãng sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Cập nhật thương hiệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Load_BrandData();
 
                                 ClearForm();

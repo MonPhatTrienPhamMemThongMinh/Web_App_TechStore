@@ -23,6 +23,7 @@ namespace App_QLWeb_DoDienTu
         private BindingSource bindingSource;
         private BindingSource chiTietPhieuDats;
         private ProductBLL sanPhamBLL;
+        private BrandBLL brandBLL;
         private CategoryBLL loaiSanPhamBLL;
         private SupplierBLL nhaCungCapBLL;
         private PhieuDatBLL phieuDatBLL;
@@ -45,6 +46,7 @@ namespace App_QLWeb_DoDienTu
             this.bindingSource = new BindingSource();
             this.sanPhamBLL = new ProductBLL();
             this.loaiSanPhamBLL = new CategoryBLL();
+            this.brandBLL = new BrandBLL();
             this.nhaCungCapBLL = new SupplierBLL();
             this.phieuDatBLL = new PhieuDatBLL();
             this.chiTietPhieuDatBLL = new ChiTietPhieuDatBLL();
@@ -95,7 +97,6 @@ namespace App_QLWeb_DoDienTu
             dtgvDanhSachSP.Columns["BrandID"].Visible = false;
             dtgvDanhSachSP.Columns["CategoryID"].Visible = false;
             dtgvDanhSachSP.Columns["BaoHanh"].Visible = false;
-            dtgvDanhSachSP.Columns["maNhaCungCap"].Visible = false;
             dtgvDanhSachSP.Columns["ProductDescription"].Visible = false;
             
             SetHinhAnh(danhSachSanPham);
@@ -105,13 +106,17 @@ namespace App_QLWeb_DoDienTu
             LoadDanhSachSanPham();
             //Load dữ liệu danh sách loại sản phẩm
             cbLoaiSP.DataSource = loaiSanPhamBLL.GetAllCategories();
-            cbLoaiSP.DisplayMember = "CategoryID";
-            cbLoaiSP.ValueMember = "CategoryName";
+            cbLoaiSP.DisplayMember = "CategoryName";
+            cbLoaiSP.ValueMember = "CategoryID";
             this.cbLoaiSP.SelectedValueChanged += cbLoaiSP_SelectedValueChanged;
             //Load dữ liệu danh sách nhà cung cấp
             cbNhaCungCap.DataSource = nhaCungCapBLL.getAllSuppliers();
             cbNhaCungCap.DisplayMember = "tenNhaCungCap";
             cbNhaCungCap.ValueMember = "maNhaCungCap";
+            //Load dữ liệu thương hiệu
+            cbThuongHieu.DataSource = brandBLL.GetAllBrands();
+            cbThuongHieu.DisplayMember = "BrandName";
+            cbThuongHieu.ValueMember = "BrandID";
             if (themPhieu)
             {
                 txtMaPhieuDat.Text = phieuDatBLL.TaoMaPhieuDat();
@@ -242,8 +247,8 @@ namespace App_QLWeb_DoDienTu
                     bool resultTaoCTPD = false;
                     foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
                     {
-                        string donGia = row.Cells["donGiaSP"].Value.ToString().Replace("₫", "").Replace(".", "").Trim();
-                        string tongTien = row.Cells["thanhTien"].Value.ToString().Replace("₫", "").Replace(".", "").Trim();
+                        string donGia = row.Cells["donGiaSP"].Value.ToString().Trim();
+                        string tongTien = row.Cells["thanhTien"].Value.ToString().Trim();
                         ChiTietPhieuDat pChiTietPhieuDat = new ChiTietPhieuDat()
                         {
                             MaPhieuDat = txtMaPhieuDat.Text,
@@ -296,8 +301,8 @@ namespace App_QLWeb_DoDienTu
                     //Cập nhật chi tiết phiếu đặt
                     foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuDat.Rows)
                     {
-                        string donGia = row.Cells["donGiaSP"].Value.ToString().Replace("₫", "").Replace(".", "").Trim();
-                        string tongTien = row.Cells["thanhTien"].Value.ToString().Replace("₫", "").Replace(".", "").Trim();
+                        string donGia = row.Cells["donGiaSP"].Value.ToString().Trim();
+                        string tongTien = row.Cells["thanhTien"].Value.ToString().Trim();
                         ChiTietPhieuDat pChiTietPhieuDat = new ChiTietPhieuDat()
                         {
                             MaPhieuDat = txtMaPhieuDat.Text,
@@ -400,8 +405,8 @@ namespace App_QLWeb_DoDienTu
                         rowData[1] = selectedRow.Cells["tenSanPham"].Value;
                         rowData[2] = 0;
                         rowData[3] = 0;
-                        rowData[4] = 0.ToString("C0");
-                        rowData[5] = 0.ToString("C0");
+                        rowData[4] = 0;
+                        rowData[5] = 0;
                         dtgvSanPhamTrongPhieuDat.Rows.Add(rowData);
                     }
                     else
@@ -433,8 +438,8 @@ namespace App_QLWeb_DoDienTu
                     }
                     else
                     {
-                        string donGia = row.Cells["donGiaSP"].Value.ToString().Replace("₫", "").Replace(".", "").Trim();
-                        string tongTien = row.Cells["thanhTien"].Value.ToString().Replace("₫", "").Replace(".", "").Trim();
+                        string donGia = row.Cells["donGiaSP"].Value.ToString().Trim();
+                        string tongTien = row.Cells["thanhTien"].Value.ToString().Trim();
                         ChiTietPhieuDat chiTietPhieuDatXoa = new ChiTietPhieuDat()
                         {
                             MaPhieuDat = maPhieuDat,

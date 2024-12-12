@@ -296,38 +296,7 @@ namespace App_QLWeb_DoDienTu
             {
                 if (CheckSoLuongDat())
                 {
-                    if (!themLanCuoi)
-                    {
-                        ThemPhieuNhap();
-                    }
-                    else
-                    {
-                        bool chuaNhanDu = false;
-                        foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
-                        {
-                            int soLuongConLai = int.Parse(row.Cells["soLuongConLai"].Value.ToString());
-                            int soLuongDaNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
-                            if (soLuongConLai != soLuongDaNhan)
-                            {
-                                chuaNhanDu = true;
-                                break;
-                            }
-                        }
-                        if (chuaNhanDu)
-                        {
-                            DialogResult r = MessageBox.Show(this, $"Đây là lần cuối để tạo phiếu nhập của phiếu đặt ({txtMaPhieuDat.Text})" +
-                                $" này nhưng số lượng sản phẩm nhận vào chưa đủ so với số lượng đặt, " +
-                                $"bạn có chắc chắn vẫn muốn tạo phiếu nhập này không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (r == DialogResult.Yes)
-                            {
-                                ThemPhieuNhap();
-                            }
-                        }
-                        else
-                        {
-                            ThemPhieuNhap();
-                        }
-                    }
+                    ThemPhieuNhap();
                 }
                 else
                 {

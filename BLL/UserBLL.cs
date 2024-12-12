@@ -17,6 +17,10 @@ namespace BLL
         {
             return udal.GetUserByUsername(username);
         }
+        public AspNetUser LayThongTinTheoMa(string ma)
+        {
+            return udal.LayThongTinTheoMa(ma);
+        }
         public string MaHoaMatKhauKieuSha256Hash(string pass)
         {
             return udal.MaHoaMatKhauKieuSha256Hash(pass);

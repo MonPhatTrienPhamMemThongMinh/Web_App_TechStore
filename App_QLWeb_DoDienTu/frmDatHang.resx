@@ -117,55 +117,1390 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnClose.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1074, 9</value>
+  </data>
+  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
+    <value>btnClose</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
+    <value>uiPanel1</value>
+  </data>
+  <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="uiPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uiPanel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="uiPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="uiPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="uiPanel1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="uiPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1113, 43</value>
+  </data>
+  <data name="uiPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="uiPanel1.Text" xml:space="preserve">
+    <value>Phiếu đặt hàng</value>
+  </data>
+  <data name="&gt;&gt;uiPanel1.Name" xml:space="preserve">
+    <value>uiPanel1</value>
+  </data>
+  <data name="&gt;&gt;uiPanel1.Type" xml:space="preserve">
+    <value>Sunny.UI.UIPanel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;uiPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dtgvDanhSachSP.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
   <metadata name="maSanPham.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="maSanPham.HeaderText" xml:space="preserve">
+    <value>Mã sản phẩm</value>
+  </data>
+  <data name="maSanPham.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="maSanPham.Width" type="System.Int32, mscorlib">
+    <value>129</value>
+  </data>
   <metadata name="tenLoaiSanPham.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="tenLoaiSanPham.HeaderText" xml:space="preserve">
+    <value>Tên loại sản phẩm</value>
+  </data>
+  <data name="tenLoaiSanPham.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tenLoaiSanPham.Width" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
   <metadata name="thuongHieu.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="thuongHieu.HeaderText" xml:space="preserve">
+    <value>Thương hiệu</value>
+  </data>
+  <data name="thuongHieu.Width" type="System.Int32, mscorlib">
+    <value>121</value>
+  </data>
   <metadata name="nhaCungCap.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="nhaCungCap.HeaderText" xml:space="preserve">
+    <value>Nhà cung cấp</value>
+  </data>
+  <data name="nhaCungCap.Width" type="System.Int32, mscorlib">
+    <value>131</value>
+  </data>
   <metadata name="tenSanPham.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="tenSanPham.HeaderText" xml:space="preserve">
+    <value>Tên sản phẩm</value>
+  </data>
+  <data name="tenSanPham.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tenSanPham.Width" type="System.Int32, mscorlib">
+    <value>134</value>
+  </data>
   <metadata name="donGiaBan.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="donGiaBan.HeaderText" xml:space="preserve">
+    <value>Đơn giá bán</value>
+  </data>
+  <data name="donGiaBan.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="donGiaBan.Width" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
   <metadata name="soLuong.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="soLuong.HeaderText" xml:space="preserve">
+    <value>Số lượng</value>
+  </data>
+  <data name="soLuong.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="soLuong.Width" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
   <metadata name="anh.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="anh.HeaderText" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="anh.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="anh.Width" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
   <metadata name="trangThai.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="trangThai.HeaderText" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="trangThai.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="trangThai.Width" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="dtgvDanhSachSP.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dtgvDanhSachSP.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="dtgvDanhSachSP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 32</value>
+  </data>
+  <data name="dtgvDanhSachSP.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="dtgvDanhSachSP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 410</value>
+  </data>
+  <data name="dtgvDanhSachSP.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dtgvDanhSachSP.Name" xml:space="preserve">
+    <value>dtgvDanhSachSP</value>
+  </data>
+  <data name="&gt;&gt;dtgvDanhSachSP.Type" xml:space="preserve">
+    <value>Sunny.UI.UIDataGridView, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;dtgvDanhSachSP.Parent" xml:space="preserve">
+    <value>uiGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;dtgvDanhSachSP.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="uiGroupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiGroupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 166</value>
+  </data>
+  <data name="uiGroupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="uiGroupBox1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="uiGroupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 32, 0, 0</value>
+  </data>
+  <data name="uiGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 442</value>
+  </data>
+  <data name="uiGroupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="uiGroupBox1.Text" xml:space="preserve">
+    <value>Danh sách sản phẩm</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox1.Name" xml:space="preserve">
+    <value>uiGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox1.Type" xml:space="preserve">
+    <value>Sunny.UI.UIGroupBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox1.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox1.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="dtgvSanPhamTrongPhieuDat.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
   <metadata name="maSP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="maSP.HeaderText" xml:space="preserve">
+    <value>Mã sản phẩm</value>
+  </data>
+  <data name="maSP.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="maSP.Width" type="System.Int32, mscorlib">
+    <value>129</value>
+  </data>
   <metadata name="tenSP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="tenSP.HeaderText" xml:space="preserve">
+    <value>Tên sản phẩm</value>
+  </data>
+  <data name="tenSP.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tenSP.Width" type="System.Int32, mscorlib">
+    <value>134</value>
+  </data>
   <metadata name="soLuongDat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="soLuongDat.HeaderText" xml:space="preserve">
+    <value>Số lượng đặt</value>
+  </data>
+  <data name="soLuongDat.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="soLuongDat.Width" type="System.Int32, mscorlib">
+    <value>123</value>
+  </data>
   <metadata name="soLuongDaNhan.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="soLuongDaNhan.HeaderText" xml:space="preserve">
+    <value>Số lượng nhận</value>
+  </data>
+  <data name="soLuongDaNhan.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="soLuongDaNhan.Width" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
   <metadata name="donGiaSP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="donGiaSP.HeaderText" xml:space="preserve">
+    <value>Đơn giá</value>
+  </data>
+  <data name="donGiaSP.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="donGiaSP.Width" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
   <metadata name="thanhTien.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="thanhTien.HeaderText" xml:space="preserve">
+    <value>Thành tiền</value>
+  </data>
+  <data name="thanhTien.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="thanhTien.Width" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="dtgvSanPhamTrongPhieuDat.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dtgvSanPhamTrongPhieuDat.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="dtgvSanPhamTrongPhieuDat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 32</value>
+  </data>
+  <data name="dtgvSanPhamTrongPhieuDat.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="dtgvSanPhamTrongPhieuDat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>513, 410</value>
+  </data>
+  <data name="dtgvSanPhamTrongPhieuDat.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dtgvSanPhamTrongPhieuDat.Name" xml:space="preserve">
+    <value>dtgvSanPhamTrongPhieuDat</value>
+  </data>
+  <data name="&gt;&gt;dtgvSanPhamTrongPhieuDat.Type" xml:space="preserve">
+    <value>Sunny.UI.UIDataGridView, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;dtgvSanPhamTrongPhieuDat.Parent" xml:space="preserve">
+    <value>uiGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;dtgvSanPhamTrongPhieuDat.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="uiGroupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiGroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>594, 166</value>
+  </data>
+  <data name="uiGroupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="uiGroupBox2.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="uiGroupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 32, 0, 0</value>
+  </data>
+  <data name="uiGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>513, 442</value>
+  </data>
+  <data name="uiGroupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="uiGroupBox2.Text" xml:space="preserve">
+    <value>Sản phẩm đặt</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox2.Name" xml:space="preserve">
+    <value>uiGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox2.Type" xml:space="preserve">
+    <value>Sunny.UI.UIGroupBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox2.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnPhucHoi.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnPhucHoi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>511, 415</value>
+  </data>
+  <data name="btnPhucHoi.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnPhucHoi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 35</value>
+  </data>
+  <data name="btnPhucHoi.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
   <metadata name="uiToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <data name="btnPhucHoi.ToolTip" xml:space="preserve">
+    <value>Trờ lại ban đầu</value>
+  </data>
+  <data name="&gt;&gt;btnPhucHoi.Name" xml:space="preserve">
+    <value>btnPhucHoi</value>
+  </data>
+  <data name="&gt;&gt;btnPhucHoi.Type" xml:space="preserve">
+    <value>Sunny.UI.UISymbolButton, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;btnPhucHoi.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;btnPhucHoi.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtTongTien.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="txtTongTien.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtTongTien.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="txtTongTien.Location" type="System.Drawing.Point, System.Drawing">
+    <value>891, 619</value>
+  </data>
+  <data name="txtTongTien.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="txtTongTien.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="txtTongTien.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="txtTongTien.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 29</value>
+  </data>
+  <data name="txtTongTien.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;txtTongTien.Name" xml:space="preserve">
+    <value>txtTongTien</value>
+  </data>
+  <data name="&gt;&gt;txtTongTien.Type" xml:space="preserve">
+    <value>Sunny.UI.UITextBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;txtTongTien.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;txtTongTien.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnHuyLoc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnHuyLoc.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnHuyLoc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>404, 619</value>
+  </data>
+  <data name="btnHuyLoc.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnHuyLoc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 35</value>
+  </data>
+  <data name="btnHuyLoc.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="btnHuyLoc.Text" xml:space="preserve">
+    <value>Hủy lọc</value>
+  </data>
+  <data name="&gt;&gt;btnHuyLoc.Name" xml:space="preserve">
+    <value>btnHuyLoc</value>
+  </data>
+  <data name="&gt;&gt;btnHuyLoc.Type" xml:space="preserve">
+    <value>Sunny.UI.UIButton, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;btnHuyLoc.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;btnHuyLoc.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="uiLabel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="uiLabel9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>793, 623</value>
+  </data>
+  <data name="uiLabel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 23</value>
+  </data>
+  <data name="uiLabel9.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="uiLabel9.Text" xml:space="preserve">
+    <value>Tổng tiền:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel9.Name" xml:space="preserve">
+    <value>uiLabel9</value>
+  </data>
+  <data name="&gt;&gt;uiLabel9.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel9.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;uiLabel9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnLuu.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnLuu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>511, 509</value>
+  </data>
+  <data name="btnLuu.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnLuu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 35</value>
+  </data>
+  <data name="btnLuu.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="btnLuu.ToolTip" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="&gt;&gt;btnLuu.Name" xml:space="preserve">
+    <value>btnLuu</value>
+  </data>
+  <data name="&gt;&gt;btnLuu.Type" xml:space="preserve">
+    <value>Sunny.UI.UISymbolButton, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;btnLuu.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;btnLuu.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnThemSPVaoPhieuDat.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnThemSPVaoPhieuDat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>511, 235</value>
+  </data>
+  <data name="btnThemSPVaoPhieuDat.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnThemSPVaoPhieuDat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 35</value>
+  </data>
+  <data name="btnThemSPVaoPhieuDat.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="btnThemSPVaoPhieuDat.ToolTip" xml:space="preserve">
+    <value>Thêm sản phẩm</value>
+  </data>
+  <data name="&gt;&gt;btnThemSPVaoPhieuDat.Name" xml:space="preserve">
+    <value>btnThemSPVaoPhieuDat</value>
+  </data>
+  <data name="&gt;&gt;btnThemSPVaoPhieuDat.Type" xml:space="preserve">
+    <value>Sunny.UI.UISymbolButton, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;btnThemSPVaoPhieuDat.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;btnThemSPVaoPhieuDat.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnXoaSPTrongPhieuDat.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnXoaSPTrongPhieuDat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>511, 325</value>
+  </data>
+  <data name="btnXoaSPTrongPhieuDat.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnXoaSPTrongPhieuDat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 35</value>
+  </data>
+  <data name="btnXoaSPTrongPhieuDat.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="btnXoaSPTrongPhieuDat.ToolTip" xml:space="preserve">
+    <value>Xóa sản phẩm</value>
+  </data>
+  <data name="&gt;&gt;btnXoaSPTrongPhieuDat.Name" xml:space="preserve">
+    <value>btnXoaSPTrongPhieuDat</value>
+  </data>
+  <data name="&gt;&gt;btnXoaSPTrongPhieuDat.Type" xml:space="preserve">
+    <value>Sunny.UI.UISymbolButton, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;btnXoaSPTrongPhieuDat.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;btnXoaSPTrongPhieuDat.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtDonGia.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="txtDonGia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>420, 72</value>
+  </data>
+  <data name="txtDonGia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="txtDonGia.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="txtDonGia.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="txtDonGia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 29</value>
+  </data>
+  <data name="txtDonGia.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;txtDonGia.Name" xml:space="preserve">
+    <value>txtDonGia</value>
+  </data>
+  <data name="&gt;&gt;txtDonGia.Type" xml:space="preserve">
+    <value>Sunny.UI.UITextBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;txtDonGia.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;txtDonGia.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="uiLabel8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 78</value>
+  </data>
+  <data name="uiLabel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="uiLabel8.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="uiLabel8.Text" xml:space="preserve">
+    <value>Đơn giá:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel8.Name" xml:space="preserve">
+    <value>uiLabel8</value>
+  </data>
+  <data name="&gt;&gt;uiLabel8.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel8.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;uiLabel8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbNhaCungCap.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="cbNhaCungCap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>419, 111</value>
+  </data>
+  <data name="cbNhaCungCap.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cbNhaCungCap.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>63, 0</value>
+  </data>
+  <data name="cbNhaCungCap.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 30, 2</value>
+  </data>
+  <data name="cbNhaCungCap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 29</value>
+  </data>
+  <data name="cbNhaCungCap.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;cbNhaCungCap.Name" xml:space="preserve">
+    <value>cbNhaCungCap</value>
+  </data>
+  <data name="&gt;&gt;cbNhaCungCap.Type" xml:space="preserve">
+    <value>Sunny.UI.UIComboBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;cbNhaCungCap.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;cbNhaCungCap.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtSoLuongSanPham.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="txtSoLuongSanPham.Location" type="System.Drawing.Point, System.Drawing">
+    <value>420, 35</value>
+  </data>
+  <data name="txtSoLuongSanPham.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="txtSoLuongSanPham.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="txtSoLuongSanPham.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="txtSoLuongSanPham.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 29</value>
+  </data>
+  <data name="txtSoLuongSanPham.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;txtSoLuongSanPham.Name" xml:space="preserve">
+    <value>txtSoLuongSanPham</value>
+  </data>
+  <data name="&gt;&gt;txtSoLuongSanPham.Type" xml:space="preserve">
+    <value>Sunny.UI.UITextBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;txtSoLuongSanPham.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;txtSoLuongSanPham.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="uiLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 115</value>
+  </data>
+  <data name="uiLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 23</value>
+  </data>
+  <data name="uiLabel2.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="uiLabel2.Text" xml:space="preserve">
+    <value>Nhà cung cấp:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel2.Name" xml:space="preserve">
+    <value>uiLabel2</value>
+  </data>
+  <data name="&gt;&gt;uiLabel2.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel2.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;uiLabel2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="uiLabel7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 39</value>
+  </data>
+  <data name="uiLabel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 23</value>
+  </data>
+  <data name="uiLabel7.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="uiLabel7.Text" xml:space="preserve">
+    <value>Số lượng:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel7.Name" xml:space="preserve">
+    <value>uiLabel7</value>
+  </data>
+  <data name="&gt;&gt;uiLabel7.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel7.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;uiLabel7.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtTenSanPham.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtTenSanPham.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="txtTenSanPham.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 111</value>
+  </data>
+  <data name="txtTenSanPham.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="txtTenSanPham.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="txtTenSanPham.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="txtTenSanPham.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 29</value>
+  </data>
+  <data name="txtTenSanPham.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;txtTenSanPham.Name" xml:space="preserve">
+    <value>txtTenSanPham</value>
+  </data>
+  <data name="&gt;&gt;txtTenSanPham.Type" xml:space="preserve">
+    <value>Sunny.UI.UITextBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;txtTenSanPham.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;txtTenSanPham.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="uiLabel6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 115</value>
+  </data>
+  <data name="uiLabel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 23</value>
+  </data>
+  <data name="uiLabel6.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="uiLabel6.Text" xml:space="preserve">
+    <value>Tên sản phẩm:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel6.Name" xml:space="preserve">
+    <value>uiLabel6</value>
+  </data>
+  <data name="&gt;&gt;uiLabel6.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel6.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;uiLabel6.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtMaSanPham.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtMaSanPham.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="txtMaSanPham.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 72</value>
+  </data>
+  <data name="txtMaSanPham.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="txtMaSanPham.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="txtMaSanPham.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="txtMaSanPham.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 29</value>
+  </data>
+  <data name="txtMaSanPham.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;txtMaSanPham.Name" xml:space="preserve">
+    <value>txtMaSanPham</value>
+  </data>
+  <data name="&gt;&gt;txtMaSanPham.Type" xml:space="preserve">
+    <value>Sunny.UI.UITextBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;txtMaSanPham.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;txtMaSanPham.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="uiLabel5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 78</value>
+  </data>
+  <data name="uiLabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 23</value>
+  </data>
+  <data name="uiLabel5.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="uiLabel5.Text" xml:space="preserve">
+    <value>Mã sản phẩm:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel5.Name" xml:space="preserve">
+    <value>uiLabel5</value>
+  </data>
+  <data name="&gt;&gt;uiLabel5.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel5.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;uiLabel5.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtMaPhieuDat.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtMaPhieuDat.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="txtMaPhieuDat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 35</value>
+  </data>
+  <data name="txtMaPhieuDat.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="txtMaPhieuDat.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="txtMaPhieuDat.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="txtMaPhieuDat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 29</value>
+  </data>
+  <data name="txtMaPhieuDat.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;txtMaPhieuDat.Name" xml:space="preserve">
+    <value>txtMaPhieuDat</value>
+  </data>
+  <data name="&gt;&gt;txtMaPhieuDat.Type" xml:space="preserve">
+    <value>Sunny.UI.UITextBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;txtMaPhieuDat.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;txtMaPhieuDat.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="uiLabel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 39</value>
+  </data>
+  <data name="uiLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 23</value>
+  </data>
+  <data name="uiLabel3.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="uiLabel3.Text" xml:space="preserve">
+    <value>Mã phiếu đặt:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel3.Name" xml:space="preserve">
+    <value>uiLabel3</value>
+  </data>
+  <data name="&gt;&gt;uiLabel3.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel3.Parent" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;uiLabel3.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="uiGroupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiGroupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>498, 5</value>
+  </data>
+  <data name="uiGroupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="uiGroupBox4.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="uiGroupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 32, 0, 0</value>
+  </data>
+  <data name="uiGroupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>609, 151</value>
+  </data>
+  <data name="uiGroupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="uiGroupBox4.Text" xml:space="preserve">
+    <value>Thông tin phiếu đặt</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox4.Name" xml:space="preserve">
+    <value>uiGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox4.Type" xml:space="preserve">
+    <value>Sunny.UI.UIGroupBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox4.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox4.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="uiLabel4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 109</value>
+  </data>
+  <data name="uiLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 23</value>
+  </data>
+  <data name="uiLabel4.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="uiLabel4.Text" xml:space="preserve">
+    <value>Thương hiệu:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel4.Name" xml:space="preserve">
+    <value>uiLabel4</value>
+  </data>
+  <data name="&gt;&gt;uiLabel4.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel4.Parent" xml:space="preserve">
+    <value>uiGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;uiLabel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbThuongHieu.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="cbThuongHieu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 109</value>
+  </data>
+  <data name="cbThuongHieu.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cbThuongHieu.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>63, 0</value>
+  </data>
+  <data name="cbThuongHieu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 30, 2</value>
+  </data>
+  <data name="cbThuongHieu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 29</value>
+  </data>
+  <data name="cbThuongHieu.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;cbThuongHieu.Name" xml:space="preserve">
+    <value>cbThuongHieu</value>
+  </data>
+  <data name="&gt;&gt;cbThuongHieu.Type" xml:space="preserve">
+    <value>Sunny.UI.UIComboBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;cbThuongHieu.Parent" xml:space="preserve">
+    <value>uiGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;cbThuongHieu.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnTimKiem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnTimKiem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>458, 33</value>
+  </data>
+  <data name="btnTimKiem.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnTimKiem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 29</value>
+  </data>
+  <data name="btnTimKiem.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;btnTimKiem.Name" xml:space="preserve">
+    <value>btnTimKiem</value>
+  </data>
+  <data name="&gt;&gt;btnTimKiem.Type" xml:space="preserve">
+    <value>Sunny.UI.UISymbolButton, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;btnTimKiem.Parent" xml:space="preserve">
+    <value>uiGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;btnTimKiem.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtTimKiem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt, style=Italic</value>
+  </data>
+  <data name="txtTimKiem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 33</value>
+  </data>
+  <data name="txtTimKiem.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="txtTimKiem.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="txtTimKiem.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="txtTimKiem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>433, 29</value>
+  </data>
+  <data name="txtTimKiem.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="txtTimKiem.Text" xml:space="preserve">
+    <value>Nhập mã hoặc tên sản phẩm để tìm kiếm</value>
+  </data>
+  <data name="&gt;&gt;txtTimKiem.Name" xml:space="preserve">
+    <value>txtTimKiem</value>
+  </data>
+  <data name="&gt;&gt;txtTimKiem.Type" xml:space="preserve">
+    <value>Sunny.UI.UITextBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;txtTimKiem.Parent" xml:space="preserve">
+    <value>uiGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;txtTimKiem.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="uiLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 72</value>
+  </data>
+  <data name="uiLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 23</value>
+  </data>
+  <data name="uiLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="uiLabel1.Text" xml:space="preserve">
+    <value>Loại sản phẩm:</value>
+  </data>
+  <data name="&gt;&gt;uiLabel1.Name" xml:space="preserve">
+    <value>uiLabel1</value>
+  </data>
+  <data name="&gt;&gt;uiLabel1.Type" xml:space="preserve">
+    <value>Sunny.UI.UILabel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiLabel1.Parent" xml:space="preserve">
+    <value>uiGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;uiLabel1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbLoaiSP.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="cbLoaiSP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 72</value>
+  </data>
+  <data name="cbLoaiSP.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cbLoaiSP.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>63, 0</value>
+  </data>
+  <data name="cbLoaiSP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 30, 2</value>
+  </data>
+  <data name="cbLoaiSP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 29</value>
+  </data>
+  <data name="cbLoaiSP.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;cbLoaiSP.Name" xml:space="preserve">
+    <value>cbLoaiSP</value>
+  </data>
+  <data name="&gt;&gt;cbLoaiSP.Type" xml:space="preserve">
+    <value>Sunny.UI.UIComboBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;cbLoaiSP.Parent" xml:space="preserve">
+    <value>uiGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;cbLoaiSP.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="uiGroupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiGroupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 5</value>
+  </data>
+  <data name="uiGroupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="uiGroupBox3.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="uiGroupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 32, 0, 0</value>
+  </data>
+  <data name="uiGroupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 151</value>
+  </data>
+  <data name="uiGroupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="uiGroupBox3.Text" xml:space="preserve">
+    <value>Tìm kiếm sản phẩm</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox3.Name" xml:space="preserve">
+    <value>uiGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox3.Type" xml:space="preserve">
+    <value>Sunny.UI.UIGroupBox, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox3.Parent" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBox3.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="uiPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="uiPanel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="uiPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 43</value>
+  </data>
+  <data name="uiPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="uiPanel2.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="uiPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1113, 657</value>
+  </data>
+  <data name="uiPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="uiPanel2.Text" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;uiPanel2.Name" xml:space="preserve">
+    <value>uiPanel2</value>
+  </data>
+  <data name="&gt;&gt;uiPanel2.Type" xml:space="preserve">
+    <value>Sunny.UI.UIPanel, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiPanel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;uiPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1113, 700</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>frmDatHang</value>
+  </data>
+  <data name="&gt;&gt;maSanPham.Name" xml:space="preserve">
+    <value>maSanPham</value>
+  </data>
+  <data name="&gt;&gt;maSanPham.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tenLoaiSanPham.Name" xml:space="preserve">
+    <value>tenLoaiSanPham</value>
+  </data>
+  <data name="&gt;&gt;tenLoaiSanPham.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;thuongHieu.Name" xml:space="preserve">
+    <value>thuongHieu</value>
+  </data>
+  <data name="&gt;&gt;thuongHieu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nhaCungCap.Name" xml:space="preserve">
+    <value>nhaCungCap</value>
+  </data>
+  <data name="&gt;&gt;nhaCungCap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tenSanPham.Name" xml:space="preserve">
+    <value>tenSanPham</value>
+  </data>
+  <data name="&gt;&gt;tenSanPham.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;donGiaBan.Name" xml:space="preserve">
+    <value>donGiaBan</value>
+  </data>
+  <data name="&gt;&gt;donGiaBan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;soLuong.Name" xml:space="preserve">
+    <value>soLuong</value>
+  </data>
+  <data name="&gt;&gt;soLuong.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;anh.Name" xml:space="preserve">
+    <value>anh</value>
+  </data>
+  <data name="&gt;&gt;anh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trangThai.Name" xml:space="preserve">
+    <value>trangThai</value>
+  </data>
+  <data name="&gt;&gt;trangThai.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;uiToolTip1.Name" xml:space="preserve">
+    <value>uiToolTip1</value>
+  </data>
+  <data name="&gt;&gt;uiToolTip1.Type" xml:space="preserve">
+    <value>Sunny.UI.UIToolTip, SunnyUI, Version=3.8.0.1, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;maSP.Name" xml:space="preserve">
+    <value>maSP</value>
+  </data>
+  <data name="&gt;&gt;maSP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tenSP.Name" xml:space="preserve">
+    <value>tenSP</value>
+  </data>
+  <data name="&gt;&gt;tenSP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;soLuongDat.Name" xml:space="preserve">
+    <value>soLuongDat</value>
+  </data>
+  <data name="&gt;&gt;soLuongDat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;soLuongDaNhan.Name" xml:space="preserve">
+    <value>soLuongDaNhan</value>
+  </data>
+  <data name="&gt;&gt;soLuongDaNhan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;donGiaSP.Name" xml:space="preserve">
+    <value>donGiaSP</value>
+  </data>
+  <data name="&gt;&gt;donGiaSP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;thanhTien.Name" xml:space="preserve">
+    <value>thanhTien</value>
+  </data>
+  <data name="&gt;&gt;thanhTien.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmDatHang</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

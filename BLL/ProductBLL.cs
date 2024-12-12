@@ -12,6 +12,10 @@ namespace BLL
     {
         ProductDAL pdal = new ProductDAL();
         public ProductBLL() { }
+        public int TongSoLuongSanPham()
+        {
+            return pdal.TongSoLuongSanPham();
+        }
         public List<Product> LocSanPhamTheoLoai(string maLoaiSP)
         {
             return pdal.LocSanPhamTheoLoai(maLoaiSP);
@@ -70,6 +74,14 @@ namespace BLL
         public bool KiemTraSanPhamCoThuocPhieuDat(string maSanPham)
         {
             return pdal.KiemTraSanPhamCoThuocPhieuDat(maSanPham);
+        }
+        public List<SanPhamBanChay> ThongKeTop5SanPhamBanChayNhat(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            return pdal.ThongKeTop5SanPhamBanChayNhat(ngayBatDau, ngayKetThuc);
+        }
+        public List<(string TenSanPham, int SoLuong)> ThongKeDanhSachSanPhamDuoiMucToiThieu()
+        {
+            return pdal.ThongKeDanhSachSanPhamDuoiMucToiThieu();
         }
     }
 }

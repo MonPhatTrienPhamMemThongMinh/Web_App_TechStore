@@ -53,8 +53,6 @@
             this.txtMoTa = new CustomControl.ucBottomLineTextBox();
             this.panel30 = new System.Windows.Forms.Panel();
             this.panel41 = new System.Windows.Forms.Panel();
-            this.cboNCC = new Sunny.UI.UIComboBox();
-            this.uiLabel13 = new Sunny.UI.UILabel();
             this.panel42 = new System.Windows.Forms.Panel();
             this.panel43 = new System.Windows.Forms.Panel();
             this.panel38 = new System.Windows.Forms.Panel();
@@ -99,14 +97,11 @@
             this.uiLabel9 = new Sunny.UI.UILabel();
             this.txtTimKiem = new Sunny.UI.UITextBox();
             this.btnSearch = new Sunny.UI.UISymbolButton();
-            this.cbNhaCungCap = new Sunny.UI.UIComboBox();
-            this.uiLabel7 = new Sunny.UI.UILabel();
             this.dgvProducts = new Sunny.UI.UIDataGridView();
             this.maSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thuongHieuSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loaiSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.donGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.baoHanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,7 +110,6 @@
             this.picture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maThuongHieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maLoaiSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hinhAnh)).BeginInit();
@@ -356,47 +350,12 @@
             // 
             // panel41
             // 
-            this.panel41.Controls.Add(this.cboNCC);
-            this.panel41.Controls.Add(this.uiLabel13);
             this.panel41.Controls.Add(this.panel42);
             this.panel41.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel41.Location = new System.Drawing.Point(0, 204);
             this.panel41.Name = "panel41";
             this.panel41.Size = new System.Drawing.Size(319, 41);
             this.panel41.TabIndex = 94;
-            // 
-            // cboNCC
-            // 
-            this.cboNCC.DataSource = null;
-            this.cboNCC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboNCC.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
-            this.cboNCC.FillColor = System.Drawing.Color.White;
-            this.cboNCC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cboNCC.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.cboNCC.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.cboNCC.Location = new System.Drawing.Point(122, 0);
-            this.cboNCC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cboNCC.MinimumSize = new System.Drawing.Size(63, 0);
-            this.cboNCC.Name = "cboNCC";
-            this.cboNCC.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.cboNCC.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.cboNCC.Size = new System.Drawing.Size(197, 41);
-            this.cboNCC.SymbolSize = 24;
-            this.cboNCC.TabIndex = 108;
-            this.cboNCC.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cboNCC.Watermark = "";
-            // 
-            // uiLabel13
-            // 
-            this.uiLabel13.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel13.Location = new System.Drawing.Point(10, 0);
-            this.uiLabel13.Name = "uiLabel13";
-            this.uiLabel13.Size = new System.Drawing.Size(112, 41);
-            this.uiLabel13.TabIndex = 107;
-            this.uiLabel13.Text = "Nhà cung cấp:";
-            this.uiLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel42
             // 
@@ -873,8 +832,6 @@
             this.uiGroupBox1.Controls.Add(this.uiLabel9);
             this.uiGroupBox1.Controls.Add(this.txtTimKiem);
             this.uiGroupBox1.Controls.Add(this.btnSearch);
-            this.uiGroupBox1.Controls.Add(this.cbNhaCungCap);
-            this.uiGroupBox1.Controls.Add(this.uiLabel7);
             this.uiGroupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.uiGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.uiGroupBox1.Location = new System.Drawing.Point(193, 0);
@@ -899,7 +856,7 @@
             "InStock",
             "OutOfStock"});
             this.cbTrangThai.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.cbTrangThai.Location = new System.Drawing.Point(719, 68);
+            this.cbTrangThai.Location = new System.Drawing.Point(403, 68);
             this.cbTrangThai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbTrangThai.MinimumSize = new System.Drawing.Size(63, 0);
             this.cbTrangThai.Name = "cbTrangThai";
@@ -916,7 +873,7 @@
             this.uiLabel4.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(620, 68);
+            this.uiLabel4.Location = new System.Drawing.Point(304, 68);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(92, 31);
             this.uiLabel4.TabIndex = 21;
@@ -1023,37 +980,6 @@
             this.btnSearch.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // cbNhaCungCap
-            // 
-            this.cbNhaCungCap.DataSource = null;
-            this.cbNhaCungCap.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
-            this.cbNhaCungCap.FillColor = System.Drawing.Color.White;
-            this.cbNhaCungCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cbNhaCungCap.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.cbNhaCungCap.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.cbNhaCungCap.Location = new System.Drawing.Point(424, 68);
-            this.cbNhaCungCap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbNhaCungCap.MinimumSize = new System.Drawing.Size(63, 0);
-            this.cbNhaCungCap.Name = "cbNhaCungCap";
-            this.cbNhaCungCap.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.cbNhaCungCap.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.cbNhaCungCap.Size = new System.Drawing.Size(161, 29);
-            this.cbNhaCungCap.SymbolSize = 24;
-            this.cbNhaCungCap.TabIndex = 16;
-            this.cbNhaCungCap.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cbNhaCungCap.Watermark = "";
-            // 
-            // uiLabel7
-            // 
-            this.uiLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.uiLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel7.Location = new System.Drawing.Point(304, 68);
-            this.uiLabel7.Name = "uiLabel7";
-            this.uiLabel7.Size = new System.Drawing.Size(113, 31);
-            this.uiLabel7.TabIndex = 19;
-            this.uiLabel7.Text = "Nhà cung cấp:";
-            // 
             // dgvProducts
             // 
             this.dgvProducts.AllowUserToAddRows = false;
@@ -1078,7 +1004,6 @@
             this.tenSanPham,
             this.thuongHieuSanPham,
             this.loaiSanPham,
-            this.nhaCungCap,
             this.soLuong,
             this.donGia,
             this.baoHanh,
@@ -1086,8 +1011,7 @@
             this.trangThai,
             this.picture,
             this.maThuongHieu,
-            this.maLoaiSanPham,
-            this.maNhaCungCap});
+            this.maLoaiSanPham});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -1156,13 +1080,6 @@
             this.loaiSanPham.Name = "loaiSanPham";
             this.loaiSanPham.ReadOnly = true;
             // 
-            // nhaCungCap
-            // 
-            this.nhaCungCap.DataPropertyName = "SupplierName";
-            this.nhaCungCap.HeaderText = "Nhà cung cấp";
-            this.nhaCungCap.Name = "nhaCungCap";
-            this.nhaCungCap.ReadOnly = true;
-            // 
             // soLuong
             // 
             this.soLuong.DataPropertyName = "Quantity";
@@ -1229,14 +1146,6 @@
             this.maLoaiSanPham.ReadOnly = true;
             this.maLoaiSanPham.Visible = false;
             // 
-            // maNhaCungCap
-            // 
-            this.maNhaCungCap.DataPropertyName = "maNhaCungCap";
-            this.maNhaCungCap.HeaderText = "Mã nhà cung cấp";
-            this.maNhaCungCap.Name = "maNhaCungCap";
-            this.maNhaCungCap.ReadOnly = true;
-            this.maNhaCungCap.Visible = false;
-            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1284,8 +1193,6 @@
         private Sunny.UI.UILabel uiLabel9;
         private Sunny.UI.UITextBox txtTimKiem;
         private Sunny.UI.UISymbolButton btnSearch;
-        private Sunny.UI.UIComboBox cbNhaCungCap;
-        private Sunny.UI.UILabel uiLabel7;
         private Sunny.UI.UISymbolButton btnBrand;
         private System.Windows.Forms.Panel panel4;
         private Sunny.UI.UIButton btnHuyBo;
@@ -1321,10 +1228,8 @@
         private System.Windows.Forms.Panel panel7;
         private Sunny.UI.UILabel uiLabel3;
         private System.Windows.Forms.Panel panel8;
-        private Sunny.UI.UIComboBox cboNCC;
         private Sunny.UI.UITextBox txtBaoHanh;
         private System.Windows.Forms.Panel panel41;
-        private Sunny.UI.UILabel uiLabel13;
         private System.Windows.Forms.Panel panel42;
         private Sunny.UI.UIButton btnChonAnh;
         private System.Windows.Forms.Panel panel13;
@@ -1343,7 +1248,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn thuongHieuSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn loaiSanPham;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nhaCungCap;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn donGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn baoHanh;
@@ -1352,6 +1256,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn picture;
         private System.Windows.Forms.DataGridViewTextBoxColumn maThuongHieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn maLoaiSanPham;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maNhaCungCap;
     }
 }

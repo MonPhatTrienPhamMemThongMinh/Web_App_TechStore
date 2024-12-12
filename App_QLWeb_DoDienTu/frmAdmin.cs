@@ -24,9 +24,15 @@ namespace App_QLWeb_DoDienTu
             this.btnHoaDon.Click += BtnQLOrders_Click;
             this.btnQLNhaCungCap.Click += BtnQLNhaCungCap_Click;
             this.btnUser.Click += BtnUser_Click;
+            this.btnDashboard.Click += BtnDashboard_Click;
             this.btnDatHang.Click += BtnDatHang_Click;
             this.btnNhapHang.Click += BtnNhapHang_Click;
             this.btnNhanVien.Click += BtnNhanVien_Click;
+        }
+
+        private void BtnDashboard_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmDashboard(user.Id));
         }
 
         private void BtnNhanVien_Click(object sender, EventArgs e)

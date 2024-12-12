@@ -34,12 +34,12 @@ namespace App_QLWeb_DoDienTu
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,24 +50,6 @@ namespace App_QLWeb_DoDienTu
             this.tabControlPhieuDat = new Sunny.UI.UITabControl();
             this.tabDanhSach = new System.Windows.Forms.TabPage();
             this.dtgvDanhSachPhieuDat = new Sunny.UI.UIDataGridView();
-            this.tabChiTiet = new System.Windows.Forms.TabPage();
-            this.dtgvChiTietPhieuDat = new Sunny.UI.UIDataGridView();
-            this.uiPanel3 = new Sunny.UI.UIPanel();
-            this.uiGroupBox3 = new Sunny.UI.UIGroupBox();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.dtNgayTaoPhieuNhap = new System.Windows.Forms.DateTimePicker();
-            this.txtTimKiem = new Sunny.UI.UITextBox();
-            this.btnTimKiem = new Sunny.UI.UISymbolButton();
-            this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
-            this.btnKoDuyet = new Sunny.UI.UIButton();
-            this.btnKhongXacNhan = new Sunny.UI.UIButton();
-            this.btnXacNhan = new Sunny.UI.UIButton();
-            this.btnDuyetPhieuDat = new Sunny.UI.UIButton();
-            this.btnInPhieuDat = new Sunny.UI.UIButton();
-            this.btnSuaPhieuDat = new Sunny.UI.UIButton();
-            this.btnXoaPhieuDat = new Sunny.UI.UIButton();
-            this.btnTaoPhieuDat = new Sunny.UI.UIButton();
-            this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
             this.maPhieuDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,8 +58,8 @@ namespace App_QLWeb_DoDienTu
             this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trangThaiXacNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ghiChuKhongDuyet = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabChiTiet = new System.Windows.Forms.TabPage();
+            this.dtgvChiTietPhieuDat = new Sunny.UI.UIDataGridView();
             this.maPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +67,19 @@ namespace App_QLWeb_DoDienTu
             this.soLuongNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.donGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiPanel3 = new Sunny.UI.UIPanel();
+            this.uiGroupBox3 = new Sunny.UI.UIGroupBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.dtNgayTaoPhieuNhap = new System.Windows.Forms.DateTimePicker();
+            this.txtTimKiem = new Sunny.UI.UITextBox();
+            this.btnTimKiem = new Sunny.UI.UISymbolButton();
+            this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
+            this.btnXacNhan = new Sunny.UI.UIButton();
+            this.btnInPhieuDat = new Sunny.UI.UIButton();
+            this.btnSuaPhieuDat = new Sunny.UI.UIButton();
+            this.btnXoaPhieuDat = new Sunny.UI.UIButton();
+            this.btnTaoPhieuDat = new Sunny.UI.UIButton();
+            this.uiToolTip1 = new Sunny.UI.UIToolTip(this.components);
             this.uiPanel2.SuspendLayout();
             this.uiPanel4.SuspendLayout();
             this.tabControlPhieuDat.SuspendLayout();
@@ -184,7 +179,7 @@ namespace App_QLWeb_DoDienTu
             this.dtgvDanhSachPhieuDat.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvDanhSachPhieuDat.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgvDanhSachPhieuDat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dtgvDanhSachPhieuDat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvDanhSachPhieuDat.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgvDanhSachPhieuDat.BackgroundColor = System.Drawing.Color.White;
             this.dtgvDanhSachPhieuDat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -206,9 +201,7 @@ namespace App_QLWeb_DoDienTu
             this.ngayCapNhat,
             this.soLuong,
             this.tongTien,
-            this.trangThai,
-            this.trangThaiXacNhan,
-            this.ghiChuKhongDuyet});
+            this.trangThai});
             this.dtgvDanhSachPhieuDat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvDanhSachPhieuDat.EnableHeadersVisualStyles = false;
             this.dtgvDanhSachPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -236,13 +229,81 @@ namespace App_QLWeb_DoDienTu
             this.dtgvDanhSachPhieuDat.ScrollBarRectColor = System.Drawing.Color.White;
             this.dtgvDanhSachPhieuDat.ScrollBarStyleInherited = false;
             this.dtgvDanhSachPhieuDat.SelectedIndex = -1;
-            this.dtgvDanhSachPhieuDat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvDanhSachPhieuDat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgvDanhSachPhieuDat.Size = new System.Drawing.Size(1040, 429);
             this.dtgvDanhSachPhieuDat.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvDanhSachPhieuDat.TabIndex = 8;
             this.dtgvDanhSachPhieuDat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDanhSachPhieuDat_CellClick);
             this.dtgvDanhSachPhieuDat.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDanhSachPhieuDat_CellDoubleClick);
-            this.dtgvDanhSachPhieuDat.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgvDanhSachPhieuDat_CellFormatting);
+            // 
+            // maPhieuDat
+            // 
+            this.maPhieuDat.DataPropertyName = "MaPhieuDat";
+            this.maPhieuDat.HeaderText = "Mã phiếu đặt";
+            this.maPhieuDat.MinimumWidth = 6;
+            this.maPhieuDat.Name = "maPhieuDat";
+            this.maPhieuDat.ReadOnly = true;
+            // 
+            // tenNhanVien
+            // 
+            this.tenNhanVien.DataPropertyName = "tenNhanVien";
+            this.tenNhanVien.HeaderText = "Tên nhân viên";
+            this.tenNhanVien.MinimumWidth = 6;
+            this.tenNhanVien.Name = "tenNhanVien";
+            this.tenNhanVien.ReadOnly = true;
+            // 
+            // tenNhaCungCap
+            // 
+            this.tenNhaCungCap.DataPropertyName = "tenNhaCungCap";
+            this.tenNhaCungCap.HeaderText = "Nhà cung cấp";
+            this.tenNhaCungCap.MinimumWidth = 6;
+            this.tenNhaCungCap.Name = "tenNhaCungCap";
+            this.tenNhaCungCap.ReadOnly = true;
+            // 
+            // ngayLap
+            // 
+            this.ngayLap.DataPropertyName = "NgayLap";
+            this.ngayLap.HeaderText = "Ngày lập";
+            this.ngayLap.MinimumWidth = 6;
+            this.ngayLap.Name = "ngayLap";
+            this.ngayLap.ReadOnly = true;
+            // 
+            // ngayCapNhat
+            // 
+            this.ngayCapNhat.DataPropertyName = "NgayCapNhat";
+            this.ngayCapNhat.HeaderText = "Ngày cập nhật";
+            this.ngayCapNhat.MinimumWidth = 6;
+            this.ngayCapNhat.Name = "ngayCapNhat";
+            this.ngayCapNhat.ReadOnly = true;
+            // 
+            // soLuong
+            // 
+            this.soLuong.DataPropertyName = "SoLuong";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuong.DefaultCellStyle = dataGridViewCellStyle3;
+            this.soLuong.HeaderText = "Số lượng";
+            this.soLuong.MinimumWidth = 6;
+            this.soLuong.Name = "soLuong";
+            this.soLuong.ReadOnly = true;
+            // 
+            // tongTien
+            // 
+            this.tongTien.DataPropertyName = "TongTien";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "C0";
+            this.tongTien.DefaultCellStyle = dataGridViewCellStyle4;
+            this.tongTien.HeaderText = "Tổng tiền";
+            this.tongTien.MinimumWidth = 6;
+            this.tongTien.Name = "tongTien";
+            this.tongTien.ReadOnly = true;
+            // 
+            // trangThai
+            // 
+            this.trangThai.DataPropertyName = "TrangThai";
+            this.trangThai.HeaderText = "Trạng thái";
+            this.trangThai.MinimumWidth = 6;
+            this.trangThai.Name = "trangThai";
+            this.trangThai.ReadOnly = true;
             // 
             // tabChiTiet
             // 
@@ -311,6 +372,72 @@ namespace App_QLWeb_DoDienTu
             this.dtgvChiTietPhieuDat.Size = new System.Drawing.Size(1040, 429);
             this.dtgvChiTietPhieuDat.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvChiTietPhieuDat.TabIndex = 9;
+            // 
+            // maPD
+            // 
+            this.maPD.DataPropertyName = "MaPhieuDat";
+            this.maPD.HeaderText = "Mã phiếu đặt";
+            this.maPD.MinimumWidth = 6;
+            this.maPD.Name = "maPD";
+            this.maPD.ReadOnly = true;
+            // 
+            // maSanPham
+            // 
+            this.maSanPham.DataPropertyName = "ProductID";
+            this.maSanPham.HeaderText = "Mã sản phẩm";
+            this.maSanPham.MinimumWidth = 6;
+            this.maSanPham.Name = "maSanPham";
+            this.maSanPham.ReadOnly = true;
+            // 
+            // tenSanPham
+            // 
+            this.tenSanPham.DataPropertyName = "tenSanPham";
+            this.tenSanPham.HeaderText = "Tên sản phẩm";
+            this.tenSanPham.MinimumWidth = 6;
+            this.tenSanPham.Name = "tenSanPham";
+            this.tenSanPham.ReadOnly = true;
+            // 
+            // soLuongDat
+            // 
+            this.soLuongDat.DataPropertyName = "SoLuongDat";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle9;
+            this.soLuongDat.HeaderText = "Số lượng đặt";
+            this.soLuongDat.MinimumWidth = 6;
+            this.soLuongDat.Name = "soLuongDat";
+            this.soLuongDat.ReadOnly = true;
+            // 
+            // soLuongNhan
+            // 
+            this.soLuongNhan.DataPropertyName = "SoLuongNhan";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.soLuongNhan.DefaultCellStyle = dataGridViewCellStyle10;
+            this.soLuongNhan.HeaderText = "Số lượng nhận";
+            this.soLuongNhan.MinimumWidth = 6;
+            this.soLuongNhan.Name = "soLuongNhan";
+            this.soLuongNhan.ReadOnly = true;
+            // 
+            // donGia
+            // 
+            this.donGia.DataPropertyName = "DonGia";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "C0";
+            this.donGia.DefaultCellStyle = dataGridViewCellStyle11;
+            this.donGia.HeaderText = "Đơn giá";
+            this.donGia.MinimumWidth = 6;
+            this.donGia.Name = "donGia";
+            this.donGia.ReadOnly = true;
+            // 
+            // thanhTien
+            // 
+            this.thanhTien.DataPropertyName = "TongTien";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "C0";
+            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle12;
+            this.thanhTien.HeaderText = "Thành tiền";
+            this.thanhTien.MinimumWidth = 6;
+            this.thanhTien.Name = "thanhTien";
+            this.thanhTien.ReadOnly = true;
             // 
             // uiPanel3
             // 
@@ -412,10 +539,7 @@ namespace App_QLWeb_DoDienTu
             // 
             // uiGroupBox4
             // 
-            this.uiGroupBox4.Controls.Add(this.btnKoDuyet);
-            this.uiGroupBox4.Controls.Add(this.btnKhongXacNhan);
             this.uiGroupBox4.Controls.Add(this.btnXacNhan);
-            this.uiGroupBox4.Controls.Add(this.btnDuyetPhieuDat);
             this.uiGroupBox4.Controls.Add(this.btnInPhieuDat);
             this.uiGroupBox4.Controls.Add(this.btnSuaPhieuDat);
             this.uiGroupBox4.Controls.Add(this.btnXoaPhieuDat);
@@ -433,50 +557,6 @@ namespace App_QLWeb_DoDienTu
             this.uiGroupBox4.Text = "Thao tác";
             this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnKoDuyet
-            // 
-            this.btnKoDuyet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnKoDuyet.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnKoDuyet.Location = new System.Drawing.Point(482, 35);
-            this.btnKoDuyet.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnKoDuyet.Name = "btnKoDuyet";
-            this.btnKoDuyet.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKoDuyet.Size = new System.Drawing.Size(150, 36);
-            this.btnKoDuyet.TabIndex = 11;
-            this.btnKoDuyet.Text = "Không duyệt";
-            this.btnKoDuyet.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnKoDuyet.Click += new System.EventHandler(this.btnKoDuyet_Click);
-            // 
-            // btnKhongXacNhan
-            // 
-            this.btnKhongXacNhan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnKhongXacNhan.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnKhongXacNhan.Location = new System.Drawing.Point(482, 79);
-            this.btnKhongXacNhan.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnKhongXacNhan.Name = "btnKhongXacNhan";
-            this.btnKhongXacNhan.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnKhongXacNhan.Size = new System.Drawing.Size(150, 36);
-            this.btnKhongXacNhan.TabIndex = 10;
-            this.btnKhongXacNhan.Text = "Không xác nhận";
-            this.btnKhongXacNhan.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnKhongXacNhan.Click += new System.EventHandler(this.btnKhongXacNhan_Click);
-            // 
             // btnXacNhan
             // 
             this.btnXacNhan.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -486,7 +566,7 @@ namespace App_QLWeb_DoDienTu
             this.btnXacNhan.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btnXacNhan.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btnXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnXacNhan.Location = new System.Drawing.Point(326, 79);
+            this.btnXacNhan.Location = new System.Drawing.Point(326, 81);
             this.btnXacNhan.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -499,28 +579,6 @@ namespace App_QLWeb_DoDienTu
             this.btnXacNhan.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
-            // btnDuyetPhieuDat
-            // 
-            this.btnDuyetPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDuyetPhieuDat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnDuyetPhieuDat.Location = new System.Drawing.Point(326, 35);
-            this.btnDuyetPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnDuyetPhieuDat.Name = "btnDuyetPhieuDat";
-            this.btnDuyetPhieuDat.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDuyetPhieuDat.Size = new System.Drawing.Size(150, 36);
-            this.btnDuyetPhieuDat.TabIndex = 8;
-            this.btnDuyetPhieuDat.Text = "Duyệt";
-            this.btnDuyetPhieuDat.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnDuyetPhieuDat.Click += new System.EventHandler(this.btnDuyetPhieuDat_Click);
-            // 
             // btnInPhieuDat
             // 
             this.btnInPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -530,7 +588,7 @@ namespace App_QLWeb_DoDienTu
             this.btnInPhieuDat.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btnInPhieuDat.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btnInPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnInPhieuDat.Location = new System.Drawing.Point(170, 79);
+            this.btnInPhieuDat.Location = new System.Drawing.Point(170, 81);
             this.btnInPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnInPhieuDat.Name = "btnInPhieuDat";
             this.btnInPhieuDat.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -574,7 +632,7 @@ namespace App_QLWeb_DoDienTu
             this.btnXoaPhieuDat.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btnXoaPhieuDat.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btnXoaPhieuDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnXoaPhieuDat.Location = new System.Drawing.Point(170, 35);
+            this.btnXoaPhieuDat.Location = new System.Drawing.Point(170, 37);
             this.btnXoaPhieuDat.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnXoaPhieuDat.Name = "btnXoaPhieuDat";
             this.btnXoaPhieuDat.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -614,169 +672,6 @@ namespace App_QLWeb_DoDienTu
             this.uiToolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.uiToolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.uiToolTip1.OwnerDraw = true;
-            // 
-            // maPhieuDat
-            // 
-            this.maPhieuDat.DataPropertyName = "MaPhieuDat";
-            this.maPhieuDat.HeaderText = "Mã phiếu đặt";
-            this.maPhieuDat.MinimumWidth = 6;
-            this.maPhieuDat.Name = "maPhieuDat";
-            this.maPhieuDat.ReadOnly = true;
-            this.maPhieuDat.Width = 125;
-            // 
-            // tenNhanVien
-            // 
-            this.tenNhanVien.DataPropertyName = "tenNhanVien";
-            this.tenNhanVien.HeaderText = "Tên nhân viên";
-            this.tenNhanVien.MinimumWidth = 6;
-            this.tenNhanVien.Name = "tenNhanVien";
-            this.tenNhanVien.ReadOnly = true;
-            this.tenNhanVien.Width = 132;
-            // 
-            // tenNhaCungCap
-            // 
-            this.tenNhaCungCap.DataPropertyName = "tenNhaCungCap";
-            this.tenNhaCungCap.HeaderText = "Nhà cung cấp";
-            this.tenNhaCungCap.MinimumWidth = 6;
-            this.tenNhaCungCap.Name = "tenNhaCungCap";
-            this.tenNhaCungCap.ReadOnly = true;
-            this.tenNhaCungCap.Width = 131;
-            // 
-            // ngayLap
-            // 
-            this.ngayLap.DataPropertyName = "NgayLap";
-            this.ngayLap.HeaderText = "Ngày lập";
-            this.ngayLap.MinimumWidth = 6;
-            this.ngayLap.Name = "ngayLap";
-            this.ngayLap.ReadOnly = true;
-            this.ngayLap.Width = 94;
-            // 
-            // ngayCapNhat
-            // 
-            this.ngayCapNhat.DataPropertyName = "NgayCapNhat";
-            this.ngayCapNhat.HeaderText = "Ngày cập nhật";
-            this.ngayCapNhat.MinimumWidth = 6;
-            this.ngayCapNhat.Name = "ngayCapNhat";
-            this.ngayCapNhat.ReadOnly = true;
-            this.ngayCapNhat.Width = 135;
-            // 
-            // soLuong
-            // 
-            this.soLuong.DataPropertyName = "SoLuong";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuong.DefaultCellStyle = dataGridViewCellStyle3;
-            this.soLuong.HeaderText = "Số lượng";
-            this.soLuong.MinimumWidth = 6;
-            this.soLuong.Name = "soLuong";
-            this.soLuong.ReadOnly = true;
-            this.soLuong.Width = 96;
-            // 
-            // tongTien
-            // 
-            this.tongTien.DataPropertyName = "TongTien";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "C0";
-            this.tongTien.DefaultCellStyle = dataGridViewCellStyle4;
-            this.tongTien.HeaderText = "Tổng tiền";
-            this.tongTien.MinimumWidth = 6;
-            this.tongTien.Name = "tongTien";
-            this.tongTien.ReadOnly = true;
-            this.tongTien.Width = 99;
-            // 
-            // trangThai
-            // 
-            this.trangThai.DataPropertyName = "TrangThai";
-            this.trangThai.HeaderText = "Trạng thái";
-            this.trangThai.MinimumWidth = 6;
-            this.trangThai.Name = "trangThai";
-            this.trangThai.ReadOnly = true;
-            this.trangThai.Width = 104;
-            // 
-            // trangThaiXacNhan
-            // 
-            this.trangThaiXacNhan.DataPropertyName = "TrangThaiXacNhan";
-            this.trangThaiXacNhan.HeaderText = "Trạng thái xác nhận";
-            this.trangThaiXacNhan.MinimumWidth = 6;
-            this.trangThaiXacNhan.Name = "trangThaiXacNhan";
-            this.trangThaiXacNhan.ReadOnly = true;
-            this.trangThaiXacNhan.Width = 172;
-            // 
-            // ghiChuKhongDuyet
-            // 
-            this.ghiChuKhongDuyet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ghiChuKhongDuyet.HeaderText = "Ghi chú";
-            this.ghiChuKhongDuyet.MinimumWidth = 6;
-            this.ghiChuKhongDuyet.Name = "ghiChuKhongDuyet";
-            this.ghiChuKhongDuyet.ReadOnly = true;
-            this.ghiChuKhongDuyet.Text = "Xem chi tiết";
-            this.ghiChuKhongDuyet.UseColumnTextForButtonValue = true;
-            this.ghiChuKhongDuyet.Width = 69;
-            // 
-            // maPD
-            // 
-            this.maPD.DataPropertyName = "MaPhieuDat";
-            this.maPD.HeaderText = "Mã phiếu đặt";
-            this.maPD.MinimumWidth = 6;
-            this.maPD.Name = "maPD";
-            this.maPD.ReadOnly = true;
-            // 
-            // maSanPham
-            // 
-            this.maSanPham.DataPropertyName = "ProductID";
-            this.maSanPham.HeaderText = "Mã sản phẩm";
-            this.maSanPham.MinimumWidth = 6;
-            this.maSanPham.Name = "maSanPham";
-            this.maSanPham.ReadOnly = true;
-            // 
-            // tenSanPham
-            // 
-            this.tenSanPham.DataPropertyName = "tenSanPham";
-            this.tenSanPham.HeaderText = "Tên sản phẩm";
-            this.tenSanPham.MinimumWidth = 6;
-            this.tenSanPham.Name = "tenSanPham";
-            this.tenSanPham.ReadOnly = true;
-            // 
-            // soLuongDat
-            // 
-            this.soLuongDat.DataPropertyName = "SoLuongDat";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongDat.DefaultCellStyle = dataGridViewCellStyle9;
-            this.soLuongDat.HeaderText = "Số lượng đặt";
-            this.soLuongDat.MinimumWidth = 6;
-            this.soLuongDat.Name = "soLuongDat";
-            this.soLuongDat.ReadOnly = true;
-            // 
-            // soLuongNhan
-            // 
-            this.soLuongNhan.DataPropertyName = "SoLuongNhan";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.soLuongNhan.DefaultCellStyle = dataGridViewCellStyle10;
-            this.soLuongNhan.HeaderText = "Số lượng nhận";
-            this.soLuongNhan.MinimumWidth = 6;
-            this.soLuongNhan.Name = "soLuongNhan";
-            this.soLuongNhan.ReadOnly = true;
-            // 
-            // donGia
-            // 
-            this.donGia.DataPropertyName = "DonGia";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "C0";
-            this.donGia.DefaultCellStyle = dataGridViewCellStyle11;
-            this.donGia.HeaderText = "Đơn giá";
-            this.donGia.MinimumWidth = 6;
-            this.donGia.Name = "donGia";
-            this.donGia.ReadOnly = true;
-            // 
-            // thanhTien
-            // 
-            this.thanhTien.DataPropertyName = "TongTien";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "C0";
-            this.thanhTien.DefaultCellStyle = dataGridViewCellStyle12;
-            this.thanhTien.HeaderText = "Thành tiền";
-            this.thanhTien.MinimumWidth = 6;
-            this.thanhTien.Name = "thanhTien";
-            this.thanhTien.ReadOnly = true;
             // 
             // frmQLDatHang
             // 
@@ -818,10 +713,7 @@ namespace App_QLWeb_DoDienTu
         private Sunny.UI.UITextBox txtTimKiem;
         private Sunny.UI.UISymbolButton btnTimKiem;
         private Sunny.UI.UIGroupBox uiGroupBox4;
-        private Sunny.UI.UIButton btnKoDuyet;
-        private Sunny.UI.UIButton btnKhongXacNhan;
         private Sunny.UI.UIButton btnXacNhan;
-        private Sunny.UI.UIButton btnDuyetPhieuDat;
         private Sunny.UI.UIButton btnInPhieuDat;
         private Sunny.UI.UIButton btnSuaPhieuDat;
         private Sunny.UI.UIButton btnXoaPhieuDat;
@@ -829,6 +721,13 @@ namespace App_QLWeb_DoDienTu
         private Sunny.UI.UIDataGridView dtgvDanhSachPhieuDat;
         private Sunny.UI.UIPanel uiPanel3;
         private Sunny.UI.UIPanel uiPanel4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maPD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maSanPham;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPham;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soLuongDat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soLuongNhan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn donGia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn maPhieuDat;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenNhaCungCap;
@@ -837,14 +736,5 @@ namespace App_QLWeb_DoDienTu
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn tongTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn trangThai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn trangThaiXacNhan;
-        private System.Windows.Forms.DataGridViewButtonColumn ghiChuKhongDuyet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maPD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maSanPham;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPham;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soLuongDat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soLuongNhan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn donGia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
     }
 }

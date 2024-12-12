@@ -212,7 +212,40 @@ namespace App_QLWeb_DoDienTu
         }
         private void BtnRemoveCategory_Click(object sender, EventArgs e)
         {
+            if (txtCategoryID.Text != string.Empty)
+            {
+                string maLoaiSanPham = txtCategoryID.Text;
+                string tenLoaiSanPham = txtCategoryName.Text;
+                DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa loại sản phẩm " + tenLoaiSanPham + " này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (r == DialogResult.Yes)
+                {
+                    Category loaiSP = new Category
+                    {
+                        CategoryID = maLoaiSanPham,
+                        CategoryName = tenLoaiSanPham,
 
+                    };
+                    int dem = cbll.DemSoSanPhamThuocLoai(loaiSP.CategoryID);
+                    if (dem > 0)
+                    {
+                        MessageBox.Show(this, $"Không thể xóa loại sản phẩm {loaiSP.CategoryName} do còn sản phẩm thuộc loại này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        bool isSuccess = cbll.DeleteCategory(loaiSP);
+                        if (isSuccess)
+                        {
+                            MessageBox.Show(this, "Xóa loại sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_CategoryData();
+                            ClearForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Xóa loại sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
         }
         private void BtnCategoryBackground_Click(object sender, EventArgs e)
         {
