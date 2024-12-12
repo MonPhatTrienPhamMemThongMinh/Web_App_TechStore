@@ -13,9 +13,6 @@ namespace DoAnWebGamingGear.Models
         [Key]
         public string MaPhieuNhap { get; set; }
 
-        [Required]
-        public string UserID { get; set; }
-
         public string MaPhieuDat { get; set; }
         public DateTime NgayNhap { get; set; }
         public int SoLan { get; set; }
@@ -23,7 +20,6 @@ namespace DoAnWebGamingGear.Models
 
         [ForeignKey("MaPhieuDat")]
         public virtual PhieuDat PhieuDat { get; set; }
-        public virtual AppUser AppUser { get; set; }
 
         public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
     }

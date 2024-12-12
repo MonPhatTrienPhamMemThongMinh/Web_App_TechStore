@@ -13,8 +13,6 @@ namespace DoAnWebGamingGear.Identity
         public DateTime? Birthday { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public ICollection<PhieuDat> PhieuDats { get; internal set; }
-        public ICollection<PhieuNhap> PhieuNhaps { get; internal set; }
         public ICollection<Order> Orders { get; internal set; }
     }
 }

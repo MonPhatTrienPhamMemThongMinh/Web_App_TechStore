@@ -12,9 +12,6 @@ namespace DoAnWebGamingGear.Models
     {
         [Key]
         public string MaPhieuDat { get; set; }
-
-        [Required]
-        public string UserID { get; set; }
         [Required]
         public string MaNhaCungCap { get; set; }
         public DateTime NgayLap { get; set; }
@@ -23,8 +20,7 @@ namespace DoAnWebGamingGear.Models
         public decimal TongTien { get; set; }
         public string TrangThai { get; set; }
 
-        public virtual NhaCungCap NhaCungCap { get; set; }  
-        public virtual AppUser AppUser { get; set; }
+        public virtual NhaCungCap NhaCungCap { get; set; }
 
         public virtual ICollection<ChiTietPhieuDat> ChiTietPhieuDats { get; set; }
         public virtual ICollection<PhieuNhap> PhieuNhaps { get; set; }
