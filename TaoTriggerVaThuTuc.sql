@@ -39,7 +39,7 @@ AFTER UPDATE
 AS
 BEGIN
 	UPDATE Products
-	SET donGiaSale = NULL
+	SET SalePrice = NULL
 	FROM inserted i
 	WHERE i.trangThai = N'Đã kết thúc'
 END
@@ -71,6 +71,7 @@ BEGIN
 			WHERE ProductID = @maSP AND MaPhieuDat = @maPD
 		END
 END
+GO
 -------------------------------------------------PROCEDURE
 GO
 CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
@@ -80,3 +81,69 @@ AS
 	--Xóa phiếu đặt
 	DELETE PhieuDats WHERE MaPhieuDat = @maPhieuDat
 GO
+CREATE PROCEDURE sp_UpdateTrangThaiKhuyenMai
+AS
+BEGIN
+    DECLARE @tgHienTai DATETIME = GETDATE();
+
+    -- Cập nhật trạng thái của khuyến mãi, bỏ qua khuyến mãi đã có trạng thái 'Đã kết thúc'
+    UPDATE KhuyenMais
+	SET trangThai = N'Đang diễn ra'
+	WHERE @tgHienTai >= ngayBatDau 
+	  AND @tgHienTai <= ngayKetThuc 
+	  AND (trangThai IS NULL OR trangThai NOT IN (N'Đã kết thúc'));
+
+	UPDATE KhuyenMais
+	SET trangThai = N'Chưa diễn ra'
+	WHERE @tgHienTai < ngayBatDau
+	  AND (trangThai IS NULL OR trangThai NOT IN (N'Đã kết thúc'));
+
+	UPDATE KhuyenMais
+	SET trangThai = N'Đã kết thúc'
+	WHERE @tgHienTai > ngayKetThuc
+	  AND (trangThai IS NULL OR trangThai NOT IN (N'Đã kết thúc'));
+
+
+    -- Cập nhật trạng thái của KhuyenMaiSanPham khi KhuyenMai chuyển sang 'Đã kết thúc'
+    UPDATE KhuyenMaiSanPhams
+    SET trangThai = N'Hết hiệu lực'
+    WHERE maKhuyenMai IN (
+        SELECT maKhuyenMai
+        FROM KhuyenMais
+        WHERE trangThai = N'Đã kết thúc'
+    );
+
+    -- Cập nhật trạng thái của KhuyenMaiSanPham khi KhuyenMai chuyển sang 'Đang diễn ra'
+    UPDATE KhuyenMaiSanPhams
+    SET trangThai = N'Có hiệu lực'
+    WHERE maKhuyenMai IN (
+        SELECT maKhuyenMai
+        FROM KhuyenMais
+        WHERE trangThai = N'Đang diễn ra'
+    );
+
+    -- Cập nhật donGiaSale cho sản phẩm thuộc khuyến mãi đang diễn ra
+    UPDATE Products
+    SET SalePrice = Price - (Price * kmsp.phanTramGiam / 100)
+    FROM Products sp
+    JOIN KhuyenMaiSanPhams kmsp ON sp.ProductID = kmsp.maSanPham
+    JOIN KhuyenMais km ON kmsp.maKhuyenMai = km.maKhuyenMai
+    WHERE km.trangThai = N'Đang diễn ra';
+
+    -- Cập nhật donGiaSale của SanPham thành NULL khi KhuyenMai kết thúc
+	UPDATE Products
+	SET SalePrice = NULL
+	WHERE ProductID IN (
+    SELECT kmsp.maSanPham
+    FROM KhuyenMaiSanPhams kmsp
+    LEFT JOIN KhuyenMais km ON kmsp.maKhuyenMai = km.maKhuyenMai
+    WHERE kmsp.maSanPham = Products.ProductID
+      AND NOT EXISTS (
+          SELECT 1
+          FROM KhuyenMais km2
+          JOIN KhuyenMaiSanPhams kmsp2 ON km2.maKhuyenMai = kmsp2.maKhuyenMai
+          WHERE km2.trangThai = N'Đang diễn ra'
+            AND kmsp2.maSanPham = kmsp.maSanPham
+      )
+	);
+END
