@@ -51,7 +51,6 @@ namespace App_QLWeb_DoDienTu
             this.tabDanhSach = new System.Windows.Forms.TabPage();
             this.dtgvDanhSachPhieuDat = new Sunny.UI.UIDataGridView();
             this.maPhieuDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayCapNhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -195,7 +194,6 @@ namespace App_QLWeb_DoDienTu
             this.dtgvDanhSachPhieuDat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgvDanhSachPhieuDat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maPhieuDat,
-            this.tenNhanVien,
             this.tenNhaCungCap,
             this.ngayLap,
             this.ngayCapNhat,
@@ -229,7 +227,6 @@ namespace App_QLWeb_DoDienTu
             this.dtgvDanhSachPhieuDat.ScrollBarRectColor = System.Drawing.Color.White;
             this.dtgvDanhSachPhieuDat.ScrollBarStyleInherited = false;
             this.dtgvDanhSachPhieuDat.SelectedIndex = -1;
-            this.dtgvDanhSachPhieuDat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgvDanhSachPhieuDat.Size = new System.Drawing.Size(1040, 429);
             this.dtgvDanhSachPhieuDat.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dtgvDanhSachPhieuDat.TabIndex = 8;
@@ -243,14 +240,6 @@ namespace App_QLWeb_DoDienTu
             this.maPhieuDat.MinimumWidth = 6;
             this.maPhieuDat.Name = "maPhieuDat";
             this.maPhieuDat.ReadOnly = true;
-            // 
-            // tenNhanVien
-            // 
-            this.tenNhanVien.DataPropertyName = "tenNhanVien";
-            this.tenNhanVien.HeaderText = "Tên nhân viên";
-            this.tenNhanVien.MinimumWidth = 6;
-            this.tenNhanVien.Name = "tenNhanVien";
-            this.tenNhanVien.ReadOnly = true;
             // 
             // tenNhaCungCap
             // 
@@ -729,7 +718,6 @@ namespace App_QLWeb_DoDienTu
         private System.Windows.Forms.DataGridViewTextBoxColumn donGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn maPhieuDat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenNhaCungCap;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngayLap;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngayCapNhat;

@@ -275,12 +275,26 @@
     <Compile Include="Migrations\202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.designer.cs">
       <DependentUpon>202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202412130849108_ThemBangKhuyenMai.cs" />
+    <Compile Include="Migrations\202412130849108_ThemBangKhuyenMai.Designer.cs">
+      <DependentUpon>202412130849108_ThemBangKhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412131226514_BoThuocTinhSoLuongToiDa.cs" />
+    <Compile Include="Migrations\202412131226514_BoThuocTinhSoLuongToiDa.Designer.cs">
+      <DependentUpon>202412131226514_BoThuocTinhSoLuongToiDa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412131312097_ThemThuocTinhGiaSale.cs" />
+    <Compile Include="Migrations\202412131312097_ThemThuocTinhGiaSale.Designer.cs">
+      <DependentUpon>202412131312097_ThemThuocTinhGiaSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brands.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\ChiTietPhieuDat.cs" />
     <Compile Include="Models\ChiTietPhieuNhap.cs" />
     <Compile Include="Models\GamingGearDBContext.cs" />
+    <Compile Include="Models\KhuyenMai.cs" />
+    <Compile Include="Models\KhuyenMaiSanPham.cs" />
     <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
@@ -355,6 +369,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.resx">
       <DependentUpon>202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412130849108_ThemBangKhuyenMai.resx">
+      <DependentUpon>202412130849108_ThemBangKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412131226514_BoThuocTinhSoLuongToiDa.resx">
+      <DependentUpon>202412131226514_BoThuocTinhSoLuongToiDa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412131312097_ThemThuocTinhGiaSale.resx">
+      <DependentUpon>202412131312097_ThemThuocTinhGiaSale.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

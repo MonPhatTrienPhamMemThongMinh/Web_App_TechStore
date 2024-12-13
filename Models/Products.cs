@@ -30,9 +30,11 @@ namespace DoAnWebGamingGear.Models
 
         [Required]
         public int Price { get; set; }
+        public int SalePrice { get;set; }
         public virtual Brands Brands { get; set; }
         public virtual Categories Categories { get; set; }
         public virtual ICollection<CartItem> CartItems { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<KhuyenMaiSanPham> KhuyenMaiSanPhams { get; set; }
     }
 }

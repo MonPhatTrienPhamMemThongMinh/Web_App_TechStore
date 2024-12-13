@@ -21,6 +21,14 @@ namespace BLL
         {
             return udal.LayThongTinTheoMa(ma);
         }
+        public bool UpdateMatKhauMoi(AspNetUser nv)
+        {
+            return udal.UpdateMatKhauMoi(nv);
+        }
+        public string MaHoaMKMoi(string mkmoi)
+        {
+            return udal.MaHoaMKMoi(mkmoi);
+        }
         public string MaHoaMatKhauKieuSha256Hash(string pass)
         {
             return udal.MaHoaMatKhauKieuSha256Hash(pass);

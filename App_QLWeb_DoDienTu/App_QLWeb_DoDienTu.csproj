@@ -54,6 +54,9 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.3.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="CryptoHelper, Version=4.0.0.0, Culture=neutral, PublicKeyToken=646ad3faa20406ba, processorArchitecture=MSIL">
+      <HintPath>..\packages\CryptoHelper.4.0.0\lib\netstandard2.0\CryptoHelper.dll</HintPath>
+    </Reference>
     <Reference Include="CustomControl">
       <HintPath>..\CustomControl\bin\Debug\CustomControl.dll</HintPath>
     </Reference>
@@ -77,6 +80,12 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.4\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=8.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.Internal.8.0.1\lib\net462\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=8.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.8.0.1\lib\net462\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.0\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
@@ -207,23 +216,23 @@
     <Compile Include="frmDatHang.Designer.cs">
       <DependentUpon>frmDatHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLoaiNV.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLoaiNV.designer.cs">
-      <DependentUpon>frmLoaiNV.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogin.designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNhanVien.cs">
+    <Compile Include="frmQLKhuyenMai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNhanVien.Designer.cs">
-      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    <Compile Include="frmQLKhuyenMai.Designer.cs">
+      <DependentUpon>frmQLKhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLTaiKhoan.Designer.cs">
+      <DependentUpon>frmQLTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNhapHang.cs">
       <SubType>Form</SubType>
@@ -279,6 +288,24 @@
     <Compile Include="frmSupplier.designer.cs">
       <DependentUpon>frmSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTaoKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaoKhuyenMai.Designer.cs">
+      <DependentUpon>frmTaoKhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemSanPhamKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemSanPhamKhuyenMai.Designer.cs">
+      <DependentUpon>frmThemSanPhamKhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongTinTaiKhoanAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongTinTaiKhoanAdmin.Designer.cs">
+      <DependentUpon>frmThongTinTaiKhoanAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -303,14 +330,14 @@
     <EmbeddedResource Include="frmDatHang.vi.resx">
       <DependentUpon>frmDatHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLoaiNV.resx">
-      <DependentUpon>frmLoaiNV.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNhanVien.resx">
-      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    <EmbeddedResource Include="frmQLKhuyenMai.resx">
+      <DependentUpon>frmQLKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLTaiKhoan.resx">
+      <DependentUpon>frmQLTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNhapHang.resx">
       <DependentUpon>frmNhapHang.cs</DependentUpon>
@@ -338,6 +365,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSupplier.resx">
       <DependentUpon>frmSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaoKhuyenMai.resx">
+      <DependentUpon>frmTaoKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemSanPhamKhuyenMai.resx">
+      <DependentUpon>frmThemSanPhamKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongTinTaiKhoanAdmin.resx">
+      <DependentUpon>frmThongTinTaiKhoanAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PhieuDatHang.rdlc" />
     <EmbeddedResource Include="PhieuNhapHang.rdlc" />

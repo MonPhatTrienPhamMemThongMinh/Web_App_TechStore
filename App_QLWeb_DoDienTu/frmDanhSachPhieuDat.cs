@@ -59,8 +59,6 @@ namespace App_QLWeb_DoDienTu
                 dtgvDanhSachPhieuDat.DataSource = danhSachPhieuDat;
                 dtgvDanhSachPhieuDat.Columns["TrangThai"].Visible = false;
                 dtgvDanhSachPhieuDat.Columns["NgayCapNhat"].Visible = false;
-                dtgvDanhSachPhieuDat.Columns["UserID"].Visible = false;
-                dtgvDanhSachPhieuDat.Columns["AspNetUser"].Visible = false;
                 dtgvDanhSachPhieuDat.Columns["NhaCungCap"].Visible = false;
                 dtgvDanhSachPhieuDat.Columns["MaNhaCungCap"].Visible = false;
             }            

@@ -17,5 +17,9 @@ namespace BLL
         {
             return urdal.GetUserRoleById(userId);
         }
+        public bool InsertUserRole(string userID, string roleID)
+        {
+            return urdal.InsertUserRole(userID, roleID);
+        }
     }
 }

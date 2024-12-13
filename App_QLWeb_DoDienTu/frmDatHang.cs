@@ -16,7 +16,6 @@ namespace App_QLWeb_DoDienTu
     public partial class frmDatHang : Form
     {
         #region
-        private string maNhanVien;
         private string maPhieuDat;
         private string maNhaCungCap;
         private bool themPhieu;
@@ -33,9 +32,8 @@ namespace App_QLWeb_DoDienTu
         public delegate void SendDataHandler(bool loadData);
         public event SendDataHandler DongForm;
         #endregion
-        public frmDatHang(string maNhanVien,bool themPhieu,string maPhieuDat,string maNhaCungCap)
-        {
-            this.maNhanVien = maNhanVien;            
+        public frmDatHang(bool themPhieu,string maPhieuDat,string maNhaCungCap)
+        {         
             this.themPhieu = themPhieu;
             if (!themPhieu)
             {
@@ -234,7 +232,6 @@ namespace App_QLWeb_DoDienTu
                 {
                     MaPhieuDat = txtMaPhieuDat.Text,
                     MaNhaCungCap = cbNhaCungCap.SelectedValue.ToString(),
-                    UserID = maNhanVien,
                     NgayLap = DateTime.Now,
                     NgayCapNhat = DateTime.Now,
                     SoLuong = soLuongSanPham,
@@ -287,7 +284,6 @@ namespace App_QLWeb_DoDienTu
                 {
                     MaPhieuDat = txtMaPhieuDat.Text,
                     MaNhaCungCap = cbNhaCungCap.SelectedValue.ToString(),
-                    UserID = maNhanVien,
                     NgayLap = DateTime.Now,
                     NgayCapNhat = DateTime.Now,
                     SoLuong = soLuongSanPham,

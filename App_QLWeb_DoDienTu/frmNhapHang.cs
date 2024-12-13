@@ -17,7 +17,6 @@ namespace App_QLWeb_DoDienTu
     {
         private string maPhieuNhap;
         private bool themLanCuoi;
-        private string maNhanVien;
         private PhieuDat phieuDat;
         private PhieuDatBLL phieuDatBLL;
         private PhieuNhapBLL phieuNhapBLL;
@@ -25,7 +24,7 @@ namespace App_QLWeb_DoDienTu
         private ChiTietPhieuDatBLL chiTietPhieuDatBLL;
         public delegate void SendDataHandler(bool loadData);
         public event SendDataHandler DongForm;
-        public frmNhapHang(string maNhanVien)
+        public frmNhapHang()
         {
             this.phieuNhapBLL = new PhieuNhapBLL();
             this.phieuDatBLL = new PhieuDatBLL();
@@ -33,7 +32,6 @@ namespace App_QLWeb_DoDienTu
             this.chiTietPhieuDatBLL = new ChiTietPhieuDatBLL();
             InitializeComponent();
             this.maPhieuNhap = phieuNhapBLL.TaoMaPhieuNhap();
-            this.maNhanVien = maNhanVien;
             this.Load += FrmNhapHang_Load;
         }
         private void FrmNhapHang_Load(object sender, EventArgs e)
@@ -208,7 +206,6 @@ namespace App_QLWeb_DoDienTu
             {
                 MaPhieuNhap = maPhieuNhap,
                 MaPhieuDat = txtMaPhieuDat.Text,
-                UserID = maNhanVien,
                 NgayNhap = DateTime.Now,
                 SoLan = int.Parse(txtLanNhap.Text),
                 TongTien = tongTien,

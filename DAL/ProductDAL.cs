@@ -64,7 +64,7 @@ namespace DAL
             var products = (from p in db.Products
                             join b in db.Brands on p.BrandID equals b.BrandID
                             join c in db.Categories on p.CategoryID equals c.CategoryID
-                            select p).ToList();
+                            select p).Where(p=>p.AvailabilityStatus!="OutOfStock").ToList();
             foreach (var p in products)
             {
                 var brand = db.Brands.FirstOrDefault(b => b.BrandID == p.BrandID);

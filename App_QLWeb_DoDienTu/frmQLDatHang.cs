@@ -13,15 +13,13 @@ namespace App_QLWeb_DoDienTu
 {
     public partial class frmQLDatHang : Form
     {
-        private AspNetUser nhanVien;
         private PhieuDatBLL phieuDatBLL;
         private ChiTietPhieuDatBLL chiTietPhieuDatBLL;
         //private ChiTietQuyenCuaLoaiNVBLL ctQuyen;
         private BindingSource bindingSource;
         private BindingSource bindingSourceCTPD;
-        public frmQLDatHang(AspNetUser nhanVien)
+        public frmQLDatHang()
         {
-            this.nhanVien = nhanVien;
             this.phieuDatBLL = new PhieuDatBLL();
             this.chiTietPhieuDatBLL = new ChiTietPhieuDatBLL();
             //this.ctQuyen = new ChiTietQuyenCuaLoaiNVBLL();
@@ -31,7 +29,7 @@ namespace App_QLWeb_DoDienTu
         }        
         private void btnTaoPhieuDat_Click(object sender, EventArgs e)
         {
-            frmDatHang frmDatHang = new frmDatHang(nhanVien.Id, true,string.Empty,string.Empty);
+            frmDatHang frmDatHang = new frmDatHang(true,string.Empty,string.Empty);
             frmDatHang.DongForm += FormDatHang_Closed;
             frmDatHang.ShowDialog();
         }
@@ -80,7 +78,7 @@ namespace App_QLWeb_DoDienTu
                 {
                     string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
                     string maNhaCungCap = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maNhaCungCap"].Value.ToString();
-                    frmDatHang frmDatHang = new frmDatHang(nhanVien.Id, false, maPhieuDat,maNhaCungCap);
+                    frmDatHang frmDatHang = new frmDatHang(false, maPhieuDat,maNhaCungCap);
                     frmDatHang.DongForm += FormDatHang_Closed;
                     frmDatHang.ShowDialog();
                 }
@@ -102,8 +100,6 @@ namespace App_QLWeb_DoDienTu
             dtgvDanhSachPhieuDat.AutoGenerateColumns = false;
             dtgvDanhSachPhieuDat.Columns["MaNhaCungCap"].Visible = false;
             dtgvDanhSachPhieuDat.Columns["NhaCungCap"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["UserID"].Visible = false;
-            dtgvDanhSachPhieuDat.Columns["AspNetUser"].Visible = false;
         }
         private void dtNgayTaoPhieuNhap_ValueChanged(object sender, EventArgs e)
         {
@@ -156,7 +152,7 @@ namespace App_QLWeb_DoDienTu
         }
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            if (dtgvDanhSachPhieuDat.SelectedRows.Count > 0)
+            if (dtgvDanhSachPhieuDat.SelectedRows.Count>0)
             {
                 string maPhieuDat = dtgvDanhSachPhieuDat.SelectedRows[0].Cells["maPhieuDat"].Value.ToString();
                 bool result = phieuDatBLL.DuyetPhieuDat(maPhieuDat,"Đã duyệt");

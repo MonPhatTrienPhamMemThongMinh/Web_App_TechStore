@@ -36,6 +36,7 @@ namespace App_QLWeb_DoDienTu
             this.btnThem.Click += BtnThem_Click;
             this.btnSua.Click += BtnSua_Click;
             this.btnXoa.Click += BtnXoa_Click;
+            this.btnChuongTrinhKhuyenMai.Click += BtnChuongTrinhKhuyenMai_Click;
             this.dgvProducts.SelectionChanged += DgvProducts_SelectionChanged;
             this.cbLocTheoLoai.SelectedIndexChanged += CbLocTheoLoai_SelectedIndexChanged;
             this.cbThuongHieu.SelectedIndexChanged += CbThuongHieu_SelectedIndexChanged;
@@ -43,6 +44,12 @@ namespace App_QLWeb_DoDienTu
             this.btnBrand.Click += BtnBrand_Click;
             this.btnCategory.Click += BtnCategory_Click;
         }
+
+        private void BtnChuongTrinhKhuyenMai_Click(object sender, EventArgs e)
+        {
+            parentfrm.OpenChildForm(new frmQLKhuyenMai(parentfrm));
+        }
+
         private void BtnXoa_Click(object sender, EventArgs e)
         {
             if (dgvProducts.SelectedRows.Count > 0)
