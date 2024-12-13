@@ -17,31 +17,6 @@ namespace BLL
         public AspNetRole GetRolesByUserId(string userId)
         {
             return roleDAL.GetRoleByUserId(userId);
-        }
-        public List<AspNetRole> GetAllRole()
-        {
-            return roleDAL.GetAllRole();
-        }
-        public bool UpdateLoaiNhanVien(AspNetRole lnv)
-        {
-            return roleDAL.UpdateLoaiNhanVien(lnv);
-        }
-        public bool IsTenLoaiNhanVienExit(string tenLNV)
-        {
-            return roleDAL.IsTenLoaiNhanVienExit(tenLNV);
-        }
-        public List<AspNetRole> SearchLoaiNhanVien(string lnv)
-        {
-            return roleDAL.SearchLoaiNhanVien(lnv);
-        }
-        public bool DeleteLoaiNhanVien(string lnv)
-        {
-            return roleDAL.DeleteLoaiNhanVien(lnv);
-        }
-        public bool InsertLoaiNhanVien(AspNetRole lnv)
-        {
-            return roleDAL.InsertLoaiNhanVien(lnv);
-        }
-
+        }              
     }
 }

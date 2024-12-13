@@ -17,41 +17,41 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="donGia">
-          <DataField>donGia</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        <Field Name="DonGia">
+          <DataField>DonGia</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="maPhieuDat">
-          <DataField>maPhieuDat</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="maSanPham">
-          <DataField>maSanPham</DataField>
+        <Field Name="MaPhieuDat">
+          <DataField>MaPhieuDat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="PhieuDat">
           <DataField>PhieuDat</DataField>
           <rd:TypeName>DTO.PhieuDat</rd:TypeName>
         </Field>
-        <Field Name="SanPham">
-          <DataField>SanPham</DataField>
-          <rd:TypeName>DTO.SanPham</rd:TypeName>
+        <Field Name="Product">
+          <DataField>Product</DataField>
+          <rd:TypeName>DTO.Product</rd:TypeName>
         </Field>
-        <Field Name="soLuongDat">
-          <DataField>soLuongDat</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        <Field Name="ProductID">
+          <DataField>ProductID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="soLuongNhan">
-          <DataField>soLuongNhan</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        <Field Name="SoLuongDat">
+          <DataField>SoLuongDat</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SoLuongNhan">
+          <DataField>SoLuongNhan</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="tenSanPham">
           <DataField>tenSanPham</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="tongTien">
-          <DataField>tongTien</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        <Field Name="TongTien">
+          <DataField>TongTien</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
@@ -618,14 +618,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="maSanPham">
+                        <Textbox Name="ProductID">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!maSanPham.Value</Value>
+                                  <Value>=Fields!ProductID.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -634,7 +634,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>maSanPham</rd:DefaultName>
+                          <rd:DefaultName>ProductID</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -684,14 +684,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="soLuongDat">
+                        <Textbox Name="SoLuongDat">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!soLuongDat.Value</Value>
+                                  <Value>=Fields!SoLuongDat.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -700,7 +700,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>soLuongDat</rd:DefaultName>
+                          <rd:DefaultName>SoLuongDat</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -717,14 +717,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="donGia">
+                        <Textbox Name="DonGia">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!donGia.Value</Value>
+                                  <Value>=Fields!DonGia.Value</Value>
                                   <Style>
                                     <Format>C0</Format>
                                   </Style>
@@ -735,7 +735,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>donGia</rd:DefaultName>
+                          <rd:DefaultName>DonGia</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -752,14 +752,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="tongTien">
+                        <Textbox Name="TongTien">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!tongTien.Value</Value>
+                                  <Value>=Fields!TongTien.Value</Value>
                                   <Style>
                                     <Format>C0</Format>
                                   </Style>
@@ -770,7 +770,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>tongTien</rd:DefaultName>
+                          <rd:DefaultName>TongTien</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>

@@ -19,14 +19,12 @@ namespace App_QLWeb_DoDienTu
         private ChiTietPhieuNhapBLL chiTietPhieuNhapBLL;
         private BindingSource bindingSource;
         private BindingSource bindingSourceCTPN; 
-        private string maNhanVien;
-        public frmQLNhapHang(string maNhanVien)
+        public frmQLNhapHang()
         {
             this.nhaCungCapBLL = new SupplierBLL();
             this.phieuDatBLL = new PhieuDatBLL();
             this.phieuNhapBLL = new PhieuNhapBLL();
             this.chiTietPhieuNhapBLL = new ChiTietPhieuNhapBLL();
-            this.maNhanVien = maNhanVien;
             this.bindingSource = new BindingSource();
             this.bindingSourceCTPN = new BindingSource();
             InitializeComponent();
@@ -40,13 +38,11 @@ namespace App_QLWeb_DoDienTu
         {
             LoadData();
             dtgvPhieuNhap.DataSource = bindingSource;
-            dtgvPhieuNhap.Columns["AspNetUser"].Visible = false;
-            dtgvPhieuNhap.Columns["UserID"].Visible = false;
             dtgvPhieuNhap.Columns["PhieuDat"].Visible = false;
         }   
         private void btnTaoPhieuNhap_Click(object sender, EventArgs e)
         {                          
-            frmNhapHang frmNhapHang = new frmNhapHang(maNhanVien);
+            frmNhapHang frmNhapHang = new frmNhapHang();
             frmNhapHang.DongForm += FrmNhapHang_DongForm;
             frmNhapHang.ShowDialog();         
         }

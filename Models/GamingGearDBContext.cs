@@ -23,6 +23,8 @@ namespace DoAnWebGamingGear.Models
         public DbSet<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
         public DbSet<PhieuDat> PhieuDats { get; set; }
         public DbSet<ChiTietPhieuDat> ChiTietPhieuDats { get; set; }
+        public DbSet<KhuyenMai> KhuyenMais { get; set; }
+        public DbSet<KhuyenMaiSanPham> KhuyenMaiSanPhams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,6 +34,18 @@ namespace DoAnWebGamingGear.Models
                 .HasRequired(p => p.NhaCungCap)
                 .WithMany(ncc => ncc.PhieuDats)
                 .HasForeignKey(p => p.MaNhaCungCap)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<KhuyenMaiSanPham>()
+                .HasRequired(ksp => ksp.KhuyenMai)
+                .WithMany(k=>k.KhuyenMaiSanPhams)
+                .HasForeignKey(ksp=> ksp.maKhuyenMai)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<KhuyenMaiSanPham>()
+                .HasRequired(ksp => ksp.Products)
+                .WithMany(k => k.KhuyenMaiSanPhams)
+                .HasForeignKey(ksp => ksp.maSanPham)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Order>()
@@ -61,6 +75,8 @@ namespace DoAnWebGamingGear.Models
 
             modelBuilder.Entity<ChiTietPhieuDat>()
                 .HasKey(c => new { c.MaPhieuDat, c.ProductID });
+            modelBuilder.Entity<KhuyenMaiSanPham>()
+               .HasKey(c => new { c.maKhuyenMai, c.maSanPham });
         }
     }
 }

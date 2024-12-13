@@ -35,22 +35,20 @@
             this.lbTenNV = new Sunny.UI.UILabel();
             this.btnThongTinNhanVien = new Sunny.UI.UIAvatar();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnNhanVien = new Sunny.UI.UIImageButton();
             this.btnDatHang = new Sunny.UI.UIImageButton();
             this.btnNhapHang = new Sunny.UI.UIImageButton();
             this.btnUser = new Sunny.UI.UIImageButton();
-            this.btnHoaDon = new Sunny.UI.UIImageButton();
+            this.btnDonHang = new Sunny.UI.UIImageButton();
             this.btnSanPham = new Sunny.UI.UIImageButton();
             this.btnQLNhaCungCap = new Sunny.UI.UIImageButton();
             this.btnDashboard = new Sunny.UI.UIImageButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDatHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhapHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnHoaDon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDonHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSanPham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnQLNhaCungCap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDashboard)).BeginInit();
@@ -119,11 +117,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.panel2.Controls.Add(this.btnNhanVien);
             this.panel2.Controls.Add(this.btnDatHang);
             this.panel2.Controls.Add(this.btnNhapHang);
             this.panel2.Controls.Add(this.btnUser);
-            this.panel2.Controls.Add(this.btnHoaDon);
+            this.panel2.Controls.Add(this.btnDonHang);
             this.panel2.Controls.Add(this.btnSanPham);
             this.panel2.Controls.Add(this.btnQLNhaCungCap);
             this.panel2.Controls.Add(this.btnDashboard);
@@ -134,21 +131,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(180, 788);
             this.panel2.TabIndex = 1;
-            // 
-            // btnNhanVien
-            // 
-            this.btnNhanVien.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNhanVien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNhanVien.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhanVien.ForeColor = System.Drawing.Color.White;
-            this.btnNhanVien.ImageOffset = new System.Drawing.Point(40, 15);
-            this.btnNhanVien.Location = new System.Drawing.Point(0, 658);
-            this.btnNhanVien.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(180, 64);
-            this.btnNhanVien.TabIndex = 23;
-            this.btnNhanVien.TabStop = false;
-            this.btnNhanVien.Text = "Nhân viên";
             // 
             // btnDatHang
             // 
@@ -195,20 +177,20 @@
             this.btnUser.TabStop = false;
             this.btnUser.Text = "Tài khoản";
             // 
-            // btnHoaDon
+            // btnDonHang
             // 
-            this.btnHoaDon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHoaDon.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHoaDon.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHoaDon.ForeColor = System.Drawing.Color.White;
-            this.btnHoaDon.ImageOffset = new System.Drawing.Point(40, 15);
-            this.btnHoaDon.Location = new System.Drawing.Point(0, 402);
-            this.btnHoaDon.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Size = new System.Drawing.Size(180, 64);
-            this.btnHoaDon.TabIndex = 19;
-            this.btnHoaDon.TabStop = false;
-            this.btnHoaDon.Text = "Hóa đơn";
+            this.btnDonHang.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDonHang.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDonHang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDonHang.ForeColor = System.Drawing.Color.White;
+            this.btnDonHang.ImageOffset = new System.Drawing.Point(40, 15);
+            this.btnDonHang.Location = new System.Drawing.Point(0, 402);
+            this.btnDonHang.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDonHang.Name = "btnDonHang";
+            this.btnDonHang.Size = new System.Drawing.Size(180, 64);
+            this.btnDonHang.TabIndex = 19;
+            this.btnDonHang.TabStop = false;
+            this.btnDonHang.Text = "Đơn hàng";
             // 
             // btnSanPham
             // 
@@ -282,11 +264,10 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDatHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNhapHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnHoaDon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDonHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSanPham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnQLNhaCungCap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDashboard)).EndInit();
@@ -305,11 +286,10 @@
         private Sunny.UI.UIImageButton btnDatHang;
         private Sunny.UI.UIImageButton btnNhapHang;
         private Sunny.UI.UIImageButton btnUser;
-        private Sunny.UI.UIImageButton btnHoaDon;
+        private Sunny.UI.UIImageButton btnDonHang;
         private Sunny.UI.UIImageButton btnSanPham;
         private Sunny.UI.UIImageButton btnQLNhaCungCap;
         private Sunny.UI.UIImageButton btnDashboard;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Sunny.UI.UIImageButton btnNhanVien;
     }
 }

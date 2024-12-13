@@ -17,12 +17,14 @@ namespace DAL
         {
 
         }
-
         public List<NhaCungCap> getAllSuppliers()
         {
             return db.NhaCungCaps.Select(s => s).ToList<NhaCungCap>();
         }
-
+        public int TongSoLuongNhaCungCap()
+        {
+            return db.NhaCungCaps.Count();
+        }
         public bool AddSupplier(NhaCungCap supplier)
         {
             try
@@ -36,7 +38,6 @@ namespace DAL
                 return false;
             }
         }
-
         public NhaCungCap GetNCCById(string ma)
         {
             try
@@ -56,7 +57,6 @@ namespace DAL
                 throw new ApplicationException("Lỗi tải thông tin nhà cung cấp: " + ex.Message, ex);
             }
         }
-
         public bool UpdateNCC(NhaCungCap ncc)
         {
             try
@@ -81,7 +81,6 @@ namespace DAL
                 throw new ApplicationException("Lỗi sửa thông tin nhà cung cấp: " + ex.Message, ex);
             }
         }
-
         public bool DeleteNCC(NhaCungCap ncc)
         {
             try
@@ -96,7 +95,6 @@ namespace DAL
                 return false;
             }
         }
-
         public string TaoMaNhaCungCap()
         {
             var nhaCungCaps = db.NhaCungCaps.ToList();

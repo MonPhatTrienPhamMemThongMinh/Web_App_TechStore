@@ -37,7 +37,6 @@ namespace DoAnWebGamingGear.Controllers
                     ModelState.AddModelError("UsernameExists", "Tên tài khoản đã tồn tại");
                     return View(rmv);
                 }
-
                 var passwdHash = Crypto.HashPassword(rmv.Password);
                 var user = new AppUser()
                 {

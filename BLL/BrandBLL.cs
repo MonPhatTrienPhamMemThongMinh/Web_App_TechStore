@@ -18,6 +18,10 @@ namespace BLL
         {
             return bdal.GetAllBrands();
         }
+        public int DemSoSanPhamThuocThuongHieu(string maThuongHieu)
+        {
+            return bdal.DemSoSanPhamThuocThuongHieu(maThuongHieu);
+        }
 
         public Brand GetBrandById(string brandId)
         {

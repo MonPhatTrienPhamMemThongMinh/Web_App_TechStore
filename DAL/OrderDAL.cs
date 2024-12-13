@@ -61,7 +61,6 @@ namespace DAL
 
             return input;
         }
-
         public List<Order> TimKiemVaLocHoaDon(string tieuChi, string giaTriTimKiem, DateTime ngayBatDau, DateTime ngayKetThuc, string trangThai)
         {
             try
@@ -109,7 +108,6 @@ namespace DAL
                 return new List<Order>();
             }
         }
-
         public Order LoadHoaDonTheoMa(string mahd)
         {
             Order order = db.Orders.FirstOrDefault(hd => hd.OrderId == mahd);
@@ -123,7 +121,6 @@ namespace DAL
             //}
             return order;
         }
-
         // Tất cả hóa đơn
         public decimal TinhTongDoanhThu()
         {
@@ -133,7 +130,6 @@ namespace DAL
             }
             return 0;
         }
-
         public int TongSoHoaDon()
         {
             if (db.Orders.Any())
@@ -141,6 +137,81 @@ namespace DAL
                 return db.Orders.Count();
             }
             return 0;
+        }
+        public decimal TinhDoanhThuTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
+        {
+            //return db.Orders
+            //    .Where(hd => hd.CreatedDate.Date >= batDau.Date && hd.CreatedDate.Date <= ketThuc.Date)
+            //    .Sum(hd => hd.tongTienSauGiam) ?? 0;
+            return 0;
+        }
+
+        public int TongSoHoaDonTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
+        {
+            return db.Orders
+                .Where(hd => hd.CreatedDate.Date >= batDau.Date && hd.CreatedDate.Date <= ketThuc.Date)
+                .Count();
+        }
+
+        public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuCuaTungNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            //var doanhThuTheoNgay = db.Orders
+            //                        .Where(hd => hd.CreatedDate.Date >= ngayBatDau.Date && hd.CreatedDate.Date <= ngayKetThuc.Date)
+            //                        .GroupBy(hd => hd.CreatedDate.Date)
+            //                        .Select(tk => new
+            //                        {
+            //                            Ngay = tk.Key,
+            //                            TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
+            //                        }).ToDictionary(x => (DateTime?)x.Ngay, x => x.TongDoanhThu);
+
+            //if (!doanhThuTheoNgay.Any())
+            //{
+            //    return new Dictionary<DateTime?, decimal>();
+            //}
+            //return doanhThuTheoNgay;
+            return null;
+        }
+
+        // Lọc hôm nay
+        public Dictionary<int, decimal> ThongKeTongDoanhThuTheoGioTrongNgay(DateTime ngay)
+        {
+            //DateTime ngayBatDau = ngay.Date;
+            //DateTime ngayKetThuc = ngayBatDau.AddDays(1);
+            //var doanhThuTheoGio = db.Orders
+            //                        .Where(hd => hd.CreatedDate >= ngayBatDau && hd.CreatedDate < ngayKetThuc)
+            //                        .GroupBy(hd => hd.CreatedDate.Hour)
+            //                        .Select(tk => new
+            //                        {
+            //                            Gio = tk.Key,
+            //                            TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
+            //                        }).ToDictionary(x => x.Gio, x => x.TongDoanhThu);
+
+            //if (!doanhThuTheoGio.Any())
+            //{
+            //    return new Dictionary<int, decimal>();
+            //}
+            //return doanhThuTheoGio;
+            return null;
+        }
+
+        // Lọc năm nay
+        public List<ThongKeDoanhThuTheoThang> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            var doanhThuTheoThang = db.Orders
+                                  .Where(hd => hd.CreatedDate >= ngayBatDau && hd.CreatedDate <= ngayKetThuc)
+                                  .GroupBy(hd => new { hd.CreatedDate.Year, hd.CreatedDate.Month })
+                                  .Select(tk => new ThongKeDoanhThuTheoThang
+                                  {
+                                      Thang = new DateTime(tk.Key.Year, tk.Key.Month, 1),
+                                      TongDoanhThu = TinhDoanhThuTheoKhoangThoiGian(ngayBatDau, ngayKetThuc)
+                                  })
+                                  .ToList();
+
+            if (!doanhThuTheoThang.Any())
+            {
+                return new List<ThongKeDoanhThuTheoThang>();
+            }
+            return doanhThuTheoThang;
         }
     }
 }

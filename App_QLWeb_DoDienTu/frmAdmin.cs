@@ -21,32 +21,38 @@ namespace App_QLWeb_DoDienTu
             this.user = user;
             this.btnClose.Click += LblX_Click;
             this.btnSanPham.Click += BtnQLProducts_Click;
-            this.btnHoaDon.Click += BtnQLOrders_Click;
+            this.btnDonHang.Click += BtnQLOrders_Click;
             this.btnQLNhaCungCap.Click += BtnQLNhaCungCap_Click;
             this.btnUser.Click += BtnUser_Click;
+            this.btnDashboard.Click += BtnDashboard_Click;
             this.btnDatHang.Click += BtnDatHang_Click;
             this.btnNhapHang.Click += BtnNhapHang_Click;
-            this.btnNhanVien.Click += BtnNhanVien_Click;
+            this.btnThongTinNhanVien.Click += BtnThongTinNhanVien_Click;
         }
 
-        private void BtnNhanVien_Click(object sender, EventArgs e)
+        private void BtnThongTinNhanVien_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmNhanVien(user));
+            frmThongTinTaiKhoanAdmin frmThongTin = new frmThongTinTaiKhoanAdmin(user);
+            frmThongTin.ShowDialog();
         }
 
+        private void BtnDashboard_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmDashboard(user.Id));
+        }
         private void BtnNhapHang_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmQLNhapHang(user.Id));
+            OpenChildForm(new frmQLNhapHang());
         }
 
         private void BtnDatHang_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmQLDatHang(user));
+            OpenChildForm(new frmQLDatHang());
         }
 
         private void BtnUser_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new frmQLTaiKhoan(user));
         }
 
         private void BtnQLNhaCungCap_Click(object sender, EventArgs e)

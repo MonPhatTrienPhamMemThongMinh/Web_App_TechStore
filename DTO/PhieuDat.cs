@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace DTO
 {
     public partial class PhieuDat
-    {
-        public string tenNhanVien { get; set; }
+    {        
         public string tenNhaCungCap { get; set; }
     }
 }

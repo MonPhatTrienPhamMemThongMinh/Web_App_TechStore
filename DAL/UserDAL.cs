@@ -3,18 +3,32 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 using DTO;
-
+using System.CodeDom;
+using System.Web.Helpers;
 namespace DAL
 {
     public class UserDAL
     {
         DBGAMINGGEARDataContext db = new DBGAMINGGEARDataContext();
-
         public UserDAL()
         {
+        }
+        public AspNetUser LayThongTinTheoMa(string ma)
+        {
+            try
+            {
+                AspNetUser khachHang = db.AspNetUsers.FirstOrDefault(kh => kh.Id == ma);                
+                return khachHang;
+            }
+            catch
+            {
+                return null;
+            }
         }
         public AspNetUser GetUserByUsername(string username)
         {
@@ -49,13 +63,16 @@ namespace DAL
                 return new List<AspNetUser>();
             }
         }
+        public string MaHoaMKMoi(string mkmoi)
+        {
+            var hashedPassword = MaHoaMatKhauKieuSha256Hash(mkmoi);
+            return hashedPassword;
+        }        
         public string MaHoaMatKhauKieuSha256Hash(string pass)
         {
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
-            {
-                var bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(pass)); // chuyển pass thành mảng byte
-                return string.Concat(bytes.Select(b => b.ToString("x2"))); // chuyển sang chuỗi hexa 
-            }
+            return Crypto.HashPassword(pass);
+            //var password = new PasswordHasher();
+            //return password.HashPassword(pass);
         }
         public int DemSoNhanVienThuocLoai(string maLoaiNhanVien)
         {
@@ -78,46 +95,20 @@ namespace DAL
         public bool IsSDTDuplicate(string sdt)
         {
             return LoadAllUsers().Any(nv => nv.PhoneNumber.Equals(sdt, StringComparison.OrdinalIgnoreCase));
-        }
-        public string GenerateNewEmployeeCode()
-        {
-            // Tìm mã nhân viên lớn nhất trong bảng
-            var maxMaNV = db.AspNetUsers
-                .Where(x => x.Id.StartsWith("NV"))
-                .Select(x => x.Id)
-                .ToList(); // Chuyển đổi thành danh sách
-
-            // Nếu không có mã nào, bắt đầu từ "NV0001"
-            var newMaNV = "NV0001"; // Mã khởi tạo mặc định
-            if (maxMaNV.Count > 0)
-            {
-                // Lấy mã lớn nhất
-                var maxCode = maxMaNV.Max();
-
-                // Kiểm tra xem mã nhân viên lớn nhất có vượt quá NV9999 không
-                var numericPart = int.Parse(maxCode.Substring(2)); // Lấy phần số (bỏ 2 ký tự "NV")
-                if (numericPart >= 9999)
-                {
-                    // Nếu đã đạt đến giới hạn NV9999, thông báo lỗi
-                    throw new Exception("Số lượng nhân viên đã đạt đến giới hạn NV9999.");
-                }
-
-                // Tạo mã mới với 4 chữ số
-                newMaNV = "NV" + (numericPart + 1).ToString("D4");
-            }
-
-            return newMaNV;
-        }
+        }       
         public bool InsertNhanVien(AspNetUser nv)
         {
             try
             {
-                // Sinh mã nhân viên mới
-                nv.Id = GenerateNewEmployeeCode();
-
                 // Thêm nhân viên vào cơ sở dữ liệu
-                db.AspNetUsers.InsertOnSubmit(nv);
+                nv.Id = Guid.NewGuid().ToString();
+                nv.SecurityStamp = Guid.NewGuid().ToString();
+                db.AspNetUsers.InsertOnSubmit(nv);                
                 db.SubmitChanges();
+                var loaiTKID = db.AspNetRoles.Where(role => role.Name == "Customer").Select(role => role.Id).FirstOrDefault();
+                var idTK = db.AspNetUsers.Where(user => user.UserName == nv.UserName).Select(user => user.Id).FirstOrDefault();
+                UserRoleDAL userRoleDAL = new UserRoleDAL();
+                userRoleDAL.InsertUserRole(idTK, loaiTKID);
                 return true;
             }
             catch (Exception ex)
@@ -130,14 +121,7 @@ namespace DAL
         public bool DeleteNhanVien(string manv)
         {
             try
-            {                
-                bool existsInPhieuDat = db.PhieuDats.Any(pd => pd.UserID == manv);
-                bool existsInPhieuNhap = db.PhieuNhaps.Any(pn => pn.UserID == manv);
-
-                if (existsInPhieuDat || existsInPhieuNhap)
-                {
-                    return false;
-                }
+            {                               
                 var nv = db.AspNetUsers.FirstOrDefault(k => k.Id == manv);
                 if (nv != null)
                 {
@@ -165,6 +149,25 @@ namespace DAL
                     exnv.Birthday = nv.Birthday;
                     exnv.PhoneNumber = nv.PhoneNumber;
                     exnv.UserName = nv.UserName;
+                    exnv.PasswordHash = nv.PasswordHash;
+                    db.SubmitChanges();
+                    return true;
+                }
+                return false; // Không tìm thấy để sửa
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+        public bool UpdateMatKhauMoi(AspNetUser nv)
+        {
+            try
+            {
+                var exnv = db.AspNetUsers.SingleOrDefault(n => n.Id == nv.Id);
+                if (exnv != null)
+                {
                     exnv.PasswordHash = nv.PasswordHash;
                     db.SubmitChanges();
                     return true;
