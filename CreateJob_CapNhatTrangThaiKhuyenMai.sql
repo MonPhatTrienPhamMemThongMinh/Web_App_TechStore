@@ -14,7 +14,7 @@ IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 END
 
 DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'CapNhatTrangThaiKhuyenMai', 
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'CapNhatTrangThaiKhuyenMai_GAMINGGEAR', 
 		@enabled=1, 
 		@notify_level_eventlog=0, 
 		@notify_level_email=0, 
@@ -37,7 +37,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'UpdateTr
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
 		@command=N'EXEC sp_UpdateTrangThaiKhuyenMai;', 
-		@database_name=N'MeVaBeDB', 
+		@database_name=N'DBGAMINGGEAR', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
