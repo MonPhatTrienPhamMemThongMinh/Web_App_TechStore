@@ -182,9 +182,9 @@ namespace App_QLWeb_DoDienTu
         private void SettingDgv(List<Order> dsHoaDon)
         {
             dgvHoaDon.DataSource = dsHoaDon;
+            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvHoaDon.Columns["AspNetUser"].Visible = false;
             dgvHoaDon.Columns["UserId"].Visible = false;
-            dgvHoaDon.Columns["statusText"].Visible = false;
             dgvHoaDon.Columns["CustomerEmail"].Visible = false;
             dgvHoaDon.Columns["CustomerWard"].Visible = false;
             dgvHoaDon.Columns["CustomerDistrict"].Visible = false;
