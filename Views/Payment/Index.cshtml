@@ -70,8 +70,26 @@
                 <tr>
                     <td>@item.Products.ProductName</td>
                     <td>@item.shopping_quantity</td>
-                    <td>@item.Products.Price.ToString("N0") ₫</td>
-                    <td>@(item.Products.Price * item.shopping_quantity) ₫</td>
+                    <td>
+                        @if (item.Products.SalePrice > 0)
+                        {
+                            <span>@item.Products.SalePrice.ToString("N0") ₫</span>
+                        }
+                        else
+                        {
+                            <span>@item.Products.Price.ToString("N0") ₫</span>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Products.SalePrice > 0)
+                        {
+                            <span>@(item.Products.SalePrice * item.shopping_quantity) ₫</span>
+                        }
+                        else
+                        {
+                            <span>@(item.Products.Price * item.shopping_quantity) ₫</span>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>

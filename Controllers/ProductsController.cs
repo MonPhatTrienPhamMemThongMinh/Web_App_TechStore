@@ -32,6 +32,7 @@ namespace DoAnWebGamingGear.Controllers
 
             // Khởi tạo query sản phẩm
             var products = db.Products.AsQueryable();
+            products = products.Where(p => p.Price > 0);
 
             if (!string.IsNullOrEmpty(search))
             {

@@ -78,12 +78,13 @@ namespace DoAnWebGamingGear.Controllers
             }
             return View(rmv);
         }
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
         [HttpPost]
-        public ActionResult Login(LoginVM lvm)
+        public ActionResult Login(LoginVM lvm, string returnUrl)
         {
             if (string.IsNullOrEmpty(lvm.Username) || string.IsNullOrEmpty(lvm.Password))
             {
@@ -107,6 +108,10 @@ namespace DoAnWebGamingGear.Controllers
                     }
                     else
                     {
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -115,9 +120,7 @@ namespace DoAnWebGamingGear.Controllers
                     ModelState.AddModelError("Error", "Sai tài khoản hoặc mật khẩu");
                     return View();
                 }
-
             }
-
         }
         public ActionResult Logout()
         {

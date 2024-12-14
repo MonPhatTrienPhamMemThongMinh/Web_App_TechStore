@@ -20,9 +20,10 @@ namespace DoAnWebGamingGear.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var cartItems = Session[userId + "_Cart"] as List<CartItem>;
+            var cartItems = Session["CartItemsForPayment"] as List<CartItem>;
             ViewBag.CartItems = cartItems;
-            ViewBag.TotalAmount = cartItems?.Sum(item => item.Products.Price * item.shopping_quantity) ?? 0;
+            ViewBag.TotalAmount = cartItems?.Sum(item => 
+                                        (item.Products.SalePrice > 0 ? item.Products.SalePrice : item.Products.Price) * item.shopping_quantity) ?? 0;
             return View();
         }
 
@@ -31,10 +32,10 @@ namespace DoAnWebGamingGear.Controllers
         public ActionResult Checkout(string customerName, string customerPhone, string customerAddress, string customerEmail, string paymentMethod, int? TypePaymentVN)
         {
             var userId = User.Identity.GetUserId();
-            var cartItems = Session[userId + "_Cart"] as List<CartItem>;
+            var cartItems = Session["CartItemsForPayment"] as List<CartItem>;
             if (cartItems == null || !cartItems.Any())
             {
-                return RedirectToAction("Index", "ShoppingCart"); // Nếu giỏ hàng trống, quay lại trang giỏ hàng
+                return RedirectToAction("Index", "ShoppingCartt"); // Nếu giỏ hàng trống, quay lại trang giỏ hàng
             }
 
             using (var transaction = db.Database.BeginTransaction())
@@ -62,21 +63,19 @@ namespace DoAnWebGamingGear.Controllers
 
                     foreach (var item in cartItems)
                     {
-                        var product = db.Products.FirstOrDefault(p => p.ProductID == item.ProductID);
-                        if (product != null)
+                        // Sử dụng giá khuyến mãi từ giỏ hàng nếu có
+                        decimal unitPrice = item.Products.SalePrice > 0 ? item.Products.SalePrice : item.Products.Price;
+                        OrderDetail orderDetail = new OrderDetail
                         {
-                            OrderDetail orderDetail = new OrderDetail
-                            {
-                                OrderId = order.OrderId,
-                                ProductID = item.ProductID,
-                                Quantity = item.shopping_quantity,
-                                Price = product.Price * item.shopping_quantity,
-                                UnitPrice = product.Price
-                            };
+                            OrderId = order.OrderId,
+                            ProductID = item.ProductID,
+                            Quantity = item.shopping_quantity,
+                            Price = unitPrice * item.shopping_quantity,
+                            UnitPrice = unitPrice
+                        };
 
-                            db.OrderDetails.Add(orderDetail); // Thêm OrderDetail vào cơ sở dữ liệu
-                            totalAmount += item.shopping_quantity * product.Price;
-                        }
+                        db.OrderDetails.Add(orderDetail); // Thêm OrderDetail vào cơ sở dữ liệu
+                        totalAmount += item.shopping_quantity * unitPrice;
                     }
 
                     order.TotalAmount = totalAmount;
@@ -95,6 +94,7 @@ namespace DoAnWebGamingGear.Controllers
 
                     // Xóa giỏ hàng sau khi thanh toán
                     Session[userId + "_Cart"] = null;
+                    Session["CartItemsForPayment"] = null;
                     transaction.Commit();
 
                     return RedirectToAction("OrderSuccess", "Payment", new { orderId = order.OrderId });
@@ -102,10 +102,10 @@ namespace DoAnWebGamingGear.Controllers
                 catch (Exception)
                 {
                     transaction.Rollback();
-                    return RedirectToAction("Index", "ShoppingCart"); // Nếu có lỗi, quay lại trang giỏ hàng
+                    return RedirectToAction("ShowToCart", "ShoppingCartt"); // Nếu có lỗi, quay lại trang giỏ hàng
                 }
             }
-        }
+        }  
 
         public ActionResult VnPayReturn()
         {
@@ -118,16 +118,11 @@ namespace DoAnWebGamingGear.Controllers
 
                 foreach (string s in vnpayData)
                 {
-                    //get all querystring data
                     if (!string.IsNullOrEmpty(s) && s.StartsWith("vnp_"))
                     {
                         vnpay.AddResponseData(s, vnpayData[s]);
                     }
                 }
-                //vnp_TxnRef: Ma don hang merchant gui VNPAY tai command=pay    
-                //vnp_TransactionNo: Ma GD tai he thong VNPAY
-                //vnp_ResponseCode:Response code from VNPAY: 00: Thanh cong, Khac 00: Xem tai lieu
-                //vnp_SecureHash: HmacSHA512 cua du lieu tra ve
 
                 orderId = Convert.ToString(vnpay.GetResponseData("vnp_TxnRef"));
                 long vnpayTranId = Convert.ToInt64(vnpay.GetResponseData("vnp_TransactionNo"));
@@ -153,19 +148,12 @@ namespace DoAnWebGamingGear.Controllers
                         }
                         //Thanh toan thanh cong
                         ViewBag.InnerText = "Giao dịch được thực hiện thành công. Cảm ơn quý khách đã sử dụng dịch vụ";
-                        //log.InfoFormat("Thanh toan thanh cong, OrderId={0}, VNPAY TranId={1}", orderId, vnpayTranId);
                     }
                     else
                     {
-                        //Thanh toan khong thanh cong. Ma loi: vnp_ResponseCode
                         ViewBag.InnerText = "Có lỗi xảy ra trong quá trình xử lý.Mã lỗi: " + vnp_ResponseCode;
-                        //log.InfoFormat("Thanh toan loi, OrderId={0}, VNPAY TranId={1},ResponseCode={2}", orderId, vnpayTranId, vnp_ResponseCode);
                     }
-                    //displayTmnCode.InnerText = "Mã Website (Terminal ID):" + TerminalID;
-                    //displayTxnRef.InnerText = "Mã giao dịch thanh toán:" + orderId.ToString();
-                    //displayVnpayTranNo.InnerText = "Mã giao dịch tại VNPAY:" + vnpayTranId.ToString();
                     ViewBag.ThanhToanThanhCong = "Số tiền thanh toán: " + vnp_Amount.ToString("N0").Replace(",", ".") + "đ";
-                    //displayBankCode.InnerText = "Ngân hàng thanh toán:" + bankCode;
                 }
             }
             var order = db.Orders.FirstOrDefault(o => o.OrderId == orderId);
@@ -277,32 +265,5 @@ namespace DoAnWebGamingGear.Controllers
 
             return View();
         }
-        // Gửi email xác nhận đơn hàng
-        /*private void SendOrderConfirmationEmail(Order order)
-        {
-            try
-            {
-                string customerEmail = order.CustomerEmail;
-                string subject = "Order Confirmation";
-                string body = $"Dear {order.CustomerName},\n\nThank you for your order. Your order ID is {order.OrderId}.\n\nTotal Amount: {order.TotalAmount:C}.\n\nBest regards,\nGaming Gear Team";
-
-                // Thiết lập thông tin email
-                MailMessage mail = new MailMessage("your-email@example.com", customerEmail);
-                mail.Subject = subject;
-                mail.Body = body;
-
-                SmtpClient smtpClient = new SmtpClient("smtp.example.com"); // Thay thế bằng thông tin SMTP server của bạn
-                smtpClient.Port = 587; // Port SMTP (tùy thuộc vào nhà cung cấp)
-                smtpClient.Credentials = new System.Net.NetworkCredential("your-email@example.com", "your-password"); // Thông tin đăng nhập SMTP
-                smtpClient.EnableSsl = true;
-
-                smtpClient.Send(mail);
-            }
-            catch (Exception ex)
-            {
-                // Xử lý lỗi nếu email không gửi được
-                System.Diagnostics.Debug.WriteLine("Error sending email: " + ex.Message);
-            }
-        }*/
     }
 }

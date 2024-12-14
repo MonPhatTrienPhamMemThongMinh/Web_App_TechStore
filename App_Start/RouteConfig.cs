@@ -20,21 +20,15 @@ namespace DoAnWebGamingGear
             );
 
             routes.MapRoute(
-                name: "Chatbot",
-                url: "Chatbot/{action}/{id}",
-                defaults: new { controller = "Chatbot", action = "Index", id = UrlParameter.Optional }
+                name: "OrderSuccess",
+                url: "Payment/OrderSuccess/{orderId}",
+                defaults: new { controller = "Payment", action = "OrderSuccess", orderId = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "Payment",
                 url: "Payment/{action}/{id}",
                 defaults: new { controller = "Payment", action = "VnPayReturn", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Dialogflow",
-                url: "api/{controller}/{action}/{id}",
-                defaults: new { id = UrlParameter.Optional }
             );
         }
     }
