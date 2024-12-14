@@ -21,22 +21,17 @@ namespace App_QLWeb_DoDienTu
             InitializeComponent();
             this.Load += FrmOrder_Load;
             this.dtpNgayBatDau.Value = this.dtpNgayKetThuc.Value;
-
             this.btnReset.Click += BtnReset_Click;
             this.btnTimKiem.Click += BtnTimKiem_Click;
-
             this.cboTieuChi.SelectedIndexChanged += CboTieuChi_SelectedIndexChanged;
             this.btnLocTheoNgay.Click += BtnLocTheoNgay_Click;
             this.btnLocHienTai.Click += BtnLocHienTai_Click;
             this.dtpNgayBatDau.ValueChanged += DtpNgayBatDau_ValueChanged;
             this.dtpNgayKetThuc.ValueChanged += DtpNgayKetThuc_ValueChanged;
-
             this.dgvHoaDon.SelectionChanged += DgvHoaDon_SelectionChanged;
             this.dgvHoaDon.CellFormatting += DgvHoaDon_CellFormatting;
-
             this.btnXemChiTiet.Click += BtnXemChiTiet_Click;
         }
-
         private void DtpNgayBatDau_ValueChanged(object sender, EventArgs e)
         {
             if (this.dtpNgayBatDau.Value > dtpNgayKetThuc.Value)
@@ -44,7 +39,6 @@ namespace App_QLWeb_DoDienTu
                 this.dtpNgayKetThuc.Value = dtpNgayBatDau.Value;
             }
         }
-
         private void DtpNgayKetThuc_ValueChanged(object sender, EventArgs e)
         {
             if (this.dtpNgayBatDau.Value > dtpNgayKetThuc.Value)
@@ -52,7 +46,6 @@ namespace App_QLWeb_DoDienTu
                 this.dtpNgayBatDau.Value = dtpNgayKetThuc.Value;
             }
         }
-
         private void DgvHoaDon_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvHoaDon.SelectedRows.Count > 0)
@@ -61,7 +54,6 @@ namespace App_QLWeb_DoDienTu
                 MaHoaDon = selectedRow.Cells["OrderID"].Value.ToString();
             }
         }
-
         private void BtnXemChiTiet_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(MaHoaDon))
@@ -71,10 +63,9 @@ namespace App_QLWeb_DoDienTu
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một hóa đơn để xem chi tiết.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn một đơn hàng để xem chi tiết.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void BtnReset_Click(object sender, EventArgs e)
         {
             try
@@ -93,10 +84,9 @@ namespace App_QLWeb_DoDienTu
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi tải hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi tải đơn hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void BtnLocHienTai_Click(object sender, EventArgs e)
         {
             this.dtpNgayKetThuc.Value = DateTime.Now.Date;
@@ -108,7 +98,6 @@ namespace App_QLWeb_DoDienTu
             DateTime ngayKetThuc = DateTime.Now.Date;
             LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, ngayBatDau, ngayKetThuc, trangThai);
         }
-
         private void BtnLocTheoNgay_Click(object sender, EventArgs e)
         {
             string tieuChi = cboTieuChi.SelectedItem.ToString();
@@ -116,18 +105,15 @@ namespace App_QLWeb_DoDienTu
             string trangThai = cboStatus.SelectedItem.ToString();
             LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, dtpNgayBatDau.Value, dtpNgayKetThuc.Value, trangThai);
         }
-
         private void LoadDanhSachHoaDonTheoNgayLoc(string tieuChi, string tenTimKiem, DateTime ngayBatDau, DateTime ngayKetThuc, string trangThai)
         {
             decimal tongDoanhThu = 0;
-
             List<Order> ketQuaTimKiem = odbll.TimKiemVaLocHoaDon(tieuChi, tenTimKiem, ngayBatDau, ngayKetThuc, trangThai)
                                              .OrderByDescending(hd => hd.CreatedDate).ToList();
             tongDoanhThu = ketQuaTimKiem.Sum(hd => hd.TotalAmount);
             SettingDgv(ketQuaTimKiem);
             lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
         }
-
         private void BtnTimKiem_Click(object sender, EventArgs e)
         {
             string tieuChi = cboTieuChi.SelectedItem.ToString();
@@ -135,7 +121,6 @@ namespace App_QLWeb_DoDienTu
             string trangThai = cboStatus.SelectedItem.ToString();
             LoadDanhSachHoaDonTheoNgayLoc(tieuChi, tenTimKiem, dtpNgayBatDau.Value, dtpNgayKetThuc.Value, trangThai);
         }
-
         // Dữ liệu số nằm bên phải
         private void DgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -165,7 +150,6 @@ namespace App_QLWeb_DoDienTu
                 e.FormattingApplied = true;
             }
         }
-
         private void FrmOrder_Load(object sender, EventArgs e)
         {
             this.dtpNgayBatDau.MaxDate = DateTime.Now.Date;
@@ -174,11 +158,9 @@ namespace App_QLWeb_DoDienTu
             SettingDgv(orders);
             LoadTieuChiCombobox();
             LoadStatusCombobox();
-
             decimal tongDoanhThu = odbll.TinhTongDoanhThu();
             lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
         }
-
         private void CboTieuChi_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboTieuChi.SelectedItem.ToString() == "Các tiêu chí")
@@ -191,69 +173,26 @@ namespace App_QLWeb_DoDienTu
                 txtTimKiem.Enabled = true;
             }
         }
-
         private void SettingDgv(List<Order> dsHoaDon)
         {
             dgvHoaDon.DataSource = dsHoaDon;
-            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            if (dgvHoaDon.Columns["AspNetUser"] != null)
-            {
-                dgvHoaDon.Columns["AspNetUser"].Visible = false;
-            }
-            if (dgvHoaDon.Columns["Status"] != null)
-            {
-                dgvHoaDon.Columns["Status"].Visible = false;
-            }
-            if (dgvHoaDon.Columns["OrderID"] != null)
-            {
-                dgvHoaDon.Columns["OrderID"].HeaderText = "Mã hóa đơn";
-            }
-            if (dgvHoaDon.Columns["CustomerName"] != null)
-            {
-                dgvHoaDon.Columns["CustomerName"].HeaderText = "Tên khách hàng";
-            }
-            if (dgvHoaDon.Columns["CreatedDate"] != null)
-            {
-                dgvHoaDon.Columns["CreatedDate"].HeaderText = "Ngày lập";
-            }
-            if (dgvHoaDon.Columns["TotalAmount"] != null)
-            {
-                dgvHoaDon.Columns["TotalAmount"].HeaderText = "Tổng tiền hóa đơn";
-            }
-            if (dgvHoaDon.Columns["statusText"] != null)
-            {
-                dgvHoaDon.Columns["statusText"].HeaderText = "Trạng thái";
-            }
-            if (dgvHoaDon.Columns["PaymentMethod"] != null)
-            {
-                dgvHoaDon.Columns["PaymentMethod"].HeaderText = "Hình thức trả";
-            }
-
-            dgvHoaDon.Columns["OrderID"].DisplayIndex = 0;
-            dgvHoaDon.Columns["UserID"].DisplayIndex = 1;
-            dgvHoaDon.Columns["CustomerName"].DisplayIndex = 2;
-            dgvHoaDon.Columns["CustomerPhone"].DisplayIndex = 3;
-            dgvHoaDon.Columns["CustomerAddress"].DisplayIndex = 4;
-            dgvHoaDon.Columns["CustomerEmail"].DisplayIndex = 5;
-            dgvHoaDon.Columns["CreatedDate"].DisplayIndex = 6;
-            dgvHoaDon.Columns["TotalAmount"].DisplayIndex = 7;
-            dgvHoaDon.Columns["PaymentMethod"].DisplayIndex = 8;
-            dgvHoaDon.Columns["statusText"].DisplayIndex = 8;
+            dgvHoaDon.Columns["AspNetUser"].Visible = false;
+            dgvHoaDon.Columns["UserId"].Visible = false;
+            dgvHoaDon.Columns["statusText"].Visible = false;
+            dgvHoaDon.Columns["CustomerEmail"].Visible = false;
         }
         private void LoadTieuChiCombobox()
         {
             List<string> tieuChi = new List<string>
             {
                 "Các tiêu chí",
-                "Mã hóa đơn",
+                "Mã đơn hàng",
                 "Tên khách hàng"
             };
             cboTieuChi.DataSource = tieuChi;
 
             cboTieuChi.SelectedIndex = 0;
         }
-
         private void LoadStatusCombobox()
         {
             List<string> status = new List<string>

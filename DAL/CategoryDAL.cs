@@ -108,5 +108,9 @@ namespace DAL
                 throw new ApplicationException("Lỗi xóa mặt hàng: " + ex.Message, ex);
             }
         }
+        public int DemSoSanPhamThuocLoai(string maLoaiSanPham)
+        {
+            return db.Categories.Where(sp => sp.CategoryID == maLoaiSanPham).Count();
+        }
     }
 }

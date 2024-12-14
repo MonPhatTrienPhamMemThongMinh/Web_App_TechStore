@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public partial class PhieuNhap
+    public partial class KhuyenMaiSanPham
     {
-        public string tenNhanVien { get; set; }
+        public string tenSanPham {  get; set; }
     }
 }

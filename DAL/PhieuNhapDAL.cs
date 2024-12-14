@@ -15,14 +15,14 @@ namespace DAL
         }
         public List<PhieuNhap> LayDanhSachPhieuNhap()
         {
-            List<PhieuNhap> phieuNhaps = db.PhieuNhaps.Select(pn => pn).ToList<PhieuNhap>();
+            List<PhieuNhap> phieuNhaps = db.PhieuNhaps.Select(pn => pn).ToList<PhieuNhap>();            
             return phieuNhaps;
         }
         public PhieuNhap TimKiemPhieuNhapTheoMaPhieuNhap(string maPhieuNhap)
         {
             try
             {
-                PhieuNhap phieuNhaps = db.PhieuNhaps.Where(pn => pn.MaPhieuNhap  == maPhieuNhap).Select(pn => pn).FirstOrDefault();
+                PhieuNhap phieuNhaps = db.PhieuNhaps.Where(pn => pn.MaPhieuNhap  == maPhieuNhap).Select(pn => pn).FirstOrDefault();                
                 return phieuNhaps;
             }
             catch (Exception)
@@ -34,7 +34,7 @@ namespace DAL
         {
             try
             {
-                List<PhieuNhap> phieuNhaps = db.PhieuNhaps.Where(pn => pn.MaPhieuDat == maPhieuDat).Select(pn => pn).ToList<PhieuNhap>();           
+                List<PhieuNhap> phieuNhaps = db.PhieuNhaps.Where(pn => pn.MaPhieuDat == maPhieuDat).Select(pn => pn).ToList<PhieuNhap>();                               
                 return phieuNhaps;
             }
             catch (Exception)
@@ -53,7 +53,7 @@ namespace DAL
         }
         public List<PhieuNhap> LocDanhSachPhieuNhapTheoNgayLap(DateTime ngayLap)
         {
-            List<PhieuNhap> phieuNhaps = db.PhieuNhaps.Where(pn => pn.NgayNhap.Date == ngayLap.Date).Select(pn => pn).ToList<PhieuNhap>();
+            List<PhieuNhap> phieuNhaps = db.PhieuNhaps.Where(pn => pn.NgayNhap.Date == ngayLap.Date).Select(pn => pn).ToList<PhieuNhap>();            
             return phieuNhaps;
         }
         public bool TaoPhieuNhap(PhieuNhap pPhieuNhap)

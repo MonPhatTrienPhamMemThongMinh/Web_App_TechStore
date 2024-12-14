@@ -23,5 +23,23 @@ namespace DAL
                 return null;
             }
         }
+        public bool InsertUserRole(string userID, string roleID) 
+        {
+            try
+            {
+                AspNetUserRole userrole = new AspNetUserRole()
+                {
+                    UserId = userID,
+                    RoleId = roleID
+                };
+                db.AspNetUserRoles.InsertOnSubmit(userrole);
+                db.SubmitChanges();
+                return true ;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

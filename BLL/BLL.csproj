@@ -45,6 +45,8 @@
     <Compile Include="CategoryBLL.cs" />
     <Compile Include="ChiTietPhieuDatBLL.cs" />
     <Compile Include="ChiTietPhieuNhapBLL.cs" />
+    <Compile Include="KhuyenMaiBLL.cs" />
+    <Compile Include="KhuyenMaiSanPhamBLL.cs" />
     <Compile Include="OrderBLL.cs" />
     <Compile Include="OrderDetailBLL.cs" />
     <Compile Include="PhieuDatBLL.cs" />

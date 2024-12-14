@@ -17,7 +17,6 @@ namespace App_QLWeb_DoDienTu
     {
         private string maPhieuNhap;
         private bool themLanCuoi;
-        private string maNhanVien;
         private PhieuDat phieuDat;
         private PhieuDatBLL phieuDatBLL;
         private PhieuNhapBLL phieuNhapBLL;
@@ -25,7 +24,7 @@ namespace App_QLWeb_DoDienTu
         private ChiTietPhieuDatBLL chiTietPhieuDatBLL;
         public delegate void SendDataHandler(bool loadData);
         public event SendDataHandler DongForm;
-        public frmNhapHang(string maNhanVien)
+        public frmNhapHang()
         {
             this.phieuNhapBLL = new PhieuNhapBLL();
             this.phieuDatBLL = new PhieuDatBLL();
@@ -33,7 +32,6 @@ namespace App_QLWeb_DoDienTu
             this.chiTietPhieuDatBLL = new ChiTietPhieuDatBLL();
             InitializeComponent();
             this.maPhieuNhap = phieuNhapBLL.TaoMaPhieuNhap();
-            this.maNhanVien = maNhanVien;
             this.Load += FrmNhapHang_Load;
         }
         private void FrmNhapHang_Load(object sender, EventArgs e)
@@ -295,38 +293,7 @@ namespace App_QLWeb_DoDienTu
             {
                 if (CheckSoLuongDat())
                 {
-                    if (!themLanCuoi)
-                    {
-                        ThemPhieuNhap();
-                    }
-                    else
-                    {
-                        bool chuaNhanDu = false;
-                        foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
-                        {
-                            int soLuongConLai = int.Parse(row.Cells["soLuongConLai"].Value.ToString());
-                            int soLuongDaNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
-                            if (soLuongConLai != soLuongDaNhan)
-                            {
-                                chuaNhanDu = true;
-                                break;
-                            }
-                        }
-                        if (chuaNhanDu)
-                        {
-                            DialogResult r = MessageBox.Show(this, $"Đây là lần cuối để tạo phiếu nhập của phiếu đặt ({txtMaPhieuDat.Text})" +
-                                $" này nhưng số lượng sản phẩm nhận vào chưa đủ so với số lượng đặt, " +
-                                $"bạn có chắc chắn vẫn muốn tạo phiếu nhập này không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (r == DialogResult.Yes)
-                            {
-                                ThemPhieuNhap();
-                            }
-                        }
-                        else
-                        {
-                            ThemPhieuNhap();
-                        }
-                    }
+                    ThemPhieuNhap();
                 }
                 else
                 {

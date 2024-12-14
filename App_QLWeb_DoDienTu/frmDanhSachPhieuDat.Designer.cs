@@ -40,7 +40,6 @@
             this.uiPanel2 = new Sunny.UI.UIPanel();
             this.dtgvDanhSachPhieuDat = new Sunny.UI.UIDataGridView();
             this.maPhieuDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,7 +112,6 @@
             this.dtgvDanhSachPhieuDat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgvDanhSachPhieuDat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maPhieuDat,
-            this.tenNhanVien,
             this.tenNhaCungCap,
             this.ngayLap,
             this.soLuong,
@@ -162,13 +160,6 @@
             this.maPhieuDat.HeaderText = "Mã phiếu đặt";
             this.maPhieuDat.Name = "maPhieuDat";
             this.maPhieuDat.ReadOnly = true;
-            // 
-            // tenNhanVien
-            // 
-            this.tenNhanVien.DataPropertyName = "tenNhanVien";
-            this.tenNhanVien.HeaderText = "Tên nhân viên";
-            this.tenNhanVien.Name = "tenNhanVien";
-            this.tenNhanVien.ReadOnly = true;
             // 
             // tenNhaCungCap
             // 
@@ -228,7 +219,6 @@
         private Sunny.UI.UIDataGridView dtgvDanhSachPhieuDat;
         private Sunny.UI.UILabel btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn maPhieuDat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenNhaCungCap;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngayLap;
         private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;

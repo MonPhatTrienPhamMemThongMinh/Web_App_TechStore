@@ -17,27 +17,26 @@ namespace BLL
         {
             return sdal.getAllSuppliers();
         }
-
+        public int TongSoLuongNhaCungCap()
+        {
+            return sdal.TongSoLuongNhaCungCap();
+        }
         public NhaCungCap GetSupplierById(string ma)
         {
             return sdal.GetNCCById(ma);
         }
-
         public bool AddSupplier(NhaCungCap ncc)
         {
             return sdal.AddSupplier(ncc);
         }
-
         public bool UpdateSupplier(NhaCungCap ncc)
         {
             return sdal.UpdateNCC(ncc);
         }
-
         public bool DeleteSupplier(NhaCungCap ncc)
         {
             return sdal.DeleteNCC(ncc);
         }
-
         public string TaoMaNhaCungCap()
         {
             return sdal.TaoMaNhaCungCap();

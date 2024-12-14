@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Sunny.UI;
+using NPOI.SS.Formula.Functions;
 
 namespace App_QLWeb_DoDienTu
 {
@@ -36,26 +37,23 @@ namespace App_QLWeb_DoDienTu
             this.btnChonAnhBack.Click += BtnBrandBackground_Click;
             this.btnChonAnhLogo.Click += BtnBrandLogo_Click;
         }
-
         private void BtnBack_Click(object sender, EventArgs e)
         {
             frmProduct frm = new frmProduct(parentfrm);
             parentfrm.OpenChildForm(frm);
         }
-
         private void DgvBrand_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvBrand.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvBrand.SelectedRows[0];
-                if (selectedRow.Cells["BrandID"].Value != null)
+                if (selectedRow.Cells["maThuongHieu"].Value != null)
                 {
-                    string brandId = selectedRow.Cells["BrandID"].Value.ToString();
+                    string brandId = selectedRow.Cells["maThuongHieu"].Value.ToString();
                     LoadBrandDetail(brandId);
                 }
             }
         }
-
         private void BtnBrandLogo_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -151,7 +149,6 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void BtnBrandBackground_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -246,7 +243,6 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -298,12 +294,43 @@ namespace App_QLWeb_DoDienTu
                 button.ForeColor = System.Drawing.Color.Gray;
             }
         }
-
         private void BtnRemoveBrand_Click(object sender, EventArgs e)
         {
+            if (txtBrandID.Text != string.Empty)
+            {
+                string maThuongHieu = txtBrandID.Text;
+                string tenThuongHieu = txtBrandName.Text;
+                DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa thương hiệu " + tenThuongHieu + " này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (r == DialogResult.Yes)
+                {
+                    Brand thuongHieu = new Brand
+                    {
+                        BrandID = maThuongHieu,
+                        BrandName = tenThuongHieu,
 
+                    };
+                    int dem = bbll.DemSoSanPhamThuocThuongHieu(thuongHieu.BrandID);
+                    if (dem > 0)
+                    {
+                        MessageBox.Show(this, $"Không thể xóa thương hiệu {thuongHieu.BrandName} do còn sản phẩm thuộc thương hiệu này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        bool isSuccess = bbll.DeleteBrand(thuongHieu);
+                        if (isSuccess)
+                        {
+                            MessageBox.Show(this, "Xóa thương hiệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_BrandData();
+                            ClearForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Xóa loại sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
         }
-
         private void BtnEditBrand_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtBrandID.Text))
@@ -346,7 +373,7 @@ namespace App_QLWeb_DoDienTu
 
                             if (isSuccess)
                             {
-                                MessageBox.Show("Cập nhật hãng sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Cập nhật thương hiệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Load_BrandData();
 
                                 ClearForm();
@@ -378,7 +405,6 @@ namespace App_QLWeb_DoDienTu
                 MessageBox.Show("Chọn thương hiệu bạn muốn sửa", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void BtnAddBrand_Click(object sender, EventArgs e)
         {
             if (btnThem.Text == "Thêm")
@@ -442,13 +468,11 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void EnableDataGridView(bool enable)
         {
             dgvBrand.Enabled = enable;
             dgvBrand.DefaultCellStyle.BackColor = enable ? Color.White : Color.LightGray;  // Thay đổi màu nền khi vô hiệu hóa
         }
-
         private bool ValidateInput()
         {
             if (string.IsNullOrWhiteSpace(txtBrandName.Text))
@@ -468,7 +492,6 @@ namespace App_QLWeb_DoDienTu
             }
             return true;
         }
-
         private void ClearForm()
         {
             txtBrandID.Text = "";
@@ -477,13 +500,11 @@ namespace App_QLWeb_DoDienTu
             pbBrandLogo.Image = null;
             pbBackgroundBrand.Image = null;
         }
-
         private void FrmBrand_Load(object sender, EventArgs e)
         {
             Load_BrandData();
             EnableTextBox(false);
         }
-
         private void Load_BrandData()
         {
             try
@@ -491,13 +512,14 @@ namespace App_QLWeb_DoDienTu
                 List<Brand> brands = bbll.GetAllBrands();
                 dgvBrand.DataSource = brands;
                 dgvBrand.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvBrand.Columns["BrandPic"].Visible = false;
+                dgvBrand.Columns["BrandBackground"].Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi tải thương hiệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void LoadBrandDetail(string brandId)
         {
             try
@@ -585,7 +607,6 @@ namespace App_QLWeb_DoDienTu
                 MessageBox.Show($"Lỗi tải chi tiết thương hiệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private string GetWebProjectPicFolderPath()
         {
             // Đường dẫn tương đối từ thư mục gốc của dự án Windows Forms tới thư mục Pic của dự án web

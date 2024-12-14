@@ -35,18 +35,84 @@ namespace App_QLWeb_DoDienTu
             this.btnHuyBo.Click += BtnHuyBo_Click;
             this.btnThem.Click += BtnThem_Click;
             this.btnSua.Click += BtnSua_Click;
+            this.btnXoa.Click += BtnXoa_Click;
+            this.btnChuongTrinhKhuyenMai.Click += BtnChuongTrinhKhuyenMai_Click;
             this.dgvProducts.SelectionChanged += DgvProducts_SelectionChanged;
-
+            this.cbLocTheoLoai.SelectedIndexChanged += CbLocTheoLoai_SelectedIndexChanged;
+            this.cbThuongHieu.SelectedIndexChanged += CbThuongHieu_SelectedIndexChanged;
+            this.cbTrangThai.SelectedIndexChanged += CbTrangThai_SelectedIndexChanged;
             this.btnBrand.Click += BtnBrand_Click;
             this.btnCategory.Click += BtnCategory_Click;
         }
 
+        private void BtnChuongTrinhKhuyenMai_Click(object sender, EventArgs e)
+        {
+            parentfrm.OpenChildForm(new frmQLKhuyenMai(parentfrm));
+        }
+
+        private void BtnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                DialogResult r = MessageBox.Show(this, "Bạn có chắc chắc muốn xóa sản phẩm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (r == DialogResult.Yes)
+                {
+                    int soLuong = int.Parse(dgvProducts.SelectedRows[0].Cells["soLuong"].Value.ToString());
+                    if (soLuong > 0)
+                    {
+                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm còn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (pbll.KiemTraSanPhamCoThuocHoaDon(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString()))
+                    {
+                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm có trong hóa đơn bán hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (pbll.KiemTraSanPhamCoThuocPhieuDat(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString()))
+                    {
+                        MessageBox.Show(this, "Không thể xóa sản phẩm do sản phầm có trong phiếu đặt hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        bool isSuccess = pbll.DeleteProduct(dgvProducts.SelectedRows[0].Cells["maSanPham"].Value.ToString());
+                        if (isSuccess)
+                        {
+                            MessageBox.Show(this, "Xóa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadData();
+                            ClearForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Xóa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+        }
+        private void CbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTrangThai.SelectedItem != null)
+            {
+                bindingSource.DataSource = pbll.LocSanPhamTheoTrangThai(cbTrangThai.SelectedText);
+            }
+        }
+        private void CbThuongHieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbThuongHieu.SelectedItem != null)
+            {
+                bindingSource.DataSource = pbll.LocSanPhamTheoThuongHieu(cbThuongHieu.SelectedValue.ToString());
+            }
+        }
+        private void CbLocTheoLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbLocTheoLoai.SelectedItem != null)
+            {
+                bindingSource.DataSource = pbll.LocSanPhamTheoLoai(cbLocTheoLoai.SelectedValue.ToString());
+            }
+        }
         private void BtnCategory_Click(object sender, EventArgs e)
         {
             frmCategory frm = new frmCategory(parentfrm);
             parentfrm.OpenChildForm(frm);
         }
-
         private void BtnBrand_Click(object sender, EventArgs e)
         {
             frmBrand frm = new frmBrand(parentfrm);
@@ -57,14 +123,13 @@ namespace App_QLWeb_DoDienTu
             if (dgvProducts.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvProducts.SelectedRows[0];
-                if (selectedRow.Cells["ProductID"].Value != null)
+                if (selectedRow.Cells["maSanPham"].Value != null)
                 {
-                    string productID = selectedRow.Cells["ProductID"].Value.ToString();
+                    string productID = selectedRow.Cells["maSanPham"].Value.ToString();
                     LoadProductDetail(productID);
                 }
             }
         }
-
         private void BtnChonAnh_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -160,7 +225,6 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void BtnHuyBo_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -178,12 +242,6 @@ namespace App_QLWeb_DoDienTu
             btnHuyBo.Enabled = false;
             btnHuyBo.BackColor = Color.DarkGray;
         }
-
-        private void BtnRemoveBrand_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnSua_Click(object sender, EventArgs e)
         {
             if (txtMaSanPham.Text != string.Empty)
@@ -214,7 +272,7 @@ namespace App_QLWeb_DoDienTu
                             BrandID = cboTH.SelectedValue.ToString(),
                             ProductPic = imagePath,
 
-                            ProductDescription = txtMoTa.Text.Trim(),
+                            ProductDescription = txtMoTa.Texts.Trim(),
                             BaoHanh = txtBaoHanh.Text.Trim(),
                         };
                         try
@@ -298,7 +356,7 @@ namespace App_QLWeb_DoDienTu
                 {
                     string maSanPham = txtMaSanPham.Text.Trim();
                     string tenSanPham = txtTenSanPham.Text.Trim();
-                    string moTa = txtMoTa.Text.Trim();
+                    string moTa = txtMoTa.Texts.Trim();
                     Product newProduct = new Product
                     {
                         ProductID = maSanPham,
@@ -343,13 +401,11 @@ namespace App_QLWeb_DoDienTu
                 }
             }
         }
-
         private void LoadData()
         {
             List<Product> danhSachSanPham = pbll.GetAllProducts();
             bindingSource.DataSource = danhSachSanPham;
             dgvProducts.DataSource = bindingSource;
-            dgvProducts.Columns["ProductPic"].Visible = false;
             dgvProducts.Columns["Category"].Visible = false;
             dgvProducts.Columns["Brand"].Visible = false;
             LoadCBLoaiSanPham();
@@ -364,22 +420,22 @@ namespace App_QLWeb_DoDienTu
             cbLocTheoLoai.DataSource = ctbll.GetAllCategories();
             cbLocTheoLoai.ValueMember = "CategoryID";
             cbLocTheoLoai.DisplayMember = "CategoryName";
-
-            cbTrangThai.SelectedIndex = 0;
         }
         private void LoadCBThuongHieu()
         {
             cboTH.DataSource = bbll.GetAllBrands();
             cboTH.ValueMember = "BrandID";
             cboTH.DisplayMember = "BrandName";
-        }
 
+            cbThuongHieu.DataSource = bbll.GetAllBrands();
+            cbThuongHieu.ValueMember = "BrandID";
+            cbThuongHieu.DisplayMember = "BrandName";
+        }
         private void EnableDataGridView(bool enable)
         {
             dgvProducts.Enabled = enable;
             dgvProducts.DefaultCellStyle.BackColor = enable ? Color.White : Color.LightGray;
         }
-
         private bool ValidateInput()
         {
             if (string.IsNullOrWhiteSpace(txtMaSanPham.Text))
@@ -403,14 +459,12 @@ namespace App_QLWeb_DoDienTu
         {
             txtMaSanPham.Text = "";
             txtTenSanPham.Text = "";
-            txtMoTa.Text = "";
+            txtMoTa.Texts = "";
             hinhAnh.Image = null;
             cboTH.SelectedIndex = 0;
             cbLoaiSP.SelectedIndex = 0;
-            cboNCC.SelectedIndex = 0;
             txtBaoHanh.Text = "";
         }
-
         private void FrmProduct_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -424,7 +478,6 @@ namespace App_QLWeb_DoDienTu
             cbLoaiSP.Enabled = enable;
             btnChonAnh.Enabled = enable;
             cboTH.Enabled = enable;
-            cboNCC.Enabled = enable;
         }
         private void LoadProductDetail(string productId)
         {
@@ -435,7 +488,7 @@ namespace App_QLWeb_DoDienTu
                 {
                     txtMaSanPham.Text = product.ProductID;
                     txtTenSanPham.Text = product.ProductName;
-                    txtMoTa.Text = product.ProductDescription;
+                    txtMoTa.Texts = product.ProductDescription;
                     txtBaoHanh.Text = product.BaoHanh;
                     cboTH.SelectedValue = product.BrandID;
                     cbLoaiSP.SelectedValue = product.CategoryID;
@@ -460,7 +513,6 @@ namespace App_QLWeb_DoDienTu
 
             return absolutePath;
         }
-
         private void txtTimKiem_Leave(object sender, EventArgs e)
         {
             if (txtTimKiem.Text == "")

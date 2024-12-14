@@ -52,10 +52,6 @@ namespace BLL
         {
             return phieuDatDAL.DuyetPhieuDat(maPhieuDat,trangThai);
         }
-        public bool XacNhanPhieuDat(string maPhieuDat,string trangThai)
-        {
-            return phieuDatDAL.XacNhanPhieuDat(maPhieuDat, trangThai);
-        }
         public bool XoaPhieuDat(PhieuDat pPhieuDat)
         {
             return phieuDatDAL.XoaPhieuDat(pPhieuDat);
