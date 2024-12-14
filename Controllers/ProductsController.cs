@@ -10,7 +10,7 @@ namespace DoAnWebGamingGear.Controllers
     {
         private readonly GamingGearDBContext db = new GamingGearDBContext();
 
-        public ActionResult Index(string search = "", string Sort = "ProductID", string[] selectedCategories = null, string Icon = "fa-sort-asc", int page = 1, string[] selectedBrands = null)
+        public ActionResult Index(string search = "", string Sort = "ProductID", string[] selectedCategories = null, string Icon = "fa-sort-asc", int page = 1, string[] selectedBrands = null, bool resetPage = false)
         {
             ViewBag.Categories = db.Categories.ToList();
             ViewBag.Brands = db.Brands.ToList();
@@ -24,6 +24,11 @@ namespace DoAnWebGamingGear.Controllers
             ViewBag.Search = search;
             ViewBag.Sort = Sort;
             ViewBag.Icon = Icon;
+
+            if (resetPage)
+            {
+                page = 1;
+            }
 
             // Khởi tạo query sản phẩm
             var products = db.Products.AsQueryable();
@@ -62,7 +67,6 @@ namespace DoAnWebGamingGear.Controllers
                     break;
             }
 
-            // Paging logic
             int NoOfRecordPerPage = 6;
             int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
             ViewBag.Page = page;

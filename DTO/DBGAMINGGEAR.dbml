@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBGAMINGGEAR" Class="DBGAMINGGEARDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=ADMIN-PC;Initial Catalog=DBGAMINGGEAR;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="DBGAMINGGEARConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI;Initial Catalog=DBGAMINGGEAR;Integrated Security=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="DBGAMINGGEARConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.[__MigrationHistory]" Member="__MigrationHistories">
     <Type Name="__MigrationHistory">
       <Column Name="MigrationId" Type="System.String" DbType="NVarChar(150) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -8,18 +8,15 @@
       <Column Name="ProductVersion" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.PhieuDats" Member="PhieuDats">
-    <Type Name="PhieuDat">
-      <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaNhaCungCap" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="NgayLap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.PhieuNhaps" Member="PhieuNhaps">
+    <Type Name="PhieuNhap">
+      <Column Name="MaPhieuNhap" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="NgayNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SoLan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="TrangThai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="PhieuDat_ChiTietPhieuDat" Member="ChiTietPhieuDats" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="ChiTietPhieuDat" />
-      <Association Name="PhieuDat_PhieuNhap" Member="PhieuNhaps" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuNhap" />
-      <Association Name="NhaCungCap_PhieuDat" Member="NhaCungCap" ThisKey="MaNhaCungCap" OtherKey="maNhaCungCap" Type="NhaCungCap" IsForeignKey="true" />
+      <Association Name="PhieuNhap_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaPhieuNhap" OtherKey="MaPhieuNhap" Type="ChiTietPhieuNhap" />
+      <Association Name="PhieuDat_PhieuNhap" Member="PhieuDat" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuDat" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
@@ -117,8 +114,8 @@
       <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Association Name="ChiTietPhieuDat_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaPhieuDat,ProductID" OtherKey="MaPhieuDat,ProductID" Type="ChiTietPhieuNhap" />
-      <Association Name="PhieuDat_ChiTietPhieuDat" Member="PhieuDat" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuDat" IsForeignKey="true" />
       <Association Name="Product_ChiTietPhieuDat" Member="Product" ThisKey="ProductID" OtherKey="ProductID" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PhieuDat_ChiTietPhieuDat" Member="PhieuDat" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuDat" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ChiTietPhieuNhaps" Member="ChiTietPhieuNhaps">
@@ -212,15 +209,18 @@
       <Association Name="Category_Product" Member="Category" ThisKey="CategoryID" OtherKey="CategoryID" Type="Category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PhieuNhaps" Member="PhieuNhaps">
-    <Type Name="PhieuNhap">
-      <Column Name="MaPhieuNhap" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Column Name="NgayNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="SoLan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.PhieuDats" Member="PhieuDats">
+    <Type Name="PhieuDat">
+      <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaNhaCungCap" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NgayLap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Association Name="PhieuNhap_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaPhieuNhap" OtherKey="MaPhieuNhap" Type="ChiTietPhieuNhap" />
-      <Association Name="PhieuDat_PhieuNhap" Member="PhieuDat" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuDat" IsForeignKey="true" />
+      <Column Name="TrangThai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PhieuDat_PhieuNhap" Member="PhieuNhaps" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuNhap" />
+      <Association Name="PhieuDat_ChiTietPhieuDat" Member="ChiTietPhieuDats" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="ChiTietPhieuDat" />
+      <Association Name="NhaCungCap_PhieuDat" Member="NhaCungCap" ThisKey="MaNhaCungCap" OtherKey="maNhaCungCap" Type="NhaCungCap" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.XoaPhieuDat_Proc" Method="XoaPhieuDat_Proc">
@@ -228,6 +228,10 @@
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_UpdateTrangThaiKhuyenMai" Method="sp_UpdateTrangThaiKhuyenMai">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CapNhatSoLuongSanPham_Proc" Method="CapNhatSoLuongSanPham_Proc">
+    <Parameter Name="maHD" Type="System.String" DbType="NVarChar(128)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
