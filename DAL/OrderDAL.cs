@@ -95,10 +95,10 @@ namespace DAL
                     case "Chọn trạng thái..":
                         break;
                     case "Chưa thanh toán":
-                        orders = orders.Where(hd => hd.statusText == trangThai).ToList();
+                        orders = orders.Where(hd => hd.Status == trangThai).ToList();
                         break;
                     case "Đã thanh toán":
-                        orders = orders.Where(hd => hd.statusText == trangThai).ToList();
+                        orders = orders.Where(hd => hd.Status == trangThai).ToList();
                         break;
                 }
                 return orders;
@@ -132,10 +132,13 @@ namespace DAL
         }
         public decimal TinhDoanhThuTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
         {
-            return db.Orders
+            if (TongSoHoaDonTheoKhoangThoiGian(batDau,ketThuc)>0)
+            {
+                return db.Orders
                 .Where(hd => hd.CreatedDate.Date >= batDau.Date && hd.CreatedDate.Date <= ketThuc.Date)
                 .Sum(hd => (decimal?)hd.TotalAmount) ?? 0;
-            return 0;
+            }
+            return 0; 
         }
 
         public int TongSoHoaDonTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
@@ -176,7 +179,6 @@ namespace DAL
                                         Gio = tk.Key,
                                         TongDoanhThu = tk.Sum(hd => (decimal?)hd.TotalAmount) ?? 0
                                     }).ToDictionary(x => x.Gio, x => x.TongDoanhThu);
-
             if (!doanhThuTheoGio.Any())
             {
                 return new Dictionary<int, decimal>();

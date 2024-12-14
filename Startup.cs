@@ -8,6 +8,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity.EntityFramework;
 using DoAnWebGamingGear.Identity;
 using DoAnWebGamingGear.Models;
+using System.Configuration;
+using System.Globalization;
+using System.Threading;
 
 [assembly: OwinStartup(typeof(DoAnWebGamingGear.Startup))]
 
@@ -17,6 +20,21 @@ namespace DoAnWebGamingGear
     {
         public void Configuration(IAppBuilder app)
         {
+            string cultureName = ConfigurationManager.AppSettings["DefaultCulture"];
+
+            if (!string.IsNullOrEmpty(cultureName))
+            {
+                try
+                {
+                    CultureInfo culture = new CultureInfo(cultureName);
+                    Thread.CurrentThread.CurrentCulture = culture;
+                    Thread.CurrentThread.CurrentUICulture = culture;
+                }
+                catch (CultureNotFoundException)
+                {
+                    
+                }
+            }
             app.UseCookieAuthentication(new CookieAuthenticationOptions()
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
