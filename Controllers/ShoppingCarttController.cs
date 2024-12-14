@@ -14,12 +14,18 @@ namespace DoAnWebGamingGear.Controllers
         public ActionResult ShowToCart()
         {
             var userId = User.Identity.GetUserId();
-            /*if (string.IsNullOrEmpty(userId))
-            {
-                return RedirectToAction("Login", "Account"); // Điều hướng đến trang đăng nhập nếu chưa đăng nhập
-            }
-*/
             var cartItems = Session[userId + "_Cart"] as List<CartItem> ?? new List<CartItem>();
+
+            // Lấy số lượng sản phẩm hiện có từ cơ sở dữ liệu
+            foreach (var item in cartItems)
+            {
+                var product = db.Products.Find(item.ProductID);
+                if (product != null)
+                {
+                    item.AvailableQuantity = product.Quantity; // Giả sử AvailableQuantity là thuộc tính lưu số lượng sản phẩm hiện có
+                }
+            }
+
             return View(cartItems);
         }
 
@@ -61,10 +67,22 @@ namespace DoAnWebGamingGear.Controllers
             var cartItems = Session[userId + "_Cart"] as List<CartItem> ?? new List<CartItem>();
 
             var item = cartItems.FirstOrDefault(c => c.ProductID == productid);
-            if (item != null && quantity > 0)
+            if (item != null)
             {
-                item.shopping_quantity = quantity;
-                Session[userId + "_Cart"] = cartItems;
+                var product = db.Products.Find(productid);
+                if (product != null)
+                {
+                    if (quantity > product.Quantity)
+                    {
+                        TempData["QuantityError"] = $"Số lượng không được vượt quá {product.Quantity}.";
+                        item.shopping_quantity = product.Quantity;
+                    }
+                    else
+                    {
+                        item.shopping_quantity = quantity;
+                    }
+                    Session[userId + "_Cart"] = cartItems;
+                }
             }
 
             return RedirectToAction("ShowToCart");

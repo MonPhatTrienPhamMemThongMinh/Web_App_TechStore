@@ -63,12 +63,18 @@
                                             @TempData["CartEmptyMessage"]
                                         </div>
                                     }
+                                    @if (TempData["QuantityError"] != null)
+                                    {
+                                        <div class="alert alert-danger">
+                                            @TempData["QuantityError"]
+                                        </div>
+                                    }
                                     <hr class="my-4">
 
                                     @{ int total_bill = 0; }
                                     @foreach (var item in Model)
                                     {
-                                        if(item.Products.SalePrice > 0)
+                                        if (item.Products.SalePrice > 0)
                                         {
                                             item.Products.Price = item.Products.SalePrice;
                                         }
@@ -86,7 +92,7 @@
                                                 {
                                                     @Html.AntiForgeryToken()
                                                     <input type="hidden" value="@item.ProductID" name="productid" />
-                                                    <input class="form-control form-control-sm" type="number" value="@item.shopping_quantity" name="quantity" min="1" />
+                                                    <input class="form-control form-control-sm" type="number" value="@item.shopping_quantity" name="quantity" min="1" max="@item.AvailableQuantity" />
                                                     <button type="submit" class="btn btn-outline-primary btn-sm">Update</button>
                                                 }
                                             </div>

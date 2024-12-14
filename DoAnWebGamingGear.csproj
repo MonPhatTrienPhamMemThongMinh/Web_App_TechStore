@@ -256,7 +256,6 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\DialogflowController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -294,6 +293,10 @@
     <Compile Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.cs" />
     <Compile Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.Designer.cs">
       <DependentUpon>202412141033341_ThemThuocTinhChoBangOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412142230549_AddAvailableQuantityInCartItem.cs" />
+    <Compile Include="Migrations\202412142230549_AddAvailableQuantityInCartItem.designer.cs">
+      <DependentUpon>202412142230549_AddAvailableQuantityInCartItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brands.cs" />
@@ -390,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.resx">
       <DependentUpon>202412141033341_ThemThuocTinhChoBangOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412142230549_AddAvailableQuantityInCartItem.resx">
+      <DependentUpon>202412142230549_AddAvailableQuantityInCartItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

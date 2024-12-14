@@ -35,7 +35,7 @@ namespace DoAnWebGamingGear.Controllers
             var cartItems = Session["CartItemsForPayment"] as List<CartItem>;
             if (cartItems == null || !cartItems.Any())
             {
-                return RedirectToAction("Index", "ShoppingCart"); // Nếu giỏ hàng trống, quay lại trang giỏ hàng
+                return RedirectToAction("Index", "ShoppingCartt"); // Nếu giỏ hàng trống, quay lại trang giỏ hàng
             }
 
             using (var transaction = db.Database.BeginTransaction())
@@ -102,7 +102,7 @@ namespace DoAnWebGamingGear.Controllers
                 catch (Exception)
                 {
                     transaction.Rollback();
-                    return RedirectToAction("Index", "ShoppingCart"); // Nếu có lỗi, quay lại trang giỏ hàng
+                    return RedirectToAction("ShowToCart", "ShoppingCartt"); // Nếu có lỗi, quay lại trang giỏ hàng
                 }
             }
         }  
