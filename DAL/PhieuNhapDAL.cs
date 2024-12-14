@@ -88,7 +88,7 @@ namespace DAL
         {
             return db.PhieuNhaps
                 .Where(pn => pn.NgayNhap.Date >= batDau.Date && pn.NgayNhap.Date <= ketThuc.Date)
-                .Sum(pn => pn.TongTien);
+                .Sum(pn => (decimal?)pn.TongTien) ?? 0;
         }
     }
 }

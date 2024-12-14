@@ -25,21 +25,17 @@ namespace App_QLWeb_DoDienTu
         SupplierBLL nccbll = new SupplierBLL();
         ProductBLL spbll = new ProductBLL();
         PhieuNhapBLL pnbll = new PhieuNhapBLL();
-
         private List<Sunny.UI.UIButton> buttonList;
-
         public frmDashboard(string maNhanVien)
         {
             InitializeComponent();
             this.MaNhanVien = maNhanVien;
             dtpChonThangInPhieu.MaxDate = DateTime.Today;
-
             this.Load += FrmDashboard_Load;
             this.dtpNgayBatDau.Value = DateTime.Today.AddDays(-7);
             this.dtpNgayKetThuc.Value = DateTime.Now;
             this.dtpNgayBatDau.ValueChanged += DtpNgayBatDau_ValueChanged;
             this.dtpNgayKetThuc.ValueChanged += DtpNgayKetThuc_ValueChanged;
-
             this.btnLocThangNay.Click += BtnLocThangNay_Click;
             this.btnLoc30NgayQua.Click += BtnLoc30NgayQua_Click;
             this.btnLoc7NgayQua.Click += BtnLoc7NgayQua_Click;
@@ -56,17 +52,14 @@ namespace App_QLWeb_DoDienTu
                 btnLocNamNay,
                 btnCustom
             };
-
             // Gán sự kiện click chung cho tất cả các nút trong danh sách
             foreach (var button in buttonList)
             {
                 button.Click += Button_Click;
             }    
-
             this.dgvSPDuoiMucToiThieu.CellFormatting += DgvSPDuoiMucToiThieu_CellFormatting;
             this.btnInPhieuBaoCao.Click += BtnInPhieuBaoCao_Click; ;
         }
-
         private void BtnInPhieuBaoCao_Click(object sender, EventArgs e)
         {
             var month = dtpChonThangInPhieu.Value.Month;
@@ -99,25 +92,23 @@ namespace App_QLWeb_DoDienTu
             frmPhieuThongKeBaoCao frm = new frmPhieuThongKeBaoCao(reportData, month, year, loiNhuanText, top5SanPhamBanChay, nv.FullName);
             frm.ShowDialog();
         }
-
         private void Button_Click(object sender, EventArgs e)
         {
             // Đặt lại màu mặc định cho tất cả các nút
             foreach (var button in buttonList)
             {
                 button.FillColor = System.Drawing.SystemColors.Window;
-                button.ForeColor = System.Drawing.Color.HotPink;
+                button.ForeColor = System.Drawing.Color.RoyalBlue;
             }
 
             // Thay đổi màu sắc của nút được nhấn
             var clickedButton = sender as Sunny.UI.UIButton;
             if (clickedButton != null)
             {
-                clickedButton.FillColor = System.Drawing.Color.HotPink;
+                clickedButton.FillColor = System.Drawing.Color.RoyalBlue;
                 clickedButton.ForeColor = System.Drawing.Color.White;
             }
-        }
-        
+        }        
         private void DgvSPDuoiMucToiThieu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.Value != null && decimal.TryParse(e.Value.ToString(), out _))
@@ -203,7 +194,6 @@ namespace App_QLWeb_DoDienTu
                 chartTongDoanhThu.Series[0].XValueMember = "Gio";
                 chartTongDoanhThu.Series[0].YValueMembers = "TongDoanhThu";
             }
-
             else if (tongSoNgay <= 30)
             {
                 // Lọc theo ngày
@@ -247,9 +237,7 @@ namespace App_QLWeb_DoDienTu
                 chartTongDoanhThu.Series[0].XValueMember = "Thang";
                 chartTongDoanhThu.Series[0].YValueMembers = "TongDoanhThu";
             }
-
             chartTongDoanhThu.DataBind();
-
             // Kiểm tra số lượng điểm dữ liệu và thay đổi loại biểu đồ
             if (chartTongDoanhThu.Series[0].Points.Count == 1)
             {
@@ -259,16 +247,13 @@ namespace App_QLWeb_DoDienTu
             {
                 chartTongDoanhThu.Series[0].ChartType = SeriesChartType.SplineArea;
             }
-
             // 3 dữ liệu ô dưới bên trái
             //int soLuongNhanVien = nvbll.TongSoLuongNhanVien();
             int soLuongNhaCungCap = nccbll.TongSoLuongNhaCungCap();
             int soLuongSanPham = spbll.TongSoLuongSanPham();
-
             //lblNhanVien.Text = "" + soLuongNhanVien;
             lblNhaCungCap.Text = "" + soLuongNhaCungCap;
             lblSanPham.Text = "" + soLuongSanPham;
-
             // các sản phẩm dưới mức tối thiểu (40)
             var dsSanPhamDuoiMucToiThieu = spbll.ThongKeDanhSachSanPhamDuoiMucToiThieu();
             dgvSPDuoiMucToiThieu.DataSource = dsSanPhamDuoiMucToiThieu.Select(sp => new
@@ -281,73 +266,58 @@ namespace App_QLWeb_DoDienTu
             dgvSPDuoiMucToiThieu.Columns["SoLuong"].HeaderText = "Số lượng";
             dgvSPDuoiMucToiThieu.Columns["SoLuong"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
-
         private int TinhBuocLinhHoat(int tongSoNgay)
         {
             int maxSoNhom = 6;
             return (int)Math.Ceiling((double)tongSoNgay / maxSoNhom);
         }
-
         private void BtnLocNamNay_Click(object sender, EventArgs e)
         {
             DateTime ngayBatDau = new DateTime(DateTime.Now.Year, 1, 1);
             DateTime ngayKetThuc = DateTime.Now;
-
             LoadData(ngayBatDau, ngayKetThuc);
             DisableLocCustom();
         }
-
         private void BtnLocTheoCustom_Click(object sender, EventArgs e)
         {
             DateTime ngayBatDau = dtpNgayBatDau.Value;
             DateTime ngayKetThuc = dtpNgayKetThuc.Value;
-
             LoadData(ngayBatDau, ngayKetThuc);
         }
-
         private void BtnCustom_Click(object sender, EventArgs e)
         {
             dtpNgayBatDau.Enabled = true;
             dtpNgayKetThuc.Enabled = true;
             btnLocTheoCustom.Visible = true;
         }
-
         private void BtnLocHomNay_Click(object sender, EventArgs e)
         {
             DateTime ngayBatDau = DateTime.Today;
             DateTime ngayKetThuc = DateTime.Now;
-
             LoadData(ngayBatDau, ngayKetThuc);
             DisableLocCustom();
         }
-
         private void BtnLoc7NgayQua_Click(object sender, EventArgs e)
         {
             DateTime ngayBatDau = DateTime.Now.AddDays(-7);
             DateTime ngayKetThuc = DateTime.Now;
-
             LoadData(ngayBatDau, ngayKetThuc);
             DisableLocCustom();
         }
-
         private void BtnLoc30NgayQua_Click(object sender, EventArgs e)
         {
             DateTime ngayBatDau = DateTime.Now.AddDays(-30);
             DateTime ngayKetThuc = DateTime.Now;
-
             LoadData(ngayBatDau, ngayKetThuc);
             DisableLocCustom();
         }
-
         private void BtnLocThangNay_Click(object sender, EventArgs e)
         {
             DateTime ngayBatDau = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             DateTime ngayKetThuc = DateTime.Now;
-
             LoadData(ngayBatDau, ngayKetThuc);
             DisableLocCustom();
         }
-
         public void DisableLocCustom()
         {
             dtpNgayBatDau.Enabled = false;
@@ -361,7 +331,6 @@ namespace App_QLWeb_DoDienTu
                 this.dtpNgayBatDau.Value = dtpNgayKetThuc.Value;
             }
         }
-
         private void DtpNgayBatDau_ValueChanged(object sender, EventArgs e)
         {
             if (this.dtpNgayBatDau.Value > dtpNgayKetThuc.Value)

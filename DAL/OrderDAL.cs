@@ -95,10 +95,10 @@ namespace DAL
                     case "Chọn trạng thái..":
                         break;
                     case "Chưa thanh toán":
-                        orders = orders.Where(hd => hd.statusText == trangThai).ToList();
+                        orders = orders.Where(hd => hd.Status == trangThai).ToList();
                         break;
                     case "Đã thanh toán":
-                        orders = orders.Where(hd => hd.statusText == trangThai).ToList();
+                        orders = orders.Where(hd => hd.Status == trangThai).ToList();
                         break;
                 }
                 return orders;
@@ -111,14 +111,6 @@ namespace DAL
         public Order LoadHoaDonTheoMa(string mahd)
         {
             Order order = db.Orders.FirstOrDefault(hd => hd.OrderId == mahd);
-            //if (order.Status == true)
-            //{
-            //    order.statusText = "Đã thanh toán";
-            //}
-            //else
-            //{
-            //    order.statusText = "Chưa thanh toán";
-            //}
             return order;
         }
         // Tất cả hóa đơn
@@ -140,10 +132,13 @@ namespace DAL
         }
         public decimal TinhDoanhThuTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
         {
-            //return db.Orders
-            //    .Where(hd => hd.CreatedDate.Date >= batDau.Date && hd.CreatedDate.Date <= ketThuc.Date)
-            //    .Sum(hd => hd.tongTienSauGiam) ?? 0;
-            return 0;
+            if (TongSoHoaDonTheoKhoangThoiGian(batDau,ketThuc)>0)
+            {
+                return db.Orders
+                .Where(hd => hd.CreatedDate.Date >= batDau.Date && hd.CreatedDate.Date <= ketThuc.Date)
+                .Sum(hd => hd.TotalAmount);
+            }
+            return 0; 
         }
 
         public int TongSoHoaDonTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
@@ -155,43 +150,40 @@ namespace DAL
 
         public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuCuaTungNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
-            //var doanhThuTheoNgay = db.Orders
-            //                        .Where(hd => hd.CreatedDate.Date >= ngayBatDau.Date && hd.CreatedDate.Date <= ngayKetThuc.Date)
-            //                        .GroupBy(hd => hd.CreatedDate.Date)
-            //                        .Select(tk => new
-            //                        {
-            //                            Ngay = tk.Key,
-            //                            TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
-            //                        }).ToDictionary(x => (DateTime?)x.Ngay, x => x.TongDoanhThu);
+            var doanhThuTheoNgay = db.Orders
+                                    .Where(hd => hd.CreatedDate.Date >= ngayBatDau.Date && hd.CreatedDate.Date <= ngayKetThuc.Date)
+                                    .GroupBy(hd => hd.CreatedDate.Date)
+                                    .Select(tk => new
+                                    {
+                                        Ngay = tk.Key,
+                                        TongDoanhThu = tk.Sum(hd => (decimal?)hd.TotalAmount) ?? 0
+                                    }).ToDictionary(x => (DateTime?)x.Ngay, x => x.TongDoanhThu);
 
-            //if (!doanhThuTheoNgay.Any())
-            //{
-            //    return new Dictionary<DateTime?, decimal>();
-            //}
-            //return doanhThuTheoNgay;
-            return null;
+            if (!doanhThuTheoNgay.Any())
+            {
+                return new Dictionary<DateTime?, decimal>();
+            }
+            return doanhThuTheoNgay;            
         }
 
         // Lọc hôm nay
         public Dictionary<int, decimal> ThongKeTongDoanhThuTheoGioTrongNgay(DateTime ngay)
         {
-            //DateTime ngayBatDau = ngay.Date;
-            //DateTime ngayKetThuc = ngayBatDau.AddDays(1);
-            //var doanhThuTheoGio = db.Orders
-            //                        .Where(hd => hd.CreatedDate >= ngayBatDau && hd.CreatedDate < ngayKetThuc)
-            //                        .GroupBy(hd => hd.CreatedDate.Hour)
-            //                        .Select(tk => new
-            //                        {
-            //                            Gio = tk.Key,
-            //                            TongDoanhThu = tk.Sum(hd => hd.tongTienSauGiam) ?? 0
-            //                        }).ToDictionary(x => x.Gio, x => x.TongDoanhThu);
-
-            //if (!doanhThuTheoGio.Any())
-            //{
-            //    return new Dictionary<int, decimal>();
-            //}
-            //return doanhThuTheoGio;
-            return null;
+            DateTime ngayBatDau = ngay.Date;
+            DateTime ngayKetThuc = ngayBatDau.AddDays(1);
+            var doanhThuTheoGio = db.Orders
+                                    .Where(hd => hd.CreatedDate >= ngayBatDau && hd.CreatedDate < ngayKetThuc)
+                                    .GroupBy(hd => hd.CreatedDate.Hour)
+                                    .Select(tk => new
+                                    {
+                                        Gio = tk.Key,
+                                        TongDoanhThu = tk.Sum(hd => (decimal?)hd.TotalAmount) ?? 0
+                                    }).ToDictionary(x => x.Gio, x => x.TongDoanhThu);
+            if (!doanhThuTheoGio.Any())
+            {
+                return new Dictionary<int, decimal>();
+            }
+            return doanhThuTheoGio;
         }
 
         // Lọc năm nay

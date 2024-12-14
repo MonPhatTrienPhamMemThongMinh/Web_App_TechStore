@@ -5,7 +5,7 @@ CREATE TRIGGER TRG_CapNhatTrangThaiSP ON Products
 AFTER UPDATE, INSERT 
 AS
 BEGIN
-	DECLARE @soLuong INT,@maSP VARCHAR(50)
+	DECLARE @soLuong INT,@maSP VARCHAR(128)
 	SELECT @soLuong = Quantity, @maSP = ProductID FROM inserted
 	IF(@soLuong=0)
 		BEGIN
@@ -21,16 +21,17 @@ BEGIN
 		END
 END
 GO
-CREATE TRIGGER TRG_CapNhatSoLuongSanPhamSauKhiThanhToan
-ON OrderDetails
-AFTER INSERT
+CREATE TRIGGER TRG_CapNhatSoLuongSanPham
+ON Orders
+AFTER UPDATE
 AS
 BEGIN
-    -- Cập nhật số lượng sản phẩm trong bảng SanPham
-    UPDATE Products
-    SET Quantity = Products.Quantity - i.Quantity
-    FROM inserted i
-    WHERE Products.ProductID = i.ProductID;
+	DECLARE @trangThai NVARCHAR(MAX), @maHD NVARCHAR(128)
+	SELECT @trangThai = Status, @maHD = OrderId FROM inserted
+	IF(@trangThai = N'Đã xác nhận')
+		BEGIN
+			EXEC CapNhatSoLuongSanPham_Proc @maHD = @maHD
+		END
 END;
 GO
 CREATE TRIGGER TRG_UpdateDonGiaSaleKhiDungThuCong
@@ -48,7 +49,7 @@ CREATE TRIGGER TRG_TaoChiTietPhieuNhap ON ChiTietPhieuNhaps
 AFTER INSERT
 AS
 BEGIN
-	DECLARE @maSP VARCHAR(50),@maPD VARCHAR(50), @soLuong INT, @donGiaNhap DECIMAL(18,2)
+	DECLARE @maSP VARCHAR(128),@maPD VARCHAR(128), @soLuong INT, @donGiaNhap DECIMAL(18,2)
 	SELECT @maSP = ProductID, @maPD = MaPhieuDat, @soLuong = SoLuong, @donGiaNhap = DonGia FROM INSERTED
 
 	DECLARE @soLuongDaNhan INT, @soLuongDat INT
@@ -74,7 +75,7 @@ END
 GO
 -------------------------------------------------PROCEDURE
 GO
-CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
+CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(128)
 AS
 	--Xóa chi tiết phiếu đặt
 	DELETE ChiTietPhieuDats WHERE MaPhieuDat = @maPhieuDat
@@ -147,3 +148,21 @@ BEGIN
       )
 	);
 END
+GO
+CREATE PROCEDURE CapNhatSoLuongSanPham_Proc @maHD NVARCHAR(128)
+AS
+	DECLARE @maSanPham NVARCHAR(128), @soLuong INT
+	DECLARE CS_DuyetSanPham CURSOR FOR
+	SELECT ProductID , Quantity FROM OrderDetails WHERE OrderId = @maHD
+	OPEN CS_DuyetSanPham
+	FETCH NEXT FROM CS_DuyetSanPham INTO @maSanPham, @soLuong
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		UPDATE Products
+		SET Quantity = Quantity - @soLuong
+		WHERE ProductID = @maSanPham
+		FETCH NEXT FROM CS_DuyetSanPham INTO @maSanPham, @soLuong
+	END
+	CLOSE CS_DuyetSanPham
+	DEALLOCATE CS_DuyetSanPham
+GO

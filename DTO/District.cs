@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public partial class Order
+    public class District
     {
-        public string statusText { get; set; }
+        public int DistrictID { get; set; }
+        public string DistrictName { get; set; }
     }
 }

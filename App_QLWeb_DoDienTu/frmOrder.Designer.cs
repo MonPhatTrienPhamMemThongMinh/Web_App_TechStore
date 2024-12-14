@@ -58,14 +58,6 @@
             this.uiPanel1 = new Sunny.UI.UIPanel();
             this.uiPanel8 = new Sunny.UI.UIPanel();
             this.dgvHoaDon = new Sunny.UI.UIDataGridView();
-            this.uiPanel5 = new Sunny.UI.UIPanel();
-            this.uiPanel9 = new Sunny.UI.UIPanel();
-            this.uiPanel10 = new Sunny.UI.UIPanel();
-            this.uiPanel12 = new Sunny.UI.UIPanel();
-            this.btnXemChiTiet = new Sunny.UI.UIButton();
-            this.uiPanel11 = new Sunny.UI.UIPanel();
-            this.uiPanel2 = new Sunny.UI.UIPanel();
-            this.lblTongDoanhThu = new Sunny.UI.UILabel();
             this.maDonHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenKhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +66,15 @@
             this.hinhThucThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiPanel5 = new Sunny.UI.UIPanel();
+            this.uiPanel9 = new Sunny.UI.UIPanel();
+            this.uiPanel10 = new Sunny.UI.UIPanel();
+            this.btnXacNhan = new Sunny.UI.UIButton();
+            this.uiPanel12 = new Sunny.UI.UIPanel();
+            this.btnXemChiTiet = new Sunny.UI.UIButton();
+            this.uiPanel11 = new Sunny.UI.UIPanel();
+            this.uiPanel2 = new Sunny.UI.UIPanel();
+            this.lblTongDoanhThu = new Sunny.UI.UILabel();
             this.uiPanel4.SuspendLayout();
             this.uiPanel6.SuspendLayout();
             this.uiPanel7.SuspendLayout();
@@ -533,6 +534,70 @@
             this.dgvHoaDon.StripeOddColor = System.Drawing.SystemColors.Window;
             this.dgvHoaDon.TabIndex = 37;
             // 
+            // maDonHang
+            // 
+            this.maDonHang.DataPropertyName = "OrderId";
+            this.maDonHang.HeaderText = "Mã đơn hàng";
+            this.maDonHang.Name = "maDonHang";
+            this.maDonHang.ReadOnly = true;
+            this.maDonHang.Width = 126;
+            // 
+            // tenKhachHang
+            // 
+            this.tenKhachHang.DataPropertyName = "CustomerName";
+            this.tenKhachHang.HeaderText = "Tên khách hàng";
+            this.tenKhachHang.Name = "tenKhachHang";
+            this.tenKhachHang.ReadOnly = true;
+            this.tenKhachHang.Width = 147;
+            // 
+            // ngayDat
+            // 
+            this.ngayDat.DataPropertyName = "CreatedDate";
+            this.ngayDat.HeaderText = "Ngày đặt hàng";
+            this.ngayDat.Name = "ngayDat";
+            this.ngayDat.ReadOnly = true;
+            this.ngayDat.Width = 136;
+            // 
+            // soDienThoai
+            // 
+            this.soDienThoai.DataPropertyName = "CustomerPhone";
+            this.soDienThoai.HeaderText = "Số điện thoại";
+            this.soDienThoai.Name = "soDienThoai";
+            this.soDienThoai.ReadOnly = true;
+            this.soDienThoai.Width = 126;
+            // 
+            // diaChi
+            // 
+            this.diaChi.DataPropertyName = "CustomerAddress";
+            this.diaChi.HeaderText = "Địa chỉ";
+            this.diaChi.Name = "diaChi";
+            this.diaChi.ReadOnly = true;
+            this.diaChi.Width = 81;
+            // 
+            // hinhThucThanhToan
+            // 
+            this.hinhThucThanhToan.DataPropertyName = "PaymentMethod";
+            this.hinhThucThanhToan.HeaderText = "Hình thức thanh toán";
+            this.hinhThucThanhToan.Name = "hinhThucThanhToan";
+            this.hinhThucThanhToan.ReadOnly = true;
+            this.hinhThucThanhToan.Width = 182;
+            // 
+            // tongTien
+            // 
+            this.tongTien.DataPropertyName = "TotalAmount";
+            this.tongTien.HeaderText = "Tổng tiền";
+            this.tongTien.Name = "tongTien";
+            this.tongTien.ReadOnly = true;
+            this.tongTien.Width = 99;
+            // 
+            // trangThai
+            // 
+            this.trangThai.DataPropertyName = "Status";
+            this.trangThai.HeaderText = "Trạng thái";
+            this.trangThai.Name = "trangThai";
+            this.trangThai.ReadOnly = true;
+            this.trangThai.Width = 104;
+            // 
             // uiPanel5
             // 
             this.uiPanel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -568,6 +633,7 @@
             // 
             // uiPanel10
             // 
+            this.uiPanel10.Controls.Add(this.btnXacNhan);
             this.uiPanel10.Controls.Add(this.uiPanel12);
             this.uiPanel10.Controls.Add(this.btnXemChiTiet);
             this.uiPanel10.Controls.Add(this.uiPanel11);
@@ -583,6 +649,29 @@
             this.uiPanel10.TabIndex = 37;
             this.uiPanel10.Text = null;
             this.uiPanel10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnXacNhan
+            // 
+            this.btnXacNhan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXacNhan.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnXacNhan.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.btnXacNhan.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(189)))), ((int)(((byte)(227)))));
+            this.btnXacNhan.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnXacNhan.Location = new System.Drawing.Point(562, 0);
+            this.btnXacNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXacNhan.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnXacNhan.Name = "btnXacNhan";
+            this.btnXacNhan.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.btnXacNhan.RectDisableColor = System.Drawing.Color.Fuchsia;
+            this.btnXacNhan.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(189)))), ((int)(((byte)(227)))));
+            this.btnXacNhan.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnXacNhan.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(222)))));
+            this.btnXacNhan.Size = new System.Drawing.Size(169, 56);
+            this.btnXacNhan.TabIndex = 40;
+            this.btnXacNhan.Text = "Xác nhận đơn hàng";
+            this.btnXacNhan.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // uiPanel12
             // 
@@ -663,70 +752,6 @@
             this.lblTongDoanhThu.Text = "Tổng doanh thu: ";
             this.lblTongDoanhThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // maDonHang
-            // 
-            this.maDonHang.DataPropertyName = "OrderId";
-            this.maDonHang.HeaderText = "Mã đơn hàng";
-            this.maDonHang.Name = "maDonHang";
-            this.maDonHang.ReadOnly = true;
-            this.maDonHang.Width = 126;
-            // 
-            // tenKhachHang
-            // 
-            this.tenKhachHang.DataPropertyName = "CustomerName";
-            this.tenKhachHang.HeaderText = "Tên khách hàng";
-            this.tenKhachHang.Name = "tenKhachHang";
-            this.tenKhachHang.ReadOnly = true;
-            this.tenKhachHang.Width = 147;
-            // 
-            // ngayDat
-            // 
-            this.ngayDat.DataPropertyName = "CreatedDate";
-            this.ngayDat.HeaderText = "Ngày đặt hàng";
-            this.ngayDat.Name = "ngayDat";
-            this.ngayDat.ReadOnly = true;
-            this.ngayDat.Width = 136;
-            // 
-            // soDienThoai
-            // 
-            this.soDienThoai.DataPropertyName = "CustomerPhone";
-            this.soDienThoai.HeaderText = "Số điện thoại";
-            this.soDienThoai.Name = "soDienThoai";
-            this.soDienThoai.ReadOnly = true;
-            this.soDienThoai.Width = 126;
-            // 
-            // diaChi
-            // 
-            this.diaChi.DataPropertyName = "CustomerAddress";
-            this.diaChi.HeaderText = "Địa chỉ";
-            this.diaChi.Name = "diaChi";
-            this.diaChi.ReadOnly = true;
-            this.diaChi.Width = 81;
-            // 
-            // hinhThucThanhToan
-            // 
-            this.hinhThucThanhToan.DataPropertyName = "PaymentMethod";
-            this.hinhThucThanhToan.HeaderText = "Hình thức thanh toán";
-            this.hinhThucThanhToan.Name = "hinhThucThanhToan";
-            this.hinhThucThanhToan.ReadOnly = true;
-            this.hinhThucThanhToan.Width = 182;
-            // 
-            // tongTien
-            // 
-            this.tongTien.DataPropertyName = "TotalAmount";
-            this.tongTien.HeaderText = "Tổng tiền";
-            this.tongTien.Name = "tongTien";
-            this.tongTien.ReadOnly = true;
-            this.tongTien.Width = 99;
-            // 
-            // trangThai
-            // 
-            this.trangThai.DataPropertyName = "Status";
-            this.trangThai.HeaderText = "Trạng thái";
-            this.trangThai.Name = "trangThai";
-            this.trangThai.ReadOnly = true;
-            this.trangThai.Width = 104;
-            // 
             // frmOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -735,7 +760,7 @@
             this.ClientSize = new System.Drawing.Size(1040, 428);
             this.Controls.Add(this.uiPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmOrder";
             this.Text = "frmSanPham";
             this.uiPanel4.ResumeLayout(false);
@@ -797,5 +822,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hinhThucThanhToan;
         private System.Windows.Forms.DataGridViewTextBoxColumn tongTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn trangThai;
+        private Sunny.UI.UIButton btnXacNhan;
     }
 }
