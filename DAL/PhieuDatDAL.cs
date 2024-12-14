@@ -18,7 +18,7 @@ namespace DAL
             List<PhieuDat> phieuDats = db.PhieuDats.OrderByDescending(pd => pd.MaPhieuDat).Select(pd => pd).ToList<PhieuDat>();
             foreach(PhieuDat phieuDat in phieuDats)
             {
-                phieuDat.tenNhanVien = db.AspNetUsers.Where(nv => nv.Id == phieuDat.UserID).Select(nv => nv.FullName).FirstOrDefault();
+                //phieuDat.tenNhanVien = db.AspNetUsers.Where(nv => nv.Id == phieuDat.UserID).Select(nv => nv.FullName).FirstOrDefault();
                 phieuDat.tenNhaCungCap = db.NhaCungCaps.Where(ncc => ncc.maNhaCungCap == phieuDat.MaNhaCungCap).Select(ncc => ncc.tenNhaCungCap).FirstOrDefault();
             }
             return phieuDats;
@@ -39,7 +39,7 @@ namespace DAL
             List<PhieuDat> phieuDats = db.PhieuDats.Where(pd=>pd.NgayLap == ngayLap).Select(pd => pd).ToList<PhieuDat>();
             foreach (PhieuDat phieuDat in phieuDats)
             {
-                phieuDat.tenNhanVien = db.AspNetUsers.Where(nv => nv.Id == phieuDat.UserID).Select(nv => nv.FullName).FirstOrDefault();
+                //phieuDat.tenNhanVien = db.AspNetUsers.Where(nv => nv.Id == phieuDat.UserID).Select(nv => nv.FullName).FirstOrDefault();
                 phieuDat.tenNhaCungCap = db.NhaCungCaps.Where(ncc => ncc.maNhaCungCap == phieuDat.MaNhaCungCap).Select(ncc => ncc.tenNhaCungCap).FirstOrDefault();
             }
             return phieuDats;
@@ -49,7 +49,7 @@ namespace DAL
             try
             {
                 PhieuDat phieuDats = db.PhieuDats.Where(pd => pd.MaPhieuDat == maPhieuDat).Select(pd => pd).First();
-                phieuDats.tenNhanVien = db.AspNetUsers.Where(nv => nv.Id == phieuDats.UserID).Select(nv => nv.FullName).FirstOrDefault();
+                //phieuDats.tenNhanVien = db.AspNetUsers.Where(nv => nv.Id == phieuDats.UserID).Select(nv => nv.FullName).FirstOrDefault();
                 phieuDats.tenNhaCungCap = db.NhaCungCaps.Where(ncc => ncc.maNhaCungCap == phieuDats.MaNhaCungCap).Select(ncc => ncc.tenNhaCungCap).FirstOrDefault();
                 return phieuDats;
             }
@@ -86,7 +86,7 @@ namespace DAL
             {
                 PhieuDat phieuDatEdited = db.PhieuDats.Where(pd => pd.MaPhieuDat == pPhieuDat.MaPhieuDat).Select(pd => pd).FirstOrDefault();
                 phieuDatEdited.MaNhaCungCap = pPhieuDat.MaNhaCungCap;
-                phieuDatEdited.UserID = pPhieuDat.UserID;
+                //phieuDatEdited.UserID = pPhieuDat.UserID;
                 phieuDatEdited.NgayCapNhat = pPhieuDat.NgayCapNhat;
                 phieuDatEdited.SoLuong = pPhieuDat.SoLuong;
                 phieuDatEdited.TongTien = pPhieuDat.TongTien;

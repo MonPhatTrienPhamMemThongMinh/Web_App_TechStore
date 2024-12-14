@@ -13,3 +13,11 @@ BEGIN
     WHERE Products.ProductID = i.ProductID;
 END;
 GO
+
+CREATE PROCEDURE XoaPhieuDat_Proc @maPhieuDat VARCHAR(50)
+AS
+	--Xóa chi tiết phiếu đặt
+	DELETE ChiTietPhieuDats WHERE MaPhieuDat = @maPhieuDat
+	--Xóa phiếu đặt
+	DELETE PhieuDats WHERE MaPhieuDat = @maPhieuDat
+GO

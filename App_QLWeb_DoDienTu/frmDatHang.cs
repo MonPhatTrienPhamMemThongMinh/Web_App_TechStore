@@ -229,7 +229,6 @@ namespace App_QLWeb_DoDienTu
                 {
                     MaPhieuDat = txtMaPhieuDat.Text,
                     MaNhaCungCap = cbNhaCungCap.SelectedValue.ToString(),
-                    UserID = maNhanVien,
                     NgayLap = DateTime.Now,
                     NgayCapNhat = DateTime.Now,
                     SoLuong = soLuongSanPham,
@@ -282,7 +281,6 @@ namespace App_QLWeb_DoDienTu
                 {
                     MaPhieuDat = txtMaPhieuDat.Text,
                     MaNhaCungCap = cbNhaCungCap.SelectedValue.ToString(),
-                    UserID = maNhanVien,
                     NgayLap = DateTime.Now,
                     NgayCapNhat = DateTime.Now,
                     SoLuong = soLuongSanPham,

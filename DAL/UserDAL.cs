@@ -131,13 +131,13 @@ namespace DAL
         {
             try
             {                
-                bool existsInPhieuDat = db.PhieuDats.Any(pd => pd.UserID == manv);
-                bool existsInPhieuNhap = db.PhieuNhaps.Any(pn => pn.UserID == manv);
+                //bool existsInPhieuDat = db.PhieuDats.Any(pd => pd.UserID == manv);
+                //bool existsInPhieuNhap = db.PhieuNhaps.Any(pn => pn.UserID == manv);
 
-                if (existsInPhieuDat || existsInPhieuNhap)
-                {
-                    return false;
-                }
+                //if (existsInPhieuDat || existsInPhieuNhap)
+                //{
+                //    return false;
+                //}
                 var nv = db.AspNetUsers.FirstOrDefault(k => k.Id == manv);
                 if (nv != null)
                 {

@@ -30,6 +30,12 @@ namespace DoAnWebGamingGear
                 url: "Payment/{action}/{id}",
                 defaults: new { controller = "Payment", action = "VnPayReturn", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Dialogflow",
+                url: "api/{controller}/{action}/{id}",
+                defaults: new { id = UrlParameter.Optional }
+            );
         }
     }
 }

@@ -352,10 +352,8 @@ namespace App_QLWeb_DoDienTu
             dgvProducts.Columns["ProductPic"].Visible = false;
             dgvProducts.Columns["Category"].Visible = false;
             dgvProducts.Columns["Brand"].Visible = false;
-            dgvProducts.Columns["NhaCungCap"].Visible = false;
             LoadCBLoaiSanPham();
             LoadCBThuongHieu();
-            LoadCBNhaCungCap();
         }
         private void LoadCBLoaiSanPham()
         {
@@ -374,12 +372,6 @@ namespace App_QLWeb_DoDienTu
             cboTH.DataSource = bbll.GetAllBrands();
             cboTH.ValueMember = "BrandID";
             cboTH.DisplayMember = "BrandName";
-        }
-        private void LoadCBNhaCungCap()
-        {
-            cboNCC.DataSource = sbll.getAllSuppliers();
-            cboNCC.ValueMember = "maNhaCungCap";
-            cboNCC.DisplayMember = "tenNhaCungCap";
         }
 
         private void EnableDataGridView(bool enable)

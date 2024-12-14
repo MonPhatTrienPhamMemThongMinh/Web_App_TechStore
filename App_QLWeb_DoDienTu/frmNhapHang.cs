@@ -208,7 +208,6 @@ namespace App_QLWeb_DoDienTu
             {
                 MaPhieuNhap = maPhieuNhap,
                 MaPhieuDat = txtMaPhieuDat.Text,
-                UserID = maNhanVien,
                 NgayNhap = DateTime.Now,
                 SoLan = int.Parse(txtLanNhap.Text),
                 TongTien = tongTien,
