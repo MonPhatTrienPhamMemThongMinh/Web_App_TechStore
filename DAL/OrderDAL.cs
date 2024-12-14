@@ -136,7 +136,7 @@ namespace DAL
             {
                 return db.Orders
                 .Where(hd => hd.CreatedDate.Date >= batDau.Date && hd.CreatedDate.Date <= ketThuc.Date)
-                .Sum(hd => hd.TotalAmount);
+                .Sum(hd => (decimal?)hd.TotalAmount) ?? 0;
             }
             return 0; 
         }
@@ -163,7 +163,7 @@ namespace DAL
             {
                 return new Dictionary<DateTime?, decimal>();
             }
-            return doanhThuTheoNgay;            
+            return doanhThuTheoNgay;
         }
 
         // Lọc hôm nay

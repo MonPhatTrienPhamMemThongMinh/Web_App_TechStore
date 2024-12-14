@@ -14,7 +14,8 @@
             <div class="col-md-3">
                 <h5>Danh mục sản phẩm</h5>
                 <form method="get" action="@Url.Action("Index", "Products")">
-                    <input type="hidden" name="page" value="@ViewBag.Page" />
+                    <input type="hidden" name="page" value="1" />
+                    <input type="hidden" name="resetPage" value="true" />
                     <ul class="list-group" style="font-size: 16px;">
                         @foreach (var category in ViewBag.Categories)
                         {

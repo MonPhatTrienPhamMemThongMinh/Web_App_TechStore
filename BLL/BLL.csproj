@@ -67,6 +67,10 @@
     <Compile Include="WardHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{04792700-5429-481e-8aa4-1643af96f01b}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{cb6d166a-a424-41cb-85c3-6eecd811d65b}</Project>
       <Name>DTO</Name>
