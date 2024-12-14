@@ -23,6 +23,10 @@ namespace DoAnWebGamingGear.Models
 
         [Required]
         public string CustomerAddress { get; set; }
+        [Required]
+        public string CustomerDistrict { get; set; }
+        [Required]
+        public string CustomerWard { get; set; }
 
         [Required, EmailAddress]
         public string CustomerEmail { get; set; }

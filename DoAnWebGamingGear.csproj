@@ -242,6 +242,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\AddressController.cs" />
     <Compile Include="ApiControllers\BrandsController.cs" />
     <Compile Include="ApiControllers\CategoriesController.cs" />
     <Compile Include="ApiControllers\ProductsController.cs" />
@@ -289,6 +290,10 @@
     <Compile Include="Migrations\202412131312097_ThemThuocTinhGiaSale.cs" />
     <Compile Include="Migrations\202412131312097_ThemThuocTinhGiaSale.Designer.cs">
       <DependentUpon>202412131312097_ThemThuocTinhGiaSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.cs" />
+    <Compile Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.Designer.cs">
+      <DependentUpon>202412141033341_ThemThuocTinhChoBangOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brands.cs" />
@@ -382,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202412131312097_ThemThuocTinhGiaSale.resx">
       <DependentUpon>202412131312097_ThemThuocTinhGiaSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.resx">
+      <DependentUpon>202412141033341_ThemThuocTinhChoBangOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

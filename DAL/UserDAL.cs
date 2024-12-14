@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
 using DTO;
 using System.CodeDom;
 using System.Web.Helpers;
@@ -71,8 +69,6 @@ namespace DAL
         public string MaHoaMatKhauKieuSha256Hash(string pass)
         {
             return Crypto.HashPassword(pass);
-            //var password = new PasswordHasher();
-            //return password.HashPassword(pass);
         }
         public int DemSoNhanVienThuocLoai(string maLoaiNhanVien)
         {

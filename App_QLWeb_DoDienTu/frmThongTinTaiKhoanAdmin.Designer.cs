@@ -699,7 +699,7 @@
             this.btnDong.Size = new System.Drawing.Size(95, 43);
             this.btnDong.Symbol = 61527;
             this.btnDong.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.btnDong.SymbolHoverColor = System.Drawing.Color.Pink;
+            this.btnDong.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btnDong.SymbolSize = 45;
             this.btnDong.TabIndex = 172;
             this.btnDong.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
