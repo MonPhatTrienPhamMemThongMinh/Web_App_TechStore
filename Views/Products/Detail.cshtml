@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-
 }
 
 <main>
@@ -16,7 +15,17 @@
                     <img src="@Url.Content("~/" + @Model.ProductPic)" alt="@Model.ProductName" style="width: 500px; float: left;" />
                     <div style="float: right; width: 800px;">
                         <h1>@Model.ProductName</h1>
-                        <h4 class="text-danger"> @Model.Price.ToString("C").Split(',')[0]<span>đ</span></h4>
+                        @if (Model.SalePrice > 0)
+                        {
+                            <p>
+                                <span style="color: black; text-decoration: line-through; font-size: 16px;">@Model.Price.ToString("c").Split(',')[0]đ</span>
+                                <span style="color: red; font-size: 20px;">@Model.SalePrice.ToString("c").Split(',')[0]đ</span>
+                            </p>
+                        }
+                        else
+                        {
+                            <p style="color: red; font-size: 20px;">@Model.Price.ToString("c").Split(',')[0]đ</p>
+                        }
                         <hr />
                         <p>@Model.ProductDescription</p>
 
@@ -26,12 +35,6 @@
 
                             @if (@Model.Quantity > 0)
                             {
-                                @*@Html.ActionLink("Chọn mua", "AddToCart", new { id = Model.ProductID, controller = "ShoppingCartt", FormMethod.Post })*@
-                                @*<a href="/ShoppingCartt/AddtoCart/@Model.ProductID" class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;">
-
-                                        Chọn mua
-                                    </a>*@
-                                @**@
                                 if (User.Identity.IsAuthenticated)
                                 {
                                     <button type="submit" class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;">
@@ -40,7 +43,7 @@
                                 }
                                 else
                                 {
-                                    <a class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;" href="/account/login">
+                                    <a class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;" href="@Url.Action("Login", "Account", new { ReturnUrl = Request.Url.PathAndQuery })">
                                         Chọn mua
                                     </a>
                                 }
@@ -61,5 +64,4 @@
 
         </div>
     }
-
 </main>

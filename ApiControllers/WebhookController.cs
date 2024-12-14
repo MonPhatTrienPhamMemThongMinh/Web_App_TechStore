@@ -61,6 +61,29 @@ namespace DoAnWebGamingGear.ApiControllers
                 var brandCount = db.Brands.Count();
                 responseText = $"Hiện tại cửa hàng đang có {brandCount} thương hiệu.";
             }
+            else if (intentName == "HotProducts")
+            {
+                var hotProducts = db.OrderDetails
+                                    .GroupBy(od => od.ProductID)
+                                    .Select(g => new
+                                    {
+                                        ProductID = g.Key,
+                                        TotalQuantity = g.Sum(od => od.Quantity)
+                                    })
+                                    .OrderByDescending(g => g.TotalQuantity)
+                                    .Take(5)
+                                    .Join(db.Products, g => g.ProductID, p => p.ProductID, (g, p) => p)
+                                    .ToList();
+
+                if (hotProducts.Any())
+                {
+                    responseText = "Các sản phẩm đang hot hiện tại là: " + string.Join(", ", hotProducts.Select(p => p.ProductName));
+                }
+                else
+                {
+                    responseText = "Hiện tại không có sản phẩm nào đang hot.";
+                }
+            }
 
             return Ok(new { fulfillmentText = responseText });
         }

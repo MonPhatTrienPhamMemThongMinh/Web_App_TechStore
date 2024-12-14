@@ -124,15 +124,15 @@ namespace App_QLWeb_DoDienTu
         // Dữ liệu số nằm bên phải
         private void DgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "CustomerPhone")
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "soDienThoai")
             {
                 return;
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "CustomerAddress")
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "diaChi")
             {
                 return;
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "OrderID")
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "maDonHang")
             {
                 return;
             }
@@ -176,10 +176,12 @@ namespace App_QLWeb_DoDienTu
         private void SettingDgv(List<Order> dsHoaDon)
         {
             dgvHoaDon.DataSource = dsHoaDon;
+            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvHoaDon.Columns["AspNetUser"].Visible = false;
             dgvHoaDon.Columns["UserId"].Visible = false;
-            dgvHoaDon.Columns["statusText"].Visible = false;
             dgvHoaDon.Columns["CustomerEmail"].Visible = false;
+            dgvHoaDon.Columns["CustomerWard"].Visible = false;
+            dgvHoaDon.Columns["CustomerDistrict"].Visible = false;
         }
         private void LoadTieuChiCombobox()
         {

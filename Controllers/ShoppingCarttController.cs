@@ -99,6 +99,8 @@ namespace DoAnWebGamingGear.Controllers
                 return RedirectToAction("ShowToCart");
             }
 
+            Session["CartItemsForPayment"] = cartItems;
+
             return RedirectToAction("Index", "Payment");
         }
     }
