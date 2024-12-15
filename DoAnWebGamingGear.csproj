@@ -270,33 +270,9 @@
     <Compile Include="Identity\AppUserManager.cs" />
     <Compile Include="Identity\AppUserStore.cs" />
     <Compile Include="Libraries\VnPayLibrary.cs" />
-    <Compile Include="Migrations\202412111244523_InitialCreate.cs" />
-    <Compile Include="Migrations\202412111244523_InitialCreate.designer.cs">
-      <DependentUpon>202412111244523_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.cs" />
-    <Compile Include="Migrations\202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.designer.cs">
-      <DependentUpon>202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202412130849108_ThemBangKhuyenMai.cs" />
-    <Compile Include="Migrations\202412130849108_ThemBangKhuyenMai.Designer.cs">
-      <DependentUpon>202412130849108_ThemBangKhuyenMai.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202412131226514_BoThuocTinhSoLuongToiDa.cs" />
-    <Compile Include="Migrations\202412131226514_BoThuocTinhSoLuongToiDa.Designer.cs">
-      <DependentUpon>202412131226514_BoThuocTinhSoLuongToiDa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202412131312097_ThemThuocTinhGiaSale.cs" />
-    <Compile Include="Migrations\202412131312097_ThemThuocTinhGiaSale.Designer.cs">
-      <DependentUpon>202412131312097_ThemThuocTinhGiaSale.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.cs" />
-    <Compile Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.Designer.cs">
-      <DependentUpon>202412141033341_ThemThuocTinhChoBangOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202412142230549_AddAvailableQuantityInCartItem.cs" />
-    <Compile Include="Migrations\202412142230549_AddAvailableQuantityInCartItem.designer.cs">
-      <DependentUpon>202412142230549_AddAvailableQuantityInCartItem.cs</DependentUpon>
+    <Compile Include="Migrations\202412150120299_InitialCreate.cs" />
+    <Compile Include="Migrations\202412150120299_InitialCreate.designer.cs">
+      <DependentUpon>202412150120299_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brands.cs" />
@@ -376,33 +352,15 @@
     <Folder Include="Views\Dialogflow\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202412111244523_InitialCreate.resx">
-      <DependentUpon>202412111244523_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.resx">
-      <DependentUpon>202412121304394_XoaUserIDKhoiPhieuDatPhieuNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202412130849108_ThemBangKhuyenMai.resx">
-      <DependentUpon>202412130849108_ThemBangKhuyenMai.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202412131226514_BoThuocTinhSoLuongToiDa.resx">
-      <DependentUpon>202412131226514_BoThuocTinhSoLuongToiDa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202412131312097_ThemThuocTinhGiaSale.resx">
-      <DependentUpon>202412131312097_ThemThuocTinhGiaSale.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202412141033341_ThemThuocTinhChoBangOrder.resx">
-      <DependentUpon>202412141033341_ThemThuocTinhChoBangOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202412142230549_AddAvailableQuantityInCartItem.resx">
-      <DependentUpon>202412142230549_AddAvailableQuantityInCartItem.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="DTO\DTO.csproj">
       <Project>{cb6d166a-a424-41cb-85c3-6eecd811d65b}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202412150120299_InitialCreate.resx">
+      <DependentUpon>202412150120299_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
