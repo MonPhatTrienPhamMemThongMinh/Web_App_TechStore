@@ -33,9 +33,9 @@ namespace DTO
     partial void Insert__MigrationHistory(__MigrationHistory instance);
     partial void Update__MigrationHistory(__MigrationHistory instance);
     partial void Delete__MigrationHistory(__MigrationHistory instance);
-    partial void InsertKhuyenMai(KhuyenMai instance);
-    partial void UpdateKhuyenMai(KhuyenMai instance);
-    partial void DeleteKhuyenMai(KhuyenMai instance);
+    partial void InsertProduct(Product instance);
+    partial void UpdateProduct(Product instance);
+    partial void DeleteProduct(Product instance);
     partial void InsertAspNetRole(AspNetRole instance);
     partial void UpdateAspNetRole(AspNetRole instance);
     partial void DeleteAspNetRole(AspNetRole instance);
@@ -66,9 +66,9 @@ namespace DTO
     partial void InsertChiTietPhieuNhap(ChiTietPhieuNhap instance);
     partial void UpdateChiTietPhieuNhap(ChiTietPhieuNhap instance);
     partial void DeleteChiTietPhieuNhap(ChiTietPhieuNhap instance);
-    partial void InsertProduct(Product instance);
-    partial void UpdateProduct(Product instance);
-    partial void DeleteProduct(Product instance);
+    partial void InsertKhuyenMai(KhuyenMai instance);
+    partial void UpdateKhuyenMai(KhuyenMai instance);
+    partial void DeleteKhuyenMai(KhuyenMai instance);
     partial void InsertKhuyenMaiSanPham(KhuyenMaiSanPham instance);
     partial void UpdateKhuyenMaiSanPham(KhuyenMaiSanPham instance);
     partial void DeleteKhuyenMaiSanPham(KhuyenMaiSanPham instance);
@@ -81,16 +81,16 @@ namespace DTO
     partial void InsertOrder(Order instance);
     partial void UpdateOrder(Order instance);
     partial void DeleteOrder(Order instance);
-    partial void InsertProduct(Product instance);
-    partial void UpdateProduct(Product instance);
-    partial void DeleteProduct(Product instance);
     partial void InsertPhieuDat(PhieuDat instance);
     partial void UpdatePhieuDat(PhieuDat instance);
     partial void DeletePhieuDat(PhieuDat instance);
+    partial void InsertPhieuNhap(PhieuNhap instance);
+    partial void UpdatePhieuNhap(PhieuNhap instance);
+    partial void DeletePhieuNhap(PhieuNhap instance);
     #endregion
 		
 		public DBGAMINGGEARDataContext() : 
-				base(global::DTO.Properties.Settings.Default.DBGAMINGGEARConnectionString, mappingSource)
+				base(global::DTO.Properties.Settings.Default.DBGAMINGGEARConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -127,11 +127,11 @@ namespace DTO
 			}
 		}
 		
-		public System.Data.Linq.Table<KhuyenMai> KhuyenMais
+		public System.Data.Linq.Table<Product> Products
 		{
 			get
 			{
-				return this.GetTable<KhuyenMai>();
+				return this.GetTable<Product>();
 			}
 		}
 		
@@ -215,11 +215,11 @@ namespace DTO
 			}
 		}
 		
-		public System.Data.Linq.Table<Product> Products
+		public System.Data.Linq.Table<KhuyenMai> KhuyenMais
 		{
 			get
 			{
-				return this.GetTable<Product>();
+				return this.GetTable<KhuyenMai>();
 			}
 		}
 		
@@ -255,19 +255,19 @@ namespace DTO
 			}
 		}
 		
-		public System.Data.Linq.Table<Product> Products
-		{
-			get
-			{
-				return this.GetTable<Product>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PhieuDat> PhieuDats
 		{
 			get
 			{
 				return this.GetTable<PhieuDat>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PhieuNhap> PhieuNhaps
+		{
+			get
+			{
+				return this.GetTable<PhieuNhap>();
 			}
 		}
 		
@@ -420,171 +420,340 @@ namespace DTO
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KhuyenMais")]
-	public partial class KhuyenMai : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Products")]
+	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _maKhuyenMai;
+		private string _ProductID;
 		
-		private string _tenKhuyenMai;
+		private string _ProductDescription;
 		
-		private string _moTa;
+		private string _BrandID;
 		
-		private string _trangThai;
+		private string _CategoryID;
 		
-		private System.DateTime _ngayBatDau;
+		private string _AvailabilityStatus;
 		
-		private System.DateTime _ngayKetThuc;
+		private int _Quantity;
+		
+		private string _BaoHanh;
+		
+		private string _ProductName;
+		
+		private string _ProductPic;
+		
+		private int _Price;
+		
+		private int _SalePrice;
+		
+		private EntitySet<CartItem> _CartItems;
+		
+		private EntitySet<ChiTietPhieuDat> _ChiTietPhieuDats;
 		
 		private EntitySet<KhuyenMaiSanPham> _KhuyenMaiSanPhams;
+		
+		private EntitySet<OrderDetail> _OrderDetails;
+		
+		private EntityRef<Brand> _Brand;
+		
+		private EntityRef<Category> _Category;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnmaKhuyenMaiChanging(string value);
-    partial void OnmaKhuyenMaiChanged();
-    partial void OntenKhuyenMaiChanging(string value);
-    partial void OntenKhuyenMaiChanged();
-    partial void OnmoTaChanging(string value);
-    partial void OnmoTaChanged();
-    partial void OntrangThaiChanging(string value);
-    partial void OntrangThaiChanged();
-    partial void OnngayBatDauChanging(System.DateTime value);
-    partial void OnngayBatDauChanged();
-    partial void OnngayKetThucChanging(System.DateTime value);
-    partial void OnngayKetThucChanged();
+    partial void OnProductIDChanging(string value);
+    partial void OnProductIDChanged();
+    partial void OnProductDescriptionChanging(string value);
+    partial void OnProductDescriptionChanged();
+    partial void OnBrandIDChanging(string value);
+    partial void OnBrandIDChanged();
+    partial void OnCategoryIDChanging(string value);
+    partial void OnCategoryIDChanged();
+    partial void OnAvailabilityStatusChanging(string value);
+    partial void OnAvailabilityStatusChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnBaoHanhChanging(string value);
+    partial void OnBaoHanhChanged();
+    partial void OnProductNameChanging(string value);
+    partial void OnProductNameChanged();
+    partial void OnProductPicChanging(string value);
+    partial void OnProductPicChanged();
+    partial void OnPriceChanging(int value);
+    partial void OnPriceChanged();
+    partial void OnSalePriceChanging(int value);
+    partial void OnSalePriceChanged();
     #endregion
 		
-		public KhuyenMai()
+		public Product()
 		{
+			this._CartItems = new EntitySet<CartItem>(new Action<CartItem>(this.attach_CartItems), new Action<CartItem>(this.detach_CartItems));
+			this._ChiTietPhieuDats = new EntitySet<ChiTietPhieuDat>(new Action<ChiTietPhieuDat>(this.attach_ChiTietPhieuDats), new Action<ChiTietPhieuDat>(this.detach_ChiTietPhieuDats));
 			this._KhuyenMaiSanPhams = new EntitySet<KhuyenMaiSanPham>(new Action<KhuyenMaiSanPham>(this.attach_KhuyenMaiSanPhams), new Action<KhuyenMaiSanPham>(this.detach_KhuyenMaiSanPhams));
+			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
+			this._Brand = default(EntityRef<Brand>);
+			this._Category = default(EntityRef<Category>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maKhuyenMai", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string maKhuyenMai
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ProductID
 		{
 			get
 			{
-				return this._maKhuyenMai;
+				return this._ProductID;
 			}
 			set
 			{
-				if ((this._maKhuyenMai != value))
+				if ((this._ProductID != value))
 				{
-					this.OnmaKhuyenMaiChanging(value);
+					this.OnProductIDChanging(value);
 					this.SendPropertyChanging();
-					this._maKhuyenMai = value;
-					this.SendPropertyChanged("maKhuyenMai");
-					this.OnmaKhuyenMaiChanged();
+					this._ProductID = value;
+					this.SendPropertyChanged("ProductID");
+					this.OnProductIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenKhuyenMai", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string tenKhuyenMai
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductDescription", DbType="NVarChar(MAX)")]
+		public string ProductDescription
 		{
 			get
 			{
-				return this._tenKhuyenMai;
+				return this._ProductDescription;
 			}
 			set
 			{
-				if ((this._tenKhuyenMai != value))
+				if ((this._ProductDescription != value))
 				{
-					this.OntenKhuyenMaiChanging(value);
+					this.OnProductDescriptionChanging(value);
 					this.SendPropertyChanging();
-					this._tenKhuyenMai = value;
-					this.SendPropertyChanged("tenKhuyenMai");
-					this.OntenKhuyenMaiChanged();
+					this._ProductDescription = value;
+					this.SendPropertyChanged("ProductDescription");
+					this.OnProductDescriptionChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_moTa", DbType="NVarChar(255)")]
-		public string moTa
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BrandID", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
+		public string BrandID
 		{
 			get
 			{
-				return this._moTa;
+				return this._BrandID;
 			}
 			set
 			{
-				if ((this._moTa != value))
+				if ((this._BrandID != value))
 				{
-					this.OnmoTaChanging(value);
+					if (this._Brand.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBrandIDChanging(value);
 					this.SendPropertyChanging();
-					this._moTa = value;
-					this.SendPropertyChanged("moTa");
-					this.OnmoTaChanged();
+					this._BrandID = value;
+					this.SendPropertyChanged("BrandID");
+					this.OnBrandIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trangThai", DbType="NVarChar(50)")]
-		public string trangThai
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
+		public string CategoryID
 		{
 			get
 			{
-				return this._trangThai;
+				return this._CategoryID;
 			}
 			set
 			{
-				if ((this._trangThai != value))
+				if ((this._CategoryID != value))
 				{
-					this.OntrangThaiChanging(value);
+					if (this._Category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCategoryIDChanging(value);
 					this.SendPropertyChanging();
-					this._trangThai = value;
-					this.SendPropertyChanged("trangThai");
-					this.OntrangThaiChanged();
+					this._CategoryID = value;
+					this.SendPropertyChanged("CategoryID");
+					this.OnCategoryIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngayBatDau", DbType="DateTime NOT NULL")]
-		public System.DateTime ngayBatDau
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvailabilityStatus", DbType="NVarChar(MAX)")]
+		public string AvailabilityStatus
 		{
 			get
 			{
-				return this._ngayBatDau;
+				return this._AvailabilityStatus;
 			}
 			set
 			{
-				if ((this._ngayBatDau != value))
+				if ((this._AvailabilityStatus != value))
 				{
-					this.OnngayBatDauChanging(value);
+					this.OnAvailabilityStatusChanging(value);
 					this.SendPropertyChanging();
-					this._ngayBatDau = value;
-					this.SendPropertyChanged("ngayBatDau");
-					this.OnngayBatDauChanged();
+					this._AvailabilityStatus = value;
+					this.SendPropertyChanged("AvailabilityStatus");
+					this.OnAvailabilityStatusChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngayKetThuc", DbType="DateTime NOT NULL")]
-		public System.DateTime ngayKetThuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
 		{
 			get
 			{
-				return this._ngayKetThuc;
+				return this._Quantity;
 			}
 			set
 			{
-				if ((this._ngayKetThuc != value))
+				if ((this._Quantity != value))
 				{
-					this.OnngayKetThucChanging(value);
+					this.OnQuantityChanging(value);
 					this.SendPropertyChanging();
-					this._ngayKetThuc = value;
-					this.SendPropertyChanged("ngayKetThuc");
-					this.OnngayKetThucChanged();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KhuyenMai_KhuyenMaiSanPham", Storage="_KhuyenMaiSanPhams", ThisKey="maKhuyenMai", OtherKey="maKhuyenMai")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BaoHanh", DbType="NVarChar(MAX)")]
+		public string BaoHanh
+		{
+			get
+			{
+				return this._BaoHanh;
+			}
+			set
+			{
+				if ((this._BaoHanh != value))
+				{
+					this.OnBaoHanhChanging(value);
+					this.SendPropertyChanging();
+					this._BaoHanh = value;
+					this.SendPropertyChanged("BaoHanh");
+					this.OnBaoHanhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string ProductName
+		{
+			get
+			{
+				return this._ProductName;
+			}
+			set
+			{
+				if ((this._ProductName != value))
+				{
+					this.OnProductNameChanging(value);
+					this.SendPropertyChanging();
+					this._ProductName = value;
+					this.SendPropertyChanged("ProductName");
+					this.OnProductNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductPic", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string ProductPic
+		{
+			get
+			{
+				return this._ProductPic;
+			}
+			set
+			{
+				if ((this._ProductPic != value))
+				{
+					this.OnProductPicChanging(value);
+					this.SendPropertyChanging();
+					this._ProductPic = value;
+					this.SendPropertyChanged("ProductPic");
+					this.OnProductPicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
+		public int Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalePrice", DbType="Int NOT NULL")]
+		public int SalePrice
+		{
+			get
+			{
+				return this._SalePrice;
+			}
+			set
+			{
+				if ((this._SalePrice != value))
+				{
+					this.OnSalePriceChanging(value);
+					this.SendPropertyChanging();
+					this._SalePrice = value;
+					this.SendPropertyChanged("SalePrice");
+					this.OnSalePriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_CartItem", Storage="_CartItems", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<CartItem> CartItems
+		{
+			get
+			{
+				return this._CartItems;
+			}
+			set
+			{
+				this._CartItems.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ChiTietPhieuDat", Storage="_ChiTietPhieuDats", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<ChiTietPhieuDat> ChiTietPhieuDats
+		{
+			get
+			{
+				return this._ChiTietPhieuDats;
+			}
+			set
+			{
+				this._ChiTietPhieuDats.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_KhuyenMaiSanPham", Storage="_KhuyenMaiSanPhams", ThisKey="ProductID", OtherKey="maSanPham")]
 		public EntitySet<KhuyenMaiSanPham> KhuyenMaiSanPhams
 		{
 			get
@@ -594,6 +763,87 @@ namespace DTO
 			set
 			{
 				this._KhuyenMaiSanPhams.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_OrderDetail", Storage="_OrderDetails", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<OrderDetail> OrderDetails
+		{
+			get
+			{
+				return this._OrderDetails;
+			}
+			set
+			{
+				this._OrderDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Brand_Product", Storage="_Brand", ThisKey="BrandID", OtherKey="BrandID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Brand Brand
+		{
+			get
+			{
+				return this._Brand.Entity;
+			}
+			set
+			{
+				Brand previousValue = this._Brand.Entity;
+				if (((previousValue != value) 
+							|| (this._Brand.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Brand.Entity = null;
+						previousValue.Products.Remove(this);
+					}
+					this._Brand.Entity = value;
+					if ((value != null))
+					{
+						value.Products.Add(this);
+						this._BrandID = value.BrandID;
+					}
+					else
+					{
+						this._BrandID = default(string);
+					}
+					this.SendPropertyChanged("Brand");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Product", Storage="_Category", ThisKey="CategoryID", OtherKey="CategoryID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Category Category
+		{
+			get
+			{
+				return this._Category.Entity;
+			}
+			set
+			{
+				Category previousValue = this._Category.Entity;
+				if (((previousValue != value) 
+							|| (this._Category.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Category.Entity = null;
+						previousValue.Products.Remove(this);
+					}
+					this._Category.Entity = value;
+					if ((value != null))
+					{
+						value.Products.Add(this);
+						this._CategoryID = value.CategoryID;
+					}
+					else
+					{
+						this._CategoryID = default(string);
+					}
+					this.SendPropertyChanged("Category");
+				}
 			}
 		}
 		
@@ -617,16 +867,52 @@ namespace DTO
 			}
 		}
 		
+		private void attach_CartItems(CartItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_CartItems(CartItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
+		}
+		
+		private void attach_ChiTietPhieuDats(ChiTietPhieuDat entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_ChiTietPhieuDats(ChiTietPhieuDat entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
+		}
+		
 		private void attach_KhuyenMaiSanPhams(KhuyenMaiSanPham entity)
 		{
 			this.SendPropertyChanging();
-			entity.KhuyenMai = this;
+			entity.Product = this;
 		}
 		
 		private void detach_KhuyenMaiSanPhams(KhuyenMaiSanPham entity)
 		{
 			this.SendPropertyChanging();
-			entity.KhuyenMai = null;
+			entity.Product = null;
+		}
+		
+		private void attach_OrderDetails(OrderDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_OrderDetails(OrderDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
 		}
 	}
 	
@@ -2929,340 +3215,171 @@ namespace DTO
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Products")]
-	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KhuyenMais")]
+	public partial class KhuyenMai : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _ProductID;
+		private string _maKhuyenMai;
 		
-		private string _ProductDescription;
+		private string _tenKhuyenMai;
 		
-		private string _BrandID;
+		private string _moTa;
 		
-		private string _CategoryID;
+		private string _trangThai;
 		
-		private string _AvailabilityStatus;
+		private System.DateTime _ngayBatDau;
 		
-		private int _Quantity;
-		
-		private string _BaoHanh;
-		
-		private string _ProductName;
-		
-		private string _ProductPic;
-		
-		private int _Price;
-		
-		private int _SalePrice;
-		
-		private EntitySet<CartItem> _CartItems;
-		
-		private EntitySet<ChiTietPhieuDat> _ChiTietPhieuDats;
+		private System.DateTime _ngayKetThuc;
 		
 		private EntitySet<KhuyenMaiSanPham> _KhuyenMaiSanPhams;
-		
-		private EntitySet<OrderDetail> _OrderDetails;
-		
-		private EntityRef<Brand> _Brand;
-		
-		private EntityRef<Category> _Category;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnProductIDChanging(string value);
-    partial void OnProductIDChanged();
-    partial void OnProductDescriptionChanging(string value);
-    partial void OnProductDescriptionChanged();
-    partial void OnBrandIDChanging(string value);
-    partial void OnBrandIDChanged();
-    partial void OnCategoryIDChanging(string value);
-    partial void OnCategoryIDChanged();
-    partial void OnAvailabilityStatusChanging(string value);
-    partial void OnAvailabilityStatusChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnBaoHanhChanging(string value);
-    partial void OnBaoHanhChanged();
-    partial void OnProductNameChanging(string value);
-    partial void OnProductNameChanged();
-    partial void OnProductPicChanging(string value);
-    partial void OnProductPicChanged();
-    partial void OnPriceChanging(int value);
-    partial void OnPriceChanged();
-    partial void OnSalePriceChanging(int value);
-    partial void OnSalePriceChanged();
+    partial void OnmaKhuyenMaiChanging(string value);
+    partial void OnmaKhuyenMaiChanged();
+    partial void OntenKhuyenMaiChanging(string value);
+    partial void OntenKhuyenMaiChanged();
+    partial void OnmoTaChanging(string value);
+    partial void OnmoTaChanged();
+    partial void OntrangThaiChanging(string value);
+    partial void OntrangThaiChanged();
+    partial void OnngayBatDauChanging(System.DateTime value);
+    partial void OnngayBatDauChanged();
+    partial void OnngayKetThucChanging(System.DateTime value);
+    partial void OnngayKetThucChanged();
     #endregion
 		
-		public Product()
+		public KhuyenMai()
 		{
-			this._CartItems = new EntitySet<CartItem>(new Action<CartItem>(this.attach_CartItems), new Action<CartItem>(this.detach_CartItems));
-			this._ChiTietPhieuDats = new EntitySet<ChiTietPhieuDat>(new Action<ChiTietPhieuDat>(this.attach_ChiTietPhieuDats), new Action<ChiTietPhieuDat>(this.detach_ChiTietPhieuDats));
 			this._KhuyenMaiSanPhams = new EntitySet<KhuyenMaiSanPham>(new Action<KhuyenMaiSanPham>(this.attach_KhuyenMaiSanPhams), new Action<KhuyenMaiSanPham>(this.detach_KhuyenMaiSanPhams));
-			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
-			this._Brand = default(EntityRef<Brand>);
-			this._Category = default(EntityRef<Category>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ProductID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maKhuyenMai", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string maKhuyenMai
 		{
 			get
 			{
-				return this._ProductID;
+				return this._maKhuyenMai;
 			}
 			set
 			{
-				if ((this._ProductID != value))
+				if ((this._maKhuyenMai != value))
 				{
-					this.OnProductIDChanging(value);
+					this.OnmaKhuyenMaiChanging(value);
 					this.SendPropertyChanging();
-					this._ProductID = value;
-					this.SendPropertyChanged("ProductID");
-					this.OnProductIDChanged();
+					this._maKhuyenMai = value;
+					this.SendPropertyChanged("maKhuyenMai");
+					this.OnmaKhuyenMaiChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductDescription", DbType="NVarChar(MAX)")]
-		public string ProductDescription
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenKhuyenMai", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string tenKhuyenMai
 		{
 			get
 			{
-				return this._ProductDescription;
+				return this._tenKhuyenMai;
 			}
 			set
 			{
-				if ((this._ProductDescription != value))
+				if ((this._tenKhuyenMai != value))
 				{
-					this.OnProductDescriptionChanging(value);
+					this.OntenKhuyenMaiChanging(value);
 					this.SendPropertyChanging();
-					this._ProductDescription = value;
-					this.SendPropertyChanged("ProductDescription");
-					this.OnProductDescriptionChanged();
+					this._tenKhuyenMai = value;
+					this.SendPropertyChanged("tenKhuyenMai");
+					this.OntenKhuyenMaiChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BrandID", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
-		public string BrandID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_moTa", DbType="NVarChar(255)")]
+		public string moTa
 		{
 			get
 			{
-				return this._BrandID;
+				return this._moTa;
 			}
 			set
 			{
-				if ((this._BrandID != value))
+				if ((this._moTa != value))
 				{
-					if (this._Brand.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnBrandIDChanging(value);
+					this.OnmoTaChanging(value);
 					this.SendPropertyChanging();
-					this._BrandID = value;
-					this.SendPropertyChanged("BrandID");
-					this.OnBrandIDChanged();
+					this._moTa = value;
+					this.SendPropertyChanged("moTa");
+					this.OnmoTaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
-		public string CategoryID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trangThai", DbType="NVarChar(50)")]
+		public string trangThai
 		{
 			get
 			{
-				return this._CategoryID;
+				return this._trangThai;
 			}
 			set
 			{
-				if ((this._CategoryID != value))
+				if ((this._trangThai != value))
 				{
-					if (this._Category.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCategoryIDChanging(value);
+					this.OntrangThaiChanging(value);
 					this.SendPropertyChanging();
-					this._CategoryID = value;
-					this.SendPropertyChanged("CategoryID");
-					this.OnCategoryIDChanged();
+					this._trangThai = value;
+					this.SendPropertyChanged("trangThai");
+					this.OntrangThaiChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvailabilityStatus", DbType="NVarChar(MAX)")]
-		public string AvailabilityStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngayBatDau", DbType="DateTime NOT NULL")]
+		public System.DateTime ngayBatDau
 		{
 			get
 			{
-				return this._AvailabilityStatus;
+				return this._ngayBatDau;
 			}
 			set
 			{
-				if ((this._AvailabilityStatus != value))
+				if ((this._ngayBatDau != value))
 				{
-					this.OnAvailabilityStatusChanging(value);
+					this.OnngayBatDauChanging(value);
 					this.SendPropertyChanging();
-					this._AvailabilityStatus = value;
-					this.SendPropertyChanged("AvailabilityStatus");
-					this.OnAvailabilityStatusChanged();
+					this._ngayBatDau = value;
+					this.SendPropertyChanged("ngayBatDau");
+					this.OnngayBatDauChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngayKetThuc", DbType="DateTime NOT NULL")]
+		public System.DateTime ngayKetThuc
 		{
 			get
 			{
-				return this._Quantity;
+				return this._ngayKetThuc;
 			}
 			set
 			{
-				if ((this._Quantity != value))
+				if ((this._ngayKetThuc != value))
 				{
-					this.OnQuantityChanging(value);
+					this.OnngayKetThucChanging(value);
 					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
+					this._ngayKetThuc = value;
+					this.SendPropertyChanged("ngayKetThuc");
+					this.OnngayKetThucChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BaoHanh", DbType="NVarChar(MAX)")]
-		public string BaoHanh
-		{
-			get
-			{
-				return this._BaoHanh;
-			}
-			set
-			{
-				if ((this._BaoHanh != value))
-				{
-					this.OnBaoHanhChanging(value);
-					this.SendPropertyChanging();
-					this._BaoHanh = value;
-					this.SendPropertyChanged("BaoHanh");
-					this.OnBaoHanhChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string ProductName
-		{
-			get
-			{
-				return this._ProductName;
-			}
-			set
-			{
-				if ((this._ProductName != value))
-				{
-					this.OnProductNameChanging(value);
-					this.SendPropertyChanging();
-					this._ProductName = value;
-					this.SendPropertyChanged("ProductName");
-					this.OnProductNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductPic", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string ProductPic
-		{
-			get
-			{
-				return this._ProductPic;
-			}
-			set
-			{
-				if ((this._ProductPic != value))
-				{
-					this.OnProductPicChanging(value);
-					this.SendPropertyChanging();
-					this._ProductPic = value;
-					this.SendPropertyChanged("ProductPic");
-					this.OnProductPicChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
-		public int Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this.OnPriceChanging(value);
-					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalePrice", DbType="Int NOT NULL")]
-		public int SalePrice
-		{
-			get
-			{
-				return this._SalePrice;
-			}
-			set
-			{
-				if ((this._SalePrice != value))
-				{
-					this.OnSalePriceChanging(value);
-					this.SendPropertyChanging();
-					this._SalePrice = value;
-					this.SendPropertyChanged("SalePrice");
-					this.OnSalePriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_CartItem", Storage="_CartItems", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<CartItem> CartItems
-		{
-			get
-			{
-				return this._CartItems;
-			}
-			set
-			{
-				this._CartItems.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ChiTietPhieuDat", Storage="_ChiTietPhieuDats", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<ChiTietPhieuDat> ChiTietPhieuDats
-		{
-			get
-			{
-				return this._ChiTietPhieuDats;
-			}
-			set
-			{
-				this._ChiTietPhieuDats.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_KhuyenMaiSanPham", Storage="_KhuyenMaiSanPhams", ThisKey="ProductID", OtherKey="maSanPham")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KhuyenMai_KhuyenMaiSanPham", Storage="_KhuyenMaiSanPhams", ThisKey="maKhuyenMai", OtherKey="maKhuyenMai")]
 		public EntitySet<KhuyenMaiSanPham> KhuyenMaiSanPhams
 		{
 			get
@@ -3272,87 +3389,6 @@ namespace DTO
 			set
 			{
 				this._KhuyenMaiSanPhams.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_OrderDetail", Storage="_OrderDetails", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<OrderDetail> OrderDetails
-		{
-			get
-			{
-				return this._OrderDetails;
-			}
-			set
-			{
-				this._OrderDetails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Brand_Product", Storage="_Brand", ThisKey="BrandID", OtherKey="BrandID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Brand Brand
-		{
-			get
-			{
-				return this._Brand.Entity;
-			}
-			set
-			{
-				Brand previousValue = this._Brand.Entity;
-				if (((previousValue != value) 
-							|| (this._Brand.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Brand.Entity = null;
-						previousValue.Products.Remove(this);
-					}
-					this._Brand.Entity = value;
-					if ((value != null))
-					{
-						value.Products.Add(this);
-						this._BrandID = value.BrandID;
-					}
-					else
-					{
-						this._BrandID = default(string);
-					}
-					this.SendPropertyChanged("Brand");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Product", Storage="_Category", ThisKey="CategoryID", OtherKey="CategoryID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Category Category
-		{
-			get
-			{
-				return this._Category.Entity;
-			}
-			set
-			{
-				Category previousValue = this._Category.Entity;
-				if (((previousValue != value) 
-							|| (this._Category.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Category.Entity = null;
-						previousValue.Products.Remove(this);
-					}
-					this._Category.Entity = value;
-					if ((value != null))
-					{
-						value.Products.Add(this);
-						this._CategoryID = value.CategoryID;
-					}
-					else
-					{
-						this._CategoryID = default(string);
-					}
-					this.SendPropertyChanged("Category");
-				}
 			}
 		}
 		
@@ -3376,52 +3412,16 @@ namespace DTO
 			}
 		}
 		
-		private void attach_CartItems(CartItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_CartItems(CartItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
-		private void attach_ChiTietPhieuDats(ChiTietPhieuDat entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_ChiTietPhieuDats(ChiTietPhieuDat entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
 		private void attach_KhuyenMaiSanPhams(KhuyenMaiSanPham entity)
 		{
 			this.SendPropertyChanging();
-			entity.Product = this;
+			entity.KhuyenMai = this;
 		}
 		
 		private void detach_KhuyenMaiSanPhams(KhuyenMaiSanPham entity)
 		{
 			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
-		private void attach_OrderDetails(OrderDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_OrderDetails(OrderDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
+			entity.KhuyenMai = null;
 		}
 	}
 	
@@ -3843,9 +3843,9 @@ namespace DTO
 		
 		private decimal _UnitPrice;
 		
-		private EntityRef<Order> _Order;
-		
 		private EntityRef<Product> _Product;
+		
+		private EntityRef<Order> _Order;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3865,8 +3865,8 @@ namespace DTO
 		
 		public OrderDetail()
 		{
-			this._Order = default(EntityRef<Order>);
 			this._Product = default(EntityRef<Product>);
+			this._Order = default(EntityRef<Order>);
 			OnCreated();
 		}
 		
@@ -3978,40 +3978,6 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Order_OrderDetail", Storage="_Order", ThisKey="OrderId", OtherKey="OrderId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Order Order
-		{
-			get
-			{
-				return this._Order.Entity;
-			}
-			set
-			{
-				Order previousValue = this._Order.Entity;
-				if (((previousValue != value) 
-							|| (this._Order.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Order.Entity = null;
-						previousValue.OrderDetails.Remove(this);
-					}
-					this._Order.Entity = value;
-					if ((value != null))
-					{
-						value.OrderDetails.Add(this);
-						this._OrderId = value.OrderId;
-					}
-					else
-					{
-						this._OrderId = default(string);
-					}
-					this.SendPropertyChanged("Order");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_OrderDetail", Storage="_Product", ThisKey="ProductID", OtherKey="ProductID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Product Product
 		{
@@ -4042,6 +4008,40 @@ namespace DTO
 						this._ProductID = default(string);
 					}
 					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Order_OrderDetail", Storage="_Order", ThisKey="OrderId", OtherKey="OrderId", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Order Order
+		{
+			get
+			{
+				return this._Order.Entity;
+			}
+			set
+			{
+				Order previousValue = this._Order.Entity;
+				if (((previousValue != value) 
+							|| (this._Order.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Order.Entity = null;
+						previousValue.OrderDetails.Remove(this);
+					}
+					this._Order.Entity = value;
+					if ((value != null))
+					{
+						value.OrderDetails.Add(this);
+						this._OrderId = value.OrderId;
+					}
+					else
+					{
+						this._OrderId = default(string);
+					}
+					this.SendPropertyChanged("Order");
 				}
 			}
 		}
@@ -4087,17 +4087,17 @@ namespace DTO
 		
 		private string _CustomerAddress;
 		
-		private string _CustomerEmail;
-		
-		private string _PaymentMethod;
-		
-		private decimal _TotalAmount;
+		private string _CustomerProvince;
 		
 		private string _CustomerDistrict;
 		
 		private string _CustomerWard;
 		
-		private string _CustomerProvince;
+		private string _CustomerEmail;
+		
+		private string _PaymentMethod;
+		
+		private decimal _TotalAmount;
 		
 		private EntitySet<OrderDetail> _OrderDetails;
 		
@@ -4121,18 +4121,18 @@ namespace DTO
     partial void OnCustomerPhoneChanged();
     partial void OnCustomerAddressChanging(string value);
     partial void OnCustomerAddressChanged();
+    partial void OnCustomerProvinceChanging(string value);
+    partial void OnCustomerProvinceChanged();
+    partial void OnCustomerDistrictChanging(string value);
+    partial void OnCustomerDistrictChanged();
+    partial void OnCustomerWardChanging(string value);
+    partial void OnCustomerWardChanged();
     partial void OnCustomerEmailChanging(string value);
     partial void OnCustomerEmailChanged();
     partial void OnPaymentMethodChanging(string value);
     partial void OnPaymentMethodChanged();
     partial void OnTotalAmountChanging(decimal value);
     partial void OnTotalAmountChanged();
-    partial void OnCustomerDistrictChanging(string value);
-    partial void OnCustomerDistrictChanged();
-    partial void OnCustomerWardChanging(string value);
-    partial void OnCustomerWardChanged();
-    partial void OnCustomerProvinceChanging(string value);
-    partial void OnCustomerProvinceChanged();
     #endregion
 		
 		public Order()
@@ -4286,6 +4286,66 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerProvince", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CustomerProvince
+		{
+			get
+			{
+				return this._CustomerProvince;
+			}
+			set
+			{
+				if ((this._CustomerProvince != value))
+				{
+					this.OnCustomerProvinceChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerProvince = value;
+					this.SendPropertyChanged("CustomerProvince");
+					this.OnCustomerProvinceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerDistrict", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CustomerDistrict
+		{
+			get
+			{
+				return this._CustomerDistrict;
+			}
+			set
+			{
+				if ((this._CustomerDistrict != value))
+				{
+					this.OnCustomerDistrictChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerDistrict = value;
+					this.SendPropertyChanged("CustomerDistrict");
+					this.OnCustomerDistrictChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerWard", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CustomerWard
+		{
+			get
+			{
+				return this._CustomerWard;
+			}
+			set
+			{
+				if ((this._CustomerWard != value))
+				{
+					this.OnCustomerWardChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerWard = value;
+					this.SendPropertyChanged("CustomerWard");
+					this.OnCustomerWardChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerEmail", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string CustomerEmail
 		{
@@ -4342,66 +4402,6 @@ namespace DTO
 					this._TotalAmount = value;
 					this.SendPropertyChanged("TotalAmount");
 					this.OnTotalAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerDistrict", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string CustomerDistrict
-		{
-			get
-			{
-				return this._CustomerDistrict;
-			}
-			set
-			{
-				if ((this._CustomerDistrict != value))
-				{
-					this.OnCustomerDistrictChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerDistrict = value;
-					this.SendPropertyChanged("CustomerDistrict");
-					this.OnCustomerDistrictChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerWard", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string CustomerWard
-		{
-			get
-			{
-				return this._CustomerWard;
-			}
-			set
-			{
-				if ((this._CustomerWard != value))
-				{
-					this.OnCustomerWardChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerWard = value;
-					this.SendPropertyChanged("CustomerWard");
-					this.OnCustomerWardChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerProvince", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string CustomerProvince
-		{
-			get
-			{
-				return this._CustomerProvince;
-			}
-			set
-			{
-				if ((this._CustomerProvince != value))
-				{
-					this.OnCustomerProvinceChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerProvince = value;
-					this.SendPropertyChanged("CustomerProvince");
-					this.OnCustomerProvinceChanged();
 				}
 			}
 		}
@@ -4486,502 +4486,6 @@ namespace DTO
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Products")]
-	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ProductID;
-		
-		private string _ProductDescription;
-		
-		private string _BrandID;
-		
-		private string _CategoryID;
-		
-		private string _AvailabilityStatus;
-		
-		private int _Quantity;
-		
-		private string _BaoHanh;
-		
-		private string _ProductName;
-		
-		private string _ProductPic;
-		
-		private int _Price;
-		
-		private int _SalePrice;
-		
-		private EntitySet<CartItem> _CartItems;
-		
-		private EntitySet<ChiTietPhieuDat> _ChiTietPhieuDats;
-		
-		private EntitySet<KhuyenMaiSanPham> _KhuyenMaiSanPhams;
-		
-		private EntitySet<OrderDetail> _OrderDetails;
-		
-		private EntityRef<Brand> _Brand;
-		
-		private EntityRef<Category> _Category;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnProductIDChanging(string value);
-    partial void OnProductIDChanged();
-    partial void OnProductDescriptionChanging(string value);
-    partial void OnProductDescriptionChanged();
-    partial void OnBrandIDChanging(string value);
-    partial void OnBrandIDChanged();
-    partial void OnCategoryIDChanging(string value);
-    partial void OnCategoryIDChanged();
-    partial void OnAvailabilityStatusChanging(string value);
-    partial void OnAvailabilityStatusChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnBaoHanhChanging(string value);
-    partial void OnBaoHanhChanged();
-    partial void OnProductNameChanging(string value);
-    partial void OnProductNameChanged();
-    partial void OnProductPicChanging(string value);
-    partial void OnProductPicChanged();
-    partial void OnPriceChanging(int value);
-    partial void OnPriceChanged();
-    partial void OnSalePriceChanging(int value);
-    partial void OnSalePriceChanged();
-    #endregion
-		
-		public Product()
-		{
-			this._CartItems = new EntitySet<CartItem>(new Action<CartItem>(this.attach_CartItems), new Action<CartItem>(this.detach_CartItems));
-			this._ChiTietPhieuDats = new EntitySet<ChiTietPhieuDat>(new Action<ChiTietPhieuDat>(this.attach_ChiTietPhieuDats), new Action<ChiTietPhieuDat>(this.detach_ChiTietPhieuDats));
-			this._KhuyenMaiSanPhams = new EntitySet<KhuyenMaiSanPham>(new Action<KhuyenMaiSanPham>(this.attach_KhuyenMaiSanPhams), new Action<KhuyenMaiSanPham>(this.detach_KhuyenMaiSanPhams));
-			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
-			this._Brand = default(EntityRef<Brand>);
-			this._Category = default(EntityRef<Category>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ProductID
-		{
-			get
-			{
-				return this._ProductID;
-			}
-			set
-			{
-				if ((this._ProductID != value))
-				{
-					this.OnProductIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProductID = value;
-					this.SendPropertyChanged("ProductID");
-					this.OnProductIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductDescription", DbType="NVarChar(MAX)")]
-		public string ProductDescription
-		{
-			get
-			{
-				return this._ProductDescription;
-			}
-			set
-			{
-				if ((this._ProductDescription != value))
-				{
-					this.OnProductDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._ProductDescription = value;
-					this.SendPropertyChanged("ProductDescription");
-					this.OnProductDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BrandID", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
-		public string BrandID
-		{
-			get
-			{
-				return this._BrandID;
-			}
-			set
-			{
-				if ((this._BrandID != value))
-				{
-					if (this._Brand.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnBrandIDChanging(value);
-					this.SendPropertyChanging();
-					this._BrandID = value;
-					this.SendPropertyChanged("BrandID");
-					this.OnBrandIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
-		public string CategoryID
-		{
-			get
-			{
-				return this._CategoryID;
-			}
-			set
-			{
-				if ((this._CategoryID != value))
-				{
-					if (this._Category.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCategoryIDChanging(value);
-					this.SendPropertyChanging();
-					this._CategoryID = value;
-					this.SendPropertyChanged("CategoryID");
-					this.OnCategoryIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvailabilityStatus", DbType="NVarChar(MAX)")]
-		public string AvailabilityStatus
-		{
-			get
-			{
-				return this._AvailabilityStatus;
-			}
-			set
-			{
-				if ((this._AvailabilityStatus != value))
-				{
-					this.OnAvailabilityStatusChanging(value);
-					this.SendPropertyChanging();
-					this._AvailabilityStatus = value;
-					this.SendPropertyChanged("AvailabilityStatus");
-					this.OnAvailabilityStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BaoHanh", DbType="NVarChar(MAX)")]
-		public string BaoHanh
-		{
-			get
-			{
-				return this._BaoHanh;
-			}
-			set
-			{
-				if ((this._BaoHanh != value))
-				{
-					this.OnBaoHanhChanging(value);
-					this.SendPropertyChanging();
-					this._BaoHanh = value;
-					this.SendPropertyChanged("BaoHanh");
-					this.OnBaoHanhChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string ProductName
-		{
-			get
-			{
-				return this._ProductName;
-			}
-			set
-			{
-				if ((this._ProductName != value))
-				{
-					this.OnProductNameChanging(value);
-					this.SendPropertyChanging();
-					this._ProductName = value;
-					this.SendPropertyChanged("ProductName");
-					this.OnProductNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductPic", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string ProductPic
-		{
-			get
-			{
-				return this._ProductPic;
-			}
-			set
-			{
-				if ((this._ProductPic != value))
-				{
-					this.OnProductPicChanging(value);
-					this.SendPropertyChanging();
-					this._ProductPic = value;
-					this.SendPropertyChanged("ProductPic");
-					this.OnProductPicChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
-		public int Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this.OnPriceChanging(value);
-					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalePrice", DbType="Int NOT NULL")]
-		public int SalePrice
-		{
-			get
-			{
-				return this._SalePrice;
-			}
-			set
-			{
-				if ((this._SalePrice != value))
-				{
-					this.OnSalePriceChanging(value);
-					this.SendPropertyChanging();
-					this._SalePrice = value;
-					this.SendPropertyChanged("SalePrice");
-					this.OnSalePriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_CartItem", Storage="_CartItems", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<CartItem> CartItems
-		{
-			get
-			{
-				return this._CartItems;
-			}
-			set
-			{
-				this._CartItems.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ChiTietPhieuDat", Storage="_ChiTietPhieuDats", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<ChiTietPhieuDat> ChiTietPhieuDats
-		{
-			get
-			{
-				return this._ChiTietPhieuDats;
-			}
-			set
-			{
-				this._ChiTietPhieuDats.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_KhuyenMaiSanPham", Storage="_KhuyenMaiSanPhams", ThisKey="ProductID", OtherKey="maSanPham")]
-		public EntitySet<KhuyenMaiSanPham> KhuyenMaiSanPhams
-		{
-			get
-			{
-				return this._KhuyenMaiSanPhams;
-			}
-			set
-			{
-				this._KhuyenMaiSanPhams.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_OrderDetail", Storage="_OrderDetails", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<OrderDetail> OrderDetails
-		{
-			get
-			{
-				return this._OrderDetails;
-			}
-			set
-			{
-				this._OrderDetails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Brand_Product", Storage="_Brand", ThisKey="BrandID", OtherKey="BrandID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Brand Brand
-		{
-			get
-			{
-				return this._Brand.Entity;
-			}
-			set
-			{
-				Brand previousValue = this._Brand.Entity;
-				if (((previousValue != value) 
-							|| (this._Brand.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Brand.Entity = null;
-						previousValue.Products.Remove(this);
-					}
-					this._Brand.Entity = value;
-					if ((value != null))
-					{
-						value.Products.Add(this);
-						this._BrandID = value.BrandID;
-					}
-					else
-					{
-						this._BrandID = default(string);
-					}
-					this.SendPropertyChanged("Brand");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Product", Storage="_Category", ThisKey="CategoryID", OtherKey="CategoryID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Category Category
-		{
-			get
-			{
-				return this._Category.Entity;
-			}
-			set
-			{
-				Category previousValue = this._Category.Entity;
-				if (((previousValue != value) 
-							|| (this._Category.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Category.Entity = null;
-						previousValue.Products.Remove(this);
-					}
-					this._Category.Entity = value;
-					if ((value != null))
-					{
-						value.Products.Add(this);
-						this._CategoryID = value.CategoryID;
-					}
-					else
-					{
-						this._CategoryID = default(string);
-					}
-					this.SendPropertyChanged("Category");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_CartItems(CartItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_CartItems(CartItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
-		private void attach_ChiTietPhieuDats(ChiTietPhieuDat entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_ChiTietPhieuDats(ChiTietPhieuDat entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
-		private void attach_KhuyenMaiSanPhams(KhuyenMaiSanPham entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_KhuyenMaiSanPhams(KhuyenMaiSanPham entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
-		private void attach_OrderDetails(OrderDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_OrderDetails(OrderDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PhieuDats")]
 	public partial class PhieuDat : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -5002,9 +4506,9 @@ namespace DTO
 		
 		private string _TrangThai;
 		
-		private EntitySet<PhieuNhap> _PhieuNhaps;
-		
 		private EntitySet<ChiTietPhieuDat> _ChiTietPhieuDats;
+		
+		private EntitySet<PhieuNhap> _PhieuNhaps;
 		
 		private EntityRef<NhaCungCap> _NhaCungCap;
 		
@@ -5030,8 +4534,8 @@ namespace DTO
 		
 		public PhieuDat()
 		{
-			this._PhieuNhaps = new EntitySet<PhieuNhap>(new Action<PhieuNhap>(this.attach_PhieuNhaps), new Action<PhieuNhap>(this.detach_PhieuNhaps));
 			this._ChiTietPhieuDats = new EntitySet<ChiTietPhieuDat>(new Action<ChiTietPhieuDat>(this.attach_ChiTietPhieuDats), new Action<ChiTietPhieuDat>(this.detach_ChiTietPhieuDats));
+			this._PhieuNhaps = new EntitySet<PhieuNhap>(new Action<PhieuNhap>(this.attach_PhieuNhaps), new Action<PhieuNhap>(this.detach_PhieuNhaps));
 			this._NhaCungCap = default(EntityRef<NhaCungCap>);
 			OnCreated();
 		}
@@ -5180,19 +4684,6 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PhieuDat_PhieuNhap", Storage="_PhieuNhaps", ThisKey="MaPhieuDat", OtherKey="MaPhieuDat")]
-		public EntitySet<PhieuNhap> PhieuNhaps
-		{
-			get
-			{
-				return this._PhieuNhaps;
-			}
-			set
-			{
-				this._PhieuNhaps.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PhieuDat_ChiTietPhieuDat", Storage="_ChiTietPhieuDats", ThisKey="MaPhieuDat", OtherKey="MaPhieuDat")]
 		public EntitySet<ChiTietPhieuDat> ChiTietPhieuDats
 		{
@@ -5203,6 +4694,19 @@ namespace DTO
 			set
 			{
 				this._ChiTietPhieuDats.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PhieuDat_PhieuNhap", Storage="_PhieuNhaps", ThisKey="MaPhieuDat", OtherKey="MaPhieuDat")]
+		public EntitySet<PhieuNhap> PhieuNhaps
+		{
+			get
+			{
+				return this._PhieuNhaps;
+			}
+			set
+			{
+				this._PhieuNhaps.Assign(value);
 			}
 		}
 		
@@ -5260,6 +4764,18 @@ namespace DTO
 			}
 		}
 		
+		private void attach_ChiTietPhieuDats(ChiTietPhieuDat entity)
+		{
+			this.SendPropertyChanging();
+			entity.PhieuDat = this;
+		}
+		
+		private void detach_ChiTietPhieuDats(ChiTietPhieuDat entity)
+		{
+			this.SendPropertyChanging();
+			entity.PhieuDat = null;
+		}
+		
 		private void attach_PhieuNhaps(PhieuNhap entity)
 		{
 			this.SendPropertyChanging();
@@ -5271,17 +4787,232 @@ namespace DTO
 			this.SendPropertyChanging();
 			entity.PhieuDat = null;
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PhieuNhaps")]
+	public partial class PhieuNhap : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		private void attach_ChiTietPhieuDats(ChiTietPhieuDat entity)
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MaPhieuNhap;
+		
+		private string _MaPhieuDat;
+		
+		private System.DateTime _NgayNhap;
+		
+		private int _SoLan;
+		
+		private decimal _TongTien;
+		
+		private EntitySet<ChiTietPhieuNhap> _ChiTietPhieuNhaps;
+		
+		private EntityRef<PhieuDat> _PhieuDat;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaPhieuNhapChanging(string value);
+    partial void OnMaPhieuNhapChanged();
+    partial void OnMaPhieuDatChanging(string value);
+    partial void OnMaPhieuDatChanged();
+    partial void OnNgayNhapChanging(System.DateTime value);
+    partial void OnNgayNhapChanged();
+    partial void OnSoLanChanging(int value);
+    partial void OnSoLanChanged();
+    partial void OnTongTienChanging(decimal value);
+    partial void OnTongTienChanged();
+    #endregion
+		
+		public PhieuNhap()
 		{
-			this.SendPropertyChanging();
-			entity.PhieuDat = this;
+			this._ChiTietPhieuNhaps = new EntitySet<ChiTietPhieuNhap>(new Action<ChiTietPhieuNhap>(this.attach_ChiTietPhieuNhaps), new Action<ChiTietPhieuNhap>(this.detach_ChiTietPhieuNhaps));
+			this._PhieuDat = default(EntityRef<PhieuDat>);
+			OnCreated();
 		}
 		
-		private void detach_ChiTietPhieuDats(ChiTietPhieuDat entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhieuNhap", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MaPhieuNhap
+		{
+			get
+			{
+				return this._MaPhieuNhap;
+			}
+			set
+			{
+				if ((this._MaPhieuNhap != value))
+				{
+					this.OnMaPhieuNhapChanging(value);
+					this.SendPropertyChanging();
+					this._MaPhieuNhap = value;
+					this.SendPropertyChanged("MaPhieuNhap");
+					this.OnMaPhieuNhapChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhieuDat", DbType="NVarChar(128)")]
+		public string MaPhieuDat
+		{
+			get
+			{
+				return this._MaPhieuDat;
+			}
+			set
+			{
+				if ((this._MaPhieuDat != value))
+				{
+					if (this._PhieuDat.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaPhieuDatChanging(value);
+					this.SendPropertyChanging();
+					this._MaPhieuDat = value;
+					this.SendPropertyChanged("MaPhieuDat");
+					this.OnMaPhieuDatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayNhap", DbType="DateTime NOT NULL")]
+		public System.DateTime NgayNhap
+		{
+			get
+			{
+				return this._NgayNhap;
+			}
+			set
+			{
+				if ((this._NgayNhap != value))
+				{
+					this.OnNgayNhapChanging(value);
+					this.SendPropertyChanging();
+					this._NgayNhap = value;
+					this.SendPropertyChanged("NgayNhap");
+					this.OnNgayNhapChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLan", DbType="Int NOT NULL")]
+		public int SoLan
+		{
+			get
+			{
+				return this._SoLan;
+			}
+			set
+			{
+				if ((this._SoLan != value))
+				{
+					this.OnSoLanChanging(value);
+					this.SendPropertyChanging();
+					this._SoLan = value;
+					this.SendPropertyChanged("SoLan");
+					this.OnSoLanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(18,2) NOT NULL")]
+		public decimal TongTien
+		{
+			get
+			{
+				return this._TongTien;
+			}
+			set
+			{
+				if ((this._TongTien != value))
+				{
+					this.OnTongTienChanging(value);
+					this.SendPropertyChanging();
+					this._TongTien = value;
+					this.SendPropertyChanged("TongTien");
+					this.OnTongTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PhieuNhap_ChiTietPhieuNhap", Storage="_ChiTietPhieuNhaps", ThisKey="MaPhieuNhap", OtherKey="MaPhieuNhap")]
+		public EntitySet<ChiTietPhieuNhap> ChiTietPhieuNhaps
+		{
+			get
+			{
+				return this._ChiTietPhieuNhaps;
+			}
+			set
+			{
+				this._ChiTietPhieuNhaps.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PhieuDat_PhieuNhap", Storage="_PhieuDat", ThisKey="MaPhieuDat", OtherKey="MaPhieuDat", IsForeignKey=true)]
+		public PhieuDat PhieuDat
+		{
+			get
+			{
+				return this._PhieuDat.Entity;
+			}
+			set
+			{
+				PhieuDat previousValue = this._PhieuDat.Entity;
+				if (((previousValue != value) 
+							|| (this._PhieuDat.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PhieuDat.Entity = null;
+						previousValue.PhieuNhaps.Remove(this);
+					}
+					this._PhieuDat.Entity = value;
+					if ((value != null))
+					{
+						value.PhieuNhaps.Add(this);
+						this._MaPhieuDat = value.MaPhieuDat;
+					}
+					else
+					{
+						this._MaPhieuDat = default(string);
+					}
+					this.SendPropertyChanged("PhieuDat");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ChiTietPhieuNhaps(ChiTietPhieuNhap entity)
 		{
 			this.SendPropertyChanging();
-			entity.PhieuDat = null;
+			entity.PhieuNhap = this;
+		}
+		
+		private void detach_ChiTietPhieuNhaps(ChiTietPhieuNhap entity)
+		{
+			this.SendPropertyChanging();
+			entity.PhieuNhap = null;
 		}
 	}
 }
