@@ -33,6 +33,7 @@
                         ProductName = c.String(nullable: false),
                         ProductPic = c.String(nullable: false),
                         Price = c.Int(nullable: false),
+                        SalePrice = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ProductID)
                 .ForeignKey("dbo.Brands", t => t.BrandID, cascadeDelete: true)
@@ -47,6 +48,7 @@
                         CartItemID = c.Int(nullable: false, identity: true),
                         shopping_quantity = c.Int(nullable: false),
                         ProductID = c.String(maxLength: 128),
+                        AvailableQuantity = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CartItemID)
                 .ForeignKey("dbo.Products", t => t.ProductID)
@@ -65,6 +67,34 @@
                         CategoryAvatar = c.String(),
                     })
                 .PrimaryKey(t => t.CategoryID);
+            
+            CreateTable(
+                "dbo.KhuyenMaiSanPhams",
+                c => new
+                    {
+                        maKhuyenMai = c.String(nullable: false, maxLength: 50),
+                        maSanPham = c.String(nullable: false, maxLength: 128),
+                        phanTramGiam = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        trangThai = c.String(maxLength: 50),
+                    })
+                .PrimaryKey(t => new { t.maKhuyenMai, t.maSanPham })
+                .ForeignKey("dbo.KhuyenMais", t => t.maKhuyenMai)
+                .ForeignKey("dbo.Products", t => t.maSanPham)
+                .Index(t => t.maKhuyenMai)
+                .Index(t => t.maSanPham);
+            
+            CreateTable(
+                "dbo.KhuyenMais",
+                c => new
+                    {
+                        maKhuyenMai = c.String(nullable: false, maxLength: 50),
+                        tenKhuyenMai = c.String(nullable: false, maxLength: 100),
+                        moTa = c.String(maxLength: 255),
+                        trangThai = c.String(maxLength: 50),
+                        ngayBatDau = c.DateTime(nullable: false),
+                        ngayKetThuc = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.maKhuyenMai);
             
             CreateTable(
                 "dbo.OrderDetails",
@@ -93,6 +123,9 @@
                         CustomerName = c.String(nullable: false),
                         CustomerPhone = c.String(nullable: false),
                         CustomerAddress = c.String(nullable: false),
+                        CustomerProvince = c.String(nullable: false),
+                        CustomerDistrict = c.String(nullable: false),
+                        CustomerWard = c.String(nullable: false),
                         CustomerEmail = c.String(nullable: false),
                         PaymentMethod = c.String(nullable: false),
                         TotalAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
@@ -151,23 +184,17 @@
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.PhieuDats",
+                "dbo.AspNetUserRoles",
                 c => new
                     {
-                        MaPhieuDat = c.String(nullable: false, maxLength: 128),
-                        UserID = c.String(nullable: false, maxLength: 128),
-                        MaNhaCungCap = c.String(nullable: false, maxLength: 10),
-                        NgayLap = c.DateTime(nullable: false),
-                        NgayCapNhat = c.DateTime(nullable: false),
-                        SoLuong = c.Int(nullable: false),
-                        TongTien = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        TrangThai = c.String(),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.MaPhieuDat)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserID)
-                .ForeignKey("dbo.NhaCungCaps", t => t.MaNhaCungCap)
-                .Index(t => t.UserID)
-                .Index(t => t.MaNhaCungCap);
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.ChiTietPhieuDats",
@@ -181,8 +208,8 @@
                         TongTien = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => new { t.MaPhieuDat, t.ProductID })
-                .ForeignKey("dbo.Products", t => t.ProductID, cascadeDelete: true)
                 .ForeignKey("dbo.PhieuDats", t => t.MaPhieuDat)
+                .ForeignKey("dbo.Products", t => t.ProductID, cascadeDelete: true)
                 .Index(t => t.MaPhieuDat)
                 .Index(t => t.ProductID);
             
@@ -208,17 +235,30 @@
                 c => new
                     {
                         MaPhieuNhap = c.String(nullable: false, maxLength: 128),
-                        UserID = c.String(nullable: false, maxLength: 128),
                         MaPhieuDat = c.String(maxLength: 128),
                         NgayNhap = c.DateTime(nullable: false),
                         SoLan = c.Int(nullable: false),
                         TongTien = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.MaPhieuNhap)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserID)
                 .ForeignKey("dbo.PhieuDats", t => t.MaPhieuDat)
-                .Index(t => t.UserID)
                 .Index(t => t.MaPhieuDat);
+            
+            CreateTable(
+                "dbo.PhieuDats",
+                c => new
+                    {
+                        MaPhieuDat = c.String(nullable: false, maxLength: 128),
+                        MaNhaCungCap = c.String(nullable: false, maxLength: 10),
+                        NgayLap = c.DateTime(nullable: false),
+                        NgayCapNhat = c.DateTime(nullable: false),
+                        SoLuong = c.Int(nullable: false),
+                        TongTien = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        TrangThai = c.String(),
+                    })
+                .PrimaryKey(t => t.MaPhieuDat)
+                .ForeignKey("dbo.NhaCungCaps", t => t.MaNhaCungCap)
+                .Index(t => t.MaNhaCungCap);
             
             CreateTable(
                 "dbo.NhaCungCaps",
@@ -231,19 +271,6 @@
                         email = c.String(maxLength: 100),
                     })
                 .PrimaryKey(t => t.maNhaCungCap);
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -260,55 +287,57 @@
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.ChiTietPhieuDats", "ProductID", "dbo.Products");
+            DropForeignKey("dbo.ChiTietPhieuDats", "MaPhieuDat", "dbo.PhieuDats");
+            DropForeignKey("dbo.ChiTietPhieuNhaps", "MaPhieuNhap", "dbo.PhieuNhaps");
+            DropForeignKey("dbo.PhieuNhaps", "MaPhieuDat", "dbo.PhieuDats");
+            DropForeignKey("dbo.PhieuDats", "MaNhaCungCap", "dbo.NhaCungCaps");
+            DropForeignKey("dbo.ChiTietPhieuNhaps", new[] { "MaPhieuDat", "ProductID" }, "dbo.ChiTietPhieuDats");
             DropForeignKey("dbo.OrderDetails", "ProductID", "dbo.Products");
             DropForeignKey("dbo.OrderDetails", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.Orders", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.PhieuDats", "MaNhaCungCap", "dbo.NhaCungCaps");
-            DropForeignKey("dbo.ChiTietPhieuDats", "MaPhieuDat", "dbo.PhieuDats");
-            DropForeignKey("dbo.ChiTietPhieuDats", "ProductID", "dbo.Products");
-            DropForeignKey("dbo.ChiTietPhieuNhaps", "MaPhieuNhap", "dbo.PhieuNhaps");
-            DropForeignKey("dbo.PhieuNhaps", "MaPhieuDat", "dbo.PhieuDats");
-            DropForeignKey("dbo.PhieuNhaps", "UserID", "dbo.AspNetUsers");
-            DropForeignKey("dbo.ChiTietPhieuNhaps", new[] { "MaPhieuDat", "ProductID" }, "dbo.ChiTietPhieuDats");
-            DropForeignKey("dbo.PhieuDats", "UserID", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.KhuyenMaiSanPhams", "maSanPham", "dbo.Products");
+            DropForeignKey("dbo.KhuyenMaiSanPhams", "maKhuyenMai", "dbo.KhuyenMais");
             DropForeignKey("dbo.Products", "CategoryID", "dbo.Categories");
             DropForeignKey("dbo.CartItems", "ProductID", "dbo.Products");
             DropForeignKey("dbo.Products", "BrandID", "dbo.Brands");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.PhieuDats", new[] { "MaNhaCungCap" });
             DropIndex("dbo.PhieuNhaps", new[] { "MaPhieuDat" });
-            DropIndex("dbo.PhieuNhaps", new[] { "UserID" });
             DropIndex("dbo.ChiTietPhieuNhaps", new[] { "MaPhieuNhap" });
             DropIndex("dbo.ChiTietPhieuNhaps", new[] { "MaPhieuDat", "ProductID" });
             DropIndex("dbo.ChiTietPhieuDats", new[] { "ProductID" });
             DropIndex("dbo.ChiTietPhieuDats", new[] { "MaPhieuDat" });
-            DropIndex("dbo.PhieuDats", new[] { "MaNhaCungCap" });
-            DropIndex("dbo.PhieuDats", new[] { "UserID" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Orders", new[] { "UserId" });
             DropIndex("dbo.OrderDetails", new[] { "OrderId" });
             DropIndex("dbo.OrderDetails", new[] { "ProductID" });
+            DropIndex("dbo.KhuyenMaiSanPhams", new[] { "maSanPham" });
+            DropIndex("dbo.KhuyenMaiSanPhams", new[] { "maKhuyenMai" });
             DropIndex("dbo.CartItems", new[] { "ProductID" });
             DropIndex("dbo.Products", new[] { "CategoryID" });
             DropIndex("dbo.Products", new[] { "BrandID" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.NhaCungCaps");
+            DropTable("dbo.PhieuDats");
             DropTable("dbo.PhieuNhaps");
             DropTable("dbo.ChiTietPhieuNhaps");
             DropTable("dbo.ChiTietPhieuDats");
-            DropTable("dbo.PhieuDats");
+            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Orders");
             DropTable("dbo.OrderDetails");
+            DropTable("dbo.KhuyenMais");
+            DropTable("dbo.KhuyenMaiSanPhams");
             DropTable("dbo.Categories");
             DropTable("dbo.CartItems");
             DropTable("dbo.Products");
