@@ -40,7 +40,7 @@ AFTER UPDATE
 AS
 BEGIN
 	UPDATE Products
-	SET SalePrice = NULL
+	SET SalePrice = 0   -- Sửa
 	FROM inserted i
 	WHERE i.trangThai = N'Đã kết thúc'
 END
@@ -133,7 +133,7 @@ BEGIN
 
     -- Cập nhật donGiaSale của SanPham thành NULL khi KhuyenMai kết thúc
 	UPDATE Products
-	SET SalePrice = NULL
+	SET SalePrice = 0   -- Sửa
 	WHERE ProductID IN (
     SELECT kmsp.maSanPham
     FROM KhuyenMaiSanPhams kmsp

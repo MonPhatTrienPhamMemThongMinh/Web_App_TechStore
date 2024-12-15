@@ -27,6 +27,8 @@ namespace DoAnWebGamingGear.Controllers
                 return HttpNotFound();
             }
 
+            category.Products = category.Products.Where(p => p.Price > 0).ToList();
+
             return View(category);
         }
     }

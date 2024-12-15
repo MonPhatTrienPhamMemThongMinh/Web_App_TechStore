@@ -69,7 +69,19 @@
                                 <div class="product-card-content">
                                     <img src="@Url.Content("~/" + @item.ProductPic)" class="product-image" alt="@item.ProductName" />
                                     <h4 style="color: black; font-size: 20px;">@item.ProductName</h4>
-                                    <p style="color: red; font-size: 20px;">@item.Price.ToString("c").Split(',')[0]<span>đ</span></p>
+                                    @*<p style="color: red; font-size: 20px;">@item.Price.ToString("c").Split(',')[0]<span>đ</span></p>*@
+
+                                    @if (item.SalePrice > 0)
+                                    {
+                                        <p>
+                                            <span style="color: black; text-decoration: line-through; font-size: 16px;">@item.Price.ToString("c").Split(',')[0]đ</span>
+                                            <span style="color: red; font-size: 20px;">@item.SalePrice.ToString("c").Split(',')[0]đ</span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="color: red; font-size: 20px;">@item.Price.ToString("c").Split(',')[0]đ</p>
+                                    }
                                     <button type="submit" class="logout btn-logout" style="width: 200px; text-align: center; display: flex; justify-content: center; align-items: center;">
                                         chọn mua
                                     </button>

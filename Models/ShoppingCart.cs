@@ -12,6 +12,7 @@ namespace DoAnWebGamingGear.Models
         public int CartItemID { get; set; }
         public int shopping_quantity { get; set; }
         public string ProductID { get; set; }
+        public int AvailableQuantity { get; set; }
         public virtual Products Products { get; set; }
     }
 }
