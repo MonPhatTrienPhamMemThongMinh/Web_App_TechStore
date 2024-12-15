@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiResponse.cs" />
     <Compile Include="ChiTietPhieuDat.cs" />
     <Compile Include="ChiTietPhieuNhap.cs" />
     <Compile Include="DBGAMINGGEAR.designer.cs">
@@ -50,9 +49,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBGAMINGGEAR.dbml</DependentUpon>
     </Compile>
-    <Compile Include="District.cs" />
     <Compile Include="KhuyenMaiSanPham.cs" />
     <Compile Include="OrderDetail.cs" />
+    <Compile Include="OrderResponse.cs" />
     <Compile Include="PhieuDat.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

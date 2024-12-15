@@ -9,18 +9,21 @@ using DoAnWebGamingGear.Libraries;
 using System.Configuration;
 using System.Web;
 using System.Data.Entity;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using DoAnWebGamingGear.ViewModel;
 
 namespace DoAnWebGamingGear.Controllers
 {
     public class PaymentController : Controller
     {
         private GamingGearDBContext db = new GamingGearDBContext();
-
         [HttpGet]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var cartItems = Session[userId + "_Cart"] as List<CartItem>;
+            var cartItems = Session[userId + "_Cart"] as List<CartItem>;             
             ViewBag.CartItems = cartItems;
             ViewBag.TotalAmount = cartItems?.Sum(item => item.Products.Price * item.shopping_quantity) ?? 0;
             return View();
@@ -28,7 +31,7 @@ namespace DoAnWebGamingGear.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Checkout(string customerName, string customerPhone, string customerAddress, string customerEmail, string paymentMethod, int? TypePaymentVN)
+        public ActionResult Checkout(string customerName, string customerPhone, string customerAddress,string customerProvince,string customerDistrict,string customerWard, string customerEmail, string paymentMethod, int? TypePaymentVN)
         {
             var userId = User.Identity.GetUserId();
             var cartItems = Session[userId + "_Cart"] as List<CartItem>;
@@ -50,6 +53,9 @@ namespace DoAnWebGamingGear.Controllers
                         CustomerName = customerName,
                         CustomerPhone = customerPhone,
                         CustomerAddress = customerAddress,
+                        CustomerProvince = customerProvince,
+                        CustomerDistrict = customerDistrict,
+                        CustomerWard = customerWard,
                         CustomerEmail = customerEmail,
                         PaymentMethod = paymentMethod,
                         TotalAmount = 0
