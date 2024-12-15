@@ -62,5 +62,9 @@ namespace BLL
         {
             return odal.ThongKeTongDoanhThuTheoThangTrongNam(ngayBatDau, ngayKetThuc);
         }
+        public bool XacNhanDonHang(string maDonHang)
+        {
+            return odal.XacNhanDonHang(maDonHang);
+        }
     }
 }

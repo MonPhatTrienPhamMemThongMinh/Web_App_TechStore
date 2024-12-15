@@ -24,6 +24,8 @@ namespace DoAnWebGamingGear.Models
         [Required]
         public string CustomerAddress { get; set; }
         [Required]
+        public string CustomerProvince { get; set; }
+        [Required]
         public string CustomerDistrict { get; set; }
         [Required]
         public string CustomerWard { get; set; }

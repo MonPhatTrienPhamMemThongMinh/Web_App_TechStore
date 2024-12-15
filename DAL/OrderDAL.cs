@@ -140,14 +140,12 @@ namespace DAL
             }
             return 0; 
         }
-
         public int TongSoHoaDonTheoKhoangThoiGian(DateTime batDau, DateTime ketThuc)
         {
             return db.Orders
                 .Where(hd => hd.CreatedDate.Date >= batDau.Date && hd.CreatedDate.Date <= ketThuc.Date)
                 .Count();
         }
-
         public Dictionary<DateTime?, decimal> ThongKeTongDoanhThuCuaTungNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
             var doanhThuTheoNgay = db.Orders
@@ -204,6 +202,20 @@ namespace DAL
                 return new List<ThongKeDoanhThuTheoThang>();
             }
             return doanhThuTheoThang;
+        }
+        public bool XacNhanDonHang(string maDonHang)
+        {
+            try
+            {
+                Order orderEdited = db.Orders.Where(od=>od.OrderId == maDonHang).FirstOrDefault();
+                orderEdited.Status = "Đã xác nhận";
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

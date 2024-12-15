@@ -57,7 +57,7 @@ namespace App_QLWeb_DoDienTu
             if (dgvHoaDon.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvHoaDon.SelectedRows[0];
-                MaHoaDon = selectedRow.Cells["OrderID"].Value.ToString();
+                MaHoaDon = selectedRow.Cells["maDonHang"].Value.ToString();
             }
         }
         private void BtnXemChiTiet_Click(object sender, EventArgs e)
@@ -156,12 +156,16 @@ namespace App_QLWeb_DoDienTu
                 e.FormattingApplied = true;
             }
         }
+        private void LoadOrder()
+        {
+            List<Order> orders = odbll.LoadAllOrders();
+            SettingDgv(orders);
+        }
         private void FrmOrder_Load(object sender, EventArgs e)
         {
             this.dtpNgayBatDau.MaxDate = DateTime.Now.Date;
             this.dtpNgayKetThuc.MaxDate = DateTime.Now.Date;
-            List<Order> orders = odbll.LoadAllOrders();
-            SettingDgv(orders);
+            LoadOrder();
             LoadTieuChiCombobox();
             LoadStatusCombobox();
             decimal tongDoanhThu = odbll.TinhTongDoanhThu();
@@ -186,6 +190,7 @@ namespace App_QLWeb_DoDienTu
             dgvHoaDon.Columns["AspNetUser"].Visible = false;
             dgvHoaDon.Columns["UserId"].Visible = false;
             dgvHoaDon.Columns["CustomerEmail"].Visible = false;
+            dgvHoaDon.Columns["CustomerProvince"].Visible = false;
             dgvHoaDon.Columns["CustomerWard"].Visible = false;
             dgvHoaDon.Columns["CustomerDistrict"].Visible = false;
         }
@@ -213,48 +218,28 @@ namespace App_QLWeb_DoDienTu
 
             cboStatus.SelectedIndex = 0;
         }
-        private async void btnXacNhan_Click(object sender, EventArgs e)
+        private async void btnTaoDonGiaoHang_Click(object sender, EventArgs e)
         {
-            if (dgvHoaDon.SelectedRows.Count>0)
+            if (MaHoaDon!=null)
             {
-                foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
+                Order order = odbll.LoadHoaDonTheoMa(MaHoaDon);
+                if (order.Status=="Đã xác nhận")
                 {
-                    Order order = odbll.LoadHoaDonTheoMa(item.Cells["maDonHang"].Value.ToString());
-                    string districtName = order.CustomerDistrict;
-                    string wardName = order.CustomerWard;
+                    int districtId = int.Parse(order.CustomerDistrict);
+                    string wardCode = order.CustomerWard;
                     string to_name = order.CustomerName;
                     string to_phone = order.CustomerPhone;
                     string to_address = order.CustomerAddress;
-                    int? districtId = 0;
-                    string wardCode = "";
-                    int priceCOD = (order.PaymentMethod !="Chuyển khoản ngân hàng") ? int.Parse(order.TotalAmount.ToString().Split(',')[0]) : 0;                  
+                    int priceCOD = (order.PaymentMethod != "Chuyển khoản ngân hàng") ? int.Parse(order.TotalAmount.ToString().Split(',')[0]) : 0;
                     List<OrderDetail> details = orderDetailBLL.LoadOrderDetail(order.OrderId);
-                    var items = details.Select(p=> new {name = p.ProductName, quantity = p.Quantity});
-                    try
-                    {
-                        var districtHelper = new DistrictHelper();
-                        districtId = await districtHelper.GetDistrictIdByNameAsync(districtName);
-                        if (districtId.HasValue)
-                        {
-                            MessageBox.Show($"District ID của '{districtName}' là: {districtId}");
-                            WardHelper wardHelper = new WardHelper();
-                            wardCode = await wardHelper.GetWardIdAsync(districtId, wardName);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy quận/huyện phù hợp.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
-                    }
+                    var items = details.Select(p => new { name = p.ProductName, quantity = p.Quantity });
                     var orderData = new
                     {
                         shop_id = 5522958, // ID cửa hàng từ GHN
                         payment_type_id = 2,
                         note = "Giao hàng nhanh",
-                        required_note = "KHONGCHOXEMHANG",
+                        client_order_code = order.OrderId,
+                        required_note = "CHOXEMHANGKHONGTHU",
                         from_name = "Đặng Hoàng Phúc",
                         from_phone = "0888003346",
                         from_address = "469/32 Nguyễn Kiệm, Phường 9, Quận Phú Nhuận, Hồ Chí Minh, Vietnam",
@@ -291,7 +276,8 @@ namespace App_QLWeb_DoDienTu
                             if (response.IsSuccessStatusCode)
                             {
                                 string result = await response.Content.ReadAsStringAsync();
-                                MessageBox.Show("Đơn hàng tạo thành công: " + result);
+                                var maDonHang = JsonConvert.DeserializeObject<OrderResponse>(result);
+                                MessageBox.Show(this, "Đơn hàng tạo thành công: " + maDonHang.order_code, "Tạo đơn hàng thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -304,14 +290,37 @@ namespace App_QLWeb_DoDienTu
                     {
                         MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
                     }
-                }                
+                }
+                else
+                {
+                    MessageBox.Show(this, "Đơn hàng chưa được xác nhận không thể tạo đơn giao hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show(this, "Vui lòng chọn 1 hóa đơn để xác nhận đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Vui lòng chọn 1 đơn hàng để xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnXacNhan_Click(object sender, EventArgs e)
+        {
+            if (MaHoaDon!=null)
+            {
+                Order order = odbll.LoadHoaDonTheoMa(MaHoaDon);
+                if (order.Status != "Đã xác nhận")
+                {
+                    bool result = odbll.XacNhanDonHang(order.OrderId);
+                    if (result)
+                    {
+                        MessageBox.Show(this, "Xác nhận đơn hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadOrder();
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Xác nhận đơn hàng thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }       
     }
 }
 

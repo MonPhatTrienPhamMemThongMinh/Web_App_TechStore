@@ -51,7 +51,6 @@
     <Compile Include="CategoryBLL.cs" />
     <Compile Include="ChiTietPhieuDatBLL.cs" />
     <Compile Include="ChiTietPhieuNhapBLL.cs" />
-    <Compile Include="DistrictHelper.cs" />
     <Compile Include="KhuyenMaiBLL.cs" />
     <Compile Include="KhuyenMaiSanPhamBLL.cs" />
     <Compile Include="OrderBLL.cs" />
@@ -64,7 +63,6 @@
     <Compile Include="SupplierBLL.cs" />
     <Compile Include="UserBLL.cs" />
     <Compile Include="UserRoleBLL.cs" />
-    <Compile Include="WardHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
