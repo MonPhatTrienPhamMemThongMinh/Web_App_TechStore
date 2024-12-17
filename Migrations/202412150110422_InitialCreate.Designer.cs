@@ -13,11 +13,7 @@ namespace DoAnWebGamingGear.Migrations
         
         string IMigrationMetadata.Id
         {
-<<<<<<<< HEAD:Migrations/202412150120299_InitialCreate.Designer.cs
-            get { return "202412150120299_InitialCreate"; }
-========
             get { return "202412150110422_InitialCreate"; }
->>>>>>>> a1c937059287ae52724edf6312e882847733c9dc:Migrations/202412150110422_InitialCreate.Designer.cs
         }
         
         string IMigrationMetadata.Source

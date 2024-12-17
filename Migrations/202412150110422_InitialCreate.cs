@@ -123,10 +123,7 @@
                         CustomerName = c.String(nullable: false),
                         CustomerPhone = c.String(nullable: false),
                         CustomerAddress = c.String(nullable: false),
-<<<<<<<< HEAD:Migrations/202412150120299_InitialCreate.cs
-========
                         CustomerProvince = c.String(nullable: false),
->>>>>>>> a1c937059287ae52724edf6312e882847733c9dc:Migrations/202412150110422_InitialCreate.cs
                         CustomerDistrict = c.String(nullable: false),
                         CustomerWard = c.String(nullable: false),
                         CustomerEmail = c.String(nullable: false),
@@ -290,13 +287,8 @@
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-<<<<<<<< HEAD:Migrations/202412150120299_InitialCreate.cs
-            DropForeignKey("dbo.ChiTietPhieuDats", "MaPhieuDat", "dbo.PhieuDats");
-            DropForeignKey("dbo.ChiTietPhieuDats", "ProductID", "dbo.Products");
-========
             DropForeignKey("dbo.ChiTietPhieuDats", "ProductID", "dbo.Products");
             DropForeignKey("dbo.ChiTietPhieuDats", "MaPhieuDat", "dbo.PhieuDats");
->>>>>>>> a1c937059287ae52724edf6312e882847733c9dc:Migrations/202412150110422_InitialCreate.cs
             DropForeignKey("dbo.ChiTietPhieuNhaps", "MaPhieuNhap", "dbo.PhieuNhaps");
             DropForeignKey("dbo.PhieuNhaps", "MaPhieuDat", "dbo.PhieuDats");
             DropForeignKey("dbo.PhieuDats", "MaNhaCungCap", "dbo.NhaCungCaps");
