@@ -35,7 +35,7 @@ namespace App_QLWeb_DoDienTu
                 {
                     PhieuDat phieuDat = danhSachPhieuDat[i];
                     List<PhieuNhap> danhSachPhieuNhap = phieuNhapBLL.TimKiemPhieuNhapTheoMaPhieuDat(phieuDat.MaPhieuDat);
-                    if (danhSachPhieuNhap.Count == 3 || (phieuDat.NgayLap.Hour + 5 > DateTime.Now.Hour && phieuDat.NgayLap.Day == DateTime.Now.Day))
+                    if (danhSachPhieuNhap.Count == 3 || (phieuDat.NgayLap.Hour + 2 > DateTime.Now.Hour && phieuDat.NgayLap.Day == DateTime.Now.Day))
                     {
                         danhSachPhieuDat.Remove(phieuDat);
                     }

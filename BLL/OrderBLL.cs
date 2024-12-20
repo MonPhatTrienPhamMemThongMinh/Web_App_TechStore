@@ -22,7 +22,10 @@ namespace BLL
         {
             return odal.TimKiemVaLocHoaDon(tieuChi, giaTriTimKiem, ngayBatDau, ngayKetThuc, trangThai);
         }
-
+        public List<Order> LayDanhSachDonHangDangDuocGiao()
+        {
+            return odal.LayDanhSachDonHangDangDuocGiao();
+        }
         public Order LoadHoaDonTheoMa(string mahd)
         {
             return odal.LoadHoaDonTheoMa(mahd);
@@ -65,6 +68,10 @@ namespace BLL
         public bool XacNhanDonHang(string maDonHang)
         {
             return odal.XacNhanDonHang(maDonHang);
+        }
+        public bool CapNhatTrangThaiDonHang(string maDonHang, string trangThai)
+        {
+            return odal.CapNhatTrangThaiDonHang(maDonHang,trangThai);
         }
     }
 }

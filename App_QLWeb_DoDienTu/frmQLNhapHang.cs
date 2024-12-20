@@ -68,7 +68,7 @@ namespace App_QLWeb_DoDienTu
             string maPhieuNhap = dtgvPhieuNhap.Rows[e.RowIndex].Cells["maPhieuNhap"].Value.ToString();
             bindingSourceCTPN.DataSource = chiTietPhieuNhapBLL.LayDanhSachChiTietPhieuNhap(maPhieuNhap);
             dtgvChiTietPhieuNhap.DataSource = bindingSourceCTPN;
-            dtgvChiTietPhieuNhap.Columns["phieuDat"].Visible = false;
+            dtgvChiTietPhieuNhap.Columns["maPD"].DisplayIndex = 1;
             dtgvChiTietPhieuNhap.Columns["PhieuNhap"].Visible = false;
             dtgvChiTietPhieuNhap.Columns["ChiTietPhieuDat"].Visible = false;
         }
