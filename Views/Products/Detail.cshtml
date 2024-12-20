@@ -37,13 +37,17 @@
                             {
                                 if (User.Identity.IsAuthenticated)
                                 {
-                                    <button type="submit" class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;">
+                                    <button type="submit" 
+                                            class="logout btn-logout" 
+                                            style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;">
                                         Chọn mua
                                     </button>
                                 }
                                 else
                                 {
-                                    <a class="logout btn-logout" style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;" href="@Url.Action("Login", "Account", new { ReturnUrl = Request.Url.PathAndQuery })">
+                                    <a class="logout btn-logout" 
+                                       style="width: 800px; text-align: center; display: flex; justify-content: center; align-items: center;" 
+                                       href="@Url.Action("SaveReturnUrlAndRedirectToLogin", "Account", new { returnUrl = Request.Url.PathAndQuery })">
                                         Chọn mua
                                     </a>
                                 }

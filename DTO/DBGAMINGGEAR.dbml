@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBGAMINGGEAR" Class="DBGAMINGGEARDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=ADMIN-PC;Initial Catalog=DBGAMINGGEAR;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="DBGAMINGGEARConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI;Initial Catalog=DBGAMINGGEAR;Integrated Security=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="DBGAMINGGEARConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.[__MigrationHistory]" Member="__MigrationHistories">
     <Type Name="__MigrationHistory">
       <Column Name="MigrationId" Type="System.String" DbType="NVarChar(150) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -8,25 +8,15 @@
       <Column Name="ProductVersion" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Products" Member="Products">
-    <Type Name="Product">
-      <Column Name="ProductID" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ProductDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BrandID" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
-      <Column Name="CategoryID" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
-      <Column Name="AvailabilityStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BaoHanh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ProductName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="ProductPic" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SalePrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Product_CartItem" Member="CartItems" ThisKey="ProductID" OtherKey="ProductID" Type="CartItem" />
-      <Association Name="Product_ChiTietPhieuDat" Member="ChiTietPhieuDats" ThisKey="ProductID" OtherKey="ProductID" Type="ChiTietPhieuDat" />
-      <Association Name="Product_KhuyenMaiSanPham" Member="KhuyenMaiSanPhams" ThisKey="ProductID" OtherKey="maSanPham" Type="KhuyenMaiSanPham" />
-      <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ProductID" OtherKey="ProductID" Type="OrderDetail" />
-      <Association Name="Brand_Product" Member="Brand" ThisKey="BrandID" OtherKey="BrandID" Type="Brand" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Category_Product" Member="Category" ThisKey="CategoryID" OtherKey="CategoryID" Type="Category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+  <Table Name="dbo.PhieuNhaps" Member="PhieuNhaps">
+    <Type Name="PhieuNhap">
+      <Column Name="MaPhieuNhap" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="NgayNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SoLan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="PhieuNhap_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaPhieuNhap" OtherKey="MaPhieuNhap" Type="ChiTietPhieuNhap" />
+      <Association Name="PhieuDat_PhieuNhap" Member="PhieuDat" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuDat" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
@@ -179,8 +169,8 @@
       <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Association Name="Product_OrderDetail" Member="Product" ThisKey="ProductID" OtherKey="ProductID" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Order_OrderDetail" Member="Order" ThisKey="OrderId" OtherKey="OrderId" Type="Order" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Product_OrderDetail" Member="Product" ThisKey="ProductID" OtherKey="ProductID" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Orders" Member="Orders">
@@ -202,6 +192,27 @@
       <Association Name="AspNetUser_Order" Member="AspNetUser" ThisKey="UserId" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="ProductID" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BrandID" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="AvailabilityStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BaoHanh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductPic" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SalePrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Product_CartItem" Member="CartItems" ThisKey="ProductID" OtherKey="ProductID" Type="CartItem" />
+      <Association Name="Product_ChiTietPhieuDat" Member="ChiTietPhieuDats" ThisKey="ProductID" OtherKey="ProductID" Type="ChiTietPhieuDat" />
+      <Association Name="Product_KhuyenMaiSanPham" Member="KhuyenMaiSanPhams" ThisKey="ProductID" OtherKey="maSanPham" Type="KhuyenMaiSanPham" />
+      <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ProductID" OtherKey="ProductID" Type="OrderDetail" />
+      <Association Name="Brand_Product" Member="Brand" ThisKey="BrandID" OtherKey="BrandID" Type="Brand" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Category_Product" Member="Category" ThisKey="CategoryID" OtherKey="CategoryID" Type="Category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.PhieuDats" Member="PhieuDats">
     <Type Name="PhieuDat">
       <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -211,28 +222,17 @@
       <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="TrangThai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="PhieuDat_ChiTietPhieuDat" Member="ChiTietPhieuDats" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="ChiTietPhieuDat" />
       <Association Name="PhieuDat_PhieuNhap" Member="PhieuNhaps" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuNhap" />
+      <Association Name="PhieuDat_ChiTietPhieuDat" Member="ChiTietPhieuDats" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="ChiTietPhieuDat" />
       <Association Name="NhaCungCap_PhieuDat" Member="NhaCungCap" ThisKey="MaNhaCungCap" OtherKey="maNhaCungCap" Type="NhaCungCap" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PhieuNhaps" Member="PhieuNhaps">
-    <Type Name="PhieuNhap">
-      <Column Name="MaPhieuNhap" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaPhieuDat" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Column Name="NgayNhap" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="SoLan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Association Name="PhieuNhap_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaPhieuNhap" OtherKey="MaPhieuNhap" Type="ChiTietPhieuNhap" />
-      <Association Name="PhieuDat_PhieuNhap" Member="PhieuDat" ThisKey="MaPhieuDat" OtherKey="MaPhieuDat" Type="PhieuDat" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Function Name="dbo.XoaPhieuDat_Proc" Method="XoaPhieuDat_Proc">
-    <Parameter Name="maPhieuDat" Type="System.String" DbType="VarChar(128)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.CapNhatSoLuongSanPham_Proc" Method="CapNhatSoLuongSanPham_Proc">
     <Parameter Name="maHD" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.XoaPhieuDat_Proc" Method="XoaPhieuDat_Proc">
+    <Parameter Name="maPhieuDat" Type="System.String" DbType="VarChar(128)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
