@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Asn1.Cmp;
+using System.Threading;
 
 namespace App_QLWeb_DoDienTu
 {
@@ -20,11 +22,13 @@ namespace App_QLWeb_DoDienTu
         OrderBLL odbll = new OrderBLL();
         OrderDetailBLL orderDetailBLL = new OrderDetailBLL();
         private string MaHoaDon;
-        private const string ApiKey = "5c296349-b9e1-11ef-9083-dadc35c0870d"; // Thay bằng API Key của bạn
+        private const string ApiKey = "5c296349-b9e1-11ef-9083-dadc35c0870d";
         private const string CreateOrderUrl = "https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create";
+        private const string apiUrl = "https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/detail-by-client-code";
+        private static CancellationTokenSource _cts;
         public frmOrder()
         {
-            InitializeComponent();
+            InitializeComponent();            
             this.Load += FrmOrder_Load;
             this.dtpNgayBatDau.Value = this.dtpNgayKetThuc.Value;
             this.btnReset.Click += BtnReset_Click;
@@ -37,6 +41,107 @@ namespace App_QLWeb_DoDienTu
             this.dgvHoaDon.SelectionChanged += DgvHoaDon_SelectionChanged;
             this.dgvHoaDon.CellFormatting += DgvHoaDon_CellFormatting;
             this.btnXemChiTiet.Click += BtnXemChiTiet_Click;
+            this.btnTaoDonGiao.Click += btnTaoDonGiaoHang_Click;
+            this.btnXacNhan.Click += btnXacNhan_Click;
+            //this.btnHuyDonGiao.Click += BtnHuyDonGiao_Click;
+            this.FormClosed += FrmOrder_FormClosed;
+        }
+        private void BtnHuyDonGiao_Click(object sender, EventArgs e)
+        {
+            if (MaHoaDon != null)
+            {
+                Order order = odbll.LoadHoaDonTheoMa(MaHoaDon);
+                if (order.Status == "Đơn hàng không giao được")
+                {
+                    bool result = odbll.CapNhatTrangThaiDonHang(order.OrderId,"Đơn hàng bị hủy");
+                    if (result)
+                    {
+                        MessageBox.Show(this, "Hủy đơn hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadOrder();
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Hủy đơn hàng thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+        private void FrmOrder_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _cts.Cancel();
+            _cts = null;
+        }
+        private async Task BackgroundTask(CancellationToken cancellationToken)
+        {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                await UpdateOrderStatuses();
+                await Task.Delay(TimeSpan.FromMinutes(1), cancellationToken);
+            }
+        }        
+        private async Task UpdateOrderStatuses()
+        {
+            List<Order> _orders = odbll.LayDanhSachDonHangDangDuocGiao();
+            foreach (var order in _orders)
+            {
+                string trangThai = await GetOrderStatus(order.OrderId);
+                switch (trangThai)
+                {
+                    case "transporting":
+                        odbll.CapNhatTrangThaiDonHang(order.OrderId, "Đang được giao");
+                        break;
+                    case "delivered":
+                        odbll.CapNhatTrangThaiDonHang(order.OrderId, "Đã giao thành công");
+                        break;                 
+                    case "picked":
+                        odbll.CapNhatTrangThaiDonHang(order.OrderId, "Đơn vị vận chuyển đã lấy hàng");
+                        break;
+                    case "delivery_fail":
+                        odbll.CapNhatTrangThaiDonHang(order.OrderId, "Đơn hàng không giao được");
+                        break;
+                    case "returned":
+                        odbll.CapNhatTrangThaiDonHang(order.OrderId, "Đơn hàng được trả về cửa hàng");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            dgvHoaDon.Refresh();
+        }
+        private async Task<string> GetOrderStatus(string clientOrderCode)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Add("Token", ApiKey);
+                    var requestBody = new
+                    {
+                        client_order_code = clientOrderCode
+                    };
+                    string jsonBody = JsonConvert.SerializeObject(requestBody);
+                    StringContent content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        dynamic responseObject = JsonConvert.DeserializeObject(responseContent);
+                        string orderStatus = responseObject.data.status;
+                        return orderStatus;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Lỗi: {response.StatusCode}, {response.ReasonPhrase}");
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Đã xảy ra lỗi: {ex.Message}");
+                return null;
+            }
         }
         private void DtpNgayBatDau_ValueChanged(object sender, EventArgs e)
         {
@@ -58,6 +163,32 @@ namespace App_QLWeb_DoDienTu
             {
                 DataGridViewRow selectedRow = dgvHoaDon.SelectedRows[0];
                 MaHoaDon = selectedRow.Cells["maDonHang"].Value.ToString();
+                string trangThai = selectedRow.Cells["trangThai"].Value.ToString();
+                if (trangThai=="Đã xác nhận")
+                {
+                    //btnHuyDonGiao.Enabled = true;
+                    btnTaoDonGiao.Enabled = false;
+                }                
+                else
+                {
+                    //btnHuyDonGiao.Enabled=false;
+                    if (trangThai=="Chưa thanh toán"||trangThai=="Đã thanh toán")
+                    {
+                        btnTaoDonGiao.Enabled = true;
+                    }
+                    else
+                    {
+                        btnTaoDonGiao.Enabled = false;
+                    }
+                }
+                //if (trangThai=="Đơn hàng không giao được")
+                //{
+                //    btnHuyDonGiao.Enabled = true;
+                //}
+                //else
+                //{
+                //    btnHuyDonGiao.Enabled = false;
+                //}
             }
         }
         private void BtnXemChiTiet_Click(object sender, EventArgs e)
@@ -170,6 +301,11 @@ namespace App_QLWeb_DoDienTu
             LoadStatusCombobox();
             decimal tongDoanhThu = odbll.TinhTongDoanhThu();
             lblTongDoanhThu.Text = "Tổng doanh thu: " + tongDoanhThu.ToString("N0").Replace(",", ".") + "đ";
+            if (_cts == null)
+            {
+                _cts = new CancellationTokenSource();
+                _ = BackgroundTask(_cts.Token); // Bắt đầu tác vụ
+            }
         }
         private void CboTieuChi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -235,7 +371,7 @@ namespace App_QLWeb_DoDienTu
                     var items = details.Select(p => new { name = p.ProductName, quantity = p.Quantity });
                     var orderData = new
                     {
-                        shop_id = 5522958, // ID cửa hàng từ GHN
+                        shop_id = 2509396,
                         payment_type_id = 2,
                         note = "Giao hàng nhanh",
                         client_order_code = order.OrderId,
@@ -253,9 +389,9 @@ namespace App_QLWeb_DoDienTu
                         to_phone = to_phone,
                         to_address = to_address,
                         to_ward_code = wardCode,
-                        to_district_id = districtId, // ID quận/huyện từ GHN
-                        cod_amount = priceCOD, // Tiền thu hộ
-                        weight = 500, // Trọng lượng (gram)
+                        to_district_id = districtId,
+                        cod_amount = priceCOD,
+                        weight = 500,
                         length = 10,
                         width = 10,
                         height = 10,
@@ -276,8 +412,10 @@ namespace App_QLWeb_DoDienTu
                             if (response.IsSuccessStatusCode)
                             {
                                 string result = await response.Content.ReadAsStringAsync();
-                                var maDonHang = JsonConvert.DeserializeObject<OrderResponse>(result);
-                                MessageBox.Show(this, "Đơn hàng tạo thành công: " + maDonHang.order_code, "Tạo đơn hàng thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                dynamic responseData = JsonConvert.DeserializeObject(result);
+                                string maDonHang = responseData.data.order_code;
+                                odbll.CapNhatTrangThaiDonHang(order.OrderId, "Đã tạo đơn giao hàng");
+                                MessageBox.Show(this, "Đơn hàng tạo thành công: " + maDonHang, "Tạo đơn hàng thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -290,10 +428,10 @@ namespace App_QLWeb_DoDienTu
                     {
                         MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
                     }
-                }
+                }              
                 else
                 {
-                    MessageBox.Show(this, "Đơn hàng chưa được xác nhận không thể tạo đơn giao hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Đơn hàng đã bị hủy không thể tạo đơn giao hàng mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -320,7 +458,7 @@ namespace App_QLWeb_DoDienTu
                     }
                 }
             }
-        }       
+        }
     }
 }
 

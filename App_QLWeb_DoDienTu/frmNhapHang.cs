@@ -188,17 +188,6 @@ namespace App_QLWeb_DoDienTu
             }
             txtTongTien.Text = tongTien.ToString("C0");
         }
-        private bool KiemTraNgaySanXuat_HanSuDung()
-        {
-            foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
-            {
-                if (row.Cells["ngaySanXuat"].Value == null || row.Cells["hanSuDung"].Value == null)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
         private void ThemPhieuNhap()
         {
             decimal tongTien = decimal.Parse(txtTongTien.Text.Replace("₫", "").Replace(".", "").Split(',')[0].Trim());
@@ -213,47 +202,37 @@ namespace App_QLWeb_DoDienTu
             bool result = phieuNhapBLL.TaoPhieuNhap(phieu);
             if (result)
             {
-                if (KiemTraNgaySanXuat_HanSuDung())
+                foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
                 {
-                    foreach (DataGridViewRow row in dtgvSanPhamTrongPhieuNhap.Rows)
+                    int soLuongNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
+                    decimal donGia = decimal.Parse(row.Cells["donGiaSP"].Value.ToString().Split(',')[0].Trim());
+                    decimal thanhTien = decimal.Parse(row.Cells["thanhTien"].Value.ToString().Split(',')[0].Trim());
+                    if (soLuongNhan > 0)
                     {
-                        int soLuongNhan = int.Parse(row.Cells["soLuongDaNhan"].Value.ToString());
-                        decimal donGia = decimal.Parse(row.Cells["donGiaSP"].Value.ToString().Split(',')[0].Trim());
-                        decimal thanhTien = decimal.Parse(row.Cells["thanhTien"].Value.ToString().Split(',')[0].Trim());
-                        string ngaySanXuat = row.Cells["ngaySanXuat"].Value.ToString();
-                        string hanSuDung = row.Cells["hanSuDung"].Value.ToString();
-                        if (soLuongNhan > 0)
+                        ChiTietPhieuNhap chiTietPhieuNhap = new ChiTietPhieuNhap()
                         {
-                            ChiTietPhieuNhap chiTietPhieuNhap = new ChiTietPhieuNhap()
-                            {
-                                MaPhieuNhap = maPhieuNhap,
-                                MaPhieuDat = txtMaPhieuDat.Text,
-                                ProductID = row.Cells["maSP"].Value.ToString(),
-                                SoLuong = soLuongNhan,
-                                DonGia = donGia,
-                                TongTien = thanhTien,
-                            };
-                            chiTietPhieuNhapBLL.TaoChiTietPhieuNhap(chiTietPhieuNhap);
-                        }
+                            MaPhieuNhap = maPhieuNhap,
+                            MaPhieuDat = txtMaPhieuDat.Text,
+                            ProductID = row.Cells["maSP"].Value.ToString(),
+                            SoLuong = soLuongNhan,
+                            DonGia = donGia,
+                            TongTien = thanhTien,
+                        };
+                        chiTietPhieuNhapBLL.TaoChiTietPhieuNhap(chiTietPhieuNhap);
                     }
-                    MessageBox.Show(this, "Tạo phiếu nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult r = MessageBox.Show(this, "Bạn có muốn in phiếu nhập ra không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (r == DialogResult.Yes)
-                    {
-                        frmPhieuNhapHang frmPhieuNhapHang = new frmPhieuNhapHang(maPhieuNhap);
-                        frmPhieuNhapHang.DongForm += FrmPhieuNhapHang_DongForm;
-                        frmPhieuNhapHang.ShowDialog();
-                    }
-                    else
-                    {
-                        DongForm?.Invoke(true);
-                        this.Close();
-                    }
+                }
+                MessageBox.Show(this, "Tạo phiếu nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult r = MessageBox.Show(this, "Bạn có muốn in phiếu nhập ra không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (r == DialogResult.Yes)
+                {
+                    frmPhieuNhapHang frmPhieuNhapHang = new frmPhieuNhapHang(maPhieuNhap);
+                    frmPhieuNhapHang.DongForm += FrmPhieuNhapHang_DongForm;
+                    frmPhieuNhapHang.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show(this, "Tạo phiếu nhập lỗi do có 1 số sản phẩm chưa có ngày sản xuất hoặc hạn sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    phieuNhapBLL.XoaPhieuNhap(phieu.MaPhieuNhap, phieu.SoLan);
+                    DongForm?.Invoke(true);
+                    this.Close();
                 }
             }
             else

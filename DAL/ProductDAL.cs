@@ -230,13 +230,13 @@ namespace DAL
                 var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
                 if (brand != null)
                 {
-                    product.BrandName = brand.BrandName.ToLower();
+                    product.BrandName = brand.BrandName;
                 }
 
                 var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
                 if (category != null)
                 {
-                    product.CategoryName = category.CategoryName.ToLower();
+                    product.CategoryName = category.CategoryName;
                 }
             }
 
@@ -250,13 +250,13 @@ namespace DAL
                 var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
                 if (brand != null)
                 {
-                    product.BrandName = brand.BrandName.ToLower();
+                    product.BrandName = brand.BrandName;
                 }
 
                 var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
                 if (category != null)
                 {
-                    product.CategoryName = category.CategoryName.ToLower();
+                    product.CategoryName = category.CategoryName;
                 }
             }
             return danhSach;
@@ -269,13 +269,13 @@ namespace DAL
                 var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
                 if (brand != null)
                 {
-                    product.BrandName = brand.BrandName.ToLower();
+                    product.BrandName = brand.BrandName;
                 }
 
                 var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
                 if (category != null)
                 {
-                    product.CategoryName = category.CategoryName.ToLower();
+                    product.CategoryName = category.CategoryName;
                 }
             }
             return danhSach;
@@ -288,13 +288,13 @@ namespace DAL
                 var brand = db.Brands.FirstOrDefault(b => b.BrandID == product.BrandID);
                 if (brand != null)
                 {
-                    product.BrandName = brand.BrandName.ToLower();
+                    product.BrandName = brand.BrandName;
                 }
 
                 var category = db.Categories.FirstOrDefault(c => c.CategoryID == product.CategoryID);
                 if (category != null)
                 {
-                    product.CategoryName = category.CategoryName.ToLower();
+                    product.CategoryName = category.CategoryName;
                 }
             }
             return danhSach;
