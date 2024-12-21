@@ -17,24 +17,24 @@ namespace DAL
             try
             {
                 var orders = db.Orders.Select(hd => hd).OrderByDescending(hd => hd.OrderId).ToList<Order>();
-                //foreach (var order in orders)
-                //{
-                //    if (order.Status == true)
-                //    {
-                //        order.statusText = "Đã thanh toán";
-                //    }
-                //    else
-                //    {
-                //        order.statusText = "Chưa thanh toán";
-                //    }
-                //}
                 return orders;
             }
             catch
             {
                 return new List<Order>();
             }
-
+        }
+        public List<Order> LayDanhSachDonHangDangDuocGiao()
+        {
+            try
+            {
+                var orders = db.Orders.Where(hd=>hd.Status!="Đã xác nhận"|| hd.Status!="Đã giao thành công" || hd.Status!= "Đơn hàng được trả về cửa hàng" || hd.Status!="Chưa thanh toán" || hd.Status!="Đã thanh toán").Select(hd => hd).OrderByDescending(hd => hd.OrderId).ToList<Order>();
+                return orders;
+            }
+            catch
+            {
+                return new List<Order>();
+            }
         }
         public static string RemoveVietnameseDaus(string input)
         {
@@ -163,7 +163,6 @@ namespace DAL
             }
             return doanhThuTheoNgay;
         }
-
         // Lọc hôm nay
         public Dictionary<int, decimal> ThongKeTongDoanhThuTheoGioTrongNgay(DateTime ngay)
         {
@@ -183,7 +182,6 @@ namespace DAL
             }
             return doanhThuTheoGio;
         }
-
         // Lọc năm nay
         public List<ThongKeDoanhThuTheoThang> ThongKeTongDoanhThuTheoThangTrongNam(DateTime ngayBatDau, DateTime ngayKetThuc)
         {
@@ -209,6 +207,20 @@ namespace DAL
             {
                 Order orderEdited = db.Orders.Where(od=>od.OrderId == maDonHang).FirstOrDefault();
                 orderEdited.Status = "Đã xác nhận";
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool CapNhatTrangThaiDonHang(string maDonHang,string trangThai)
+        {
+            try
+            {
+                Order orderEdited = db.Orders.Where(od => od.OrderId == maDonHang).FirstOrDefault();
+                orderEdited.Status = trangThai;
                 db.SubmitChanges();
                 return true;
             }

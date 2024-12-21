@@ -21,7 +21,7 @@ BEGIN
 		END
 END
 GO
-CREATE TRIGGER TRG_CapNhatSoLuongSanPham
+ALTER TRIGGER TRG_CapNhatSoLuongSanPham
 ON Orders
 AFTER UPDATE
 AS
@@ -31,6 +31,10 @@ BEGIN
 	IF(@trangThai = N'Đã xác nhận')
 		BEGIN
 			EXEC CapNhatSoLuongSanPham_Proc @maHD = @maHD
+		END
+	ELSE IF(@trangThai = N'Đơn hàng được trả về cửa hàng')
+		BEGIN
+			EXEC CapNhatSoLuongSanPham_Tang_Proc @maHD = @maHD
 		END
 END;
 GO
@@ -160,6 +164,23 @@ AS
 	BEGIN
 		UPDATE Products
 		SET Quantity = Quantity - @soLuong
+		WHERE ProductID = @maSanPham
+		FETCH NEXT FROM CS_DuyetSanPham INTO @maSanPham, @soLuong
+	END
+	CLOSE CS_DuyetSanPham
+	DEALLOCATE CS_DuyetSanPham
+GO
+CREATE PROCEDURE CapNhatSoLuongSanPham_Tang_Proc @maHD NVARCHAR(128)
+AS
+	DECLARE @maSanPham NVARCHAR(128), @soLuong INT
+	DECLARE CS_DuyetSanPham CURSOR FOR
+	SELECT ProductID , Quantity FROM OrderDetails WHERE OrderId = @maHD
+	OPEN CS_DuyetSanPham
+	FETCH NEXT FROM CS_DuyetSanPham INTO @maSanPham, @soLuong
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		UPDATE Products
+		SET Quantity = Quantity + @soLuong
 		WHERE ProductID = @maSanPham
 		FETCH NEXT FROM CS_DuyetSanPham INTO @maSanPham, @soLuong
 	END

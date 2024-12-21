@@ -53,6 +53,31 @@ namespace App_QLWeb_DoDienTu
             InitializeComponent();
             this.txtSoLuongSanPham.KeyPress += onlyNumericInput;
             this.txtDonGia.KeyPress += onlyNumericInput;
+            this.cbLoaiSP.SelectedIndexChanged += CbLoaiSP_SelectedIndexChanged;
+            this.cbThuongHieu.SelectedIndexChanged += CbLoaiSP_SelectedIndexChanged;
+        }
+
+        private void CbLoaiSP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UIComboBox uIComboBox = sender as UIComboBox;
+            if (sender == cbLoaiSP)
+            {                
+                if (cbLoaiSP.SelectedItem != null)
+                {
+                    List<Product> sanPhams = sanPhamBLL.LocSanPhamTheoLoai(cbLoaiSP.SelectedValue.ToString());
+                    bindingSource.DataSource = sanPhams;
+                    SetHinhAnh(sanPhams);
+                }
+            }
+            else
+            {
+                if (cbThuongHieu.SelectedItem != null)
+                {
+                    List<Product> sanPhams = sanPhamBLL.LocSanPhamTheoThuongHieu(cbThuongHieu.SelectedValue.ToString());
+                    bindingSource.DataSource = sanPhams;
+                    SetHinhAnh(sanPhams);
+                }
+            }
         }
         private void onlyNumericInput(object sender, KeyPressEventArgs e)
         {
@@ -106,7 +131,6 @@ namespace App_QLWeb_DoDienTu
             cbLoaiSP.DataSource = loaiSanPhamBLL.GetAllCategories();
             cbLoaiSP.DisplayMember = "CategoryName";
             cbLoaiSP.ValueMember = "CategoryID";
-            this.cbLoaiSP.SelectedValueChanged += cbLoaiSP_SelectedValueChanged;
             //Load dữ liệu danh sách nhà cung cấp
             cbNhaCungCap.DataSource = nhaCungCapBLL.getAllSuppliers();
             cbNhaCungCap.DisplayMember = "tenNhaCungCap";
@@ -133,13 +157,6 @@ namespace App_QLWeb_DoDienTu
                 tongTien = tongTien.Split(',')[0].Trim();
                 txtTongTien.Text = decimal.Parse(tongTien).ToString("C0");
             }
-        }
-        private void cbLoaiSP_SelectedValueChanged(object sender, EventArgs e)
-        {
-            string selectedValue = cbLoaiSP.SelectedValue.ToString();
-            List<Product> sanPhams= sanPhamBLL.LocSanPhamTheoLoai(selectedValue);
-            bindingSource.DataSource = sanPhams;
-            SetHinhAnh(sanPhams);
         }
         private void btnHuyLoc_Click(object sender, EventArgs e)
         {
@@ -613,6 +630,5 @@ namespace App_QLWeb_DoDienTu
             }
             return formatted;
         }
-
     }
 }
