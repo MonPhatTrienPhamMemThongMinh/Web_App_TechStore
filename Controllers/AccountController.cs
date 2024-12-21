@@ -11,6 +11,8 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using DoAnWebGamingGear.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Facebook;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace DoAnWebGamingGear.Controllers
 {
@@ -172,5 +174,75 @@ namespace DoAnWebGamingGear.Controllers
             }
             return View(order);
         }
+
+        //public ActionResult FacebookLogin()
+        //{
+        //    var fb = new FacebookClient();
+        //    var loginUrl = fb.GetLoginUrl(new
+        //    {
+        //        client_id = "1230680774637581",
+        //        redirect_uri = Url.Action("FacebookLoginCallback", "Account", null, Request.Url.Scheme),
+        //        response_type = "code",
+        //        scope = "email"
+        //    });
+
+        //    return Redirect(loginUrl.AbsoluteUri);
+        //}
+
+        //public ActionResult FacebookLoginCallback(string code)
+        //{
+        //    var fb = new FacebookClient();
+        //    dynamic result = fb.Post("oauth/access_token", new
+        //    {
+        //        client_id = "1230680774637581",
+        //        client_secret = "5aa9ec2ef5c559ad322fd9798223bc24",
+        //        redirect_uri = Url.Action("FacebookLoginCallback", "Account", null, Request.Url.Scheme),
+        //        code = code
+        //    });
+
+        //    var accessToken = result.access_token;
+        //    fb.AccessToken = accessToken;
+
+        //    dynamic me = fb.Get("me?fields=id,name,email");
+        //    string email = me.email;
+        //    string name = me.name;
+
+        //    // Tìm hoặc tạo người dùng trong cơ sở dữ liệu của bạn
+        //    var user = FindOrCreateUser(email, name);
+
+        //    // Đăng nhập người dùng
+        //    SignInUser(user);
+
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+        //private AppUser FindOrCreateUser(string email, string name)
+        //{
+        //    // Tìm người dùng trong cơ sở dữ liệu của bạn
+        //    var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+        //    var user = userManager.FindByEmail(email);
+
+        //    if (user == null)
+        //    {
+        //        // Tạo người dùng mới nếu không tìm thấy
+        //        user = new AppUser
+        //        {
+        //            UserName = email,
+        //            Email = email,
+        //            FullName = name
+        //        };
+        //        userManager.Create(user);
+        //    }
+
+        //    return user;
+        //}
+
+        //private void SignInUser(AppUser user)
+        //{
+        //    var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+        //    var authManager = HttpContext.GetOwinContext().Authentication;
+        //    var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+        //    authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, userIdentity);
+        //}
     }
 }
