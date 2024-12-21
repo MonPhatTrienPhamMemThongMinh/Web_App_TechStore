@@ -1,6 +1,8 @@
 ﻿using DoAnWebGamingGear.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -24,7 +26,7 @@ namespace DoAnWebGamingGear.ApiControllers
 
                 if (product != null)
                 {
-                    responseText = $"Giá của {product.ProductName} là {product.Price} VND.";
+                    responseText = $"Giá của {product.ProductName} là {product.Price.ToString("N0").Replace(",", ".")} VND.";
                 }
                 else
                 {
@@ -137,7 +139,7 @@ namespace DoAnWebGamingGear.ApiControllers
                                         .Where(od => db.Products
                                                        .Where(p => p.CategoryID == category.CategoryID)
                                                        .Select(p => p.ProductID)
-                                                       .Contains(od.ProductID)) // Lọc theo loại sản phẩm
+                                                       .Contains(od.ProductID))
                                         .GroupBy(od => od.ProductID)
                                         .Select(g => new
                                         {
@@ -151,7 +153,7 @@ namespace DoAnWebGamingGear.ApiControllers
 
                     if (hotProducts.Any())
                     {
-                        // Tạo danh sách gợi ý sản phẩm
+                        // Tạo danh sách gợi ý sản phẩmw
                         var suggestions = hotProducts
                             .Select(p => $"{p.ProductName} (Giá: {p.Price} VND)")
                             .ToList();
@@ -168,7 +170,113 @@ namespace DoAnWebGamingGear.ApiControllers
                     responseText = $"Xin lỗi, tôi không tìm thấy loại sản phẩm {categoryName}.";
                 }
             }
+            else if(intentName == "CheapProduct")
+            {
+                var cheapestProduct = db.Products
+                            .Where(p => p.Price > 0)
+                            .OrderBy(p => p.Price)
+                            .FirstOrDefault();
+                if (cheapestProduct != null)
+                {
+                    responseText = $"Sản phẩm rẻ nhất hiện tại là {cheapestProduct.ProductName} với giá {cheapestProduct.Price.ToString("N0").Replace(",", ".")}đ.";
+                }
+                else
+                {
+                    responseText = "Hiện tại không có sản phẩm nào có giá hợp lệ.";
+                }
+            }
+            else if(intentName == "ExpensiveProduct")
+            {
+                var mostExpensiveProduct = db.Products
+                                 .Where(p => p.Price > 0)
+                                 .OrderByDescending(p => p.Price)
+                                 .FirstOrDefault();
+                if (mostExpensiveProduct != null)
+                {
+                    responseText = $"Sản phẩm mắc nhất hiện tại là {mostExpensiveProduct.ProductName} với giá {mostExpensiveProduct.Price.ToString("N0").Replace(",", ".")}đ.";
+                }
+                else
+                {
+                    responseText = "Hiện tại không có sản phẩm nào có giá hợp lệ.";
+                }
+            }
+            else if(intentName == "ChuongTrinhKhuyenMaiDangDienRa")
+            {
+                var khuyenMaiDangDienRa = db.KhuyenMais.Where(km => km.trangThai == "Đang diễn ra").ToList();
+                if (khuyenMaiDangDienRa.Any())
+                {
+                    var suggestion = khuyenMaiDangDienRa.Select(km => $"{km.tenKhuyenMai},  thời gian bắt đầu từ {km.ngayBatDau} đến {km.ngayKetThuc}").ToList();
+                    responseText = $"Hiện tại đang có chương trình khuyến mãi:\n- {string.Join("\n- ", suggestion)}";
+                }
+                else
+                {
+                    responseText = "Hiện tại shop không có chương trình mãi nào cả.";
+                }
+            }
+            else if (intentName == "ProductQuantity")
+            {
+                string productName = ((JArray)request.queryResult.parameters.product).First.ToString();
+                var product = db.Products.FirstOrDefault(p => p.ProductName == productName);
 
+                if (product != null)
+                {
+                    responseText = $"Sản phẩm {product.ProductName} hiện còn {product.Quantity} sản phẩm trong kho.";
+                }
+                else
+                {
+                    responseText = "Xin lỗi, tôi không tìm thấy sản phẩm này.";
+                }
+            }
+            else if (intentName == "CheapestProductByCategory")
+            {
+                string categoryName = request.queryResult.parameters.category;
+                var category = db.Categories.FirstOrDefault(c => c.CategoryName == categoryName);
+
+                if (category != null)
+                {
+                    var cheapestProduct = db.Products
+                                            .Where(p => p.CategoryID == category.CategoryID && p.Price > 0)
+                                            .OrderBy(p => p.Price)
+                                            .FirstOrDefault();
+                    if (cheapestProduct != null)
+                    {
+                        responseText = $"Sản phẩm rẻ nhất trong loại {categoryName} là {cheapestProduct.ProductName} với giá {cheapestProduct.Price.ToString("N0").Replace(",", ".")}đ.";
+                    }
+                    else
+                    {
+                        responseText = $"Hiện tại không có sản phẩm nào có giá hợp lệ trong loại {categoryName}.";
+                    }
+                }
+                else
+                {
+                    responseText = $"Xin lỗi, tôi không tìm thấy loại sản phẩm {categoryName}.";
+                }
+            }
+            else if (intentName == "MostExpensiveProductByCategory")
+            {
+                string categoryName = request.queryResult.parameters.category;
+                var category = db.Categories.FirstOrDefault(c => c.CategoryName == categoryName);
+
+                if (category != null)
+                {
+                    var mostExpensiveProduct = db.Products
+                                                 .Where(p => p.CategoryID == category.CategoryID && p.Price > 0)
+                                                 .OrderByDescending(p => p.Price)
+                                                 .FirstOrDefault();
+                    if (mostExpensiveProduct != null)
+                    {
+                        responseText = $"Sản phẩm mắc nhất trong loại {categoryName} là {mostExpensiveProduct.ProductName} với giá {mostExpensiveProduct.Price.ToString("N0").Replace(",", ".")}đ.";
+                    }
+                    else
+                    {
+                        responseText = $"Hiện tại không có sản phẩm nào có giá hợp lệ trong loại {categoryName}.";
+                    }
+                }
+                else
+                {
+                    responseText = $"Xin lỗi, tôi không tìm thấy loại sản phẩm {categoryName}.";
+                }
+            }
 
             return Ok(new { fulfillmentText = responseText });
         }

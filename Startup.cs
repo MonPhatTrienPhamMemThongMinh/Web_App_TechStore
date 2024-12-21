@@ -40,6 +40,12 @@ namespace DoAnWebGamingGear
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login")
             });
+
+            //app.UseFacebookAuthentication(new Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions()
+            //{
+            //    AppId = "1230680774637581",
+            //    AppSecret = "5aa9ec2ef5c559ad322fd9798223bc24"
+            //});
             this.CreateRolesAndUsers();
         }
 
