@@ -29,7 +29,17 @@
                         <hr />
                         <p>@Model.ProductDescription</p>
 
-                        <p><strong>Availability Status:</strong> @Model.AvailabilityStatus</p>
+                        <p>
+                            <strong>Availability Status:</strong>
+                            @if (Model.AvailabilityStatus == "InStock")
+                            {
+                                @:Còn hàng
+                            }
+                            else if (Model.AvailabilityStatus == "OutOfStock")
+                            {
+                                @:Hết hàng
+                            }
+                        </p>
                         <p><strong>Bảo hành:</strong> @Model.BaoHanh</p>
                         <div class="vstack gap-4">
 

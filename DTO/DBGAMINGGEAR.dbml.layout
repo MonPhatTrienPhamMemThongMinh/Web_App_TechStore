@@ -129,10 +129,6 @@
         <classShapeMoniker Id="193f8a5f-acfd-4cac-b879-9f0a15e32a75" />
         <classShapeMoniker Id="e79f0d9e-3d29-4a66-abf3-c03909b76c91" />
       </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 18.7612125651042); (2.2812525 : 20.6931469726563); (3.5 : 20.6931469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DBGAMINGGEARDataContext/AspNetUser/AspNetUser_AspNetUserLogin" />
-      <nodes>
         <classShapeMoniker Id="193f8a5f-acfd-4cac-b879-9f0a15e32a75" />
         <classShapeMoniker Id="3d0bef24-991f-4a3c-885f-5ece7e51b29e" />
       </nodes>
@@ -150,21 +146,17 @@
         <classShapeMoniker Id="96aaf03b-a4c2-4e8f-a74a-3d4aa9f7f68a" />
         <classShapeMoniker Id="f87d51e6-9e76-449d-a39d-24d206a94f0d" />
       </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(5.5 : 5.91429768880208); (6.25 : 5.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Product/Product_CartItem" />
-      <nodes>
-        <classShapeMoniker Id="f87d51e6-9e76-449d-a39d-24d206a94f0d" />
-        <classShapeMoniker Id="02a94bf3-08d7-4aff-ad82-f2db9cfb9fa7" />
+        <classShapeMoniker Id="64eb0bf6-93c2-42ce-a2aa-98da395ea612" />
+        <classShapeMoniker Id="d5343b53-ae48-460e-9bc5-113ac7a8bdcd" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 3.90549967447917); (3.125 : 4.28049967447917); (3.125 : 3.99846253846154); (3.50153746153846 : 4.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Category/Category_Product" />
       <nodes>
         <classShapeMoniker Id="8ec9de04-746f-4d61-ab49-63044de58117" />
-        <classShapeMoniker Id="f87d51e6-9e76-449d-a39d-24d206a94f0d" />
-      </nodes>
-    </associationConnector>
+        <classShapeMoniker Id="258b6b2c-5946-46fb-b6fa-eb1709abb4f0" />
     <associationConnector edgePoints="[(5.5 : 4.96875); (8.35416916666667 : 4.96875 : JumpStart); (8.52083583333333 : 4.96875 : JumpEnd); (9.25 : 4.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBGAMINGGEARDataContext/Product/Product_ChiTietPhieuDat" />
       <nodes>
