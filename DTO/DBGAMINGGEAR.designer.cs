@@ -284,6 +284,20 @@ namespace DTO
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maPhieuDat);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CapNhatSoLuongSanPham_Tang_Proc")]
+		public int CapNhatSoLuongSanPham_Tang_Proc([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(128)")] string maHD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maHD);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_UpdateTrangThaiKhuyenMai")]
+		public int sp_UpdateTrangThaiKhuyenMai()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[__MigrationHistory]")]
