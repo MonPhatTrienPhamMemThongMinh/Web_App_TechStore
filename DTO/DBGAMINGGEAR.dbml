@@ -235,4 +235,11 @@
     <Parameter Name="maPhieuDat" Type="System.String" DbType="VarChar(128)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.CapNhatSoLuongSanPham_Tang_Proc" Method="CapNhatSoLuongSanPham_Tang_Proc">
+    <Parameter Name="maHD" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_UpdateTrangThaiKhuyenMai" Method="sp_UpdateTrangThaiKhuyenMai">
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
