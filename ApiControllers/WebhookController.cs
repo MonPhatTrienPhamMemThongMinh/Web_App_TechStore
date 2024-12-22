@@ -277,6 +277,31 @@ namespace DoAnWebGamingGear.ApiControllers
                     responseText = $"Xin lỗi, tôi không tìm thấy loại sản phẩm {categoryName}.";
                 }
             }
+            else if (intentName == "ProductsByBrand")
+            {
+                string brandName = request.queryResult.parameters.brand;
+                var brand = db.Brands.FirstOrDefault(b => b.BrandName == brandName);
+
+                if (brand != null)
+                {
+                    var productsInBrand = db.Products.Where(p => p.BrandID == brand.BrandID).ToList();
+                    var productCount = productsInBrand.Count();
+
+                    if (productCount > 0)
+                    {
+                        var productNames = string.Join("\n- ", productsInBrand.Select(p => p.ProductName));
+                        responseText = $"Có {productCount} sản phẩm thuộc thương hiệu {brandName}:\n- {productNames}";
+                    }
+                    else
+                    {
+                        responseText = $"Không có sản phẩm nào thuộc thương hiệu {brandName}.";
+                    }
+                }
+                else
+                {
+                    responseText = $"Xin lỗi, tôi không tìm thấy thương hiệu {brandName}.";
+                }
+            }
 
             return Ok(new { fulfillmentText = responseText });
         }
